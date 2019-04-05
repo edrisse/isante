@@ -9,5 +9,5 @@ create table etl_execution (
   primary key (id)
 );
 
---to simplify processing logic lets pretend there was an initial execution in 1990
-insert into etl_execution values (null, '1990-01-01', true);
+--to simplify processing logic lets pretend there was an initial execution in 1900
+insert into etl_execution values (null, '1900-01-01', true);
