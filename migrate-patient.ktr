@@ -2122,7 +2122,7 @@ order by obs.obs_id desc</sql>
     <fileNameField/>
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>/home/edrisse/isante/data</name>
+      <name>/home/edrisse/isante/patient</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
       <extention>csv</extention>
