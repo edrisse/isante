@@ -497,11 +497,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch iSante Location</from>
-      <to>Calculator</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Patients</from>
       <to>Fetch iSantePlus Location</to>
       <enabled>Y</enabled>
@@ -524,6 +519,21 @@
     <hop>
       <from>Generate random value</from>
       <to>Table output</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch iSante Location</from>
+      <to>Has iSante location_id?</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Has iSante location_id?</from>
+      <to>Calculator</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Has iSante location_id?</from>
+      <to>No iSante location</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -589,8 +599,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>48</xloc>
-      <yloc>96</yloc>
+      <xloc>96</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -630,8 +640,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>880</xloc>
-      <yloc>96</yloc>
+      <xloc>1136</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -667,8 +677,8 @@ where person.voided = false
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>96</yloc>
+      <xloc>400</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -706,8 +716,8 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
-      <yloc>96</yloc>
+      <xloc>768</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -745,8 +755,8 @@ order by obs.obs_datetime desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>512</xloc>
-      <yloc>96</yloc>
+      <xloc>560</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -776,8 +786,8 @@ order by obs.obs_datetime desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1024</xloc>
-      <yloc>96</yloc>
+      <xloc>1280</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -807,8 +817,8 @@ order by obs.obs_datetime desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>96</yloc>
+      <xloc>240</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -883,8 +893,72 @@ order by obs.obs_datetime desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1184</xloc>
-      <yloc>96</yloc>
+      <xloc>1280</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Has iSante location_id?</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Calculator</send_true_to>
+    <send_false_to>No iSante location</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>isante_location_id</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>976</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>No iSante location</name>
+    <type>Abort</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <row_threshold>0</row_threshold>
+    <message>Location does not have iSante location_id information</message>
+    <always_log_rows>Y</always_log_rows>
+    <abort_option>ABORT</abort_option>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>976</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
