@@ -1113,6 +1113,16 @@
     </hop>
     <hop>
       <from>Map Social Skills Findings</from>
+      <to>Remove new line from Accessment Plan</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove new line from Accessment Plan</from>
+      <to>Remove new line from Abnormal Findings</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove new line from Abnormal Findings</from>
       <to>Save on CSV</to>
       <enabled>Y</enabled>
     </hop>
@@ -9111,7 +9121,7 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>abnormal_findings</name>
+        <name>abnormal_findings_sanitazed</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -9495,7 +9505,7 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>accessment_plan_comment</name>
+        <name>accessment_plan_sanitazed</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -10140,8 +10150,88 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
+      <xloc>368</xloc>
+      <yloc>1920</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove new line from Accessment Plan</name>
+    <type>StringOperations</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>accessment_plan_comment</in_stream_name>
+        <out_stream_name>accessment_plan_sanitazed</out_stream_name>
+        <trim_type>none</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>crlf</remove_special_characters>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>80</xloc>
       <yloc>1824</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove new line from Abnormal Findings</name>
+    <type>StringOperations</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>abnormal_findings</in_stream_name>
+        <out_stream_name>abnormal_findings_sanitazed</out_stream_name>
+        <trim_type>none</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>crlf</remove_special_characters>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>1920</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
