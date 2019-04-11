@@ -2181,7 +2181,7 @@ order by obs.obs_id desc</sql>
     <fields>
       <field>
         <name>table_name</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2193,7 +2193,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>patientID_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2205,7 +2205,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>patient_identifier</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2217,7 +2217,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>stid_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2229,7 +2229,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>st_code</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2241,7 +2241,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>deathDt_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2265,7 +2265,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>patGuid_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2277,7 +2277,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>person_uuid</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2289,7 +2289,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>fname_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2301,7 +2301,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>given_name</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2313,7 +2313,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>lname_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2325,7 +2325,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>family_name</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2337,7 +2337,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>sex_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2349,7 +2349,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>sex</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2361,7 +2361,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>dobDd_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2373,7 +2373,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>birthday_day</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2385,7 +2385,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>dobMm_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2397,7 +2397,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>birthday_month</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2409,7 +2409,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>dobYy_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2421,7 +2421,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>birthday_year</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2433,7 +2433,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>fnameMother_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2445,7 +2445,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>mother_name</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2457,7 +2457,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>stid_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2469,7 +2469,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>st_code</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2481,7 +2481,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>nationalID_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2493,7 +2493,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>national_identifier</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2505,7 +2505,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>clinicPatientID_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2517,7 +2517,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>code_pc</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2529,7 +2529,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>addrSection_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2541,7 +2541,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>city_village</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2553,7 +2553,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>addrTown_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2565,7 +2565,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>address3</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2577,7 +2577,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>addrDistrict_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2589,7 +2589,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>address2</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2601,7 +2601,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>telephone_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2613,7 +2613,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>phone</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2625,7 +2625,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>birthSection_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2637,7 +2637,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>comune</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2649,7 +2649,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>birthTown_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2661,7 +2661,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>section_comunale</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2673,7 +2673,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>birthDistrict_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2685,7 +2685,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>address</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2697,7 +2697,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>maritalStatus_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2709,7 +2709,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>marital_status_mapped</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2721,7 +2721,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>occupation_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2733,7 +2733,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>ocupation_desc</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2745,7 +2745,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>contact_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2757,7 +2757,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>emergency_name</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2769,7 +2769,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>relationContact_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2781,7 +2781,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>emergency_relation_desc</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2793,7 +2793,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>addrContactSection_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2805,7 +2805,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>emergency_comune</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2817,7 +2817,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>addrContactTown_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2829,7 +2829,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>emergency_section_comunale</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2841,7 +2841,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>addrContact_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2853,7 +2853,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>emergency_address</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2865,7 +2865,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>phoneContact_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>
@@ -2877,7 +2877,7 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>emergency_phone</name>
-        <type>String</type>
+        <type>None</type>
         <format/>
         <currency/>
         <decimal/>

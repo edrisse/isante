@@ -1077,11 +1077,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Map Social Skills Findings</from>
-      <to>Save on CSV</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Lowest CD4 Date</from>
       <to>Decompose Lowest CD4 Date</to>
       <enabled>Y</enabled>
@@ -1114,6 +1109,11 @@
     <hop>
       <from>Decompose Date of Last Papanicolau</from>
       <to>Fetch Regular Menstrual Period</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map Social Skills Findings</from>
+      <to>Save on CSV</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -2612,6 +2612,77 @@
     </GUI>
   </step>
   <step>
+    <name>Decompose Date of Last Papanicolau</name>
+    <type>Calculator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>last_papanicolau_day</field_name>
+      <calc_type>DAY_OF_MONTH</calc_type>
+      <field_a>last_papanicolau</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <calculation>
+      <field_name>last_papanicolau_month</field_name>
+      <calc_type>MONTH_OF_DATE</calc_type>
+      <field_a>last_papanicolau</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <calculation>
+      <field_name>last_papanicolau_year</field_name>
+      <calc_type>YEAR_OF_DATE</calc_type>
+      <field_a>last_papanicolau</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>880</xloc>
+      <yloc>1168</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Decompose Date of Last Prenatal Visit</name>
     <type>Calculator</type>
     <description/>
@@ -2700,7 +2771,7 @@
       <field_a>encounter_datetime</field_a>
       <field_b/>
       <field_c/>
-      <value_type>None</value_type>
+      <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
@@ -2715,7 +2786,7 @@
       <field_a>encounter_datetime</field_a>
       <field_b/>
       <field_c/>
-      <value_type>None</value_type>
+      <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
@@ -2730,7 +2801,7 @@
       <field_a>encounter_datetime</field_a>
       <field_b/>
       <field_c/>
-      <value_type>None</value_type>
+      <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
@@ -2825,7 +2896,7 @@
     </GUI>
   </step>
   <step>
-    <name>Decompose Lowest CD4 Date</name>
+    <name>Decompose Hepatitis Vacination Date</name>
     <type>Calculator</type>
     <description/>
     <distribute>Y</distribute>
@@ -2837,24 +2908,9 @@
     </partitioning>
     <failIfNoFile>Y</failIfNoFile>
     <calculation>
-      <field_name>lowest_cd4_day</field_name>
-      <calc_type>DAY_OF_MONTH</calc_type>
-      <field_a>lowest_cd4_count_date</field_a>
-      <field_b/>
-      <field_c/>
-      <value_type>None</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask/>
-      <decimal_symbol/>
-      <grouping_symbol/>
-      <currency_symbol/>
-    </calculation>
-    <calculation>
-      <field_name>lowest_cd4_month</field_name>
+      <field_name>hepatitis_vacination_month</field_name>
       <calc_type>MONTH_OF_DATE</calc_type>
-      <field_a>lowest_cd4_count_date</field_a>
+      <field_a>hepatitis_vacination_date</field_a>
       <field_b/>
       <field_c/>
       <value_type>None</value_type>
@@ -2867,9 +2923,9 @@
       <currency_symbol/>
     </calculation>
     <calculation>
-      <field_name>lowest_cd4_year</field_name>
+      <field_name>hepatitis_vacination_year</field_name>
       <calc_type>YEAR_OF_DATE</calc_type>
-      <field_a>lowest_cd4_count_date</field_a>
+      <field_a>hepatitis_vacination_date</field_a>
       <field_b/>
       <field_c/>
       <value_type>None</value_type>
@@ -2890,8 +2946,135 @@
       </output>
     </remotesteps>
     <GUI>
+      <xloc>1104</xloc>
+      <yloc>432</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Decompose Lowest CD4 Date</name>
+    <type>Calculator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>lowest_cd4_day</field_name>
+      <calc_type>DAY_OF_MONTH</calc_type>
+      <field_a>lowest_cd4_count_date</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <calculation>
+      <field_name>lowest_cd4_month</field_name>
+      <calc_type>MONTH_OF_DATE</calc_type>
+      <field_a>lowest_cd4_count_date</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <calculation>
+      <field_name>lowest_cd4_year</field_name>
+      <calc_type>YEAR_OF_DATE</calc_type>
+      <field_a>lowest_cd4_count_date</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>544</xloc>
       <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Decompose Tetanus Vacination Date</name>
+    <type>Calculator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>tetanus_vacination_month</field_name>
+      <calc_type>MONTH_OF_DATE</calc_type>
+      <field_a>tetanus_vacination_date</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <calculation>
+      <field_name>tetanus_vacination_year</field_name>
+      <calc_type>YEAR_OF_DATE</calc_type>
+      <field_a>tetanus_vacination_date</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5838,7 +6021,7 @@ where obs.concept_id = 5242
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_numeric saturation from obs
+    <sql>select concat(obs.value_numeric, '') saturation from obs
 where obs.concept_id = 5092
   and obs.encounter_id = ?
   and obs.voided = false
@@ -6549,7 +6732,7 @@ where obs.concept_id = 5089
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_numeric weight_at_birth from obs
+    <sql>select obs.value_numeric||'' weight_at_birth from obs
 where obs.concept_id = 5916
   and obs.encounter_id = ?
   and obs.voided = false
@@ -7849,7 +8032,7 @@ where location_attribute.attribute_type_id = 1
       </field>
       <field>
         <name>temp</name>
-        <type>None</type>
+        <type>String</type>
         <format/>
         <currency/>
         <decimal/>
@@ -9957,191 +10140,8 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
+      <xloc>80</xloc>
       <yloc>1824</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Decompose Hepatitis Vacination Date</name>
-    <type>Calculator</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <failIfNoFile>Y</failIfNoFile>
-    <calculation>
-      <field_name>hepatitis_vacination_month</field_name>
-      <calc_type>MONTH_OF_DATE</calc_type>
-      <field_a>hepatitis_vacination_date</field_a>
-      <field_b/>
-      <field_c/>
-      <value_type>None</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask/>
-      <decimal_symbol/>
-      <grouping_symbol/>
-      <currency_symbol/>
-    </calculation>
-    <calculation>
-      <field_name>hepatitis_vacination_year</field_name>
-      <calc_type>YEAR_OF_DATE</calc_type>
-      <field_a>hepatitis_vacination_date</field_a>
-      <field_b/>
-      <field_c/>
-      <value_type>None</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask/>
-      <decimal_symbol/>
-      <grouping_symbol/>
-      <currency_symbol/>
-    </calculation>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1104</xloc>
-      <yloc>432</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Decompose Tetanus Vacination Date</name>
-    <type>Calculator</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <failIfNoFile>Y</failIfNoFile>
-    <calculation>
-      <field_name>tetanus_vacination_month</field_name>
-      <calc_type>MONTH_OF_DATE</calc_type>
-      <field_a>tetanus_vacination_date</field_a>
-      <field_b/>
-      <field_c/>
-      <value_type>None</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask/>
-      <decimal_symbol/>
-      <grouping_symbol/>
-      <currency_symbol/>
-    </calculation>
-    <calculation>
-      <field_name>tetanus_vacination_year</field_name>
-      <calc_type>YEAR_OF_DATE</calc_type>
-      <field_a>tetanus_vacination_date</field_a>
-      <field_b/>
-      <field_c/>
-      <value_type>None</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask/>
-      <decimal_symbol/>
-      <grouping_symbol/>
-      <currency_symbol/>
-    </calculation>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1392</xloc>
-      <yloc>432</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Decompose Date of Last Papanicolau</name>
-    <type>Calculator</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <failIfNoFile>Y</failIfNoFile>
-    <calculation>
-      <field_name>last_papanicolau_day</field_name>
-      <calc_type>DAY_OF_MONTH</calc_type>
-      <field_a>last_papanicolau</field_a>
-      <field_b/>
-      <field_c/>
-      <value_type>None</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask/>
-      <decimal_symbol/>
-      <grouping_symbol/>
-      <currency_symbol/>
-    </calculation>
-    <calculation>
-      <field_name>last_papanicolau_month</field_name>
-      <calc_type>MONTH_OF_DATE</calc_type>
-      <field_a>last_papanicolau</field_a>
-      <field_b/>
-      <field_c/>
-      <value_type>None</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask/>
-      <decimal_symbol/>
-      <grouping_symbol/>
-      <currency_symbol/>
-    </calculation>
-    <calculation>
-      <field_name>last_papanicolau_year</field_name>
-      <calc_type>YEAR_OF_DATE</calc_type>
-      <field_a>last_papanicolau</field_a>
-      <field_b/>
-      <field_c/>
-      <value_type>None</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask/>
-      <decimal_symbol/>
-      <grouping_symbol/>
-      <currency_symbol/>
-    </calculation>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>880</xloc>
-      <yloc>1168</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
