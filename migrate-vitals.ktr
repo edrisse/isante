@@ -662,11 +662,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Hepatitis Vacination Date</from>
-      <to>Fetch Hepatitis Vacination</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Hepatitis Vacination</from>
       <to>Fetch Tetanus Vacination</to>
       <enabled>Y</enabled>
@@ -892,11 +887,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Date Last Papanicolau</from>
-      <to>Fetch Regular Menstrual Period</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Regular Menstrual Period</from>
       <to>Map Regular Menstrual Period</to>
       <enabled>Y</enabled>
@@ -1099,6 +1089,31 @@
     <hop>
       <from>Decompose Lowest CD4 Date</from>
       <to>Fetch Viral Load at First Analysis</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Hepatitis Vacination Date</from>
+      <to>Decompose Hepatitis Vacination Date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Decompose Hepatitis Vacination Date</from>
+      <to>Decompose Tetanus Vacination Date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Decompose Tetanus Vacination Date</from>
+      <to>Fetch Hepatitis Vacination</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Date Last Papanicolau</from>
+      <to>Decompose Date of Last Papanicolau</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Decompose Date of Last Papanicolau</from>
+      <to>Fetch Regular Menstrual Period</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -2592,7 +2607,7 @@
     </remotesteps>
     <GUI>
       <xloc>912</xloc>
-      <yloc>912</yloc>
+      <yloc>1072</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2663,7 +2678,7 @@
     </remotesteps>
     <GUI>
       <xloc>432</xloc>
-      <yloc>912</yloc>
+      <yloc>1072</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2875,7 +2890,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
+      <xloc>544</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2946,7 +2961,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>240</xloc>
+      <xloc>432</xloc>
       <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2987,8 +3002,8 @@ where obs.concept_id = 160117
       </output>
     </remotesteps>
     <GUI>
-      <xloc>752</xloc>
-      <yloc>816</yloc>
+      <xloc>896</xloc>
+      <yloc>976</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3027,8 +3042,8 @@ where obs.concept_id = 163322
       </output>
     </remotesteps>
     <GUI>
-      <xloc>992</xloc>
-      <yloc>816</yloc>
+      <xloc>1136</xloc>
+      <yloc>976</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3068,7 +3083,7 @@ where obs.concept_id = 1125
     </remotesteps>
     <GUI>
       <xloc>1216</xloc>
-      <yloc>720</yloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3108,7 +3123,7 @@ where obs.concept_id = 1391
     </remotesteps>
     <GUI>
       <xloc>432</xloc>
-      <yloc>528</yloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3148,7 +3163,7 @@ where obs.concept_id = 159395
     </remotesteps>
     <GUI>
       <xloc>1392</xloc>
-      <yloc>912</yloc>
+      <yloc>1072</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3188,7 +3203,7 @@ where obs.concept_id = 5254
     </remotesteps>
     <GUI>
       <xloc>400</xloc>
-      <yloc>1104</yloc>
+      <yloc>1376</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3228,7 +3243,7 @@ where obs.concept_id = 163549
     </remotesteps>
     <GUI>
       <xloc>80</xloc>
-      <yloc>1104</yloc>
+      <yloc>1376</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3268,7 +3283,7 @@ where obs.concept_id = 163553
     </remotesteps>
     <GUI>
       <xloc>1392</xloc>
-      <yloc>1200</yloc>
+      <yloc>1472</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3349,7 +3364,7 @@ where obs.concept_id = 1124
     </remotesteps>
     <GUI>
       <xloc>1392</xloc>
-      <yloc>624</yloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3430,8 +3445,8 @@ where obs.concept_id = 374
       </output>
     </remotesteps>
     <GUI>
-      <xloc>880</xloc>
-      <yloc>528</yloc>
+      <xloc>1264</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3471,7 +3486,7 @@ where obs.concept_id = 5314
     </remotesteps>
     <GUI>
       <xloc>480</xloc>
-      <yloc>1296</yloc>
+      <yloc>1632</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3511,8 +3526,8 @@ where obs.concept_id = 374
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
-      <yloc>528</yloc>
+      <xloc>1392</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3552,7 +3567,7 @@ where obs.concept_id = 163547
     </remotesteps>
     <GUI>
       <xloc>1152</xloc>
-      <yloc>912</yloc>
+      <yloc>1072</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3592,7 +3607,7 @@ where obs.concept_id = 163267
     </remotesteps>
     <GUI>
       <xloc>640</xloc>
-      <yloc>1008</yloc>
+      <yloc>1168</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3632,7 +3647,7 @@ where obs.concept_id = 159590
     </remotesteps>
     <GUI>
       <xloc>672</xloc>
-      <yloc>912</yloc>
+      <yloc>1072</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3713,7 +3728,7 @@ where obs.concept_id = 163550
     </remotesteps>
     <GUI>
       <xloc>432</xloc>
-      <yloc>1200</yloc>
+      <yloc>1472</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3753,7 +3768,7 @@ where obs.concept_id = 163552
     </remotesteps>
     <GUI>
       <xloc>1088</xloc>
-      <yloc>1200</yloc>
+      <yloc>1472</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3793,7 +3808,7 @@ where obs.concept_id = 163337
     </remotesteps>
     <GUI>
       <xloc>720</xloc>
-      <yloc>624</yloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3833,7 +3848,7 @@ where obs.concept_id = 5526
     </remotesteps>
     <GUI>
       <xloc>1072</xloc>
-      <yloc>1104</yloc>
+      <yloc>1376</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3873,7 +3888,7 @@ where obs.concept_id = 163309
     </remotesteps>
     <GUI>
       <xloc>448</xloc>
-      <yloc>816</yloc>
+      <yloc>976</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3913,8 +3928,8 @@ where obs.concept_id = 374
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1392</xloc>
-      <yloc>528</yloc>
+      <xloc>784</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3953,8 +3968,8 @@ where obs.concept_id = 374
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1216</xloc>
-      <yloc>528</yloc>
+      <xloc>960</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3994,7 +4009,7 @@ where obs.concept_id = 163579
     </remotesteps>
     <GUI>
       <xloc>1392</xloc>
-      <yloc>1488</yloc>
+      <yloc>1824</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4157,7 +4172,7 @@ where obs.concept_id = 1119
     </remotesteps>
     <GUI>
       <xloc>256</xloc>
-      <yloc>528</yloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4197,7 +4212,7 @@ where obs.concept_id = 163578
     </remotesteps>
     <GUI>
       <xloc>1104</xloc>
-      <yloc>1392</yloc>
+      <yloc>1728</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4237,7 +4252,7 @@ where obs.concept_id = 1409
     </remotesteps>
     <GUI>
       <xloc>672</xloc>
-      <yloc>1296</yloc>
+      <yloc>1632</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4317,7 +4332,7 @@ where obs.concept_id = 163555
     </remotesteps>
     <GUI>
       <xloc>864</xloc>
-      <yloc>1296</yloc>
+      <yloc>1632</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4357,7 +4372,7 @@ where obs.concept_id = 163388
     </remotesteps>
     <GUI>
       <xloc>256</xloc>
-      <yloc>1392</yloc>
+      <yloc>1728</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4438,7 +4453,7 @@ where obs.concept_id = 163554
     </remotesteps>
     <GUI>
       <xloc>1056</xloc>
-      <yloc>1296</yloc>
+      <yloc>1632</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4478,8 +4493,8 @@ where obs.concept_id = 1418
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1392</xloc>
-      <yloc>432</yloc>
+      <xloc>624</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4520,8 +4535,8 @@ where obs.concept_id = 984
       </output>
     </remotesteps>
     <GUI>
-      <xloc>848</xloc>
-      <yloc>432</yloc>
+      <xloc>80</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4538,7 +4553,7 @@ where obs.concept_id = 984
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_datetime as hepatitis_vacination_date from obs
+    <sql>select obs.value_datetime as hepatitis_vacination_date, obs.value_datetime as tetanus_vacination_date from obs
 where obs.concept_id = 1410
   and obs.obs_group_id = 1421
   and obs.encounter_id = ?
@@ -4561,7 +4576,7 @@ where obs.concept_id = 1410
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
+      <xloc>800</xloc>
       <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
@@ -4643,7 +4658,7 @@ where concept_name.concept_id = ?
     </remotesteps>
     <GUI>
       <xloc>80</xloc>
-      <yloc>336</yloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4682,7 +4697,7 @@ where obs.concept_id = 163542
       </output>
     </remotesteps>
     <GUI>
-      <xloc>416</xloc>
+      <xloc>608</xloc>
       <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
@@ -4757,7 +4772,7 @@ where obs.concept_id = 1825
     </remotesteps>
     <GUI>
       <xloc>1248</xloc>
-      <yloc>1104</yloc>
+      <yloc>1376</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4836,7 +4851,7 @@ where obs.concept_id = 159376
       </output>
     </remotesteps>
     <GUI>
-      <xloc>848</xloc>
+      <xloc>784</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -4877,7 +4892,7 @@ where obs.concept_id = 1121
     </remotesteps>
     <GUI>
       <xloc>1040</xloc>
-      <yloc>624</yloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4917,7 +4932,7 @@ where obs.concept_id = 1343
     </remotesteps>
     <GUI>
       <xloc>80</xloc>
-      <yloc>1296</yloc>
+      <yloc>1632</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4957,7 +4972,7 @@ where obs.concept_id = 1823
     </remotesteps>
     <GUI>
       <xloc>1392</xloc>
-      <yloc>1104</yloc>
+      <yloc>1376</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4997,7 +5012,7 @@ where obs.concept_id = 6046
     </remotesteps>
     <GUI>
       <xloc>80</xloc>
-      <yloc>1200</yloc>
+      <yloc>1472</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5078,7 +5093,7 @@ where obs.concept_id = 163548
     </remotesteps>
     <GUI>
       <xloc>608</xloc>
-      <yloc>1104</yloc>
+      <yloc>1376</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5118,7 +5133,7 @@ where obs.concept_id = 1128
     </remotesteps>
     <GUI>
       <xloc>464</xloc>
-      <yloc>720</yloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5158,7 +5173,7 @@ where obs.concept_id = 1129
     </remotesteps>
     <GUI>
       <xloc>80</xloc>
-      <yloc>816</yloc>
+      <yloc>976</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5198,8 +5213,8 @@ where obs.concept_id = 374
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
-      <yloc>528</yloc>
+      <xloc>1392</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5239,7 +5254,7 @@ where obs.concept_id = 163308
     </remotesteps>
     <GUI>
       <xloc>400</xloc>
-      <yloc>624</yloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5279,7 +5294,7 @@ where obs.concept_id = 163551
     </remotesteps>
     <GUI>
       <xloc>640</xloc>
-      <yloc>1200</yloc>
+      <yloc>1472</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5319,7 +5334,7 @@ where obs.concept_id = 163719
     </remotesteps>
     <GUI>
       <xloc>1392</xloc>
-      <yloc>1296</yloc>
+      <yloc>1632</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5360,8 +5375,8 @@ where obs.concept_id = 984
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1232</xloc>
-      <yloc>432</yloc>
+      <xloc>464</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5483,7 +5498,7 @@ where obs.concept_id = 885
     </remotesteps>
     <GUI>
       <xloc>272</xloc>
-      <yloc>1008</yloc>
+      <yloc>1168</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5523,7 +5538,7 @@ where obs.concept_id = 163952
     </remotesteps>
     <GUI>
       <xloc>80</xloc>
-      <yloc>912</yloc>
+      <yloc>1072</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5563,7 +5578,7 @@ where obs.concept_id = 1053
     </remotesteps>
     <GUI>
       <xloc>1392</xloc>
-      <yloc>1008</yloc>
+      <yloc>1264</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5684,7 +5699,7 @@ where obs.concept_id = 5624
     </remotesteps>
     <GUI>
       <xloc>1232</xloc>
-      <yloc>1008</yloc>
+      <yloc>1264</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5765,7 +5780,7 @@ where obs.concept_id = 160600
     </remotesteps>
     <GUI>
       <xloc>848</xloc>
-      <yloc>1008</yloc>
+      <yloc>1264</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5846,7 +5861,7 @@ where obs.concept_id = 5092
     </remotesteps>
     <GUI>
       <xloc>80</xloc>
-      <yloc>1392</yloc>
+      <yloc>1728</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5886,7 +5901,7 @@ where obs.concept_id = 1120
     </remotesteps>
     <GUI>
       <xloc>80</xloc>
-      <yloc>624</yloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5926,7 +5941,7 @@ where obs.concept_id = 163580
     </remotesteps>
     <GUI>
       <xloc>560</xloc>
-      <yloc>1488</yloc>
+      <yloc>1824</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6007,7 +6022,7 @@ where obs.concept_id = 5310
     </remotesteps>
     <GUI>
       <xloc>656</xloc>
-      <yloc>1392</yloc>
+      <yloc>1728</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6047,7 +6062,7 @@ where obs.concept_id = 163323
     </remotesteps>
     <GUI>
       <xloc>1392</xloc>
-      <yloc>816</yloc>
+      <yloc>976</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6129,8 +6144,8 @@ where obs.concept_id = 984
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>432</yloc>
+      <xloc>288</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6211,8 +6226,8 @@ where obs.concept_id = 374
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1040</xloc>
-      <yloc>528</yloc>
+      <xloc>1136</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6252,7 +6267,7 @@ where obs.concept_id = 1126
     </remotesteps>
     <GUI>
       <xloc>832</xloc>
-      <yloc>720</yloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6291,7 +6306,7 @@ where obs.concept_id = 163281
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
+      <xloc>272</xloc>
       <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
@@ -6332,7 +6347,7 @@ where obs.concept_id = 163787
     </remotesteps>
     <GUI>
       <xloc>944</xloc>
-      <yloc>1488</yloc>
+      <yloc>1824</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6371,7 +6386,7 @@ where obs.concept_id = 163310
       </output>
     </remotesteps>
     <GUI>
-      <xloc>272</xloc>
+      <xloc>80</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -6411,7 +6426,7 @@ where obs.concept_id = 163280
       </output>
     </remotesteps>
     <GUI>
-      <xloc>496</xloc>
+      <xloc>304</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -6557,7 +6572,7 @@ where obs.concept_id = 5916
     </remotesteps>
     <GUI>
       <xloc>1216</xloc>
-      <yloc>1296</yloc>
+      <yloc>1632</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6638,7 +6653,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>1024</xloc>
-      <yloc>720</yloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6684,7 +6699,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>256</xloc>
-      <yloc>1104</yloc>
+      <yloc>1376</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6726,7 +6741,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>1392</xloc>
-      <yloc>720</yloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6768,7 +6783,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>880</xloc>
-      <yloc>624</yloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6814,7 +6829,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>864</xloc>
-      <yloc>1104</yloc>
+      <yloc>1376</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6856,7 +6871,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>592</xloc>
-      <yloc>816</yloc>
+      <yloc>976</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6894,7 +6909,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>1168</xloc>
-      <yloc>1488</yloc>
+      <yloc>1824</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6936,7 +6951,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>80</xloc>
-      <yloc>528</yloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6974,7 +6989,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>1392</xloc>
-      <yloc>1392</yloc>
+      <yloc>1728</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -7016,7 +7031,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>448</xloc>
-      <yloc>1392</yloc>
+      <yloc>1728</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -7058,7 +7073,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>1200</xloc>
-      <yloc>624</yloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -7104,7 +7119,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>240</xloc>
-      <yloc>1200</yloc>
+      <yloc>1472</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -7188,7 +7203,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>80</xloc>
-      <yloc>720</yloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -7230,7 +7245,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>272</xloc>
-      <yloc>816</yloc>
+      <yloc>976</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -7272,7 +7287,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>560</xloc>
-      <yloc>624</yloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -7318,7 +7333,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>848</xloc>
-      <yloc>1200</yloc>
+      <yloc>1472</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -7356,7 +7371,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>448</xloc>
-      <yloc>1008</yloc>
+      <yloc>1168</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -7398,7 +7413,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>80</xloc>
-      <yloc>1008</yloc>
+      <yloc>1168</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -7440,7 +7455,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>1056</xloc>
-      <yloc>1008</yloc>
+      <yloc>1264</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -7456,7 +7471,7 @@ where location_attribute.attribute_type_id = 1
       <schema_name/>
     </partitioning>
     <field_to_use>skin_findings_code</field_to_use>
-    <target_field>skin_findings_desc</target_field>
+    <target_field>skin_findings_mapped</target_field>
     <non_match_default/>
     <fields>
       <field>
@@ -7482,7 +7497,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>240</xloc>
-      <yloc>624</yloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -7520,7 +7535,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>368</xloc>
-      <yloc>1488</yloc>
+      <yloc>1824</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -7562,7 +7577,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>848</xloc>
-      <yloc>1392</yloc>
+      <yloc>1728</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -7604,7 +7619,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>656</xloc>
-      <yloc>720</yloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -7642,7 +7657,7 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>752</xloc>
-      <yloc>1488</yloc>
+      <yloc>1824</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -8564,6 +8579,1374 @@ where location_attribute.attribute_type_id = 1
         <length>-1</length>
         <precision>-1</precision>
       </field>
+      <field>
+        <name>vaccHepBMm_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hepatitis_vacination_month</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>vaccHepBYy_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hepatitis_vacination_year</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>vaccTetanusMm_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>tetanus_vacination_month</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>vaccTetanusYy_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>tetanus_vacination_year</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>vaccHepB_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hepatitis_vacination</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>vaccTetanus_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>tetanus_vacination</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>otherVaccination_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>other_vacination</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hepBdoses_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hepatitis_doses</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>famPlan_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>family_planning</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>famPlanOtherText_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>family_planning_other</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>famPlanMethodTubalLig_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>tubal_ligation</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>famPlanMethodCondom_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>condom</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>famPlanMethodDmpa_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>dpma</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>famPlanMethodOcPills_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>oc_pills</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>clinicalExam_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>abnormal_findings</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>physicalGeneral_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>general_findings_mapped</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>physicalSkin_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>skin_findings_mapped</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>physicalOral_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>oral_findings_desc</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>physicalEarsNose_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ear_findings_desc</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>physicalLymph_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>lymph_findings_desc</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>physicalCardio_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>cardiac_findings_desc</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>physicalAbdomen_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>abnominal_findings_desc</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>physicalUro_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>urogeninal_findings_desc</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>physicalMusculo_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>musculoskeletal_findings_desc</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>physicalNeuro_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>musculoskeletal_findings_desc</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>physicalEyes_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>eye_findings_desc</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>noneTreatments_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>currently_taking_arv</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>conditionComments_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>art_treatment_status_comment</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>treatmentComments_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>tb_treatment_status_comment</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>drugComments_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>drug_comment</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>assessmentPlan_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>accessment_plan_comment</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pregnantPrenatal_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>first_prenatal_visit</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pregnantPrenatalFirstDd_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pretal_visit_day</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pregnantPrenatalFirstMm_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pretal_visit_month</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pregnantPrenatalFirstYy_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pretal_visit_year</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pregnantPrenatalLastDd_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>last_pretal_visit_day</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pregnantPrenatalLastMm_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>last_pretal_visit_month</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pregnantPrenatalLastYy_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>last_pretal_visit_year</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>papTest_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>papanicolau_test_status_mapped</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pedPapTestRes_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>papanicolau_smear_mapped</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>papTestDd_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>last_papanicolau_day</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>papTestMm_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>last_papanicolau_month</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>papTestYy_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>last_papanicolau_year</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pedReproHealthMenses_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>regular_menstrual_period_desc</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>gravida_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pregnant</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>para_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>parity</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>aborta_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>misscarriages</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>children_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>living_children</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pedFeedBreast_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>exclusive_breastfeeding_desc</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pedFeedBreastAge_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>infant_stoped_breastfeeding</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pedFeedFormula_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>artificial_milk_mapped</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pedFeedFormulaAge_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>artificial_milk_age_cessation</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pedFeedMixed_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>mixed_feeding_desc</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pedFeedMixedAge_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>mixed_feeding_duration</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pedFeedOther_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>other_feeding_method_desc</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pedFeedOtherAge_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>other_feeding_duration</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pedFeedMixedType_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>artificial_milk_type</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -8575,7 +9958,190 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
-      <yloc>1488</yloc>
+      <yloc>1824</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Decompose Hepatitis Vacination Date</name>
+    <type>Calculator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>hepatitis_vacination_month</field_name>
+      <calc_type>MONTH_OF_DATE</calc_type>
+      <field_a>hepatitis_vacination_date</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <calculation>
+      <field_name>hepatitis_vacination_year</field_name>
+      <calc_type>YEAR_OF_DATE</calc_type>
+      <field_a>hepatitis_vacination_date</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1104</xloc>
+      <yloc>432</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Decompose Tetanus Vacination Date</name>
+    <type>Calculator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>tetanus_vacination_month</field_name>
+      <calc_type>MONTH_OF_DATE</calc_type>
+      <field_a>tetanus_vacination_date</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <calculation>
+      <field_name>tetanus_vacination_year</field_name>
+      <calc_type>YEAR_OF_DATE</calc_type>
+      <field_a>tetanus_vacination_date</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>432</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Decompose Date of Last Papanicolau</name>
+    <type>Calculator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>last_papanicolau_day</field_name>
+      <calc_type>DAY_OF_MONTH</calc_type>
+      <field_a>last_papanicolau</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <calculation>
+      <field_name>last_papanicolau_month</field_name>
+      <calc_type>MONTH_OF_DATE</calc_type>
+      <field_a>last_papanicolau</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <calculation>
+      <field_name>last_papanicolau_year</field_name>
+      <calc_type>YEAR_OF_DATE</calc_type>
+      <field_a>last_papanicolau</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>880</xloc>
+      <yloc>1168</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
