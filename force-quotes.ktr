@@ -438,26 +438,21 @@
   <order>
     <hop>
       <from>Text file input</from>
-      <to>Replace missing ending quote</to>
+      <to>Quotes on numbers</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Replace missing ending quote</from>
-      <to>Replace missing starting quote</to>
+      <from>Quotes on numbers</from>
+      <to>Quotes on empty fields</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Replace missing starting quote</from>
-      <to>Replace missing quote on empty field</to>
+      <from>Quotes on empty fields</from>
+      <to>Quotes at the end of string</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Replace missing quote on empty field</from>
-      <to>Replace missing quote on empty field at end of line</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Replace missing quote on empty field at end of line</from>
+      <from>Quotes at the end of string</from>
       <to>Text file output</to>
       <enabled>Y</enabled>
     </hop>
@@ -568,7 +563,7 @@
     </GUI>
   </step>
   <step>
-    <name>Replace missing ending quote</name>
+    <name>Quotes on numbers</name>
     <type>ReplaceString</type>
     <description/>
     <distribute>Y</distribute>
@@ -583,8 +578,8 @@
         <in_stream_name>line</in_stream_name>
         <out_stream_name>line2</out_stream_name>
         <use_regex>yes</use_regex>
-        <replace_string>([^"^,]),</replace_string>
-        <replace_by_string>$1",</replace_by_string>
+        <replace_string>,([\d+\.?\d+]+),</replace_string>
+        <replace_by_string>,"\1",</replace_by_string>
         <set_empty_string>N</set_empty_string>
         <replace_field_by_string/>
         <whole_word>no</whole_word>
@@ -602,84 +597,6 @@
     </remotesteps>
     <GUI>
       <xloc>336</xloc>
-      <yloc>96</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Replace missing starting quote</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>line2</in_stream_name>
-        <out_stream_name>line3</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>,([^"^,])</replace_string>
-        <replace_by_string>,"$1</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>560</xloc>
-      <yloc>96</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Replace missing quote on empty field</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>line3</in_stream_name>
-        <out_stream_name>line4</out_stream_name>
-        <use_regex>no</use_regex>
-        <replace_string>,,</replace_string>
-        <replace_by_string>,"",</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>800</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
@@ -727,7 +644,7 @@
     </file>
     <fields>
       <field>
-        <name>line-final</name>
+        <name>line4</name>
         <type>None</type>
         <format/>
         <currency/>
@@ -754,7 +671,7 @@
     </GUI>
   </step>
   <step>
-    <name>Replace missing quote on empty field at end of line</name>
+    <name>Quotes on empty fields</name>
     <type>ReplaceString</type>
     <description/>
     <distribute>Y</distribute>
@@ -766,8 +683,47 @@
     </partitioning>
     <fields>
       <field>
-        <in_stream_name>line4</in_stream_name>
-        <out_stream_name>line-final</out_stream_name>
+        <in_stream_name>line2</in_stream_name>
+        <out_stream_name>line3</out_stream_name>
+        <use_regex>no</use_regex>
+        <replace_string>,,</replace_string>
+        <replace_by_string>,"",</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>576</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Quotes at the end of string</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>line3</in_stream_name>
+        <out_stream_name>line4</out_stream_name>
         <use_regex>yes</use_regex>
         <replace_string>,$</replace_string>
         <replace_by_string>,""</replace_by_string>
@@ -787,7 +743,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1152</xloc>
+      <xloc>800</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
