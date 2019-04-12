@@ -1875,7 +1875,7 @@ where patient_identifier.identifier_type = 6
   and patient_identifier.voided = false
   and patient_identifier.patient_id = ?
 </sql>
-    <outer_join>Y</outer_join>
+    <outer_join>N</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
       <field>
