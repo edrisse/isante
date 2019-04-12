@@ -511,7 +511,7 @@
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>force-quotes</name>
+      <name>add-quotes</name>
       <description/>
       <type>TRANS</type>
       <attributes/>
@@ -597,7 +597,7 @@
     </hop>
     <hop>
       <from>migrate-vitals</from>
-      <to>force-quotes</to>
+      <to>add-quotes</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -605,7 +605,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>force-quotes</from>
+      <from>add-quotes</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
