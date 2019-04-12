@@ -1,4 +1,4 @@
-# EPTS Reports - Testing scripts and ETL jobs
+# iSante Plus ETL jobs
 ETL job to extract data from a iSante Plus database into a CSV format file ready to be uploaded on a iSante instance.
 
 ## Getting Started
