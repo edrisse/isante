@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>migrate-risk-accessments</name>
+    <name>migrate-arv-and-pregnancy</name>
     <description />
     <extended_description />
     <trans_version />
@@ -427,10 +427,10 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2019/04/12 21:17:53.939</created_date>
+    <created_date>2019/04/14 23:36:20.172</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/04/12 21:17:53.939</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2019/04/14 23:36:20.172</modified_date>
+    <key_for_session_key />
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -440,10 +440,10 @@
     <server>${ISANTE-PLUS-DB-HOST}</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>${ISANTE-PLUS-DB-PORT}</database>
-    <port>${ISANTE-PLUS-DB-NAME}</port>
+    <database>${ISANTE-PLUS-DB-NAME}</database>
+    <port>${ISANTE-PLUS-DB-PORT}</port>
     <username>${ISANTE-PLUS-DB-USER}</username>
-    <password>Encrypted 4953414e54452feed4fa9b47e3b0c99b389d43e9bd9dfe</password>
+    <password>${ISANTE-PLUS-DB-PASSWORD}</password>
     <servername />
     <data_tablespace />
     <index_tablespace />
@@ -462,7 +462,7 @@
       </attribute>
       <attribute>
         <code>PORT_NUMBER</code>
-        <attribute>${ISANTE-PLUS-DB-NAME}</attribute>
+        <attribute>${ISANTE-PLUS-DB-PORT}</attribute>
       </attribute>
       <attribute>
         <code>PRESERVE_RESERVED_WORD_CASE</code>
@@ -492,43 +492,316 @@
   </connection>
   <order>
     <hop>
-      <from>Decompose Encounter Datetime</from>
-      <to>Save on CSV</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Person Identifier</from>
+      <from>Fetch Encounters</from>
       <to>Fetch iSante Location</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch iSante Location</from>
+      <from>Fetch Last ETL Excution Date</from>
+      <to>Fetch Encounters</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Person Identifier</from>
       <to>Decompose Encounter Datetime</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Database join</from>
-      <to>Risk Answer Value Mapper</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Risk Answer Value Mapper</from>
+      <from>Fetch iSante Location</from>
       <to>Fetch Person Identifier</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Last ETL Excution Date</from>
-      <to>Database join</to>
+      <from>Input grid</from>
+      <to>Fetch Last ETL Excution Date</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Data grid</from>
-      <to>Fetch Last ETL Excution Date</to>
+      <from>Decompose Encounter Datetime</from>
+      <to>Fetch Ever take any ARV medicine exclusively to prevent maternal-child transmission</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Ever take any ARV medicine exclusively to prevent maternal-child transmission</from>
+      <to>Fetch Zidovudine (AZT)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Zidovudine (AZT)</from>
+      <to>Fetch Nevirapine (NVP)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Nevirapine (NVP)</from>
+      <to>Fetch Unknown</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Unknown</from>
+      <to>Fetch Other</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Other</from>
+      <to>Fetch Other, specify</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Other, specify</from>
+      <to>Save on CSV</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Data grid</name>
+    <name>Decompose Encounter Datetime</name>
+    <type>Calculator</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>visit_day</field_name>
+      <calc_type>DAY_OF_MONTH</calc_type>
+      <field_a>encounter_datetime</field_a>
+      <field_b />
+      <field_c />
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>visit_month</field_name>
+      <calc_type>MONTH_OF_DATE</calc_type>
+      <field_a>encounter_datetime</field_a>
+      <field_b />
+      <field_c />
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>visit_year</field_name>
+      <calc_type>YEAR_OF_DATE</calc_type>
+      <field_a>encounter_datetime</field_a>
+      <field_b />
+      <field_c />
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>880</xloc>
+      <yloc>32</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Encounters</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>0</rowlimit>
+    <sql>select en.encounter_id, en.encounter_datetime, en.patient_id person_id, en.location_id isante_plus_location_id from encounter en
+where en.encounter_type in (1, 9)
+  and (en.date_created >= ?
+   or en.date_changed >= ?
+   or en.date_voided >= ?
+   or en.date_created >= ?
+   or en.date_changed >= ?
+   or en.date_voided >= ?)
+</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>352</xloc>
+      <yloc>32</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Last ETL Excution Date</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>0</rowlimit>
+    <sql>select etl_execution.date last_execution from etl_execution
+where etl_execution.completed = true
+order by date desc</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>32</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Person Identifier</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select patient_identifier.identifier patient_identifier from patient_identifier
+where patient_identifier.identifier_type = 6
+  and patient_identifier.voided = false
+  and patient_identifier.patient_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>person_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>672</xloc>
+      <yloc>32</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch iSante Location</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select location_attribute.value_reference isante_location_id from location_attribute 
+where location_attribute.attribute_type_id = 1 
+  and location_attribute.location_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>isante_plus_location_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>512</xloc>
+      <yloc>32</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Input grid</name>
     <type>DataGrid</type>
     <description />
     <distribute>Y</distribute>
@@ -539,50 +812,6 @@
       <schema_name />
     </partitioning>
     <fields>
-      <field>
-        <name>risk_id_isante_plus</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>risk_answer_isante_plus</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>risk_id_isante</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>risk_answer_isante</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
       <field>
         <name>table_name</name>
         <type>String</type>
@@ -661,7 +890,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>riskID</name>
+        <name>ARVexcl</name>
         <type>String</type>
         <format />
         <currency />
@@ -672,7 +901,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>riskAnswer</name>
+        <name>zidovudineARVpreg</name>
         <type>String</type>
         <format />
         <currency />
@@ -683,7 +912,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>riskMm</name>
+        <name>nevirapineARVpreg</name>
         <type>String</type>
         <format />
         <currency />
@@ -694,7 +923,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>riskYy</name>
+        <name>unknownARVpreg</name>
         <type>String</type>
         <format />
         <currency />
@@ -705,7 +934,18 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>riskComment</name>
+        <name>otherARVpreg</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>otherTextARVpreg</name>
         <type>String</type>
         <format />
         <currency />
@@ -762,374 +1002,19 @@
     </fields>
     <data>
       <line>
-        <item>1061</item>
-        <item>163290</item>
-        <item>1</item>
-        <item>1</item>
-        <item>table_name</item>
+        <item>arvAndPregnancy</item>
         <item>siteCode</item>
         <item>patientID</item>
         <item>visitDateDd</item>
         <item>visitDateMm</item>
         <item>visitDateYy</item>
         <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
-      </line>
-      <line>
-        <item>1061</item>
-        <item>163291</item>
-        <item>3</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
-      </line>
-      <line>
-        <item>1061</item>
-        <item>105</item>
-        <item>9</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
-      </line>
-      <line>
-        <item>1061</item>
-        <item>1063</item>
-        <item>15</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
-      </line>
-      <line>
-        <item>1061</item>
-        <item>163273</item>
-        <item>14</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
-      </line>
-      <line>
-        <item>160581</item>
-        <item>163274</item>
-        <item>12</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
-      </line>
-      <line>
-        <item>1061</item>
-        <item>163289</item>
-        <item>19</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
-      </line>
-      <line>
-        <item>1061</item>
-        <item>163289</item>
-        <item>5</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
-      </line>
-      <line>
-        <item>1061</item>
-        <item>163275</item>
-        <item>6</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
-      </line>
-      <line>
-        <item>163276</item>
-        <item />
-        <item>32</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
-      </line>
-      <line>
-        <item>156660</item>
-        <item />
-        <item>11</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
-      </line>
-      <line>
-        <item>123160</item>
-        <item />
-        <item>13</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
-      </line>
-      <line>
-        <item>160581</item>
-        <item>5567</item>
-        <item>33</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
-      </line>
-      <line>
-        <item>160581</item>
-        <item>159218</item>
-        <item>4</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
-      </line>
-      <line>
-        <item>163278</item>
-        <item />
-        <item>7</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
-      </line>
-      <line>
-        <item>160580</item>
-        <item />
-        <item>20</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
-      </line>
-      <line>
-        <item>160579</item>
-        <item />
-        <item>34</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
+        <item>ARVexcl</item>
+        <item>zidovudineARVpreg</item>
+        <item>nevirapineARVpreg</item>
+        <item>unknownARVpreg</item>
+        <item>otherARVpreg</item>
+        <item>otherTextARVpreg</item>
         <item>dbSite</item>
         <item>0</item>
         <item>\0</item>
@@ -1145,13 +1030,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>16</xloc>
-      <yloc>48</yloc>
+      <xloc>32</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Database join</name>
+    <name>Fetch Ever take any ARV medicine exclusively to prevent maternal-child transmission</name>
     <type>DBJoin</type>
     <description />
     <distribute>Y</distribute>
@@ -1162,165 +1047,17 @@
       <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
-    <rowlimit>0</rowlimit>
-    <sql>select obs.person_id, encounter.encounter_datetime, encounter.location_id, obs.value_coded from obs
-join encounter on encounter.encounter_id = obs.encounter_id
-where obs.concept_id = ?
-  and obs.value_coded = ?
+    <rowlimit>1</rowlimit>
+    <sql>select if(obs.value_coded is not null, "1", "0") any_mch from obs
+where obs.concept_id = 966
+  and obs.value_coded = 1107
   and obs.voided = false
-  and encounter.voided = false
-  and encounter.encounter_type in (1, 9)
-  and (encounter.date_created >= ?
-   or encounter.date_changed >= ?
-   or encounter.date_voided >= ?
-   or encounter.date_created >= ?
-   or encounter.date_changed >= ?
-   or encounter.date_voided >= ?)
-</sql>
-    <outer_join>N</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>risk_id_isante_plus</name>
-        <type>Integer</type>
-      </field>
-      <field>
-        <name>risk_answer_isante_plus</name>
-        <type>Integer</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>336</xloc>
-      <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Decompose Encounter Datetime</name>
-    <type>Calculator</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <failIfNoFile>Y</failIfNoFile>
-    <calculation>
-      <field_name>visit_day</field_name>
-      <calc_type>DAY_OF_MONTH</calc_type>
-      <field_a>encounter_datetime</field_a>
-      <field_b />
-      <field_c />
-      <value_type>None</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <calculation>
-      <field_name>visit_month</field_name>
-      <calc_type>MONTH_OF_DATE</calc_type>
-      <field_a>encounter_datetime</field_a>
-      <field_b />
-      <field_c />
-      <value_type>None</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <calculation>
-      <field_name>visit_year</field_name>
-      <calc_type>YEAR_OF_DATE</calc_type>
-      <field_a>encounter_datetime</field_a>
-      <field_b />
-      <field_c />
-      <value_type>None</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1056</xloc>
-      <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Person Identifier</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select patient_identifier.identifier patient_identifier from patient_identifier
-where patient_identifier.identifier_type = 6
-  and patient_identifier.voided = false
-  and patient_identifier.patient_id = ?
-</sql>
+  and obs.encounter_id = ?</sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
       <field>
-        <name>person_id</name>
+        <name>encounter_id</name>
         <type>Number</type>
       </field>
     </parameter>
@@ -1333,13 +1070,13 @@ where patient_identifier.identifier_type = 6
       </output>
     </remotesteps>
     <GUI>
-      <xloc>672</xloc>
-      <yloc>48</yloc>
+      <xloc>880</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Fetch iSante Location</name>
+    <name>Fetch Zidovudine (AZT)</name>
     <type>DBJoin</type>
     <description />
     <distribute>Y</distribute>
@@ -1351,15 +1088,16 @@ where patient_identifier.identifier_type = 6
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select location_attribute.value_reference isante_location_id from location_attribute 
-where location_attribute.attribute_type_id = 1 
-  and location_attribute.location_id = ?
-</sql>
+    <sql>select if(obs.value_coded is not null, "1", "0") azt from obs
+where obs.concept_id = 966
+  and obs.value_coded = 86663
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
       <field>
-        <name>location_id</name>
+        <name>encounter_id</name>
         <type>Number</type>
       </field>
     </parameter>
@@ -1372,14 +1110,14 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>848</xloc>
-      <yloc>48</yloc>
+      <xloc>448</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Risk Answer Value Mapper</name>
-    <type>ValueMapper</type>
+    <name>Fetch Nevirapine (NVP)</name>
+    <type>DBJoin</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1388,23 +1126,21 @@ where location_attribute.attribute_type_id = 1
       <method>none</method>
       <schema_name />
     </partitioning>
-    <field_to_use>value_coded</field_to_use>
-    <target_field>risk_answer_mapped</target_field>
-    <non_match_default>1</non_match_default>
-    <fields>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select if(obs.value_coded is not null, "1", "0") nvp from obs
+where obs.concept_id = 966
+  and obs.value_coded = 80586
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
       <field>
-        <source_value>1065</source_value>
-        <target_value>1</target_value>
+        <name>encounter_id</name>
+        <type>Number</type>
       </field>
-      <field>
-        <source_value>1066</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>1067</source_value>
-        <target_value>4</target_value>
-      </field>
-    </fields>
+    </parameter>
     <attributes />
     <cluster_schema />
     <remotesteps>
@@ -1414,8 +1150,128 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>496</xloc>
-      <yloc>48</yloc>
+      <xloc>240</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Unknown</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select if(obs.value_coded is not null, "1", "0") unknown from obs
+where obs.concept_id = 966
+  and obs.value_coded = 1067
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>48</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Other</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select if(obs.value_coded is not null, "1", "0") other from obs
+where obs.concept_id = 966
+  and obs.value_coded = 5424
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>48</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Other, specify</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select  obs.comments specify from obs
+where obs.concept_id = 966
+  and obs.value_coded = 5424
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>240</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1444,7 +1300,7 @@ where location_attribute.attribute_type_id = 1
     <fileNameField />
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>/opt/projects/isante/etl/isante/output/riskassessment</name>
+      <name>/opt/projects/isante/etl/isante/output/arvandpregnancy</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
       <extention>csv</extention>
@@ -1618,7 +1474,7 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>riskID</name>
+        <name>ARVexcl</name>
         <type>String</type>
         <format />
         <currency />
@@ -1630,7 +1486,7 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>risk_id_isante</name>
+        <name>any_mch</name>
         <type>String</type>
         <format />
         <currency />
@@ -1642,7 +1498,7 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>riskAnswer</name>
+        <name>zidovudineARVpreg</name>
         <type>String</type>
         <format />
         <currency />
@@ -1654,7 +1510,7 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>risk_answer_mapped</name>
+        <name>azt</name>
         <type>String</type>
         <format />
         <currency />
@@ -1666,7 +1522,7 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>riskMm</name>
+        <name>nevirapineARVpreg</name>
         <type>String</type>
         <format />
         <currency />
@@ -1678,7 +1534,7 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>default_na</name>
+        <name>nvp</name>
         <type>String</type>
         <format />
         <currency />
@@ -1690,7 +1546,7 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>riskYy</name>
+        <name>unknownARVpreg</name>
         <type>String</type>
         <format />
         <currency />
@@ -1702,7 +1558,7 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>default_na</name>
+        <name>unknown</name>
         <type>String</type>
         <format />
         <currency />
@@ -1714,7 +1570,7 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>riskComment</name>
+        <name>otherARVpreg</name>
         <type>String</type>
         <format />
         <currency />
@@ -1726,7 +1582,31 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>default_na</name>
+        <name>other</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>otherTextARVpreg</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>specify</name>
         <type>String</type>
         <format />
         <currency />
@@ -1771,42 +1651,8 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1232</xloc>
-      <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Last ETL Excution Date</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>0</rowlimit>
-    <sql>select etl_execution.date last_execution from etl_execution
-where etl_execution.completed = true
-order by date desc</sql>
-    <outer_join>N</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>48</yloc>
+      <xloc>384</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
