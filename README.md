@@ -15,6 +15,7 @@ This instructions will help you run the Pentaho Data Integration job that genera
 * Copy MySQL connector jar file to `${pdi-install-dir}/data-integration/lib`;
 * Open terminal on directory `${pdi-install-dir}/data-integration` and execute `./spoon.sh`;
 * Close PDI end edit the file `~/.kettle/kettle.properties` adding the required database variables, you can get inspiration from the file https://github.com/edrisse/isante/blob/master/etc/sample_kettle.properties on this repository;
+* Run https://github.com/edrisse/isante/blob/master/sql/iSante-plus.sql SQL script on your iSante plus database;
 * Open PDI again and click open (Ctrl+O) and open the `extract-data.kjb` job;
 * Click `Run` (with a play icon);
 * Disable `Gather performance statistics` option to make the execution faster;
