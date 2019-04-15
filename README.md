@@ -5,7 +5,7 @@ ETL job to extract data from a iSante Plus database into a CSV format file ready
 This instructions will help you run the Pentaho Data Integration job that generates the CSV file.
 
 ## Prerequisites
-* Download and install Pentaho Data Integration (PDI) version 8 (follow PDI instalaction procedure, requires JAVA). 
+* Download and install Pentaho Data Integration (PDI) version 8 (follow PDI instalation procedure, requires JAVA). 
   This steps were validated on version 8.2.0;
 * Pentaho DI Community edition can be found [here](https://community.hitachivantara.com/external-link.jspa?url=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fpentaho%2Ffiles%2Flatest%2Fdownload%3FaliId%3D137249511).
 * Download MySQL connector version 5;
