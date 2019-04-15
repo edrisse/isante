@@ -663,6 +663,77 @@
     </hop>
   </order>
   <step>
+    <name>Decompose Completed Treat Date</name>
+    <type>Calculator</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>completed_treat_date_day</field_name>
+      <calc_type>DAY_OF_MONTH</calc_type>
+      <field_a>completed_treat_date</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>completed_treat_date_month</field_name>
+      <calc_type>MONTH_OF_DATE</calc_type>
+      <field_a>completed_treat_date</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>completed_treat_date_year</field_name>
+      <calc_type>YEAR_OF_DATE</calc_type>
+      <field_a>completed_treat_date</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>272</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Decompose Encounter Datetime</name>
     <type>Calculator</type>
     <description />
@@ -730,6 +801,269 @@
     <GUI>
       <xloc>896</xloc>
       <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Decompose INH End Date</name>
+    <type>Calculator</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>inh_end_date_month</field_name>
+      <calc_type>MONTH_OF_DATE</calc_type>
+      <field_a>inh_end_date</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>inh_end_date_year</field_name>
+      <calc_type>YEAR_OF_DATE</calc_type>
+      <field_a>inh_end_date</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>496</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Decompose INH Start Date</name>
+    <type>Calculator</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>inh_start_date_month</field_name>
+      <calc_type>MONTH_OF_DATE</calc_type>
+      <field_a>inh_start_date</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>inh_start_date_year</field_name>
+      <calc_type>YEAR_OF_DATE</calc_type>
+      <field_a>inh_start_date</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>496</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Decompose Ped Complete TB Treatment Start Date</name>
+    <type>Calculator</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>ped_complete_treat_start_date_month</field_name>
+      <calc_type>MONTH_OF_DATE</calc_type>
+      <field_a>ped_complete_treat_start_date</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>ped_complete_treat_start_date_year</field_name>
+      <calc_type>YEAR_OF_DATE</calc_type>
+      <field_a>ped_complete_treat_start_date</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>608</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Decompose Ped TB Evaluation PDD Recent Date</name>
+    <type>Calculator</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>ped_tb_eval_ppd_recent_date_month</field_name>
+      <calc_type>MONTH_OF_DATE</calc_type>
+      <field_a>ped_tb_eval_ppd_recent_date</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>ped_tb_eval_ppd_recent_date_year</field_name>
+      <calc_type>YEAR_OF_DATE</calc_type>
+      <field_a>ped_tb_eval_ppd_recent_date</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>720</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch  TB Status: TB treatment completed: Facility</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>openmrs_db</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_text complete_treat_fac from obs
+where obs.concept_id = 162724
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -868,6 +1202,720 @@ where patient_identifier.identifier_type = 6
     <GUI>
       <xloc>896</xloc>
       <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch TB Evaluation: No signs or symptoms indicating TB</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>openmrs_db</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select if(obs.value_coded is not null, "1", "\0") no_TB_symptoms from obs
+where obs.concept_id = 1659
+  and obs.value_coded = 1660
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>368</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch TB Evaluation: PPD status unknown</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>openmrs_db</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select if(obs.value_coded is not null, "1", "\0") status_PPD_unknown from obs
+where obs.concept_id = 163283
+  and obs.value_coded = 1067
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>368</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch TB Evaluation: Prophylaxie à I'INH</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>openmrs_db</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select if(obs.value_coded is not null, "1", "\0") prop_INH from obs
+where obs.concept_id = 1110
+  and obs.value_coded = 1679
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch TB Evaluation: Présence de cicatrice BCG</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>openmrs_db</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select if(obs.value_coded is not null, "1", "\0") presence_BCG from obs
+where obs.concept_id = 160265
+  and obs.value_coded = 1065
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch TB Evaluation: Recent PPD</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>openmrs_db</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded ped_tb_eval_ppd_recent from obs
+where obs.concept_id = 163951
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>624</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch TB Evaluation: Recent PPD: Result</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>openmrs_db</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_numeric ped_tb_eval_ppd_recent_res from obs
+where obs.concept_id = 5475
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>720</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch TB Evaluation: Recent exposure to TB</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>openmrs_db</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select if(obs.value_coded is not null, "1", "\0") ped_tb_eval_recent_exp from obs
+where obs.concept_id = 1659
+  and obs.value_coded = 124068
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>512</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch TB Evaluation: Récent PPD négatif</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>openmrs_db</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select if(obs.value_coded is not null, "1", "\0") recent_neg_PPD from obs
+where obs.concept_id = 163283
+  and obs.value_coded = 1065
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch TB Evaluation: TB Treatment: Start date: Month/Year</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>openmrs_db</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_datetime ped_complete_treat_start_date from obs
+where obs.concept_id = 1113
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>624</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch TB Evaluation: TB suspected based upon symptoms</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>openmrs_db</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select if(obs.value_coded is not null, "1", "\0") suspicion_TBw_Symptoms from obs
+where obs.concept_id = 1659
+  and obs.value_coded = 142177
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch TB Evolution: INH prophylaxis in progress</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>openmrs_db</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select if(obs.value_coded is not null, "1", "0") current_prop from obs
+where obs.concept_id = 1110
+  and obs.value_coded = 1679
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>704</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch TB Statsu: Currently on TB treatment</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>openmrs_db</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select if(obs.value_coded is not null, "1", "0") current_treat from obs
+where obs.concept_id = 1659
+  and obs.value_coded = 1662
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch TB Status: Currently on TB treatment: Facility</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>openmrs_db</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_text current_treat_fac from obs
+where obs.concept_id = 162724
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch TB Status: No signs or symptoms suggesting TB</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>openmrs_db</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select if(obs.value_coded is not null, "1", "0") asymptomatic_tb from obs
+where obs.concept_id = 1659
+  and obs.value_coded = 1660
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch TB Status: TB Case Number</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>openmrs_db</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select pid.identifier current_treat_no from patient_identifier pid inner join encounter en
+on pid.patient_id = en.patient_id
+where en.encounter_id = ?
+  and pid.identifier_type = 7
+  and pid.voided = false</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch TB Status: TB treatment completed</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>openmrs_db</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select if(obs.value_coded is not null, "1", "0") complete_treat from obs
+where obs.concept_id = 1659
+  and obs.value_coded = 1663
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch TB Status: TB treatment completed: Date completed</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>openmrs_db</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_datetime completed_treat_date from obs
+where obs.concept_id = 159431
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch TTB Evaluation: Recent PPD: Date</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>openmrs_db</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_datetime ped_tb_eval_ppd_recent_date from obs
+where obs.concept_id = 5475
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1438,6 +2486,48 @@ where location_attribute.attribute_type_id = 1
     </GUI>
   </step>
   <step>
+    <name>Map TB Evaluation: Recent PPD</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>ped_tb_eval_ppd_recent</field_to_use>
+    <target_field>ped_tb_eval_ppd_recent_mapped</target_field>
+    <non_match_default>\0</non_match_default>
+    <fields>
+      <field>
+        <source_value>1065</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>1066</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>1067</source_value>
+        <target_value>4</target_value>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>608</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Save on CSV</name>
     <type>TextFileOutput</type>
     <description />
@@ -1672,7 +2762,7 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>default_na</name>
+        <name>default_zero</name>
         <type>String</type>
         <format />
         <currency />
@@ -2284,6 +3374,30 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
+        <name>currentProp</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>current_prop</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
         <name>pedTbEvalPpdRecentRes</name>
         <type>String</type>
         <format />
@@ -2319,689 +3433,6 @@ where location_attribute.attribute_type_id = 1
     <GUI>
       <xloc>896</xloc>
       <yloc>720</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch TB Statsu: Currently on TB treatment</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>openmrs_db</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select if(obs.value_coded is not null, "1", "\0") current_treat from obs
-where obs.concept_id = 1659
-  and obs.value_coded = 1662
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch TB Status: No signs or symptoms suggesting TB</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>openmrs_db</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select if(obs.value_coded is not null, "0", "\0") asymptomatic_tb from obs
-where obs.concept_id = 1659
-  and obs.value_coded = 1660
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch TB Status: TB Case Number</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>openmrs_db</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select pid.identifier current_treat_no from patient_identifier pid inner join encounter en
-on pid.patient_id = en.patient_id
-where en.encounter_id = ?
-  and pid.identifier_type = 7
-  and pid.voided = false</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>368</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch TB Status: Currently on TB treatment: Facility</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>openmrs_db</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_text current_treat_fac from obs
-where obs.concept_id = 162724
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch TB Status: TB treatment completed</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>openmrs_db</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select if(obs.value_coded is not null, "0", "\0") complete_treat from obs
-where obs.concept_id = 1659
-  and obs.value_coded = 1663
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch  TB Status: TB treatment completed: Facility</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>openmrs_db</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_text complete_treat_fac from obs
-where obs.concept_id = 162724
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>368</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch TB Status: TB treatment completed: Date completed</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>openmrs_db</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_datetime completed_treat_date from obs
-where obs.concept_id = 159431
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Decompose Completed Treat Date</name>
-    <type>Calculator</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <failIfNoFile>Y</failIfNoFile>
-    <calculation>
-      <field_name>completed_treat_date_day</field_name>
-      <calc_type>DAY_OF_MONTH</calc_type>
-      <field_a>completed_treat_date</field_a>
-      <field_b />
-      <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <calculation>
-      <field_name>completed_treat_date_month</field_name>
-      <calc_type>MONTH_OF_DATE</calc_type>
-      <field_a>completed_treat_date</field_a>
-      <field_b />
-      <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <calculation>
-      <field_name>completed_treat_date_year</field_name>
-      <calc_type>YEAR_OF_DATE</calc_type>
-      <field_a>completed_treat_date</field_a>
-      <field_b />
-      <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch TB Evaluation: Présence de cicatrice BCG</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>openmrs_db</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select if(obs.value_coded is not null, "1", "\0") presence_BCG from obs
-where obs.concept_id = 160265
-  and obs.value_coded = 1065
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>896</xloc>
-      <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch TB Evaluation: TB suspected based upon symptoms</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>openmrs_db</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select if(obs.value_coded is not null, "1", "\0") suspicion_TBw_Symptoms from obs
-where obs.concept_id = 1659
-  and obs.value_coded = 142177
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>896</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch TB Evaluation: No signs or symptoms indicating TB</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>openmrs_db</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select if(obs.value_coded is not null, "1", "\0") no_TB_symptoms from obs
-where obs.concept_id = 1659
-  and obs.value_coded = 1660
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>368</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch TB Evaluation: Récent PPD négatif</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>openmrs_db</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select if(obs.value_coded is not null, "1", "\0") recent_neg_PPD from obs
-where obs.concept_id = 163283
-  and obs.value_coded = 1065
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch TB Evaluation: PPD status unknown</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>openmrs_db</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select if(obs.value_coded is not null, "1", "\0") status_PPD_unknown from obs
-where obs.concept_id = 163283
-  and obs.value_coded = 1067
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>368</xloc>
-      <yloc>368</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch TB Evaluation: Prophylaxie à I'INH</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>openmrs_db</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select if(obs.value_coded is not null, "1", "\0") prop_INH from obs
-where obs.concept_id = 1110
-  and obs.value_coded = 1679
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>TB Status: TB Evaluation: Start INH: Month/Year</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>openmrs_db</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_datetime inh_start_date from obs
-where obs.concept_id = 162320
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>512</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Decompose INH Start Date</name>
-    <type>Calculator</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <failIfNoFile>Y</failIfNoFile>
-    <calculation>
-      <field_name>inh_start_date_month</field_name>
-      <calc_type>MONTH_OF_DATE</calc_type>
-      <field_a>inh_start_date</field_a>
-      <field_b />
-      <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <calculation>
-      <field_name>inh_start_date_year</field_name>
-      <calc_type>YEAR_OF_DATE</calc_type>
-      <field_a>inh_start_date</field_a>
-      <field_b />
-      <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>368</xloc>
-      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3045,63 +3476,7 @@ where obs.concept_id = 163284
     </GUI>
   </step>
   <step>
-    <name>Decompose INH End Date</name>
-    <type>Calculator</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <failIfNoFile>Y</failIfNoFile>
-    <calculation>
-      <field_name>inh_end_date_month</field_name>
-      <calc_type>MONTH_OF_DATE</calc_type>
-      <field_a>inh_end_date</field_a>
-      <field_b />
-      <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <calculation>
-      <field_name>inh_end_date_year</field_name>
-      <calc_type>YEAR_OF_DATE</calc_type>
-      <field_a>inh_end_date</field_a>
-      <field_b />
-      <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>496</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch TB Evaluation: Recent exposure to TB</name>
+    <name>TB Status: TB Evaluation: Start INH: Month/Year</name>
     <type>DBJoin</type>
     <description />
     <distribute>Y</distribute>
@@ -3113,9 +3488,8 @@ where obs.concept_id = 163284
     </partitioning>
     <connection>openmrs_db</connection>
     <rowlimit>1</rowlimit>
-    <sql>select if(obs.value_coded is not null, "1", "\0") ped_tb_eval_recent_exp from obs
-where obs.concept_id = 1659
-  and obs.value_coded = 124068
+    <sql>select obs.value_datetime inh_start_date from obs
+where obs.concept_id = 162320
   and obs.voided = false
   and obs.encounter_id = ?</sql>
     <outer_join>Y</outer_join>
@@ -3135,358 +3509,8 @@ where obs.concept_id = 1659
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
+      <xloc>160</xloc>
       <yloc>512</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch TB Evaluation: TB Treatment: Start date: Month/Year</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>openmrs_db</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_datetime ped_complete_treat_start_date from obs
-where obs.concept_id = 1113
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>896</xloc>
-      <yloc>624</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Decompose Ped Complete TB Treatment Start Date</name>
-    <type>Calculator</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <failIfNoFile>Y</failIfNoFile>
-    <calculation>
-      <field_name>ped_complete_treat_start_date_month</field_name>
-      <calc_type>MONTH_OF_DATE</calc_type>
-      <field_a>ped_complete_treat_start_date</field_a>
-      <field_b />
-      <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <calculation>
-      <field_name>ped_complete_treat_start_date_year</field_name>
-      <calc_type>YEAR_OF_DATE</calc_type>
-      <field_a>ped_complete_treat_start_date</field_a>
-      <field_b />
-      <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>608</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch TB Evaluation: Recent PPD</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>openmrs_db</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded ped_tb_eval_ppd_recent from obs
-where obs.concept_id = 163951
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>624</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map TB Evaluation: Recent PPD</name>
-    <type>ValueMapper</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <field_to_use>ped_tb_eval_ppd_recent</field_to_use>
-    <target_field>ped_tb_eval_ppd_recent_mapped</target_field>
-    <non_match_default>\0</non_match_default>
-    <fields>
-      <field>
-        <source_value>1065</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>1066</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>1067</source_value>
-        <target_value>4</target_value>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>368</xloc>
-      <yloc>608</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch TTB Evaluation: Recent PPD: Date</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>openmrs_db</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_datetime ped_tb_eval_ppd_recent_date from obs
-where obs.concept_id = 5475
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>624</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Decompose Ped TB Evaluation PDD Recent Date</name>
-    <type>Calculator</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <failIfNoFile>Y</failIfNoFile>
-    <calculation>
-      <field_name>ped_tb_eval_ppd_recent_date_month</field_name>
-      <calc_type>MONTH_OF_DATE</calc_type>
-      <field_a>ped_tb_eval_ppd_recent_date</field_a>
-      <field_b />
-      <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <calculation>
-      <field_name>ped_tb_eval_ppd_recent_date_year</field_name>
-      <calc_type>YEAR_OF_DATE</calc_type>
-      <field_a>ped_tb_eval_ppd_recent_date</field_a>
-      <field_b />
-      <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>720</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch TB Evolution: INH prophylaxis in progress</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>openmrs_db</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select if(obs.value_coded is not null, "1", "\0") current_prop from obs
-where obs.concept_id = 1110
-  and obs.value_coded = 1679
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>368</xloc>
-      <yloc>704</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch TB Evaluation: Recent PPD: Result</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>openmrs_db</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_numeric ped_tb_eval_ppd_recent_res from obs
-where obs.concept_id = 5475
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>720</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

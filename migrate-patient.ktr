@@ -437,9 +437,10 @@
   </notepads>
   <connection>
     <name>Openmrs HTY</name>
-    <server>localhost</server>
+    <server>${ISANTE-PLUS-DB-HOST}</server>
     <type>MYSQL</type>
     <access>Native</access>
+<<<<<<< HEAD
     <database>openmrs</database>
     <port>3306</port>
     <username>root</username>
@@ -447,6 +448,15 @@
     <servername />
     <data_tablespace />
     <index_tablespace />
+=======
+    <database>${ISANTE-PLUS-DB-NAME}</database>
+    <port>${ISANTE-PLUS-DB-PORT}</port>
+    <username>${ISANTE-PLUS-DB-USER}</username>
+    <password>${ISANTE-PLUS-DB-PASSWORD}</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
     <attributes>
       <attribute>
         <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
@@ -462,7 +472,7 @@
       </attribute>
       <attribute>
         <code>PORT_NUMBER</code>
-        <attribute>3306</attribute>
+        <attribute>${ISANTE-PLUS-DB-PORT}</attribute>
       </attribute>
       <attribute>
         <code>PRESERVE_RESERVED_WORD_CASE</code>
@@ -582,11 +592,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Column Names</from>
-      <to>Fetch Last ETL Excution Date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Last ETL Excution Date</from>
       <to>Fetch Basic Patient Data</to>
       <enabled>Y</enabled>
@@ -594,11 +599,6 @@
     <hop>
       <from>Fetch Basic Patient Data</from>
       <to>Fetch Person Identifier</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Person Identifier</from>
-      <to>Fetch Person Name</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -624,6 +624,31 @@
     <hop>
       <from>Fetch Emergency Relation Description</from>
       <to>Fetch Emergency Comune</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Person Identifier</from>
+      <to>Fetch Hiv Positive</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Hiv Positive</from>
+      <to>Fetch Pediatric</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Pediatric</from>
+      <to>Fetch Person Name</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Column Names</from>
+      <to>Get system info</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get system info</from>
+      <to>Fetch Last ETL Excution Date</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1025,7 +1050,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>336</xloc>
+      <xloc>512</xloc>
       <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1097,7 +1122,7 @@
     </remotesteps>
     <GUI>
       <xloc>672</xloc>
-      <yloc>208</yloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1137,7 +1162,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>592</xloc>
-      <yloc>304</yloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1241,7 +1266,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>896</xloc>
-      <yloc>304</yloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1282,7 +1307,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>1344</xloc>
-      <yloc>400</yloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1323,7 +1348,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>768</xloc>
-      <yloc>400</yloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1364,7 +1389,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>144</xloc>
-      <yloc>400</yloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1405,7 +1430,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>1344</xloc>
-      <yloc>496</yloc>
+      <yloc>656</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1446,7 +1471,47 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>320</xloc>
-      <yloc>400</yloc>
+      <yloc>560</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Emergency Relation Description</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select concept_name.name emergency_relation_desc from concept_name 
+where concept_name.concept_id = ?
+  and concept_name.voided = false
+  and concept_name.locale = 'fr'
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>emergency_relation_code</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>544</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1527,7 +1592,50 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>992</xloc>
-      <yloc>400</yloc>
+      <yloc>560</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Hiv Positive</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select if (count(*) > 0, 1, 0) as hiv_positive from encounter
+join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
+where encounter.voided = false
+  and encounter.patient_id = ?
+  and encounter_type.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7', 
+  				'204ad066-c5c2-4229-9a62-644bc5617ca2', 
+  				'349ae0b4-65c1-4122-aa06-480f186c8350', 
+  				'33491314-c352-42d0-bd5d-a9d0bffc9bf1')</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>person_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>512</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1601,7 +1709,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>464</xloc>
-      <yloc>304</yloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1641,7 +1749,7 @@ where person_attribute.person_id = ?
     </remotesteps>
     <GUI>
       <xloc>992</xloc>
-      <yloc>208</yloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1680,7 +1788,7 @@ where patient_identifier.voided = false
     </remotesteps>
     <GUI>
       <xloc>1344</xloc>
-      <yloc>208</yloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1720,7 +1828,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>320</xloc>
-      <yloc>304</yloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1760,7 +1868,7 @@ where concept_name.concept_id = ?
     </remotesteps>
     <GUI>
       <xloc>144</xloc>
-      <yloc>304</yloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1799,7 +1907,43 @@ where patient_identifier.voided = false
     </remotesteps>
     <GUI>
       <xloc>1344</xloc>
-      <yloc>304</yloc>
+      <yloc>464</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Pediatric</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select date_add(?, interval 14 year) > curdate() as pediatric</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>birthdate</name>
+        <type>Date</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>656</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1838,7 +1982,7 @@ order by person_address.person_address_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>1168</xloc>
-      <yloc>304</yloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1860,7 +2004,7 @@ where patient_identifier.identifier_type = 6
   and patient_identifier.voided = false
   and patient_identifier.patient_id = ?
 </sql>
-    <outer_join>Y</outer_join>
+    <outer_join>N</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
       <field>
@@ -1918,7 +2062,7 @@ order by person_name.person_name_id desc
     </remotesteps>
     <GUI>
       <xloc>512</xloc>
-      <yloc>208</yloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1958,7 +2102,7 @@ where person_attribute.person_id = ?
     </remotesteps>
     <GUI>
       <xloc>1008</xloc>
-      <yloc>304</yloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1997,7 +2141,7 @@ where patient_identifier.voided = false
     </remotesteps>
     <GUI>
       <xloc>1168</xloc>
-      <yloc>208</yloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2037,7 +2181,38 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>736</xloc>
-      <yloc>304</yloc>
+      <yloc>464</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get system info</name>
+    <type>SystemInfo</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>current_date</name>
+        <type>today start</type>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>336</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2095,7 +2270,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>1184</xloc>
-      <yloc>496</yloc>
+      <yloc>656</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2133,7 +2308,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>848</xloc>
-      <yloc>208</yloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2162,11 +2337,11 @@ order by obs.obs_id desc</sql>
     <fileNameField />
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>/home/edrisse/isante/patient</name>
+      <name>${user.home}/isante/data</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
       <extention>csv</extention>
-      <append>N</append>
+      <append>Y</append>
       <split>N</split>
       <haspartno>N</haspartno>
       <add_date>N</add_date>
@@ -2181,72 +2356,174 @@ order by obs.obs_id desc</sql>
     <fields>
       <field>
         <name>table_name</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>patientID_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>patient_identifier</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hivPositive_cn</name>
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>hiv_positive</name>
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>isPediatric_cn</name>
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pediatric</name>
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>stid_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>st_code</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>deathDt_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -2265,624 +2542,1092 @@ order by obs.obs_id desc</sql>
       </field>
       <field>
         <name>patGuid_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>person_uuid</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>fname_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>given_name</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>lname_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>family_name</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>sex_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>sex</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>dobDd_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>birthday_day</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>dobMm_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>birthday_month</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>dobYy_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>birthday_year</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>fnameMother_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>mother_name</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>stid_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>st_code</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>nationalID_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>national_identifier</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>clinicPatientID_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>code_pc</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>addrSection_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>city_village</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>addrTown_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>address3</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>addrDistrict_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>address2</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>telephone_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>phone</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>birthSection_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>comune</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>birthTown_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>section_comunale</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>birthDistrict_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>address</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>maritalStatus_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>marital_status_mapped</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>occupation_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>ocupation_desc</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>contact_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>emergency_name</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>relationContact_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>emergency_relation_desc</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>addrContactSection_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>emergency_comune</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>addrContactTown_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>emergency_section_comunale</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>addrContact_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>emergency_address</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>phoneContact_cn</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>emergency_phone</name>
+<<<<<<< HEAD
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
+=======
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -2898,7 +3643,11 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>1056</xloc>
+<<<<<<< HEAD
       <yloc>496</yloc>
+=======
+      <yloc>656</yloc>
+>>>>>>> 47aa2886c9cb81ebc8524a611d3f57100719cf2a
       <draw>Y</draw>
     </GUI>
   </step>
