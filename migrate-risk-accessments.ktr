@@ -2,21 +2,21 @@
 <transformation>
   <info>
     <name>migrate-risk-accessments</name>
-    <description />
-    <extended_description />
-    <trans_version />
+    <description/>
+    <extended_description/>
+    <trans_version/>
     <trans_type>Normal</trans_type>
     <directory>/</directory>
     <parameters>
     </parameters>
     <log>
       <trans-log-table>
-        <connection />
-        <schema />
-        <table />
-        <size_limit_lines />
-        <interval />
-        <timeout_days />
+        <connection/>
+        <schema/>
+        <table/>
+        <size_limit_lines/>
+        <interval/>
+        <timeout_days/>
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -41,37 +41,37 @@
           <id>LINES_READ</id>
           <enabled>Y</enabled>
           <name>LINES_READ</name>
-          <subject />
+          <subject/>
         </field>
         <field>
           <id>LINES_WRITTEN</id>
           <enabled>Y</enabled>
           <name>LINES_WRITTEN</name>
-          <subject />
+          <subject/>
         </field>
         <field>
           <id>LINES_UPDATED</id>
           <enabled>Y</enabled>
           <name>LINES_UPDATED</name>
-          <subject />
+          <subject/>
         </field>
         <field>
           <id>LINES_INPUT</id>
           <enabled>Y</enabled>
           <name>LINES_INPUT</name>
-          <subject />
+          <subject/>
         </field>
         <field>
           <id>LINES_OUTPUT</id>
           <enabled>Y</enabled>
           <name>LINES_OUTPUT</name>
-          <subject />
+          <subject/>
         </field>
         <field>
           <id>LINES_REJECTED</id>
           <enabled>Y</enabled>
           <name>LINES_REJECTED</name>
-          <subject />
+          <subject/>
         </field>
         <field>
           <id>ERRORS</id>
@@ -125,11 +125,11 @@
         </field>
       </trans-log-table>
       <perf-log-table>
-        <connection />
-        <schema />
-        <table />
-        <interval />
-        <timeout_days />
+        <connection/>
+        <schema/>
+        <table/>
+        <interval/>
+        <timeout_days/>
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -207,10 +207,10 @@
         </field>
       </perf-log-table>
       <channel-log-table>
-        <connection />
-        <schema />
-        <table />
-        <timeout_days />
+        <connection/>
+        <schema/>
+        <table/>
+        <timeout_days/>
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -273,10 +273,10 @@
         </field>
       </channel-log-table>
       <step-log-table>
-        <connection />
-        <schema />
-        <table />
-        <timeout_days />
+        <connection/>
+        <schema/>
+        <table/>
+        <timeout_days/>
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -349,10 +349,10 @@
         </field>
       </step-log-table>
       <metrics-log-table>
-        <connection />
-        <schema />
-        <table />
-        <timeout_days />
+        <connection/>
+        <schema/>
+        <table/>
+        <timeout_days/>
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -401,9 +401,9 @@
       </metrics-log-table>
     </log>
     <maxdate>
-      <connection />
-      <table />
-      <field />
+      <connection/>
+      <table/>
+      <field/>
       <offset>0.0</offset>
       <maxdiff>0.0</maxdiff>
     </maxdate>
@@ -414,7 +414,7 @@
     <feedback_shown>Y</feedback_shown>
     <feedback_size>50000</feedback_size>
     <using_thread_priorities>Y</using_thread_priorities>
-    <shared_objects_file />
+    <shared_objects_file/>
     <capture_step_performance>N</capture_step_performance>
     <step_performance_capturing_delay>1000</step_performance_capturing_delay>
     <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
@@ -440,13 +440,13 @@
     <server>${ISANTE-PLUS-DB-HOST}</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>${ISANTE-PLUS-DB-PORT}</database>
-    <port>${ISANTE-PLUS-DB-NAME}</port>
+    <database>${ISANTE-PLUS-DB-NAME}</database>
+    <port>${ISANTE-PLUS-DB-PORT}</port>
     <username>${ISANTE-PLUS-DB-USER}</username>
-    <password>Encrypted 4953414e54452feed4fa9b47e3b0c99b389d43e9bd9dfe</password>
-    <servername />
-    <data_tablespace />
-    <index_tablespace />
+    <password>${ISANTE-PLUS-DB-PASSWORD}</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
     <attributes>
       <attribute>
         <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
@@ -462,7 +462,7 @@
       </attribute>
       <attribute>
         <code>PORT_NUMBER</code>
-        <attribute>${ISANTE-PLUS-DB-NAME}</attribute>
+        <attribute>${ISANTE-PLUS-DB-PORT}</attribute>
       </attribute>
       <attribute>
         <code>PRESERVE_RESERVED_WORD_CASE</code>
@@ -522,30 +522,40 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Data grid</from>
+      <from>Mappings</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Columns</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join rows (cartesian product)</from>
       <to>Fetch Last ETL Excution Date</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Data grid</name>
+    <name>Mappings</name>
     <type>DataGrid</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <fields>
       <field>
         <name>risk_id_isante_plus</name>
         <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -553,10 +563,10 @@
       <field>
         <name>risk_answer_isante_plus</name>
         <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -564,10 +574,10 @@
       <field>
         <name>risk_id_isante</name>
         <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -575,186 +585,10 @@
       <field>
         <name>risk_answer_isante</name>
         <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>table_name</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>siteCode</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>patientID</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>visitDateDd</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>visitDateMm</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>visitDateYy</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>seqNum</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>riskID</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>riskAnswer</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>riskMm</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>riskYy</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>riskComment</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>dbSite</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>default_zero</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>default_na</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>default_one</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -766,43 +600,11 @@
         <item>163290</item>
         <item>1</item>
         <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
       </line>
       <line>
         <item>1061</item>
         <item>163291</item>
         <item>3</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
         <item>1</item>
       </line>
       <line>
@@ -810,43 +612,11 @@
         <item>105</item>
         <item>9</item>
         <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
       </line>
       <line>
         <item>1061</item>
         <item>1063</item>
         <item>15</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
         <item>1</item>
       </line>
       <line>
@@ -854,43 +624,11 @@
         <item>163273</item>
         <item>14</item>
         <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
       </line>
       <line>
         <item>160581</item>
         <item>163274</item>
         <item>12</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
         <item>1</item>
       </line>
       <line>
@@ -898,43 +636,11 @@
         <item>163289</item>
         <item>19</item>
         <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
       </line>
       <line>
         <item>1061</item>
         <item>163289</item>
         <item>5</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
         <item>1</item>
       </line>
       <line>
@@ -942,87 +648,23 @@
         <item>163275</item>
         <item>6</item>
         <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
       </line>
       <line>
         <item>163276</item>
-        <item />
+        <item/>
         <item>32</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
         <item>1</item>
       </line>
       <line>
         <item>156660</item>
-        <item />
+        <item/>
         <item>11</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
         <item>1</item>
       </line>
       <line>
         <item>123160</item>
-        <item />
+        <item/>
         <item>13</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
         <item>1</item>
       </line>
       <line>
@@ -1030,114 +672,34 @@
         <item>5567</item>
         <item>33</item>
         <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
       </line>
       <line>
         <item>160581</item>
         <item>159218</item>
         <item>4</item>
         <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
       </line>
       <line>
         <item>163278</item>
-        <item />
+        <item/>
         <item>7</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
         <item>1</item>
       </line>
       <line>
         <item>160580</item>
-        <item />
+        <item/>
         <item>20</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
         <item>1</item>
       </line>
       <line>
         <item>160579</item>
-        <item />
+        <item/>
         <item>34</item>
-        <item>1</item>
-        <item>table_name</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>riskID</item>
-        <item>riskAnswer</item>
-        <item>riskMm</item>
-        <item>riskYy</item>
-        <item>riskComment</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
         <item>1</item>
       </line>
     </data>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1145,7 +707,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>16</xloc>
+      <xloc>48</xloc>
       <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1153,13 +715,13 @@
   <step>
     <name>Database join</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
@@ -1213,8 +775,8 @@ where obs.concept_id = ?
         <type>Date</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1222,70 +784,70 @@ where obs.concept_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>336</xloc>
-      <yloc>48</yloc>
+      <xloc>576</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
     <name>Decompose Encounter Datetime</name>
     <type>Calculator</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <failIfNoFile>Y</failIfNoFile>
     <calculation>
       <field_name>visit_day</field_name>
       <calc_type>DAY_OF_MONTH</calc_type>
       <field_a>encounter_datetime</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>None</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
     <calculation>
       <field_name>visit_month</field_name>
       <calc_type>MONTH_OF_DATE</calc_type>
       <field_a>encounter_datetime</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>None</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
     <calculation>
       <field_name>visit_year</field_name>
       <calc_type>YEAR_OF_DATE</calc_type>
       <field_a>encounter_datetime</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>None</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1293,21 +855,55 @@ where obs.concept_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>48</yloc>
+      <xloc>1296</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Last ETL Excution Date</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>0</rowlimit>
+    <sql>select etl_execution.date last_execution from etl_execution
+where etl_execution.completed = true
+order by date desc</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>416</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
     <name>Fetch Person Identifier</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1324,8 +920,8 @@ where patient_identifier.identifier_type = 6
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1333,21 +929,21 @@ where patient_identifier.identifier_type = 6
       </output>
     </remotesteps>
     <GUI>
-      <xloc>672</xloc>
-      <yloc>48</yloc>
+      <xloc>912</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
     <name>Fetch iSante Location</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1363,8 +959,8 @@ where location_attribute.attribute_type_id = 1
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1372,21 +968,21 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>848</xloc>
-      <yloc>48</yloc>
+      <xloc>1088</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
     <name>Risk Answer Value Mapper</name>
     <type>ValueMapper</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <field_to_use>value_coded</field_to_use>
     <target_field>risk_answer_mapped</target_field>
@@ -1405,8 +1001,8 @@ where location_attribute.attribute_type_id = 1
         <target_value>4</target_value>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1414,21 +1010,21 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>496</xloc>
-      <yloc>48</yloc>
+      <xloc>736</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
     <name>Save on CSV</name>
     <type>TextFileOutput</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <separator>,</separator>
     <enclosure>"</enclosure>
@@ -1439,36 +1035,36 @@ where location_attribute.attribute_type_id = 1
     <format>DOS</format>
     <compression>None</compression>
     <encoding>UTF-8</encoding>
-    <endedLine />
+    <endedLine/>
     <fileNameInField>N</fileNameInField>
-    <fileNameField />
+    <fileNameField/>
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>/opt/projects/isante/etl/isante/output/riskassessment</name>
+      <name>${user.home}/isante/data</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
       <extention>csv</extention>
-      <append>N</append>
+      <append>Y</append>
       <split>N</split>
-      <haspartno>Y</haspartno>
+      <haspartno>N</haspartno>
       <add_date>N</add_date>
       <add_time>N</add_time>
       <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format />
+      <date_time_format/>
       <add_to_result_filenames>Y</add_to_result_filenames>
       <pad>N</pad>
       <fast_dump>N</fast_dump>
-      <splitevery />
+      <splitevery/>
     </file>
     <fields>
       <field>
         <name>table_name</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1476,11 +1072,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>patientID</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1488,11 +1084,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>patient_identifier</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1500,11 +1096,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>siteCode</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1512,11 +1108,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>isante_location_id</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1524,11 +1120,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>visitDateDd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1536,11 +1132,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>visit_day</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1548,11 +1144,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>visitDateMm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1560,11 +1156,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>visit_month</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1572,11 +1168,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>visitDateYy</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1584,11 +1180,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>visit_year</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1596,11 +1192,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>seqNum</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1608,11 +1204,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>default_zero</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1620,11 +1216,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>riskID</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1632,11 +1228,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>risk_id_isante</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1644,11 +1240,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>riskAnswer</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1656,11 +1252,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>risk_answer_mapped</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1668,11 +1264,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>riskMm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1680,11 +1276,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1692,11 +1288,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>riskYy</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1704,11 +1300,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1716,11 +1312,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>riskComment</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1728,11 +1324,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1740,11 +1336,11 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>dbSite</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1752,18 +1348,18 @@ where location_attribute.attribute_type_id = 1
       <field>
         <name>default_zero</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1771,33 +1367,222 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1232</xloc>
-      <yloc>48</yloc>
+      <xloc>1472</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Fetch Last ETL Excution Date</name>
-    <type>DBJoin</type>
-    <description />
+    <name>Columns</name>
+    <type>DataGrid</type>
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>0</rowlimit>
-    <sql>select etl_execution.date last_execution from etl_execution
-where etl_execution.completed = true
-order by date desc</sql>
-    <outer_join>N</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-    </parameter>
-    <attributes />
-    <cluster_schema />
+    <fields>
+      <field>
+        <name>table_name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>siteCode</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>patientID</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>visitDateDd</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>visitDateMm</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>visitDateYy</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>seqNum</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>riskID</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>riskAnswer</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>riskMm</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>riskYy</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>riskComment</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>dbSite</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>default_zero</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>default_one</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <data>
+      <line>
+        <item>riskAssessments</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>riskID</item>
+        <item>riskAnswer</item>
+        <item>riskMm</item>
+        <item>riskYy</item>
+        <item>riskComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
+        <item>1</item>
+      </line>
+    </data>
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1805,8 +1590,45 @@ order by date desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>48</yloc>
+      <xloc>48</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Join rows (cartesian product)</name>
+    <type>JoinRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue/>
+        <function>=</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1815,5 +1637,5 @@ order by date desc</sql>
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
-  <attributes />
+  <attributes/>
 </transformation>
