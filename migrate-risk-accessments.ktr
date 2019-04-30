@@ -766,7 +766,7 @@
         <item>163290</item>
         <item>1</item>
         <item>1</item>
-        <item>table_name</item>
+        <item>riskAssessments</item>
         <item>siteCode</item>
         <item>patientID</item>
         <item>visitDateDd</item>
@@ -788,7 +788,7 @@
         <item>163291</item>
         <item>3</item>
         <item>1</item>
-        <item>table_name</item>
+        <item>riskAssessments</item>
         <item>siteCode</item>
         <item>patientID</item>
         <item>visitDateDd</item>
@@ -810,7 +810,7 @@
         <item>105</item>
         <item>9</item>
         <item>1</item>
-        <item>table_name</item>
+        <item>riskAssessments</item>
         <item>siteCode</item>
         <item>patientID</item>
         <item>visitDateDd</item>
@@ -832,7 +832,7 @@
         <item>1063</item>
         <item>15</item>
         <item>1</item>
-        <item>table_name</item>
+        <item>riskAssessments</item>
         <item>siteCode</item>
         <item>patientID</item>
         <item>visitDateDd</item>
@@ -854,7 +854,7 @@
         <item>163273</item>
         <item>14</item>
         <item>1</item>
-        <item>table_name</item>
+        <item>riskAssessments</item>
         <item>siteCode</item>
         <item>patientID</item>
         <item>visitDateDd</item>
@@ -876,7 +876,7 @@
         <item>163274</item>
         <item>12</item>
         <item>1</item>
-        <item>table_name</item>
+        <item>riskAssessments</item>
         <item>siteCode</item>
         <item>patientID</item>
         <item>visitDateDd</item>
@@ -898,7 +898,7 @@
         <item>163289</item>
         <item>19</item>
         <item>1</item>
-        <item>table_name</item>
+        <item>riskAssessments</item>
         <item>siteCode</item>
         <item>patientID</item>
         <item>visitDateDd</item>
@@ -920,7 +920,7 @@
         <item>163289</item>
         <item>5</item>
         <item>1</item>
-        <item>table_name</item>
+        <item>riskAssessments</item>
         <item>siteCode</item>
         <item>patientID</item>
         <item>visitDateDd</item>
@@ -942,7 +942,7 @@
         <item>163275</item>
         <item>6</item>
         <item>1</item>
-        <item>table_name</item>
+        <item>riskAssessments</item>
         <item>siteCode</item>
         <item>patientID</item>
         <item>visitDateDd</item>
@@ -964,7 +964,7 @@
         <item />
         <item>32</item>
         <item>1</item>
-        <item>table_name</item>
+        <item>riskAssessments</item>
         <item>siteCode</item>
         <item>patientID</item>
         <item>visitDateDd</item>
@@ -986,7 +986,7 @@
         <item />
         <item>11</item>
         <item>1</item>
-        <item>table_name</item>
+        <item>riskAssessments</item>
         <item>siteCode</item>
         <item>patientID</item>
         <item>visitDateDd</item>
@@ -1008,7 +1008,7 @@
         <item />
         <item>13</item>
         <item>1</item>
-        <item>table_name</item>
+        <item>riskAssessments</item>
         <item>siteCode</item>
         <item>patientID</item>
         <item>visitDateDd</item>
@@ -1030,7 +1030,7 @@
         <item>5567</item>
         <item>33</item>
         <item>1</item>
-        <item>table_name</item>
+        <item>riskAssessments</item>
         <item>siteCode</item>
         <item>patientID</item>
         <item>visitDateDd</item>
@@ -1052,7 +1052,7 @@
         <item>159218</item>
         <item>4</item>
         <item>1</item>
-        <item>table_name</item>
+        <item>riskAssessments</item>
         <item>siteCode</item>
         <item>patientID</item>
         <item>visitDateDd</item>
@@ -1074,7 +1074,7 @@
         <item />
         <item>7</item>
         <item>1</item>
-        <item>table_name</item>
+        <item>riskAssessments</item>
         <item>siteCode</item>
         <item>patientID</item>
         <item>visitDateDd</item>
@@ -1096,7 +1096,7 @@
         <item />
         <item>20</item>
         <item>1</item>
-        <item>table_name</item>
+        <item>riskAssessments</item>
         <item>siteCode</item>
         <item>patientID</item>
         <item>visitDateDd</item>
@@ -1118,7 +1118,7 @@
         <item />
         <item>34</item>
         <item>1</item>
-        <item>table_name</item>
+        <item>riskAssessments</item>
         <item>siteCode</item>
         <item>patientID</item>
         <item>visitDateDd</item>
@@ -1294,6 +1294,40 @@ where obs.concept_id = ?
     </remotesteps>
     <GUI>
       <xloc>1056</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Last ETL Excution Date</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>0</rowlimit>
+    <sql>select etl_execution.date last_execution from etl_execution
+where etl_execution.completed = true
+order by date desc</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
       <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1772,40 +1806,6 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>1232</xloc>
-      <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Last ETL Excution Date</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>0</rowlimit>
-    <sql>select etl_execution.date last_execution from etl_execution
-where etl_execution.completed = true
-order by date desc</sql>
-    <outer_join>N</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
       <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
