@@ -547,11 +547,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Address</from>
-      <to>Fetch Marital Status</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Marital Status</from>
       <to>Fetch Ocupation</to>
       <enabled>Y</enabled>
@@ -639,6 +634,16 @@
     <hop>
       <from>Get system info</from>
       <to>Fetch Last ETL Excution Date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Address</from>
+      <to>Remove new line from Address</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove new line from Address</from>
+      <to>Fetch Marital Status</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1297,7 +1302,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>1344</xloc>
-      <yloc>560</yloc>
+      <yloc>656</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1337,7 +1342,7 @@ order by obs.obs_id desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>768</xloc>
+      <xloc>1120</xloc>
       <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1378,7 +1383,7 @@ order by obs.obs_id desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
+      <xloc>496</xloc>
       <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1419,7 +1424,7 @@ order by obs.obs_id desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1344</xloc>
+      <xloc>1136</xloc>
       <yloc>656</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1460,7 +1465,7 @@ order by obs.obs_id desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
+      <xloc>672</xloc>
       <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1500,7 +1505,7 @@ where concept_name.concept_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>544</xloc>
+      <xloc>896</xloc>
       <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1541,7 +1546,7 @@ order by obs.obs_id desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>992</xloc>
+      <xloc>1344</xloc>
       <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1658,7 +1663,7 @@ order by obs.obs_id desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
+      <xloc>144</xloc>
       <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1777,8 +1782,8 @@ order by obs.obs_id desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
-      <yloc>464</yloc>
+      <xloc>144</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1817,8 +1822,8 @@ where concept_name.concept_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>464</yloc>
+      <xloc>320</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2219,7 +2224,7 @@ order by obs.obs_id desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1184</xloc>
+      <xloc>976</xloc>
       <yloc>656</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2857,7 +2862,7 @@ order by obs.obs_id desc</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>address</name>
+        <name>address_sanitazed</name>
         <type>None</type>
         <format/>
         <currency/>
@@ -3070,8 +3075,48 @@ order by obs.obs_id desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
+      <xloc>848</xloc>
       <yloc>656</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove new line from Address</name>
+    <type>StringOperations</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>address</in_stream_name>
+        <out_stream_name>address_sanitazed</out_stream_name>
+        <trim_type>none</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>crlf</remove_special_characters>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>384</xloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
