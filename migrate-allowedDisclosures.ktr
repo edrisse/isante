@@ -512,11 +512,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Disclosure 1 Relation</from>
-      <to>Fetch  Disclosure 1 Address</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Disclosure 2 Name</from>
       <to>Fetch Disclosure 2 Relation</to>
       <enabled>Y</enabled>
@@ -547,349 +542,41 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch  Disclosure 2 Phone</from>
-      <to>Save on CSV</to>
+      <from>Fetch iSante Location</from>
+      <to>Fetch Disclosure 1 Name</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Disclosure 1 Relation</from>
+      <to>Fetch Disclosure 1 Relation Description</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Disclosure 1 Relation Description</from>
+      <to>Fetch  Disclosure 1 Address</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Fetch Person Identifier</from>
-      <to>Fetch ST Code</to>
+      <to>Fetch iSantePlus Location</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch ST Code</from>
-      <to>Fetch Disclosure 1 Name</to>
+      <from>Fetch iSantePlus Location</from>
+      <to>Fetch iSante Location</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch  Disclosure 2 Phone</from>
+      <to>Name was filled?</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Name was filled?</from>
+      <to>Save on CSV</to>
       <enabled>Y</enabled>
     </hop>
   </order>
-  <step>
-    <name>Fetch  Disclosure 1 Address</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_text disclosure1_address from obs
-where obs.person_id = ?
-  and obs.concept_id = 164958
-  and obs.voided = false
-  and obs.obs_group_id = 164965
-order by obs.obs_id desc</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>person_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1488</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch  Disclosure 1 Phone</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_text disclosure1_phone from obs
-where obs.person_id = ?
-  and obs.concept_id = 164956
-  and obs.voided = false
-  and obs.obs_group_id = 164965
-order by obs.obs_id desc</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>person_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1264</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch  Disclosure 2 Address</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_text disclosure2_address from obs
-where obs.person_id = ?
-  and obs.concept_id = 164958
-  and obs.voided = false
-  and obs.obs_group_id = 164961
-order by obs.obs_id desc</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>person_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>432</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch  Disclosure 2 Phone</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_text disclosure2_phone from obs
-where obs.person_id = ?
-  and obs.concept_id = 164956
-  and obs.voided = false
-  and obs.obs_group_id = 164961
-order by obs.obs_id desc</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>person_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>96</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Disclosure 1 Name</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_text disclosure1_name from obs
-where obs.person_id = ?
-  and obs.concept_id = 164950
-  and obs.voided = false
-  and obs.obs_group_id = 164965
-order by obs.obs_id desc</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>person_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1264</xloc>
-      <yloc>64</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Disclosure 1 Relation</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded disclosure1_relation_code from obs
-where obs.person_id = ?
-  and obs.concept_id = 164352
-  and obs.voided = false
-  and obs.obs_group_id = 164965
-order by obs.obs_id desc</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>person_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1488</xloc>
-      <yloc>64</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Disclosure 2 Name</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_text disclosure2_name from obs
-where obs.person_id = ?
-  and obs.concept_id = 164950
-  and obs.voided = false
-  and obs.obs_group_id = 164961
-order by obs.obs_id desc</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>person_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>880</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Disclosure 2 Relation</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded disclosure2_relation_code from obs
-where obs.person_id = ?
-  and obs.concept_id = 164352
-  and obs.voided = false
-  and obs.obs_group_id = 164961
-order by obs.obs_id desc</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>person_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>672</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step>
     <name>Column Names</name>
     <type>DataGrid</type>
@@ -1090,6 +777,170 @@ order by obs.obs_id desc</sql>
     </GUI>
   </step>
   <step>
+    <name>Fetch  Disclosure 1 Address</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_text disclosure1_address from obs
+where obs.person_id = ?
+  and obs.concept_id = 164958
+  and obs.voided = false
+  and obs.obs_group_id = 164965
+order by obs.obs_id desc</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>person_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>976</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch  Disclosure 1 Phone</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_text disclosure1_phone from obs
+where obs.person_id = ?
+  and obs.concept_id = 164956
+  and obs.voided = false
+  and obs.obs_group_id = 164965
+order by obs.obs_id desc</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>person_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>768</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch  Disclosure 2 Address</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_text disclosure2_address from obs
+where obs.person_id = ?
+  and obs.concept_id = 164958
+  and obs.voided = false
+  and obs.obs_group_id = 164961
+order by obs.obs_id desc</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>person_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch  Disclosure 2 Phone</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_text disclosure2_phone from obs
+where obs.person_id = ?
+  and obs.concept_id = 164956
+  and obs.voided = false
+  and obs.obs_group_id = 164961
+order by obs.obs_id desc</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>person_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Fetch Basic Patient Data</name>
     <type>DBJoin</type>
     <description/>
@@ -1154,6 +1005,170 @@ where person.date_created >= ?
     </GUI>
   </step>
   <step>
+    <name>Fetch Disclosure 1 Name</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_text disclosure1_name from obs
+where obs.person_id = ?
+  and obs.concept_id = 164950
+  and obs.voided = false
+  and obs.obs_group_id = 164965
+order by obs.obs_id desc</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>person_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1472</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Disclosure 1 Relation</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded disclosure1_relation_code from obs
+where obs.person_id = ?
+  and obs.concept_id = 164352
+  and obs.voided = false
+  and obs.obs_group_id = 164965
+order by obs.obs_id desc</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>person_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1472</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Disclosure 2 Name</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_text disclosure2_name from obs
+where obs.person_id = ?
+  and obs.concept_id = 164950
+  and obs.voided = false
+  and obs.obs_group_id = 164961
+order by obs.obs_id desc</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>person_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>576</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Disclosure 2 Relation</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded disclosure2_relation_code from obs
+where obs.person_id = ?
+  and obs.concept_id = 164352
+  and obs.voided = false
+  and obs.obs_group_id = 164961
+order by obs.obs_id desc</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>person_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Fetch Last ETL Excution Date</name>
     <type>DBJoin</type>
     <description/>
@@ -1191,7 +1206,7 @@ order by date desc</sql>
     <name>Fetch Person Identifier</name>
     <type>DBJoin</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -1325,7 +1340,7 @@ where patient_identifier.identifier_type = 6
         <precision>-1</precision>
       </field>
       <field>
-        <name>st_code</name>
+        <name>isante_location_id</name>
         <type>None</type>
         <format/>
         <currency/>
@@ -1493,7 +1508,7 @@ where patient_identifier.identifier_type = 6
         <precision>-1</precision>
       </field>
       <field>
-        <name>disclosure1_relation_code</name>
+        <name>disclosure1_relation_desc</name>
         <type>None</type>
         <format/>
         <currency/>
@@ -1610,13 +1625,13 @@ where patient_identifier.identifier_type = 6
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
+      <xloc>688</xloc>
       <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Fetch ST Code</name>
+    <name>Fetch iSante Location</name>
     <type>DBJoin</type>
     <description/>
     <distribute>Y</distribute>
@@ -1628,11 +1643,90 @@ where patient_identifier.identifier_type = 6
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select patient_identifier.identifier st_code from patient_identifier
-where patient_identifier.voided = false
-  and patient_identifier.identifier_type = 3
-  and patient_identifier.patient_id = ?</sql>
+    <sql>select location_attribute.value_reference isante_location_id from location_attribute 
+where location_attribute.attribute_type_id = 1 
+  and location_attribute.location_id = ?
+</sql>
     <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>isante_plus_location_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1280</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Disclosure 1 Relation Description</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select concept_name.name disclosure1_relation_desc from concept_name 
+where concept_name.concept_id = ?
+  and concept_name.voided = false
+  and concept_name.locale = 'fr'
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>disclosure1_relation_code</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1232</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch iSantePlus Location</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.location_id isante_plus_location_id from obs
+where obs.person_id = ?
+  and obs.voided = false
+order by obs.obs_datetime desc</sql>
+    <outer_join>N</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
       <field>
@@ -1649,8 +1743,48 @@ where patient_identifier.voided = false
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1072</xloc>
+      <xloc>1088</xloc>
       <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Name was filled?</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Save on CSV</send_true_to>
+    <send_false_to>Save on CSV 2</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>disclosure1_name</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue/>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>352</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

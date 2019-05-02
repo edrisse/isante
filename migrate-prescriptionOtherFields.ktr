@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>migrate-arv-and-pregnancy</name>
+    <name>migrate-prescriptionOtherFields</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -427,10 +427,10 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2019/04/14 23:36:20.172</created_date>
+    <created_date>2019/04/22 16:40:25.791</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/04/14 23:36:20.172</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2019/04/22 16:40:25.791</modified_date>
+    <key_for_session_key/>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -492,13 +492,13 @@
   </connection>
   <order>
     <hop>
-      <from>Fetch Encounters</from>
-      <to>Fetch iSante Location</to>
+      <from>Column Names</from>
+      <to>Fetch Last ETL Excution Date</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Fetch Last ETL Excution Date</from>
-      <to>Fetch Encounters</to>
+      <to>Fetch Prescription Encounters</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -507,51 +507,156 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Fetch Prescription Encounters</from>
+      <to>Fetch iSante Location</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Fetch iSante Location</from>
       <to>Fetch Person Identifier</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Input grid</from>
-      <to>Fetch Last ETL Excution Date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Decompose Encounter Datetime</from>
-      <to>Fetch Ever take any ARV medicine exclusively to prevent maternal-child transmission</to>
+      <to>Fetch ART Remarks</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Ever take any ARV medicine exclusively to prevent maternal-child transmission</from>
-      <to>Fetch Zidovudine (AZT)</to>
+      <from>Fetch ART Remarks</from>
+      <to>Fetch Registred in ART code</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Zidovudine (AZT)</from>
-      <to>Fetch Nevirapine (NVP)</to>
+      <from>Fetch Registred in ART code</from>
+      <to>Map Registred in ART Desc</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Nevirapine (NVP)</from>
-      <to>Fetch Unknown</to>
+      <from>Map Registred in ART Desc</from>
+      <to>Fetch ART Start Date</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Unknown</from>
-      <to>Fetch Other</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Other</from>
-      <to>Fetch Other, specify</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Other, specify</from>
+      <from>Fetch ART Start Date</from>
       <to>Save on CSV</to>
       <enabled>Y</enabled>
     </hop>
   </order>
+  <step>
+    <name>Column Names</name>
+    <type>DataGrid</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>table_name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>siteCode_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>patientID_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>visitDateDd_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>visitDateMm_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>visitDateYy_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>empty</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <data>
+      <line>
+        <item>prescriptionOtherFields</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item/>
+      </line>
+    </data>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step>
     <name>Decompose Encounter Datetime</name>
     <type>Calculator</type>
@@ -570,7 +675,7 @@
       <field_a>encounter_datetime</field_a>
       <field_b/>
       <field_c/>
-      <value_type>None</value_type>
+      <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
@@ -585,7 +690,7 @@
       <field_a>encounter_datetime</field_a>
       <field_b/>
       <field_c/>
-      <value_type>None</value_type>
+      <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
@@ -600,7 +705,7 @@
       <field_a>encounter_datetime</field_a>
       <field_b/>
       <field_c/>
-      <value_type>None</value_type>
+      <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
@@ -618,112 +723,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>880</xloc>
-      <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Encounters</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>0</rowlimit>
-    <sql>select en.encounter_id, en.encounter_datetime, en.patient_id person_id, en.location_id isante_plus_location_id from encounter en
-where en.encounter_type in (1, 9)
-  and (en.date_created >= ?
-   or en.date_changed >= ?
-   or en.date_voided >= ?
-   or en.date_created >= ?
-   or en.date_changed >= ?
-   or en.date_voided >= ?)
-</sql>
-    <outer_join>N</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>352</xloc>
-      <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Ever take any ARV medicine exclusively to prevent maternal-child transmission</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select if(obs.value_coded is not null, "1", "0") any_mch from obs
-where obs.concept_id = 966
-  and obs.value_coded = 1107
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>880</xloc>
-      <yloc>128</yloc>
+      <xloc>1088</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -756,128 +757,8 @@ order by date desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Nevirapine (NVP)</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select if(obs.value_coded is not null, "1", "0") nvp from obs
-where obs.concept_id = 966
-  and obs.value_coded = 80586
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>240</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Other</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select if(obs.value_coded is not null, "1", "0") other from obs
-where obs.concept_id = 966
-  and obs.value_coded = 5424
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>48</xloc>
-      <yloc>256</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Other, specify</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select  obs.comments specify from obs
-where obs.concept_id = 966
-  and obs.value_coded = 5424
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>240</xloc>
-      <yloc>256</yloc>
+      <xloc>320</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -899,7 +780,7 @@ where patient_identifier.identifier_type = 6
   and patient_identifier.voided = false
   and patient_identifier.patient_id = ?
 </sql>
-    <outer_join>Y</outer_join>
+    <outer_join>N</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
       <field>
@@ -916,13 +797,13 @@ where patient_identifier.identifier_type = 6
       </output>
     </remotesteps>
     <GUI>
-      <xloc>672</xloc>
-      <yloc>32</yloc>
+      <xloc>880</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Fetch Unknown</name>
+    <name>Fetch Prescription Encounters</name>
     <type>DBJoin</type>
     <description/>
     <distribute>Y</distribute>
@@ -933,18 +814,42 @@ where patient_identifier.identifier_type = 6
       <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select if(obs.value_coded is not null, "1", "0") unknown from obs
-where obs.concept_id = 966
-  and obs.value_coded = 1067
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
+    <rowlimit>0</rowlimit>
+    <sql>select encounter.encounter_id, encounter.encounter_datetime, encounter.patient_id person_id, encounter.location_id isante_plus_location_id from encounter
+where encounter.encounter_type in (1, 2)
+  and (encounter.date_created >= ?
+   or encounter.date_changed >= ?
+   or encounter.date_voided >= ?
+   or encounter.date_created >= ?
+   or encounter.date_changed >= ?
+   or encounter.date_voided >= ?)
+</sql>
+    <outer_join>N</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
       <field>
-        <name>encounter_id</name>
-        <type>Number</type>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
       </field>
     </parameter>
     <attributes/>
@@ -956,48 +861,8 @@ where obs.concept_id = 966
       </output>
     </remotesteps>
     <GUI>
-      <xloc>48</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Zidovudine (AZT)</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select if(obs.value_coded is not null, "1", "0") azt from obs
-where obs.concept_id = 966
-  and obs.value_coded = 86663
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>448</xloc>
-      <yloc>128</yloc>
+      <xloc>544</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1035,14 +900,14 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>512</xloc>
-      <yloc>32</yloc>
+      <xloc>720</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Input grid</name>
-    <type>DataGrid</type>
+    <name>Fetch ART Remarks</name>
+    <type>DBJoin</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1051,216 +916,21 @@ where location_attribute.attribute_type_id = 1
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <fields>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_text art_remarks from obs
+where obs.concept_id = 163322
+  and obs.voided = false
+  and obs.encounter_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
       <field>
-        <name>table_name</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
+        <name>encounter_id</name>
+        <type>Number</type>
       </field>
-      <field>
-        <name>siteCode</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>patientID</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>visitDateDd</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>visitDateMm</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>visitDateYy</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>seqNum</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>ARVexcl</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>zidovudineARVpreg</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>nevirapineARVpreg</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>unknownARVpreg</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>otherARVpreg</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>otherTextARVpreg</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>dbSite</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>default_zero</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>default_na</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>default_one</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <data>
-      <line>
-        <item>arvAndPregnancy</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>seqNum</item>
-        <item>ARVexcl</item>
-        <item>zidovudineARVpreg</item>
-        <item>nevirapineARVpreg</item>
-        <item>unknownARVpreg</item>
-        <item>otherARVpreg</item>
-        <item>otherTextARVpreg</item>
-        <item>dbSite</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
-      </line>
-    </data>
+    </parameter>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -1270,8 +940,126 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
-      <yloc>32</yloc>
+      <xloc>1328</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Registred in ART code</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded registred_art_code from obs
+where obs.concept_id = 159811
+  and obs.voided = false
+  and obs.encounter_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1328</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Registred in ART Desc</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>registred_art_code</field_to_use>
+    <target_field>registred_art_mapped</target_field>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>1065</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>1066</source_value>
+        <target_value>0</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1104</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch ART Start Date</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_datetime art_start_date from obs
+where obs.concept_id = 159599
+  and obs.voided = false
+  and obs.encounter_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>880</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1330,31 +1118,7 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>patientID</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>patient_identifier</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>siteCode</name>
+        <name>siteCode_cn</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1378,7 +1142,31 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>visitDateDd</name>
+        <name>patientID_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>patient_identifier</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>visitDateDd_cn</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1402,7 +1190,7 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>visitDateMm</name>
+        <name>visitDateMm_cn</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1426,7 +1214,7 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>visitDateYy</name>
+        <name>visitDateYy_cn</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1449,198 +1237,6 @@ where location_attribute.attribute_type_id = 1
         <length>-1</length>
         <precision>-1</precision>
       </field>
-      <field>
-        <name>seqNum</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>default_zero</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ARVexcl</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>any_mch</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>zidovudineARVpreg</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>azt</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>nevirapineARVpreg</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>nvp</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>unknownARVpreg</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>unknown</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>otherARVpreg</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>other</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>otherTextARVpreg</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>specify</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>dbSite</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>default_zero</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1651,8 +1247,8 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>384</xloc>
-      <yloc>256</yloc>
+      <xloc>704</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
