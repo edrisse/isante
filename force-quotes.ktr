@@ -552,7 +552,7 @@
         <out_stream_name>line2</out_stream_name>
         <use_regex>yes</use_regex>
         <replace_string>,([\d+\.?\d+]+),</replace_string>
-        <replace_by_string>,"\1",</replace_by_string>
+        <replace_by_string>,"$1",</replace_by_string>
         <set_empty_string>N</set_empty_string>
         <replace_field_by_string/>
         <whole_word>no</whole_word>
