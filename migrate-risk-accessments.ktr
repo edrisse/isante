@@ -600,11 +600,43 @@
         <item>163290</item>
         <item>1</item>
         <item>1</item>
+        <item>riskAssessments</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>riskID</item>
+        <item>riskAnswer</item>
+        <item>riskMm</item>
+        <item>riskYy</item>
+        <item>riskComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
+        <item>1</item>
       </line>
       <line>
         <item>1061</item>
         <item>163291</item>
         <item>3</item>
+        <item>1</item>
+        <item>riskAssessments</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>riskID</item>
+        <item>riskAnswer</item>
+        <item>riskMm</item>
+        <item>riskYy</item>
+        <item>riskComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
         <item>1</item>
       </line>
       <line>
@@ -612,11 +644,43 @@
         <item>105</item>
         <item>9</item>
         <item>1</item>
+        <item>riskAssessments</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>riskID</item>
+        <item>riskAnswer</item>
+        <item>riskMm</item>
+        <item>riskYy</item>
+        <item>riskComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
+        <item>1</item>
       </line>
       <line>
         <item>1061</item>
         <item>1063</item>
         <item>15</item>
+        <item>1</item>
+        <item>riskAssessments</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>riskID</item>
+        <item>riskAnswer</item>
+        <item>riskMm</item>
+        <item>riskYy</item>
+        <item>riskComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
         <item>1</item>
       </line>
       <line>
@@ -624,11 +688,43 @@
         <item>163273</item>
         <item>14</item>
         <item>1</item>
+        <item>riskAssessments</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>riskID</item>
+        <item>riskAnswer</item>
+        <item>riskMm</item>
+        <item>riskYy</item>
+        <item>riskComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
+        <item>1</item>
       </line>
       <line>
         <item>160581</item>
         <item>163274</item>
         <item>12</item>
+        <item>1</item>
+        <item>riskAssessments</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>riskID</item>
+        <item>riskAnswer</item>
+        <item>riskMm</item>
+        <item>riskYy</item>
+        <item>riskComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
         <item>1</item>
       </line>
       <line>
@@ -636,11 +732,43 @@
         <item>163289</item>
         <item>19</item>
         <item>1</item>
+        <item>riskAssessments</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>riskID</item>
+        <item>riskAnswer</item>
+        <item>riskMm</item>
+        <item>riskYy</item>
+        <item>riskComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
+        <item>1</item>
       </line>
       <line>
         <item>1061</item>
         <item>163289</item>
         <item>5</item>
+        <item>1</item>
+        <item>riskAssessments</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>riskID</item>
+        <item>riskAnswer</item>
+        <item>riskMm</item>
+        <item>riskYy</item>
+        <item>riskComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
         <item>1</item>
       </line>
       <line>
@@ -648,11 +776,43 @@
         <item>163275</item>
         <item>6</item>
         <item>1</item>
+        <item>riskAssessments</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>riskID</item>
+        <item>riskAnswer</item>
+        <item>riskMm</item>
+        <item>riskYy</item>
+        <item>riskComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
+        <item>1</item>
       </line>
       <line>
         <item>163276</item>
         <item/>
         <item>32</item>
+        <item>1</item>
+        <item>riskAssessments</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>riskID</item>
+        <item>riskAnswer</item>
+        <item>riskMm</item>
+        <item>riskYy</item>
+        <item>riskComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
         <item>1</item>
       </line>
       <line>
@@ -660,11 +820,43 @@
         <item/>
         <item>11</item>
         <item>1</item>
+        <item>riskAssessments</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>riskID</item>
+        <item>riskAnswer</item>
+        <item>riskMm</item>
+        <item>riskYy</item>
+        <item>riskComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
+        <item>1</item>
       </line>
       <line>
         <item>123160</item>
         <item/>
         <item>13</item>
+        <item>1</item>
+        <item>riskAssessments</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>riskID</item>
+        <item>riskAnswer</item>
+        <item>riskMm</item>
+        <item>riskYy</item>
+        <item>riskComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
         <item>1</item>
       </line>
       <line>
@@ -672,11 +864,43 @@
         <item>5567</item>
         <item>33</item>
         <item>1</item>
+        <item>riskAssessments</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>riskID</item>
+        <item>riskAnswer</item>
+        <item>riskMm</item>
+        <item>riskYy</item>
+        <item>riskComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
+        <item>1</item>
       </line>
       <line>
         <item>160581</item>
         <item>159218</item>
         <item>4</item>
+        <item>1</item>
+        <item>riskAssessments</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>riskID</item>
+        <item>riskAnswer</item>
+        <item>riskMm</item>
+        <item>riskYy</item>
+        <item>riskComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
         <item>1</item>
       </line>
       <line>
@@ -684,17 +908,65 @@
         <item/>
         <item>7</item>
         <item>1</item>
+        <item>riskAssessments</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>riskID</item>
+        <item>riskAnswer</item>
+        <item>riskMm</item>
+        <item>riskYy</item>
+        <item>riskComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
+        <item>1</item>
       </line>
       <line>
         <item>160580</item>
         <item/>
         <item>20</item>
         <item>1</item>
+        <item>riskAssessments</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>riskID</item>
+        <item>riskAnswer</item>
+        <item>riskMm</item>
+        <item>riskYy</item>
+        <item>riskComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
+        <item>1</item>
       </line>
       <line>
         <item>160579</item>
         <item/>
         <item>34</item>
+        <item>1</item>
+        <item>riskAssessments</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>riskID</item>
+        <item>riskAnswer</item>
+        <item>riskMm</item>
+        <item>riskYy</item>
+        <item>riskComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
         <item>1</item>
       </line>
     </data>
@@ -891,6 +1163,40 @@ order by date desc</sql>
     <GUI>
       <xloc>416</xloc>
       <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Last ETL Excution Date</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>0</rowlimit>
+    <sql>select etl_execution.date last_execution from etl_execution
+where etl_execution.completed = true
+order by date desc</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
