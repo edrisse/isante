@@ -6671,6 +6671,45 @@ where patient_identifier.identifier_type = 6
     </GUI>
   </step>
   <step>
+    <name>Fetch dbSite</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select location_attribute.value_reference dbSiteValue from location_attribute 
+where location_attribute.attribute_type_id = 7
+  and location_attribute.location_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>location_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1088</xloc>
+      <yloc>272</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Fetch iSante Location</name>
     <type>DBJoin</type>
     <description/>
@@ -6919,30 +6958,6 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>seqNum</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>default_one</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
         <name>labID</name>
         <type>String</type>
         <format/>
@@ -7171,7 +7186,7 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>resultRemarks</name>
+        <name>test_comments</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -7183,7 +7198,7 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>test_comments</name>
+        <name>resultRemarks</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -7958,45 +7973,6 @@ and cn.locale = "fr";
     <GUI>
       <xloc>416</xloc>
       <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch dbSite</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select location_attribute.value_reference dbSiteValue from location_attribute 
-where location_attribute.attribute_type_id = 7
-  and location_attribute.location_id = ?
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>location_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1088</xloc>
-      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
