@@ -436,14 +436,14 @@
   <notepads>
   </notepads>
   <connection>
-    <name>openmrs_db</name>
-    <server>localhost</server>
+    <name>Openmrs HTY</name>
+    <server>${ISANTE-PLUS-DB-HOST}</server>
     <type>MYSQL</type>
     <access>Native</access>
-    <database>openmrs</database>
-    <port>3306</port>
-    <username>root</username>
-    <password>Encrypted 2be98afc86aa7f292aa15ab62d79da7ca</password>
+    <database>${ISANTE-PLUS-DB-NAME}</database>
+    <port>${ISANTE-PLUS-DB-PORT}</port>
+    <username>${ISANTE-PLUS-DB-USER}</username>
+    <password>${ISANTE-PLUS-DB-PASSWORD}</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -462,7 +462,7 @@
       </attribute>
       <attribute>
         <code>PORT_NUMBER</code>
-        <attribute>3306</attribute>
+        <attribute>${ISANTE-PLUS-DB-PORT}</attribute>
       </attribute>
       <attribute>
         <code>PRESERVE_RESERVED_WORD_CASE</code>
@@ -553,6 +553,11 @@
     </hop>
     <hop>
       <from>Decompose Test Result Date</from>
+      <to>Fetch dbSite</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch dbSite</from>
       <to>Save on CSV</to>
       <enabled>Y</enabled>
     </hop>
@@ -6343,7 +6348,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>openmrs_db</connection>
+    <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
     <sql>select obs.person_id, encounter.encounter_datetime, encounter.location_id, obs.value_coded test_requested from obs
 join encounter on encounter.encounter_id = obs.encounter_id
@@ -6420,7 +6425,7 @@ where obs.concept_id = ?
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>openmrs_db</connection>
+    <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
     <sql>select obs.value_numeric test_result_numeric, obs.value_coded test_result_coded, obs.obs_datetime test_result_date, obs.comments test_comments from obs
 join encounter on encounter.encounter_id = obs.encounter_id
@@ -6586,7 +6591,7 @@ where obs.concept_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1008</xloc>
+      <xloc>1120</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -6602,7 +6607,7 @@ where obs.concept_id = ?
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>openmrs_db</connection>
+    <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
     <sql>select etl_execution.date last_execution from etl_execution
 where etl_execution.completed = true
@@ -6636,7 +6641,7 @@ order by date desc</sql>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>openmrs_db</connection>
+    <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select patient_identifier.identifier patient_identifier from patient_identifier
 where patient_identifier.identifier_type = 6
@@ -6676,7 +6681,7 @@ where patient_identifier.identifier_type = 6
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>openmrs_db</connection>
+    <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select location_attribute.value_reference isante_location_id from location_attribute 
 where location_attribute.attribute_type_id = 1 
@@ -6770,7 +6775,7 @@ where location_attribute.attribute_type_id = 1
       <extention>csv</extention>
       <append>Y</append>
       <split>N</split>
-      <haspartno>Y</haspartno>
+      <haspartno>N</haspartno>
       <add_date>N</add_date>
       <add_time>N</add_time>
       <SpecifyFormat>N</SpecifyFormat>
@@ -7214,7 +7219,7 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>isante_location_id</name>
+        <name>dbSiteValue</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -7835,8 +7840,8 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>848</xloc>
-      <yloc>192</yloc>
+      <xloc>816</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -7927,7 +7932,7 @@ where location_attribute.attribute_type_id = 1
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>openmrs_db</connection>
+    <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
     <sql>select cn.name test_result_coded_name from concept_name cn inner join concept c 
 on cn.concept_id = c.concept_id
@@ -7953,6 +7958,45 @@ and cn.locale = "fr";
     <GUI>
       <xloc>416</xloc>
       <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch dbSite</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select location_attribute.value_reference dbSiteValue from location_attribute 
+where location_attribute.attribute_type_id = 7
+  and location_attribute.location_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>location_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1088</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
