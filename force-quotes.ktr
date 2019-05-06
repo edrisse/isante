@@ -442,11 +442,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Quotes on numbers</from>
-      <to>Quotes on empty fields</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Quotes on empty fields</from>
       <to>Quotes at the end of string</to>
       <enabled>Y</enabled>
@@ -454,6 +449,16 @@
     <hop>
       <from>Quotes at the end of string</from>
       <to>Text file output</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Quotes on numbers</from>
+      <to>Quotes on Dates</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Quotes on Dates</from>
+      <to>Quotes on empty fields</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -470,8 +475,8 @@
     </partitioning>
     <fields>
       <field>
-        <in_stream_name>line3</in_stream_name>
-        <out_stream_name>line4</out_stream_name>
+        <in_stream_name>line4</in_stream_name>
+        <out_stream_name>line5</out_stream_name>
         <use_regex>yes</use_regex>
         <replace_string>,$</replace_string>
         <replace_by_string>,""</replace_by_string>
@@ -491,7 +496,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>800</xloc>
+      <xloc>1024</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
@@ -509,8 +514,8 @@
     </partitioning>
     <fields>
       <field>
-        <in_stream_name>line2</in_stream_name>
-        <out_stream_name>line3</out_stream_name>
+        <in_stream_name>line3</in_stream_name>
+        <out_stream_name>line4</out_stream_name>
         <use_regex>no</use_regex>
         <replace_string>,,</replace_string>
         <replace_by_string>,"",</replace_by_string>
@@ -530,7 +535,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
+      <xloc>800</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
@@ -722,7 +727,7 @@
     </file>
     <fields>
       <field>
-        <name>line4</name>
+        <name>line5</name>
         <type>None</type>
         <format/>
         <currency/>
@@ -744,6 +749,45 @@
     </remotesteps>
     <GUI>
       <xloc>1408</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Quotes on Dates</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>line2</in_stream_name>
+        <out_stream_name>line3</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>,(\d{4}/\d{2}/\d{2} \d{2}:\d{2}:\d{2}\.\d{9}),</replace_string>
+        <replace_by_string>,"$1",</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
