@@ -5,3 +5,9 @@ create table etl_execution (
   primary key (id)
 );
 insert into etl_execution values (null, '1900-01-01', true);
+
+create table etl_encounter_seqnum (
+  encounter_id bigint(20) not null,
+  seqnum bigint(20) not null,
+  primary key (encounter_id)
+);
