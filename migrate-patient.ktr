@@ -612,11 +612,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Person Identifier</from>
-      <to>Fetch Hiv Positive</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Hiv Positive</from>
       <to>Fetch Pediatric</to>
       <enabled>Y</enabled>
@@ -644,6 +639,21 @@
     <hop>
       <from>Remove new line from Address</from>
       <to>Fetch Marital Status</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch iSantePlus Location</from>
+      <to>Fetch iSante Location</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Person Identifier</from>
+      <to>Fetch iSantePlus Location</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch iSante Location</from>
+      <to>Fetch Hiv Positive</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1000,6 +1010,17 @@
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
+      <field>
+        <name>location_id_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
     </fields>
     <data>
       <line>
@@ -1034,6 +1055,7 @@
         <item>addrContactTown</item>
         <item>addrContact</item>
         <item>phoneContact</item>
+        <item>location_id</item>
       </line>
     </data>
     <attributes/>
@@ -1589,7 +1611,7 @@ where encounter.voided = false
       </output>
     </remotesteps>
     <GUI>
-      <xloc>512</xloc>
+      <xloc>944</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1897,7 +1919,7 @@ where patient_identifier.voided = false
       </output>
     </remotesteps>
     <GUI>
-      <xloc>656</xloc>
+      <xloc>1088</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2141,6 +2163,84 @@ order by obs.obs_id desc</sql>
     </GUI>
   </step>
   <step>
+    <name>Fetch iSante Location</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select location_attribute.value_reference isante_location_id from location_attribute 
+where location_attribute.attribute_type_id = 1 
+  and location_attribute.location_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>isante_plus_location_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>768</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch iSantePlus Location</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.location_id isante_plus_location_id from obs
+where obs.person_id = ?
+  and obs.voided = false
+order by obs.obs_datetime desc</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>person_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>560</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Get system info</name>
     <type>SystemInfo</type>
     <description/>
@@ -2264,6 +2364,46 @@ order by obs.obs_id desc</sql>
     <GUI>
       <xloc>848</xloc>
       <yloc>352</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove new line from Address</name>
+    <type>StringOperations</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>address</in_stream_name>
+        <out_stream_name>address_sanitazed</out_stream_name>
+        <trim_type>none</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>crlf</remove_special_characters>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>384</xloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3065,6 +3205,30 @@ order by obs.obs_id desc</sql>
         <length>-1</length>
         <precision>-1</precision>
       </field>
+      <field>
+        <name>location_id_cn</name>
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>isante_location_id</name>
+        <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -3077,46 +3241,6 @@ order by obs.obs_id desc</sql>
     <GUI>
       <xloc>848</xloc>
       <yloc>656</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Remove new line from Address</name>
-    <type>StringOperations</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>address</in_stream_name>
-        <out_stream_name>address_sanitazed</out_stream_name>
-        <trim_type>none</trim_type>
-        <lower_upper>none</lower_upper>
-        <padding_type>none</padding_type>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>no</init_cap>
-        <mask_xml>none</mask_xml>
-        <digits>none</digits>
-        <remove_special_characters>crlf</remove_special_characters>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>384</xloc>
-      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
