@@ -552,16 +552,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Ocupation</from>
-      <to>Fetch Ocupation Description</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Ocupation Description</from>
-      <to>Fetch Emergency Name</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Emergency Name</from>
       <to>Fetch Emergency Relation</to>
       <enabled>Y</enabled>
@@ -654,6 +644,11 @@
     <hop>
       <from>Fetch iSante Location</from>
       <to>Fetch Hiv Positive</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Ocupation</from>
+      <to>Fetch Emergency Name</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1782,7 +1777,8 @@ where patient_identifier.voided = false
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded ocupation_code from obs
+    <sql>select obs.value_coded ocupation_code, concept_name.name ocupation_desc from obs
+left join concept_name on concept_name.concept_id = obs.concept_id and concept_name.locale = 'fr'
 where obs.person_id = ?
   and obs.concept_id = 1542
   and obs.voided = false
@@ -1805,46 +1801,6 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>144</xloc>
-      <yloc>560</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Ocupation Description</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select concept_name.name ocupation_desc from concept_name 
-where concept_name.concept_id = ?
-  and concept_name.voided = false
-  and concept_name.locale = 'fr'
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>ocupation_code</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>320</xloc>
       <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2217,7 +2173,7 @@ where location_attribute.attribute_type_id = 1
     <sql>select obs.location_id isante_plus_location_id from obs
 where obs.person_id = ?
   and obs.voided = false
-order by obs.obs_datetime desc</sql>
+order by obs.obs_id desc</sql>
     <outer_join>N</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>

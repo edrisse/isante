@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>force-quotes</name>
+    <name>initial-data-validation</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -427,49 +427,104 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2019/04/11 17:04:04.113</created_date>
+    <created_date>2019/05/11 16:41:32.896</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/04/11 17:04:04.113</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2019/05/11 16:41:32.896</modified_date>
+    <key_for_session_key/>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
+  <connection>
+    <name>Openmrs HTY</name>
+    <server>${ISANTE-PLUS-DB-HOST}</server>
+    <type>MYSQL</type>
+    <access>Native</access>
+    <database>${ISANTE-PLUS-DB-NAME}</database>
+    <port>${ISANTE-PLUS-DB-PORT}</port>
+    <username>${ISANTE-PLUS-DB-USER}</username>
+    <password>${ISANTE-PLUS-DB-PASSWORD}</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>${ISANTE-PLUS-DB-PORT}</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>STREAM_RESULTS</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
   <order>
     <hop>
-      <from>Text file input</from>
-      <to>Quotes on numbers</to>
+      <from>Fetch dbSite</from>
+      <to>Has dbSite?</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Quotes on empty fields</from>
-      <to>Quotes at the end of string</to>
+      <from>Fetch iSante Location</from>
+      <to>Fetch dbSite</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Quotes at the end of string</from>
-      <to>Text file output</to>
+      <from>Has dbSite?</from>
+      <to>Has iSante location_id?</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Quotes on Dates</from>
-      <to>Quotes on empty fields</to>
+      <from>Has dbSite?</from>
+      <to>No dbSite</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Quotes on numbers</from>
-      <to>Quotes on numbers EOL</to>
+      <from>Has iSante location_id?</from>
+      <to>No iSante location</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Quotes on numbers EOL</from>
-      <to>Quotes on Dates</to>
+      <from>Table input</from>
+      <to>Fetch iSante Location</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Quotes at the end of string</name>
-    <type>ReplaceString</type>
+    <name>Table input</name>
+    <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -478,242 +533,13 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>line5</in_stream_name>
-        <out_stream_name>line6</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>,$</replace_string>
-        <replace_by_string>,""</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1120</xloc>
-      <yloc>96</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Quotes on Dates</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>line3</in_stream_name>
-        <out_stream_name>line4</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>,(\d{4}/\d{2}/\d{2} \d{2}:\d{2}:\d{2}\.\d{9}),</replace_string>
-        <replace_by_string>,"$1",</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>720</xloc>
-      <yloc>96</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Quotes on empty fields</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>line4</in_stream_name>
-        <out_stream_name>line5</out_stream_name>
-        <use_regex>no</use_regex>
-        <replace_string>,,</replace_string>
-        <replace_by_string>,"",</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>896</xloc>
-      <yloc>96</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Quotes on numbers</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>line</in_stream_name>
-        <out_stream_name>line2</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>,([\d+\.?\d+]+),</replace_string>
-        <replace_by_string>,"$1",</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>336</xloc>
-      <yloc>96</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Text file input</name>
-    <type>TextFileInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <accept_filenames>N</accept_filenames>
-    <passing_through_fields>N</passing_through_fields>
-    <accept_field/>
-    <accept_stepname/>
-    <separator/>
-    <enclosure/>
-    <enclosure_breaks>N</enclosure_breaks>
-    <escapechar/>
-    <header>N</header>
-    <nr_headerlines>1</nr_headerlines>
-    <footer>N</footer>
-    <nr_footerlines>1</nr_footerlines>
-    <line_wrapped>N</line_wrapped>
-    <nr_wraps>1</nr_wraps>
-    <layout_paged>N</layout_paged>
-    <nr_lines_per_page>80</nr_lines_per_page>
-    <nr_lines_doc_header>0</nr_lines_doc_header>
-    <noempty>Y</noempty>
-    <include>N</include>
-    <include_field/>
-    <rownum>N</rownum>
-    <rownumByFile>N</rownumByFile>
-    <rownum_field/>
-    <format>DOS</format>
-    <encoding>UTF-8</encoding>
-    <length>Characters</length>
-    <add_to_result_filenames>Y</add_to_result_filenames>
-    <file>
-      <name>${user.home}/isante/data.csv</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-      <type>Fixed</type>
-      <compression>None</compression>
-    </file>
-    <filters>
-    </filters>
-    <fields>
-      <field>
-        <name>line</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <ifnull/>
-        <position>0</position>
-        <length>10000</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-    </fields>
+    <connection>Openmrs HTY</connection>
+    <sql>select distinct location_id from encounter</sql>
     <limit>0</limit>
-    <error_ignored>N</error_ignored>
-    <skip_bad_files>N</skip_bad_files>
-    <file_error_field/>
-    <file_error_message_field/>
-    <error_line_skipped>N</error_line_skipped>
-    <error_count_field/>
-    <error_fields_field/>
-    <error_text_field/>
-    <bad_line_files_destination_directory/>
-    <bad_line_files_extension>warning</bad_line_files_extension>
-    <error_line_files_destination_directory/>
-    <error_line_files_extension>error</error_line_files_extension>
-    <line_number_files_destination_directory/>
-    <line_number_files_extension>line</line_number_files_extension>
-    <date_format_lenient>Y</date_format_lenient>
-    <date_format_locale>en_BW</date_format_locale>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -724,13 +550,13 @@
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>96</yloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Text file output</name>
-    <type>TextFileOutput</type>
+    <name>Fetch dbSite</name>
+    <type>DBJoin</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -739,50 +565,20 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <separator/>
-    <enclosure/>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>N</header>
-    <footer>N</footer>
-    <format>UNIX</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>Y</create_parent_folder>
-    <file>
-      <name>${user.home}/isante/data-post-processed</name>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>csv</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery/>
-    </file>
-    <fields>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select location_attribute.value_reference dbSite from location_attribute 
+where location_attribute.attribute_type_id = 7
+  and location_attribute.location_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
       <field>
-        <name>line6</name>
-        <type>None</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
+        <name>location_id</name>
+        <type>Number</type>
       </field>
-    </fields>
+    </parameter>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -792,14 +588,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1344</xloc>
-      <yloc>96</yloc>
+      <xloc>624</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Quotes on numbers EOL</name>
-    <type>ReplaceString</type>
+    <name>Fetch iSante Location</name>
+    <type>DBJoin</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -808,20 +604,20 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <fields>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select location_attribute.value_reference isante_location_id from location_attribute 
+where location_attribute.attribute_type_id = 1 
+  and location_attribute.location_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
       <field>
-        <in_stream_name>line2</in_stream_name>
-        <out_stream_name>line3</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>,([\d+\.?\d+]+)$</replace_string>
-        <replace_by_string>,"$1"</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
+        <name>location_id</name>
+        <type>Number</type>
       </field>
-    </fields>
+    </parameter>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -831,8 +627,136 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>96</yloc>
+      <xloc>448</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Has dbSite?</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Has iSante location_id?</send_true_to>
+    <send_false_to>No dbSite</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>dbSite</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>816</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Has iSante location_id?</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Calculator</send_true_to>
+    <send_false_to>No iSante location</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>isante_location_id</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1024</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>No dbSite</name>
+    <type>Abort</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <row_threshold>0</row_threshold>
+    <message>Location does not have dbSite</message>
+    <always_log_rows>Y</always_log_rows>
+    <abort_option>ABORT_WITH_ERROR</abort_option>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>816</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>No iSante location</name>
+    <type>Abort</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <row_threshold>0</row_threshold>
+    <message>Location does not have iSante location_id information</message>
+    <always_log_rows>Y</always_log_rows>
+    <abort_option>ABORT_WITH_ERROR</abort_option>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1024</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
