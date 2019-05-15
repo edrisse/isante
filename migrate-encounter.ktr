@@ -492,16 +492,6 @@
   </connection>
   <order>
     <hop>
-      <from>Decompose Encounter Datetime</from>
-      <to>Fetch Next Visit Date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Encounters</from>
-      <to>Fetch iSante Location</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Next Visit Date</from>
       <to>Fetch Visit Date</to>
       <enabled>Y</enabled>
@@ -512,18 +502,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Person Identifier</from>
-      <to>Decompose Encounter Datetime</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Visit Date</from>
       <to>Value mapper</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch iSante Location</from>
-      <to>Fetch Person Identifier</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -537,18 +517,23 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Fetch Encounters</from>
+      <to>Decompose Encounter Datetime</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Decompose Next Visit Date</from>
-      <to>Fetch dbSite</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch dbSite</from>
-      <to>Fetch Seqnum</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Seqnum</from>
       <to>Save on CSV</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Decompose Encounter Datetime</from>
+      <to>Replace in string</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string</from>
+      <to>Fetch Next Visit Date</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -600,7 +585,7 @@
       <field_a>encounter_datetime</field_a>
       <field_b/>
       <field_c/>
-      <value_type>None</value_type>
+      <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
@@ -707,7 +692,13 @@
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
-    <sql>select en.visit_id, en.date_created, en.encounter_type, en.encounter_id, en.encounter_datetime, en.patient_id person_id, en.location_id isante_plus_location_id from encounter en
+    <sql>select en.visit_id, en.date_created, en.encounter_type, en.encounter_id, en.encounter_datetime, en.patient_id person_id, 
+	isante_location_attribute.value_reference isante_location_id, dbsite_location_attribute.value_reference dbSiteValue, 
+	patient_identifier.identifier patient_identifier, seqnum as seqnum_value from encounter en
+join location_attribute isante_location_attribute on isante_location_attribute.location_id = en.location_id and isante_location_attribute.attribute_type_id = 1
+join location_attribute dbsite_location_attribute on dbsite_location_attribute.location_id = en.location_id and dbsite_location_attribute.attribute_type_id = 7
+join patient_identifier on patient_identifier.patient_id = en.patient_id and patient_identifier.identifier_type = 6
+join etl_encounter_seqnum on etl_encounter_seqnum.encounter_id = en.encounter_id
   where (en.date_created >= ?
    or en.date_changed >= ?
    or en.date_voided >= ?
@@ -831,82 +822,6 @@ where obs.concept_id = 5096
     </GUI>
   </step>
   <step>
-    <name>Fetch Person Identifier</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select patient_identifier.identifier patient_identifier from patient_identifier
-where patient_identifier.identifier_type = 6
-  and patient_identifier.voided = false
-  and patient_identifier.patient_id = ?
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>person_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>688</xloc>
-      <yloc>16</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Seqnum</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select seqnum as seqnum_value from etl_encounter_seqnum where etl_encounter_seqnum.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>32</xloc>
-      <yloc>112</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Fetch Visit Date</name>
     <type>DBJoin</type>
     <description/>
@@ -940,84 +855,6 @@ where v.visit_id = ?</sql>
     <GUI>
       <xloc>688</xloc>
       <yloc>112</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch dbSite</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select location_attribute.value_reference dbSiteValue from location_attribute 
-where location_attribute.attribute_type_id = 7
-  and location_attribute.location_id = ?
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>isante_plus_location_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>112</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch iSante Location</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select location_attribute.value_reference isante_location_id from location_attribute 
-where location_attribute.attribute_type_id = 1 
-  and location_attribute.location_id = ?
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>isante_plus_location_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>512</xloc>
-      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1352,6 +1189,17 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
+      <field>
+        <name>2k</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
     </fields>
     <data>
       <line>
@@ -1384,6 +1232,7 @@ where location_attribute.attribute_type_id = 1
         <item>0</item>
         <item>\0</item>
         <item>1</item>
+        <item>2000</item>
       </line>
     </data>
     <attributes/>
@@ -1563,7 +1412,7 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>visit_year</name>
+        <name>visit_year_yy</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2140,6 +1989,45 @@ where location_attribute.attribute_type_id = 1
     <GUI>
       <xloc>512</xloc>
       <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Replace in string</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>visit_year</in_stream_name>
+        <out_stream_name>visit_year_yy</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\d\d(\d\d)</replace_string>
+        <replace_by_string>$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1152</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
