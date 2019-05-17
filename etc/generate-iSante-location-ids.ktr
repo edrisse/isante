@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>initial-data-validation</name>
+    <name>generate-iSante-location-ids</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -427,9 +428,9 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2019/05/11 16:41:32.896</created_date>
+    <created_date>2019/05/06 12:38:52.742</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/05/11 16:41:32.896</modified_date>
+    <modified_date>2019/05/06 12:38:52.742</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -492,49 +493,39 @@
   </connection>
   <order>
     <hop>
-      <from>Fetch dbSite</from>
-      <to>Has dbSite?</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch iSante Location</from>
-      <to>Fetch dbSite</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Has dbSite?</from>
-      <to>Has iSante location_id?</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Has dbSite?</from>
-      <to>No dbSite</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Has iSante location_id?</from>
-      <to>No iSante location</to>
+      <from>Generate random value</from>
+      <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Load Locations</from>
-      <to>Location is valid (not null)?</to>
+      <to>Fetch Max Location</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Location is valid (not null)?</from>
-      <to>Fetch iSante Location</to>
+      <from>Add Line Numbers</from>
+      <to>Generate iSante location_id</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Location is valid (not null)?</from>
-      <to>Null Location</to>
+      <from>Generate iSante location_id</from>
+      <to>Generate random value</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Max Location</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>Add Line Numbers</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Fetch dbSite</name>
-    <type>DBJoin</type>
+    <name>Generate random value</name>
+    <type>RandomValue</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -543,20 +534,12 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select location_attribute.value_reference dbSite from location_attribute 
-where location_attribute.attribute_type_id = 7
-  and location_attribute.location_id = ?
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
+    <fields>
       <field>
-        <name>location_id</name>
-        <type>Number</type>
+        <name>uuid</name>
+        <type>random uuid</type>
       </field>
-    </parameter>
+    </fields>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -566,174 +549,7 @@ where location_attribute.attribute_type_id = 7
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch iSante Location</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select location_attribute.value_reference isante_location_id from location_attribute 
-where location_attribute.attribute_type_id = 1 
-  and location_attribute.location_id = ?
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>location_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>448</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Has dbSite?</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Has iSante location_id?</send_true_to>
-    <send_false_to>No dbSite</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>dbSite</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>816</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Has iSante location_id?</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Calculator</send_true_to>
-    <send_false_to>No iSante location</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>isante_location_id</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1024</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>No dbSite</name>
-    <type>Abort</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <row_threshold>0</row_threshold>
-    <message>Location does not have dbSite</message>
-    <always_log_rows>Y</always_log_rows>
-    <abort_option>ABORT_WITH_ERROR</abort_option>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>816</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>No iSante location</name>
-    <type>Abort</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <row_threshold>0</row_threshold>
-    <message>Location does not have iSante location_id information</message>
-    <always_log_rows>Y</always_log_rows>
-    <abort_option>ABORT_WITH_ERROR</abort_option>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1024</xloc>
+      <xloc>1232</xloc>
       <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
@@ -750,11 +566,10 @@ where location_attribute.attribute_type_id = 1
       <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
-    <sql>select distinct location_id from encounter
-
-union
-
-select distinct location_id from obs</sql>
+    <sql>select location.location_id, true, curdate() system_date, 1 attribute_type, location.creator from location
+left join location_attribute on location_attribute.location_id = location.location_id and location_attribute.attribute_type_id = 1
+where location_attribute.location_id is null
+</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -769,14 +584,14 @@ select distinct location_id from obs</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
-      <yloc>192</yloc>
+      <xloc>144</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Location is valid (not null)?</name>
-    <type>FilterRows</type>
+    <name>Table output</name>
+    <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -785,16 +600,49 @@ select distinct location_id from obs</sql>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>Fetch iSante Location</send_true_to>
-    <send_false_to>Null Location</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>location_id</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
+    <connection>Openmrs HTY</connection>
+    <schema/>
+    <table>location_attribute</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>attribute_type_id</column_name>
+        <stream_name>attribute_type</stream_name>
+      </field>
+      <field>
+        <column_name>value_reference</column_name>
+        <stream_name>isante_location_id</stream_name>
+      </field>
+      <field>
+        <column_name>uuid</column_name>
+        <stream_name>uuid</stream_name>
+      </field>
+      <field>
+        <column_name>creator</column_name>
+        <stream_name>creator</stream_name>
+      </field>
+      <field>
+        <column_name>date_created</column_name>
+        <stream_name>system_date</stream_name>
+      </field>
+      <field>
+        <column_name>location_id</column_name>
+        <stream_name>location_id</stream_name>
+      </field>
+    </fields>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -804,14 +652,14 @@ select distinct location_id from obs</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>240</xloc>
-      <yloc>192</yloc>
+      <xloc>1456</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Null Location</name>
-    <type>Abort</type>
+    <name>Fetch Max Location</name>
+    <type>DBJoin</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -820,10 +668,13 @@ select distinct location_id from obs</sql>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <row_threshold>0</row_threshold>
-    <message>Found observations or encounters with null location_id</message>
-    <always_log_rows>Y</always_log_rows>
-    <abort_option>ABORT_WITH_ERROR</abort_option>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>0</rowlimit>
+    <sql>select max(value_reference) max_location from location_attribute where location_attribute.attribute_type_id = 1</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+    </parameter>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -833,7 +684,130 @@ select distinct location_id from obs</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>240</xloc>
+      <xloc>352</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Add Line Numbers</name>
+    <type>GroupBy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <all_rows>Y</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore/>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>grp</prefix>
+    <add_linenr>Y</add_linenr>
+    <linenr_fieldname>line_number</linenr_fieldname>
+    <give_back_row>N</give_back_row>
+    <group>
+      </group>
+    <fields>
+      </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>736</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Generate iSante location_id</name>
+    <type>Calculator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>isante_location_id</field_name>
+      <calc_type>ADD</calc_type>
+      <field_a>max_location</field_a>
+      <field_b>line_number</field_b>
+      <field_c/>
+      <value_type>Integer</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>928</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>max_location</name>
+        <rename>max_location</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>512</xloc>
       <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
