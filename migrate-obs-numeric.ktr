@@ -527,11 +527,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values format</from>
-      <to>Save on CSV</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Last ETL Excution Date</from>
       <to>Filter rows</to>
       <enabled>Y</enabled>
@@ -574,6 +569,16 @@
     <hop>
       <from>Set field value date</from>
       <to>Fetch Person Identifier</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values format</from>
+      <to>Remove new line from Address</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove new line from Address</from>
+      <to>Save on CSV</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1790,7 +1795,7 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>value_text</name>
+        <name>value_text_sanitazed</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2027,8 +2032,8 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>944</xloc>
-      <yloc>224</yloc>
+      <xloc>1056</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3301,6 +3306,46 @@ where location_attribute.attribute_type_id = 1
     <GUI>
       <xloc>16</xloc>
       <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove new line from Address</name>
+    <type>StringOperations</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>value_text</in_stream_name>
+        <out_stream_name>value_text_sanitazed</out_stream_name>
+        <trim_type>none</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>crlf</remove_special_characters>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1056</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

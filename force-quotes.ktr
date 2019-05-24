@@ -452,11 +452,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Quotes on Dates</from>
-      <to>Quotes on empty fields</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Quotes on numbers</from>
       <to>Quotes on numbers EOL</to>
       <enabled>Y</enabled>
@@ -464,6 +459,16 @@
     <hop>
       <from>Quotes on numbers EOL</from>
       <to>Quotes on Dates</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Quotes on Dates</from>
+      <to>Quotes on Dates 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Quotes on Dates 2</from>
+      <to>Quotes on empty fields</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -480,8 +485,8 @@
     </partitioning>
     <fields>
       <field>
-        <in_stream_name>line5</in_stream_name>
-        <out_stream_name>line6</out_stream_name>
+        <in_stream_name>line6</in_stream_name>
+        <out_stream_name>line7</out_stream_name>
         <use_regex>yes</use_regex>
         <replace_string>,$</replace_string>
         <replace_by_string>,""</replace_by_string>
@@ -501,7 +506,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1120</xloc>
+      <xloc>1312</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
@@ -558,8 +563,8 @@
     </partitioning>
     <fields>
       <field>
-        <in_stream_name>line4</in_stream_name>
-        <out_stream_name>line5</out_stream_name>
+        <in_stream_name>line5</in_stream_name>
+        <out_stream_name>line6</out_stream_name>
         <use_regex>no</use_regex>
         <replace_string>,,</replace_string>
         <replace_by_string>,"",</replace_by_string>
@@ -579,7 +584,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
+      <xloc>1088</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
@@ -619,6 +624,45 @@
     </remotesteps>
     <GUI>
       <xloc>336</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Quotes on numbers EOL</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>line2</in_stream_name>
+        <out_stream_name>line3</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>,([\d+\.?\d+]+)$</replace_string>
+        <replace_by_string>,"$1"</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
@@ -771,7 +815,7 @@
     </file>
     <fields>
       <field>
-        <name>line6</name>
+        <name>line7</name>
         <type>None</type>
         <format/>
         <currency/>
@@ -792,13 +836,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1344</xloc>
+      <xloc>1536</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Quotes on numbers EOL</name>
+    <name>Quotes on Dates 2</name>
     <type>ReplaceString</type>
     <description/>
     <distribute>Y</distribute>
@@ -810,11 +854,11 @@
     </partitioning>
     <fields>
       <field>
-        <in_stream_name>line2</in_stream_name>
-        <out_stream_name>line3</out_stream_name>
+        <in_stream_name>line4</in_stream_name>
+        <out_stream_name>line5</out_stream_name>
         <use_regex>yes</use_regex>
-        <replace_string>,([\d+\.?\d+]+)$</replace_string>
-        <replace_by_string>,"$1"</replace_by_string>
+        <replace_string>,(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}),</replace_string>
+        <replace_by_string>,"$1",</replace_by_string>
         <set_empty_string>N</set_empty_string>
         <replace_field_by_string/>
         <whole_word>no</whole_word>
@@ -831,7 +875,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
+      <xloc>896</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
