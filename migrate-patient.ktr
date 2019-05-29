@@ -1623,7 +1623,7 @@ where encounter.voided = false
       <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
-    <rowlimit>0</rowlimit>
+    <rowlimit>1</rowlimit>
     <sql>select etl_execution.date last_execution from etl_execution
 where etl_execution.completed = true
 order by date desc</sql>

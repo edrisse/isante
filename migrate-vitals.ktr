@@ -5774,7 +5774,7 @@ where obs.concept_id = 163542
       <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
-    <rowlimit>0</rowlimit>
+    <rowlimit>1</rowlimit>
     <sql>select etl_execution.date last_execution from etl_execution
 where etl_execution.completed = true
 order by date desc</sql>
@@ -8873,6 +8873,81 @@ where location_attribute.attribute_type_id = 1
     <GUI>
       <xloc>80</xloc>
       <yloc>1824</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Replace in string</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>visit_year</in_stream_name>
+        <out_stream_name>visit_year_yy</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\d\d(\d\d)</replace_string>
+        <replace_by_string>$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>hiv_test_year</in_stream_name>
+        <out_stream_name>hiv_test_year_yy</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\d\d(\d\d)</replace_string>
+        <replace_by_string>$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>lowest_cd4_year</in_stream_name>
+        <out_stream_name>lowest_cd4_year_yy</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\d\d(\d\d)</replace_string>
+        <replace_by_string>$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>vl_date_year</in_stream_name>
+        <out_stream_name>vl_date_year_yy</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\d\d(\d\d)</replace_string>
+        <replace_by_string>$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>736</xloc>
+      <yloc>1920</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -12805,81 +12880,6 @@ where location_attribute.attribute_type_id = 1
     </remotesteps>
     <GUI>
       <xloc>960</xloc>
-      <yloc>1920</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Replace in string</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>visit_year</in_stream_name>
-        <out_stream_name>visit_year_yy</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>\d\d(\d\d)</replace_string>
-        <replace_by_string>$1</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>hiv_test_year</in_stream_name>
-        <out_stream_name>hiv_test_year_yy</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>\d\d(\d\d)</replace_string>
-        <replace_by_string>$1</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>lowest_cd4_year</in_stream_name>
-        <out_stream_name>lowest_cd4_year_yy</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>\d\d(\d\d)</replace_string>
-        <replace_by_string>$1</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>vl_date_year</in_stream_name>
-        <out_stream_name>vl_date_year_yy</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>\d\d(\d\d)</replace_string>
-        <replace_by_string>$1</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>736</xloc>
       <yloc>1920</yloc>
       <draw>Y</draw>
     </GUI>
