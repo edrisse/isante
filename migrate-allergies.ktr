@@ -918,7 +918,7 @@ and ar.reaction_concept_id = 512
       <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
+    <rowlimit>0</rowlimit>
     <sql>select en.encounter_id, en.encounter_datetime, en.patient_id person_id, en.location_id isante_plus_location_id from encounter en
 where en.encounter_type in (1, 9)
   and (en.date_created >= ?
