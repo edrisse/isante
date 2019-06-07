@@ -773,6 +773,11 @@
     </hop>
     <hop>
       <from>Fetch Seqnum</from>
+      <to>Remove new line</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove new line</from>
       <to>Save on CSV</to>
       <enabled>Y</enabled>
     </hop>
@@ -4736,7 +4741,7 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>side_other_text</name>
+        <name>side_other_text_sanitized</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -4760,7 +4765,7 @@ where location_attribute.attribute_type_id = 1
         <precision>-1</precision>
       </field>
       <field>
-        <name>adherence_remark</name>
+        <name>adherence_remark_sanitized</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -4877,7 +4882,7 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
+      <xloc>64</xloc>
       <yloc>912</yloc>
       <draw>Y</draw>
     </GUI>
@@ -5297,6 +5302,59 @@ where location_attribute.attribute_type_id = 1
     <GUI>
       <xloc>720</xloc>
       <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove new line</name>
+    <type>StringOperations</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>adherence_remark</in_stream_name>
+        <out_stream_name>adherence_remark_sanitized</out_stream_name>
+        <trim_type>none</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>crlf</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>side_other_text</in_stream_name>
+        <out_stream_name>side_other_text_sanitized</out_stream_name>
+        <trim_type>none</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>crlf</remove_special_characters>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>256</xloc>
+      <yloc>912</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
