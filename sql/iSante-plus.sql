@@ -11,3 +11,11 @@ create table etl_encounter_seqnum (
   seqnum bigint(20) not null,
   primary key (encounter_id)
 );
+
+create table etl_records_processed (
+  id bigint(20) not null auto_increment,
+  table_name varchar(120) not null,
+  records_processed bigint(20) not null,
+  primary key (id)
+);
+alter table etl_records_processed add constraint uq_etl_records_processed unique (table_name);
