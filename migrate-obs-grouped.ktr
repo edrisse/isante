@@ -947,7 +947,8 @@
     <sql>select obs1.obs_group_id group_id from obs obs1 join obs obs2
 on obs1.obs_group_id = obs2.obs_id
 join encounter on encounter.encounter_id = obs1.encounter_id
-and encounter.encounter_type in (15, 16, 17, 18)
+join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
+and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae')
 and obs2.concept_id = ?
 where obs1.value_coded = ?
   and encounter.voided = false
@@ -1105,8 +1106,8 @@ where obs.obs_group_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
-      <yloc>96</yloc>
+      <xloc>864</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

@@ -581,6 +581,11 @@
       <to>Save on CSV</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Load iSante Location Attribute</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Columns</name>
@@ -977,10 +982,11 @@
     <sql>select obs.person_id, obs.obs_datetime, obs.encounter_id, encounter.location_id, encounter.encounter_datetime, obs.date_created, obs.voided,
 obs.date_voided, obs.void_reason, obs.comments, obs.value_text, obs.value_numeric, obs.value_datetime  from obs
 join encounter on encounter.encounter_id = obs.encounter_id
+join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
 where obs.concept_id = ?
   and obs.value_coded = ?
   and encounter.voided = false
-  and encounter.encounter_type in (15, 16, 17, 18)
+  and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae')
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
    or encounter.date_voided >= ?
@@ -1043,7 +1049,7 @@ where obs.concept_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
+      <xloc>704</xloc>
       <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1064,9 +1070,10 @@ where obs.concept_id = ?
     <sql>select obs.person_id, obs.obs_datetime, obs.encounter_id, encounter.location_id, encounter.encounter_datetime, obs.date_created, obs.voided,
 obs.date_voided, obs.void_reason, obs.comments, obs.value_text, obs.value_numeric, obs.value_datetime  from obs
 join encounter on encounter.encounter_id = obs.encounter_id
+join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
 where obs.concept_id = ?
   and encounter.voided = false
-  and encounter.encounter_type in (15, 16, 17, 18)
+  and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae')
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
    or encounter.date_voided >= ?
@@ -1125,7 +1132,7 @@ where obs.concept_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
+      <xloc>704</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1159,7 +1166,7 @@ order by date desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
+      <xloc>496</xloc>
       <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1199,7 +1206,7 @@ where patient_identifier.identifier_type = 6
       </output>
     </remotesteps>
     <GUI>
-      <xloc>992</xloc>
+      <xloc>1168</xloc>
       <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1218,12 +1225,16 @@ where patient_identifier.identifier_type = 6
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select location_attribute.value_reference isante_location_id from location_attribute 
-where location_attribute.attribute_type_id = 1 
+where location_attribute.attribute_type_id = ?
   and location_attribute.location_id = ?
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>isante_location_attribute_type_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>location_id</name>
         <type>Number</type>
@@ -1238,7 +1249,7 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1136</xloc>
+      <xloc>1312</xloc>
       <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1282,7 +1293,7 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>416</xloc>
+      <xloc>592</xloc>
       <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1326,7 +1337,7 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>816</xloc>
+      <xloc>992</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1363,7 +1374,7 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
+      <xloc>288</xloc>
       <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1403,7 +1414,7 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
+      <xloc>1232</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2072,7 +2083,7 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
+      <xloc>1232</xloc>
       <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2117,7 +2128,7 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
+      <xloc>864</xloc>
       <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2162,7 +2173,7 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
+      <xloc>864</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2275,7 +2286,7 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1072</xloc>
+      <xloc>1248</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2306,7 +2317,7 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>848</xloc>
+      <xloc>1024</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2337,7 +2348,7 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>832</xloc>
+      <xloc>1008</xloc>
       <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3344,8 +3355,40 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>16</xloc>
-      <yloc>112</yloc>
+      <xloc>32</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Load iSante Location Attribute</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <sql>select patient_identifier_type.patient_identifier_type_id isante_location_attribute_type_id from patient_identifier_type where uuid = '0e0c7cc2-3491-4675-b705-746e372ff346'</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>32</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

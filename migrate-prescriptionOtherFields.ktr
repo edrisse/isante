@@ -492,11 +492,6 @@
   </connection>
   <order>
     <hop>
-      <from>Column Names</from>
-      <to>Fetch Last ETL Excution Date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Last ETL Excution Date</from>
       <to>Fetch Prescription Encounters</to>
       <enabled>Y</enabled>
@@ -569,6 +564,21 @@
     <hop>
       <from>Save on CSV</from>
       <to>Group by</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join rows (cartesian product)</from>
+      <to>Fetch Last ETL Excution Date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Load iSante Location Attribute</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Column Names</from>
+      <to>Join rows (cartesian product)</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -706,8 +716,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>96</yloc>
+      <xloc>64</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -777,7 +787,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1088</xloc>
+      <xloc>1216</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
@@ -817,7 +827,7 @@ where obs.concept_id = 163322
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1328</xloc>
+      <xloc>1456</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
@@ -857,7 +867,7 @@ where obs.concept_id = 159599
       </output>
     </remotesteps>
     <GUI>
-      <xloc>880</xloc>
+      <xloc>1008</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
@@ -891,7 +901,7 @@ order by date desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
+      <xloc>448</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
@@ -931,7 +941,7 @@ where patient_identifier.identifier_type = 6
       </output>
     </remotesteps>
     <GUI>
-      <xloc>880</xloc>
+      <xloc>1008</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
@@ -950,12 +960,13 @@ where patient_identifier.identifier_type = 6
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
     <sql>select encounter.encounter_id, encounter.encounter_datetime, encounter.patient_id person_id, encounter.location_id isante_plus_location_id from encounter
-where encounter.encounter_type in (1, 2)
+join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
+where encounter_type.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7', '204ad066-c5c2-4229-9a62-644bc5617ca2')
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
    or encounter.date_voided >= ?
    or encounter.date_created >= ?
-   or encounter.date_changed >= ?
+   or encounter.date_changed &gt;= ?
    or encounter.date_voided >= ?)
 </sql>
     <outer_join>N</outer_join>
@@ -995,7 +1006,7 @@ where encounter.encounter_type in (1, 2)
       </output>
     </remotesteps>
     <GUI>
-      <xloc>544</xloc>
+      <xloc>672</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1035,7 +1046,7 @@ where obs.concept_id = 159811
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1328</xloc>
+      <xloc>1456</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1071,7 +1082,7 @@ where obs.concept_id = 159811
       </output>
     </remotesteps>
     <GUI>
-      <xloc>512</xloc>
+      <xloc>640</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1110,7 +1121,7 @@ where location_attribute.attribute_type_id = 7
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
+      <xloc>832</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1129,12 +1140,16 @@ where location_attribute.attribute_type_id = 7
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select location_attribute.value_reference isante_location_id from location_attribute 
-where location_attribute.attribute_type_id = 1 
+where location_attribute.attribute_type_id = ?
   and location_attribute.location_id = ?
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>isante_location_attribute_type_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>isante_plus_location_id</name>
         <type>Number</type>
@@ -1149,8 +1164,115 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
+      <xloc>848</xloc>
       <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter rows</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Save Records Processed</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>last_row</leftvalue>
+        <function>=</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>Boolean</type>
+          <text>Y</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask/>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>352</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Group by</name>
+    <type>GroupBy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <all_rows>Y</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore/>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>grp</prefix>
+    <add_linenr>Y</add_linenr>
+    <linenr_fieldname>record_number</linenr_fieldname>
+    <give_back_row>N</give_back_row>
+    <group>
+      </group>
+    <fields>
+      </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>736</xloc>
+      <yloc>352</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Identify last row in a stream</name>
+    <type>DetectLastRow</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <resultfieldname>last_row</resultfieldname>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>592</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1187,8 +1309,60 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1104</xloc>
+      <xloc>1232</xloc>
       <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Save Records Processed</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <schema/>
+    <table>etl_records_processed</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>table_name</column_name>
+        <stream_name>table_name</stream_name>
+      </field>
+      <field>
+        <column_name>records_processed</column_name>
+        <stream_name>record_number</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>144</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1424,14 +1598,14 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
+      <xloc>448</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Filter rows</name>
-    <type>FilterRows</type>
+    <name>Join rows (cartesian product)</name>
+    <type>JoinRows</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1440,23 +1614,16 @@ where location_attribute.attribute_type_id = 1
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to>Save Records Processed</send_true_to>
-    <send_false_to/>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main/>
     <compare>
       <condition>
         <negated>N</negated>
-        <leftvalue>last_row</leftvalue>
+        <leftvalue/>
         <function>=</function>
         <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>Boolean</type>
-          <text>Y</text>
-          <length>-1</length>
-          <precision>-1</precision>
-          <isnull>N</isnull>
-          <mask/>
-        </value>
       </condition>
     </compare>
     <attributes/>
@@ -1468,77 +1635,14 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
-      <yloc>352</yloc>
+      <xloc>240</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Group by</name>
-    <type>GroupBy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <all_rows>Y</all_rows>
-    <ignore_aggregate>N</ignore_aggregate>
-    <field_ignore/>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>grp</prefix>
-    <add_linenr>Y</add_linenr>
-    <linenr_fieldname>record_number</linenr_fieldname>
-    <give_back_row>N</give_back_row>
-    <group>
-      </group>
-    <fields>
-      </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>608</xloc>
-      <yloc>352</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Identify last row in a stream</name>
-    <type>DetectLastRow</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <resultfieldname>last_row</resultfieldname>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>464</xloc>
-      <yloc>352</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Save Records Processed</name>
-    <type>TableOutput</type>
+    <name>Load iSante Location Attribute</name>
+    <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1548,32 +1652,12 @@ where location_attribute.attribute_type_id = 1
       <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
-    <schema/>
-    <table>etl_records_processed</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>table_name</column_name>
-        <stream_name>table_name</stream_name>
-      </field>
-      <field>
-        <column_name>records_processed</column_name>
-        <stream_name>record_number</stream_name>
-      </field>
-    </fields>
+    <sql>select patient_identifier_type.patient_identifier_type_id isante_location_attribute_type_id from patient_identifier_type where uuid = '0e0c7cc2-3491-4675-b705-746e372ff346'</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -1583,8 +1667,8 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>352</yloc>
+      <xloc>64</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

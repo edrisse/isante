@@ -512,11 +512,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Input grid</from>
-      <to>Fetch Last ETL Excution Date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Decompose Encounter Datetime</from>
       <to>Fetch Medicin</to>
       <enabled>Y</enabled>
@@ -806,6 +801,26 @@
       <to>Save on CSV</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Input grid</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Load Encounter Type</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join rows (cartesian product)</from>
+      <to>Fetch Last ETL Excution Date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Load iSante Location Attribute</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Decompose Encounter Datetime</name>
@@ -873,8 +888,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>880</xloc>
-      <yloc>16</yloc>
+      <xloc>1136</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -923,8 +938,8 @@ where obs.concept_id = 160582
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>304</yloc>
+      <xloc>1152</xloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -973,8 +988,8 @@ where obs.concept_id = 160582
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
-      <yloc>400</yloc>
+      <xloc>288</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1023,8 +1038,8 @@ where obs.concept_id = 160582
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>304</yloc>
+      <xloc>432</xloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1072,8 +1087,8 @@ where obs.concept_id = 163709
       </output>
     </remotesteps>
     <GUI>
-      <xloc>160</xloc>
-      <yloc>208</yloc>
+      <xloc>416</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1122,8 +1137,8 @@ where obs.concept_id = 163556
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>112</yloc>
+      <xloc>608</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1172,8 +1187,8 @@ where obs.concept_id = 163556
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
-      <yloc>112</yloc>
+      <xloc>288</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1222,8 +1237,8 @@ where obs.concept_id = 163556
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
-      <yloc>208</yloc>
+      <xloc>288</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1272,8 +1287,8 @@ where obs.concept_id = 160582
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>496</yloc>
+      <xloc>1152</xloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1322,8 +1337,8 @@ where obs.concept_id = 160582
       </output>
     </remotesteps>
     <GUI>
-      <xloc>752</xloc>
-      <yloc>496</yloc>
+      <xloc>1008</xloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1370,8 +1385,8 @@ and (obs.date_created >= ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
-      <yloc>608</yloc>
+      <xloc>480</xloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1421,8 +1436,8 @@ and (obs1.date_created >= ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
-      <yloc>608</yloc>
+      <xloc>288</xloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1471,8 +1486,8 @@ where obs.concept_id = 160582
       </output>
     </remotesteps>
     <GUI>
-      <xloc>544</xloc>
-      <yloc>400</yloc>
+      <xloc>800</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1519,8 +1534,8 @@ and (obs.date_created >= ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>720</yloc>
+      <xloc>448</xloc>
+      <yloc>848</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1570,8 +1585,8 @@ and (obs1.date_created >= ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>384</xloc>
-      <yloc>720</yloc>
+      <xloc>640</xloc>
+      <yloc>848</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1620,8 +1635,8 @@ where obs.concept_id = 159935
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1136</xloc>
-      <yloc>912</yloc>
+      <xloc>1392</xloc>
+      <yloc>1040</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1670,8 +1685,8 @@ where obs.concept_id = 160582
       </output>
     </remotesteps>
     <GUI>
-      <xloc>752</xloc>
-      <yloc>304</yloc>
+      <xloc>1008</xloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1720,8 +1735,8 @@ where obs.concept_id = 160582
       </output>
     </remotesteps>
     <GUI>
-      <xloc>560</xloc>
-      <yloc>304</yloc>
+      <xloc>816</xloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1770,8 +1785,8 @@ where obs.concept_id = 160582
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>400</yloc>
+      <xloc>960</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1789,7 +1804,7 @@ where obs.concept_id = 160582
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
     <sql>select en.encounter_id, en.encounter_datetime, en.patient_id person_id, en.location_id isante_plus_location_id from encounter en
-where en.encounter_type = 8
+where en.encounter_type = ?
   and (en.date_created >= ?
    or en.date_changed >= ?
    or en.date_voided >= ?
@@ -1800,6 +1815,10 @@ where en.encounter_type = 8
     <outer_join>N</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>main_encounter_type_id</name>
+        <type>None</type>
+      </field>
       <field>
         <name>last_execution</name>
         <type>Date</type>
@@ -1834,8 +1853,8 @@ where en.encounter_type = 8
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>16</yloc>
+      <xloc>608</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1882,8 +1901,8 @@ and (obs.date_created >= ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>752</xloc>
-      <yloc>608</yloc>
+      <xloc>1008</xloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1933,8 +1952,8 @@ and (obs1.date_created >= ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
-      <yloc>608</yloc>
+      <xloc>832</xloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1981,8 +2000,8 @@ and (obs.date_created >= ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>816</yloc>
+      <xloc>448</xloc>
+      <yloc>944</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2032,8 +2051,8 @@ and (obs1.date_created >= ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
-      <yloc>816</yloc>
+      <xloc>288</xloc>
+      <yloc>944</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2082,8 +2101,8 @@ where obs.concept_id = 160582
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
-      <yloc>400</yloc>
+      <xloc>624</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2132,8 +2151,8 @@ where obs.concept_id = 163556
       </output>
     </remotesteps>
     <GUI>
-      <xloc>160</xloc>
-      <yloc>112</yloc>
+      <xloc>416</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2166,8 +2185,8 @@ order by date desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>16</yloc>
+      <xloc>448</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2216,8 +2235,8 @@ where obs.concept_id = 160582
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>400</yloc>
+      <xloc>1152</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2264,8 +2283,8 @@ and (obs.date_created >= ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>752</xloc>
-      <yloc>720</yloc>
+      <xloc>1008</xloc>
+      <yloc>848</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2315,8 +2334,8 @@ and (obs1.date_created >= ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>912</xloc>
-      <yloc>720</yloc>
+      <xloc>1168</xloc>
+      <yloc>848</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2365,8 +2384,8 @@ where obs.concept_id = 160582
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>208</yloc>
+      <xloc>1152</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2415,8 +2434,8 @@ where obs.concept_id = 163556
       </output>
     </remotesteps>
     <GUI>
-      <xloc>880</xloc>
-      <yloc>112</yloc>
+      <xloc>1136</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2465,8 +2484,8 @@ where obs.concept_id = 160582
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>400</yloc>
+      <xloc>464</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2513,8 +2532,8 @@ and (obs.date_created >= ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
-      <yloc>496</yloc>
+      <xloc>544</xloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2564,8 +2583,8 @@ and (obs1.date_created >= ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>496</yloc>
+      <xloc>784</xloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2612,8 +2631,8 @@ and (obs.date_created >= ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>816</yloc>
+      <xloc>960</xloc>
+      <yloc>944</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2663,8 +2682,8 @@ and (obs1.date_created >= ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>544</xloc>
-      <yloc>816</yloc>
+      <xloc>800</xloc>
+      <yloc>944</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2703,8 +2722,8 @@ where patient_identifier.identifier_type = 6
       </output>
     </remotesteps>
     <GUI>
-      <xloc>672</xloc>
-      <yloc>16</yloc>
+      <xloc>928</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2753,8 +2772,8 @@ where obs.concept_id = 163556
       </output>
     </remotesteps>
     <GUI>
-      <xloc>560</xloc>
-      <yloc>112</yloc>
+      <xloc>816</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2802,8 +2821,8 @@ where obs.concept_id = 163710
       </output>
     </remotesteps>
     <GUI>
-      <xloc>512</xloc>
-      <yloc>208</yloc>
+      <xloc>768</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2851,8 +2870,8 @@ where obs.concept_id = 161011
       </output>
     </remotesteps>
     <GUI>
-      <xloc>912</xloc>
-      <yloc>912</yloc>
+      <xloc>1168</xloc>
+      <yloc>1040</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2887,8 +2906,8 @@ where obs.concept_id = 161011
       </output>
     </remotesteps>
     <GUI>
-      <xloc>640</xloc>
-      <yloc>912</yloc>
+      <xloc>896</xloc>
+      <yloc>1040</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2937,8 +2956,8 @@ where obs.concept_id = 160582
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
-      <yloc>304</yloc>
+      <xloc>288</xloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2987,8 +3006,8 @@ where obs.concept_id = 160582
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
-      <yloc>304</yloc>
+      <xloc>656</xloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3037,8 +3056,8 @@ where obs.concept_id = 163556
       </output>
     </remotesteps>
     <GUI>
-      <xloc>752</xloc>
-      <yloc>112</yloc>
+      <xloc>1008</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3076,8 +3095,8 @@ where location_attribute.attribute_type_id = 7
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
-      <yloc>912</yloc>
+      <xloc>1040</xloc>
+      <yloc>1040</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3095,12 +3114,16 @@ where location_attribute.attribute_type_id = 7
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select location_attribute.value_reference isante_location_id from location_attribute 
-where location_attribute.attribute_type_id = 1 
+where location_attribute.attribute_type_id = ?
   and location_attribute.location_id = ?
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>isante_location_attribute_type_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>isante_plus_location_id</name>
         <type>Number</type>
@@ -3115,8 +3138,8 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>16</yloc>
+      <xloc>768</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3159,8 +3182,8 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
-      <yloc>1008</yloc>
+      <xloc>624</xloc>
+      <yloc>1136</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3196,8 +3219,8 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>48</xloc>
-      <yloc>1008</yloc>
+      <xloc>304</xloc>
+      <yloc>1136</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3222,8 +3245,8 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>1008</yloc>
+      <xloc>464</xloc>
+      <yloc>1136</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3841,8 +3864,77 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
+      <xloc>96</xloc>
       <yloc>16</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Join rows (cartesian product)</name>
+    <type>JoinRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue/>
+        <function>=</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>240</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Load Encounter Type</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <sql>select encounter_type_id main_encounter_type_id from encounter_type where uuid = 'c45d7299-ad08-4cb5-8e5d-e0ce40532939'</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3894,8 +3986,47 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
-      <yloc>912</yloc>
+      <xloc>736</xloc>
+      <yloc>1040</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Replace in string</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>visit_year</in_stream_name>
+        <out_stream_name>visit_year_yy</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\d\d(\d\d)</replace_string>
+        <replace_by_string>$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>544</xloc>
+      <yloc>1040</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3946,8 +4077,8 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>512</xloc>
-      <yloc>1008</yloc>
+      <xloc>768</xloc>
+      <yloc>1136</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5119,8 +5250,8 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
-      <yloc>912</yloc>
+      <xloc>320</xloc>
+      <yloc>1040</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5169,8 +5300,8 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
-      <yloc>208</yloc>
+      <xloc>576</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5211,8 +5342,8 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
-      <yloc>608</yloc>
+      <xloc>656</xloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5253,8 +5384,8 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
-      <yloc>720</yloc>
+      <xloc>288</xloc>
+      <yloc>848</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5295,8 +5426,8 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>912</xloc>
-      <yloc>608</yloc>
+      <xloc>1168</xloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5337,8 +5468,8 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>816</yloc>
+      <xloc>608</xloc>
+      <yloc>944</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5379,8 +5510,8 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
-      <yloc>720</yloc>
+      <xloc>864</xloc>
+      <yloc>848</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5421,8 +5552,8 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
-      <yloc>496</yloc>
+      <xloc>288</xloc>
+      <yloc>624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5463,8 +5594,8 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>912</xloc>
-      <yloc>816</yloc>
+      <xloc>1168</xloc>
+      <yloc>944</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5537,14 +5668,14 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
-      <yloc>208</yloc>
+      <xloc>976</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Replace in string</name>
-    <type>ReplaceString</type>
+    <name>Load iSante Location Attribute</name>
+    <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -5553,20 +5684,13 @@ where location_attribute.attribute_type_id = 1
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>visit_year</in_stream_name>
-        <out_stream_name>visit_year_yy</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>\d\d(\d\d)</replace_string>
-        <replace_by_string>$1</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
+    <connection>Openmrs HTY</connection>
+    <sql>select patient_identifier_type.patient_identifier_type_id isante_location_attribute_type_id from patient_identifier_type where uuid = '0e0c7cc2-3491-4675-b705-746e372ff346'</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -5576,8 +5700,8 @@ where location_attribute.attribute_type_id = 1
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
-      <yloc>912</yloc>
+      <xloc>96</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
