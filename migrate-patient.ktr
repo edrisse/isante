@@ -681,6 +681,11 @@
       <to>Get system info</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Load Location Patient Identifier</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Column Names</name>
@@ -1092,8 +1097,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>672</xloc>
-      <yloc>128</yloc>
+      <xloc>688</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1164,7 +1169,7 @@
     </remotesteps>
     <GUI>
       <xloc>672</xloc>
-      <yloc>352</yloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1204,7 +1209,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>592</xloc>
-      <yloc>464</yloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1223,12 +1228,13 @@ order by obs.obs_id desc</sql>
     <rowlimit>0</rowlimit>
     <sql>select person.person_id, person.death_date, person.uuid person_uuid, person.gender, person.birthdate from patient
 join person on (person.person_id = patient.patient_id)
-where person.date_created >= ?
+where (person.date_created >= ?
    or person.date_changed >= ?
    or person.date_voided >= ?
    or patient.date_created >= ?
    or patient.date_changed >= ?
-   or patient.date_voided >= ?
+   or patient.date_voided >= ?) and patient.patient_id in (227, 339, 341, 342, 343, 344, 351, 387, 396)
+
 </sql>
     <outer_join>N</outer_join>
     <replace_vars>N</replace_vars>
@@ -1268,7 +1274,7 @@ where person.date_created >= ?
     </remotesteps>
     <GUI>
       <xloc>144</xloc>
-      <yloc>208</yloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1308,7 +1314,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>896</xloc>
-      <yloc>464</yloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1349,7 +1355,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>1344</xloc>
-      <yloc>656</yloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1390,7 +1396,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>1120</xloc>
-      <yloc>560</yloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1431,7 +1437,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>496</xloc>
-      <yloc>560</yloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1472,7 +1478,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>1136</xloc>
-      <yloc>656</yloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1513,7 +1519,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>672</xloc>
-      <yloc>560</yloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1553,7 +1559,7 @@ where concept_name.concept_id = ?
     </remotesteps>
     <GUI>
       <xloc>896</xloc>
-      <yloc>560</yloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1594,7 +1600,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>1344</xloc>
-      <yloc>560</yloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1637,7 +1643,7 @@ where encounter.voided = false
     </remotesteps>
     <GUI>
       <xloc>944</xloc>
-      <yloc>208</yloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1671,7 +1677,7 @@ order by date desc</sql>
     </remotesteps>
     <GUI>
       <xloc>144</xloc>
-      <yloc>112</yloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1711,7 +1717,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>144</xloc>
-      <yloc>464</yloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1751,7 +1757,7 @@ where person_attribute.person_id = ?
     </remotesteps>
     <GUI>
       <xloc>992</xloc>
-      <yloc>352</yloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1790,7 +1796,7 @@ where patient_identifier.voided = false
     </remotesteps>
     <GUI>
       <xloc>1344</xloc>
-      <yloc>352</yloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1831,7 +1837,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>144</xloc>
-      <yloc>560</yloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1870,7 +1876,7 @@ where patient_identifier.voided = false
     </remotesteps>
     <GUI>
       <xloc>1344</xloc>
-      <yloc>464</yloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1906,7 +1912,7 @@ where patient_identifier.voided = false
     </remotesteps>
     <GUI>
       <xloc>1088</xloc>
-      <yloc>208</yloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1945,7 +1951,7 @@ order by person_address.person_address_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>1168</xloc>
-      <yloc>464</yloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1963,13 +1969,17 @@ order by person_address.person_address_id desc</sql>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select patient_identifier.identifier patient_identifier from patient_identifier
-where patient_identifier.identifier_type = 6
+where patient_identifier.identifier_type = ?
   and patient_identifier.voided = false
   and patient_identifier.patient_id = ?
 </sql>
     <outer_join>N</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>isante_plus_identifier_type_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>person_id</name>
         <type>Number</type>
@@ -1985,7 +1995,7 @@ where patient_identifier.identifier_type = 6
     </remotesteps>
     <GUI>
       <xloc>336</xloc>
-      <yloc>208</yloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2025,7 +2035,7 @@ order by person_name.person_name_id desc
     </remotesteps>
     <GUI>
       <xloc>512</xloc>
-      <yloc>352</yloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2065,7 +2075,7 @@ where person_attribute.person_id = ?
     </remotesteps>
     <GUI>
       <xloc>1008</xloc>
-      <yloc>464</yloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2104,7 +2114,7 @@ where patient_identifier.voided = false
     </remotesteps>
     <GUI>
       <xloc>1168</xloc>
-      <yloc>352</yloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2144,7 +2154,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>736</xloc>
-      <yloc>464</yloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2169,10 +2179,6 @@ where location_attribute.attribute_type_id = 7
     <replace_vars>N</replace_vars>
     <parameter>
       <field>
-        <name>isante_location_attribute_type_id</name>
-        <type>Number</type>
-      </field>
-      <field>
         <name>isante_plus_location_id</name>
         <type>Number</type>
       </field>
@@ -2187,7 +2193,7 @@ where location_attribute.attribute_type_id = 7
     </remotesteps>
     <GUI>
       <xloc>768</xloc>
-      <yloc>208</yloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2206,13 +2212,16 @@ where location_attribute.attribute_type_id = 7
     <rowlimit>1</rowlimit>
     <sql>select patient_identifier.location_id isante_plus_location_id from patient
 join patient_identifier on patient_identifier.patient_id = patient.patient_id
-join patient_identifier_type on patient_identifier_type.patient_identifier_type_id = patient_identifier.identifier_type
-where patient_identifier_type.uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'
+where patient_identifier.identifier_type = ?
   and patient_identifier.patient_id = ?
 </sql>
     <outer_join>N</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>isante_plus_identifier_type_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>person_id</name>
         <type>Number</type>
@@ -2228,7 +2237,7 @@ where patient_identifier_type.uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'
     </remotesteps>
     <GUI>
       <xloc>560</xloc>
-      <yloc>208</yloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2272,7 +2281,7 @@ where patient_identifier_type.uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'
     </remotesteps>
     <GUI>
       <xloc>416</xloc>
-      <yloc>656</yloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2303,7 +2312,7 @@ where patient_identifier_type.uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'
     </remotesteps>
     <GUI>
       <xloc>336</xloc>
-      <yloc>112</yloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2340,7 +2349,7 @@ where patient_identifier_type.uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'
     </remotesteps>
     <GUI>
       <xloc>736</xloc>
-      <yloc>656</yloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2366,7 +2375,76 @@ where patient_identifier_type.uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'
     </remotesteps>
     <GUI>
       <xloc>592</xloc>
-      <yloc>656</yloc>
+      <yloc>832</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Join rows (cartesian product)</name>
+    <type>JoinRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue/>
+        <function>=</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>496</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Load iSante Location Attribute</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <sql>select patient_identifier_type.patient_identifier_type_id isante_location_attribute_type_id from patient_identifier_type where uuid = '0e0c7cc2-3491-4675-b705-746e372ff346'</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>688</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2424,7 +2502,7 @@ where patient_identifier_type.uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'
     </remotesteps>
     <GUI>
       <xloc>976</xloc>
-      <yloc>656</yloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2462,7 +2540,7 @@ where patient_identifier_type.uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'
     </remotesteps>
     <GUI>
       <xloc>848</xloc>
-      <yloc>352</yloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2502,7 +2580,7 @@ where patient_identifier_type.uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'
     </remotesteps>
     <GUI>
       <xloc>384</xloc>
-      <yloc>464</yloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2554,7 +2632,7 @@ where patient_identifier_type.uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'
     </remotesteps>
     <GUI>
       <xloc>272</xloc>
-      <yloc>656</yloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2679,7 +2757,7 @@ where patient_identifier_type.uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'
         <currency/>
         <decimal/>
         <group/>
-        <nullif/>
+        <nullif>"\0"</nullif>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3391,12 +3469,12 @@ where patient_identifier_type.uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'
     </remotesteps>
     <GUI>
       <xloc>848</xloc>
-      <yloc>656</yloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Load iSante Location Attribute</name>
+    <name>Load Location Patient Identifier</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -3407,7 +3485,7 @@ where patient_identifier_type.uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'
       <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
-    <sql>select patient_identifier_type.patient_identifier_type_id isante_location_attribute_type_id from patient_identifier_type where uuid = '0e0c7cc2-3491-4675-b705-746e372ff346'</sql>
+    <sql>select patient_identifier_type.patient_identifier_type_id isante_plus_identifier_type_id from patient_identifier_type where uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -3422,45 +3500,8 @@ where patient_identifier_type.uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'
       </output>
     </remotesteps>
     <GUI>
-      <xloc>672</xloc>
-      <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Join rows (cartesian product)</name>
-    <type>JoinRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <cache_size>500</cache_size>
-    <main/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue/>
-        <function>=</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>496</xloc>
-      <yloc>112</yloc>
+      <xloc>688</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

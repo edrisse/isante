@@ -447,11 +447,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Quotes at the end of string</from>
-      <to>Text file output</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Quotes on numbers</from>
       <to>Quotes on numbers EOL</to>
       <enabled>Y</enabled>
@@ -469,6 +464,11 @@
     <hop>
       <from>Quotes on Dates 2</from>
       <to>Quotes on empty fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Quotes at the end of string</from>
+      <to>Text file output</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -546,6 +546,45 @@
     </remotesteps>
     <GUI>
       <xloc>720</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Quotes on Dates 2</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>line4</in_stream_name>
+        <out_stream_name>line5</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>,(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}),</replace_string>
+        <replace_by_string>,"$1",</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
@@ -836,47 +875,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1536</xloc>
-      <yloc>96</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Quotes on Dates 2</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>line4</in_stream_name>
-        <out_stream_name>line5</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>,(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}),</replace_string>
-        <replace_by_string>,"$1",</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>896</xloc>
-      <yloc>96</yloc>
+      <xloc>1312</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
