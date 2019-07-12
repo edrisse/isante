@@ -1233,9 +1233,7 @@ where (person.date_created >= ?
    or person.date_voided >= ?
    or patient.date_created >= ?
    or patient.date_changed >= ?
-   or patient.date_voided >= ?) and patient.patient_id in (227, 339, 341, 342, 343, 344, 351, 387, 396)
-
-</sql>
+   or patient.date_voided >= ?)</sql>
     <outer_join>N</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
@@ -2417,6 +2415,38 @@ where patient_identifier.identifier_type = ?
     </GUI>
   </step>
   <step>
+    <name>Load Location Patient Identifier</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <sql>select patient_identifier_type.patient_identifier_type_id isante_plus_identifier_type_id from patient_identifier_type where uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>688</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Load iSante Location Attribute</name>
     <type>TableInput</type>
     <description/>
@@ -3470,38 +3500,6 @@ where patient_identifier.identifier_type = ?
     <GUI>
       <xloc>848</xloc>
       <yloc>832</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Load Location Patient Identifier</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <sql>select patient_identifier_type.patient_identifier_type_id isante_plus_identifier_type_id from patient_identifier_type where uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>688</xloc>
-      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
