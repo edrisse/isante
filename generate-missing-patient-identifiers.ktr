@@ -512,7 +512,7 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Load iSante Id Identifier Type</from>
+      <from>Load iSante ID Identifier Type</from>
       <to>Join rows (cartesian product)</to>
       <enabled>Y</enabled>
     </hop>
@@ -527,12 +527,22 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Load iSante Location Attribute</from>
+      <from>Load iSante Plus ID Identifier Type</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Load iSanteLocation Location Attribute</from>
       <to>Join rows (cartesian product)</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Fetch iSantePlus Location</from>
+      <to>Fetch iSante Location</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch iSante Location</from>
       <to>Calculator</to>
       <enabled>Y</enabled>
     </hop>
@@ -628,7 +638,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
+      <xloc>1056</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
@@ -685,14 +695,16 @@ where patient_identifier.patient_id is null</sql>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select patient_identifier.location_id isante_plus_location_id from patient
-join patient_identifier on patient_identifier.patient_id = patient.patient_id
-join patient_identifier_type on patient_identifier_type.patient_identifier_type_id = patient_identifier.identifier_type
-where patient_identifier_type.uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'
-  and patient_identifier.patient_id = ?
+join patient_identifier on patient_identifier.patient_id = patient.patient_id and patient_identifier.identifier_type = ?
+where patient_identifier.patient_id = ?
 </sql>
     <outer_join>N</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>isante_plus_id_identifier_type_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>patient_id</name>
         <type>Number</type>
@@ -738,7 +750,7 @@ where patient_identifier_type.uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1040</xloc>
+      <xloc>1232</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
@@ -812,7 +824,7 @@ where patient_identifier_type.uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'
     </GUI>
   </step>
   <step>
-    <name>Load iSante Id Identifier Type</name>
+    <name>Load iSante ID Identifier Type</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -844,7 +856,7 @@ where patient_identifier_type.uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'
     </GUI>
   </step>
   <step>
-    <name>Load iSante Location Attribute</name>
+    <name>Load iSante Plus ID Identifier Type</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -855,7 +867,7 @@ where patient_identifier_type.uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'
       <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
-    <sql>select patient_identifier_type.patient_identifier_type_id isante_location_id from patient_identifier_type where uuid = '0e0c7cc2-3491-4675-b705-746e372ff346'</sql>
+    <sql>select patient_identifier_type.patient_identifier_type_id isante_plus_id_identifier_type_id from patient_identifier_type where uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -946,7 +958,82 @@ where patient_identifier_type.uuid = '05a29f94-c0ed-11e2-94be-8c13b969e334'
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1200</xloc>
+      <xloc>1392</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Load iSanteLocation Location Attribute</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <sql>select location_attribute_type_id isante_location_location_attribute_id from location_attribute_type where name = 'iSanteSiteCode'</sql>
+    <limit>1</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>464</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch iSante Location</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select location_attribute.value_reference isante_location_id from location_attribute 
+where location_attribute.attribute_type_id = ?
+  and location_attribute.location_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>isante_location_location_attribute_id</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>isante_plus_location_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>864</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
