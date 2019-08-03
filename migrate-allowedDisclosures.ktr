@@ -592,11 +592,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Load iSante Location Attribute</from>
-      <to>Join rows (cartesian product)</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Column Names</from>
       <to>Join rows (cartesian product)</to>
       <enabled>Y</enabled>
@@ -612,7 +607,12 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Load iSante Id Identifier Type</from>
+      <from>Load iSante ID Identifier Type</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Load iSanteLocation Location Attribute</from>
       <to>Join rows (cartesian product)</to>
       <enabled>Y</enabled>
     </hop>
@@ -811,7 +811,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
+      <xloc>80</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
@@ -853,7 +853,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>992</xloc>
-      <yloc>272</yloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -894,7 +894,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>784</xloc>
-      <yloc>272</yloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -935,7 +935,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>272</yloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -976,7 +976,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>384</yloc>
+      <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1122,7 +1122,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>1488</xloc>
-      <yloc>272</yloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1162,7 +1162,7 @@ where concept_name.concept_id = ?
     </remotesteps>
     <GUI>
       <xloc>1248</xloc>
-      <yloc>272</yloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1203,7 +1203,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>592</xloc>
-      <yloc>272</yloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1244,7 +1244,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>384</xloc>
-      <yloc>272</yloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1358,7 +1358,7 @@ where patient_identifier.identifier_type = ?
     </remotesteps>
     <GUI>
       <xloc>496</xloc>
-      <yloc>384</yloc>
+      <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1397,7 +1397,7 @@ where location_attribute.attribute_type_id = 7
     </remotesteps>
     <GUI>
       <xloc>304</xloc>
-      <yloc>384</yloc>
+      <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1422,7 +1422,7 @@ where location_attribute.attribute_type_id = ?
     <replace_vars>N</replace_vars>
     <parameter>
       <field>
-        <name>isante_location_attribute_type_id</name>
+        <name>isante_location_location_attribute_id</name>
         <type>Number</type>
       </field>
       <field>
@@ -1523,7 +1523,7 @@ order by obs.obs_datetime desc</sql>
     </remotesteps>
     <GUI>
       <xloc>416</xloc>
-      <yloc>496</yloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1553,8 +1553,8 @@ order by obs.obs_datetime desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
-      <yloc>48</yloc>
+      <xloc>80</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1591,7 +1591,7 @@ order by obs.obs_datetime desc</sql>
     </remotesteps>
     <GUI>
       <xloc>736</xloc>
-      <yloc>496</yloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1617,7 +1617,7 @@ order by obs.obs_datetime desc</sql>
     </remotesteps>
     <GUI>
       <xloc>592</xloc>
-      <yloc>496</yloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1653,40 +1653,8 @@ order by obs.obs_datetime desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>272</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Load iSante Location Attribute</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <sql>select patient_identifier_type.patient_identifier_type_id isante_location_attribute_type_id from patient_identifier_type where uuid = '0e0c7cc2-3491-4675-b705-746e372ff346'</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>112</xloc>
-      <yloc>208</yloc>
+      <xloc>304</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1738,7 +1706,7 @@ order by obs.obs_datetime desc</sql>
     </remotesteps>
     <GUI>
       <xloc>272</xloc>
-      <yloc>496</yloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2095,12 +2063,12 @@ order by obs.obs_datetime desc</sql>
     </remotesteps>
     <GUI>
       <xloc>736</xloc>
-      <yloc>384</yloc>
+      <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Load iSante Id Identifier Type</name>
+    <name>Load iSante ID Identifier Type</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -2126,8 +2094,40 @@ order by obs.obs_datetime desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>256</xloc>
-      <yloc>0</yloc>
+      <xloc>80</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Load iSanteLocation Location Attribute</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <sql>select location_attribute_type_id isante_location_location_attribute_id from location_attribute_type where name = 'iSanteSiteCode'</sql>
+    <limit>1</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
