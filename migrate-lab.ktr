@@ -577,7 +577,12 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Load iSante Location Attribute</from>
+      <from>Load iSante ID Identifier Type</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Load iSanteLocation Location Attribute</from>
       <to>Join rows (cartesian product)</to>
       <enabled>Y</enabled>
     </hop>
@@ -1208,7 +1213,7 @@
 join encounter on encounter.encounter_id = obs.encounter_id
 join location_attribute isante_location_attribute on isante_location_attribute.location_id = encounter.location_id and isante_location_attribute.attribute_type_id = ?
 join location_attribute dbsite_location_attribute on dbsite_location_attribute.location_id = encounter.location_id and dbsite_location_attribute.attribute_type_id = 7
-join patient_identifier on patient_identifier.patient_id = obs.person_id and patient_identifier.identifier_type = 6
+join patient_identifier on patient_identifier.patient_id = obs.person_id and patient_identifier.identifier_type = ?
 join etl_encounter_seqnum on etl_encounter_seqnum.encounter_id = encounter.encounter_id
 join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
 where obs.concept_id = ?
@@ -1225,7 +1230,11 @@ where obs.concept_id = ?
     <replace_vars>N</replace_vars>
     <parameter>
       <field>
-        <name>isante_location_attribute_type_id</name>
+        <name>isante_location_location_attribute_id</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>isante_id_identifier_type_id</name>
         <type>Number</type>
       </field>
       <field>
@@ -3655,7 +3664,7 @@ order by date desc</sql>
     </GUI>
   </step>
   <step>
-    <name>Load iSante Location Attribute</name>
+    <name>Load iSante ID Identifier Type</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -3666,7 +3675,7 @@ order by date desc</sql>
       <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
-    <sql>select patient_identifier_type.patient_identifier_type_id isante_location_attribute_type_id from patient_identifier_type where uuid = '0e0c7cc2-3491-4675-b705-746e372ff346'</sql>
+    <sql>select patient_identifier_type.patient_identifier_type_id isante_id_identifier_type_id from patient_identifier_type where uuid = '0e0c7cc2-3491-4675-b705-746e372ff346'</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -3682,7 +3691,39 @@ order by date desc</sql>
     </remotesteps>
     <GUI>
       <xloc>32</xloc>
-      <yloc>224</yloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Load iSanteLocation Location Attribute</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <sql>select location_attribute_type_id isante_location_location_attribute_id from location_attribute_type where name = 'iSanteSiteCode'</sql>
+    <limit>1</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>32</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

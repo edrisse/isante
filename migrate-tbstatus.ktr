@@ -687,11 +687,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Load iSante Location Attribute</from>
-      <to>Join rows (cartesian product)</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Input grid</from>
       <to>Join rows (cartesian product)</to>
       <enabled>Y</enabled>
@@ -702,7 +697,12 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Load iSante Id Identifier Type</from>
+      <from>Load iSante ID Identifier Type</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Load iSanteLocation Location Attribute</from>
       <to>Join rows (cartesian product)</to>
       <enabled>Y</enabled>
     </hop>
@@ -1250,7 +1250,7 @@ where patient_identifier.identifier_type = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1088</xloc>
+      <xloc>1072</xloc>
       <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2065,7 +2065,7 @@ where location_attribute.attribute_type_id = ?
     <replace_vars>N</replace_vars>
     <parameter>
       <field>
-        <name>isante_location_attribute_type_id</name>
+        <name>isante_location_location_attribute_id</name>
         <type>Number</type>
       </field>
       <field>
@@ -2715,38 +2715,6 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>288</xloc>
       <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Load iSante Location Attribute</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <sql>select patient_identifier_type.patient_identifier_type_id isante_location_attribute_type_id from patient_identifier_type where uuid = '0e0c7cc2-3491-4675-b705-746e372ff346'</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>96</xloc>
-      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3895,7 +3863,7 @@ where obs.concept_id = 162320
     </GUI>
   </step>
   <step>
-    <name>Load iSante Id Identifier Type</name>
+    <name>Load iSante ID Identifier Type</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -3921,8 +3889,40 @@ where obs.concept_id = 162320
       </output>
     </remotesteps>
     <GUI>
-      <xloc>272</xloc>
+      <xloc>288</xloc>
       <yloc>0</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Load iSanteLocation Location Attribute</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <sql>select location_attribute_type_id isante_location_location_attribute_id from location_attribute_type where name = 'iSanteSiteCode'</sql>
+    <limit>1</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
