@@ -1464,7 +1464,7 @@ where location_attribute.attribute_type_id = ?
     <sql>select obs.location_id isante_plus_location_id from obs
 where obs.person_id = ?
   and obs.voided = false
-order by obs.obs_datetime desc</sql>
+</sql>
     <outer_join>N</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
