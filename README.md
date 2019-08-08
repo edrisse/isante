@@ -9,6 +9,7 @@ This instructions will help you run the Pentaho Data Integration job that genera
   This steps were validated on version 8.2.0;
 * Pentaho DI Community edition can be found [here](https://community.hitachivantara.com/external-link.jspa?url=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fpentaho%2Ffiles%2Flatest%2Fdownload%3FaliId%3D137249511).
 * Download MySQL connector version 5;
+* Install Curl;
 
 ## Instalation, configuration and execution
 * Extract the downloaded file on a directory of your choice `${pdi-install-dir}`;
