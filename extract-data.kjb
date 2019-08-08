@@ -565,8 +565,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>64</xloc>
-      <yloc>496</yloc>
+      <xloc>384</xloc>
+      <yloc>480</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -930,7 +930,7 @@
       <description/>
       <type>DELETE_FILE</type>
       <attributes/>
-      <filename>${user.home}/isante/data-post-processed.csv</filename>
+      <filename>${user.home}/isante/data.csv.gz</filename>
       <fail_if_file_not_exists>N</fail_if_file_not_exists>
       <parallel>N</parallel>
       <draw>Y</draw>
@@ -1448,7 +1448,7 @@
       <create_destination_folder>N</create_destination_folder>
       <fields>
         <field>
-          <source_filefolder>EMPTY_SOURCE_URL-0-file://${user.home}/isante/etc/report-file-template.txt</source_filefolder>
+          <source_filefolder>EMPTY_SOURCE_URL-0-file://${ISANTE-PLUS-REPLICATION-REPOSITORY-DIR}/etc/report-file-template.txt</source_filefolder>
           <source_configuration_name>LOCAL-SOURCE-FILE-0</source_configuration_name>
           <destination_filefolder>EMPTY_DEST_URL-0-file://${user.home}/isante/data.csv.gz-report.txt</destination_filefolder>
           <destination_configuration_name>LOCAL-DEST-FILE-0</destination_configuration_name>
@@ -1530,6 +1530,60 @@
       <nr>0</nr>
       <xloc>688</xloc>
       <yloc>64</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Copy Error Template</name>
+      <description/>
+      <type>COPY_FILES</type>
+      <attributes/>
+      <copy_empty_folders>N</copy_empty_folders>
+      <arg_from_previous>N</arg_from_previous>
+      <overwrite_files>N</overwrite_files>
+      <include_subfolders>N</include_subfolders>
+      <remove_source_files>N</remove_source_files>
+      <add_result_filesname>N</add_result_filesname>
+      <destination_is_a_file>Y</destination_is_a_file>
+      <create_destination_folder>N</create_destination_folder>
+      <fields>
+        <field>
+          <source_filefolder>EMPTY_SOURCE_URL-0-file://${ISANTE-PLUS-REPLICATION-REPOSITORY-DIR}/etc/error-file-template.txt</source_filefolder>
+          <source_configuration_name>LOCAL-SOURCE-FILE-0</source_configuration_name>
+          <destination_filefolder>EMPTY_DEST_URL-0-file://${user.home}/isante/data.csv.gz-error.txt</destination_filefolder>
+          <destination_configuration_name>LOCAL-DEST-FILE-0</destination_configuration_name>
+          <wildcard/>
+        </field>
+      </fields>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>64</xloc>
+      <yloc>480</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>upload-file.sh</name>
+      <description/>
+      <type>SHELL</type>
+      <attributes/>
+      <filename>C:\Users\Edrisse\Documents\isante\etc\upload-file.sh</filename>
+      <work_directory/>
+      <arg_from_previous>N</arg_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <set_logfile>Y</set_logfile>
+      <logfile>C:\Users\Edrisse\Desktop\upload</logfile>
+      <set_append_logfile>Y</set_append_logfile>
+      <logext>txt</logext>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <insertScript>Y</insertScript>
+      <script>${ISANTE-PLUS-CURL-COMMAND} -k --user itech:jaif5Ahg5mei --url https://200.2.133.226/receiver/receive-file.pl --form "startTime=2019-07-15 13:49:48" --form "stopTime=2019-07-15 13:49:48" --form "serverName=d95s13109" --form "databaseName=itech" --form "targetName=papConsolidated" --form "dataFileName=@${user.home}/isante/data.csv.gz" --form "reportFileName=@${user.home}/isante/data.csv.gz-report.txt" --form "errorFileName=@${user.home}/isante/data.csv.gz-error.txt"</script>
+      <loglevel>Debug</loglevel>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>224</xloc>
+      <yloc>480</yloc>
       <attributes_kjc/>
     </entry>
   </entries>
@@ -1796,15 +1850,6 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>fill-report</from>
-      <to>Success</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
       <from>Start</from>
       <to>Delete Report File</to>
       <from_nr>0</from_nr>
@@ -1834,6 +1879,33 @@
     <hop>
       <from>Clean etl_records_processed</from>
       <to>initial-data-validation</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>fill-report</from>
+      <to>Copy Error Template</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Copy Error Template</from>
+      <to>upload-file.sh</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>upload-file.sh</from>
+      <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
