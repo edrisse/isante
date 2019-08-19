@@ -9077,6 +9077,45 @@ where location_attribute.attribute_type_id = ?
         <digits>none</digits>
         <remove_special_characters>crlf</remove_special_characters>
       </field>
+      <field>
+        <in_stream_name>art_treatment_status_comment</in_stream_name>
+        <out_stream_name>art_treatment_status_comment_sanitized</out_stream_name>
+        <trim_type>none</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>crlf</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>tb_treatment_status_comment</in_stream_name>
+        <out_stream_name>tb_treatment_status_comment_sanitized</out_stream_name>
+        <trim_type>none</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>crlf</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>drug_comment</in_stream_name>
+        <out_stream_name>drug_comment_sanitized</out_stream_name>
+        <trim_type>none</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>crlf</remove_special_characters>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -10838,7 +10877,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>art_treatment_status_comment</name>
+        <name>art_treatment_status_comment_sanitized</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -10862,7 +10901,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>tb_treatment_status_comment</name>
+        <name>art_treatment_status_comment_sanitized</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -10886,7 +10925,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>drug_comment</name>
+        <name>drug_comment_sanitized</name>
         <type>String</type>
         <format/>
         <currency/>
