@@ -695,6 +695,16 @@
       <to>Join rows (cartesian product)</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Load ST Code Identifier Type</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Load National ID Identifier Type</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Column Names</name>
@@ -1178,7 +1188,7 @@
     </remotesteps>
     <GUI>
       <xloc>672</xloc>
-      <yloc>528</yloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1218,7 +1228,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>592</xloc>
-      <yloc>640</yloc>
+      <yloc>896</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1281,7 +1291,7 @@ where (person.date_created >= ?
     </remotesteps>
     <GUI>
       <xloc>144</xloc>
-      <yloc>384</yloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1321,7 +1331,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>896</xloc>
-      <yloc>640</yloc>
+      <yloc>896</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1362,7 +1372,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>1344</xloc>
-      <yloc>832</yloc>
+      <yloc>1088</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1403,7 +1413,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>1120</xloc>
-      <yloc>736</yloc>
+      <yloc>992</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1444,7 +1454,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>496</xloc>
-      <yloc>736</yloc>
+      <yloc>992</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1485,7 +1495,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>1136</xloc>
-      <yloc>832</yloc>
+      <yloc>1088</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1526,7 +1536,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>672</xloc>
-      <yloc>736</yloc>
+      <yloc>992</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1566,7 +1576,7 @@ where concept_name.concept_id = ?
     </remotesteps>
     <GUI>
       <xloc>896</xloc>
-      <yloc>736</yloc>
+      <yloc>992</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1607,7 +1617,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>1344</xloc>
-      <yloc>736</yloc>
+      <yloc>992</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1650,7 +1660,7 @@ where encounter.voided = false
     </remotesteps>
     <GUI>
       <xloc>944</xloc>
-      <yloc>384</yloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1724,7 +1734,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>144</xloc>
-      <yloc>640</yloc>
+      <yloc>896</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1764,7 +1774,7 @@ where person_attribute.person_id = ?
     </remotesteps>
     <GUI>
       <xloc>992</xloc>
-      <yloc>528</yloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1783,11 +1793,15 @@ where person_attribute.person_id = ?
     <rowlimit>1</rowlimit>
     <sql>select patient_identifier.identifier national_identifier from patient_identifier
 where patient_identifier.voided = false
-  and patient_identifier.identifier_type = 4
+  and patient_identifier.identifier_type = ?
   and patient_identifier.patient_id = ?</sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>national_id_identifier_type_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>person_id</name>
         <type>Number</type>
@@ -1803,7 +1817,7 @@ where patient_identifier.voided = false
     </remotesteps>
     <GUI>
       <xloc>1344</xloc>
-      <yloc>528</yloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1844,7 +1858,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>144</xloc>
-      <yloc>736</yloc>
+      <yloc>992</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1883,7 +1897,7 @@ where patient_identifier.voided = false
     </remotesteps>
     <GUI>
       <xloc>1344</xloc>
-      <yloc>640</yloc>
+      <yloc>896</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1923,7 +1937,7 @@ where patient_identifier.voided = false
     </remotesteps>
     <GUI>
       <xloc>1088</xloc>
-      <yloc>384</yloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1962,7 +1976,7 @@ order by person_address.person_address_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>1168</xloc>
-      <yloc>640</yloc>
+      <yloc>896</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2006,7 +2020,7 @@ where patient_identifier.identifier_type = ?
     </remotesteps>
     <GUI>
       <xloc>336</xloc>
-      <yloc>384</yloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2046,7 +2060,7 @@ order by person_name.person_name_id desc
     </remotesteps>
     <GUI>
       <xloc>512</xloc>
-      <yloc>528</yloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2086,7 +2100,7 @@ where person_attribute.person_id = ?
     </remotesteps>
     <GUI>
       <xloc>1008</xloc>
-      <yloc>640</yloc>
+      <yloc>896</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2105,11 +2119,15 @@ where person_attribute.person_id = ?
     <rowlimit>1</rowlimit>
     <sql>select patient_identifier.identifier st_code from patient_identifier
 where patient_identifier.voided = false
-  and patient_identifier.identifier_type = 3
+  and patient_identifier.identifier_type = ?
   and patient_identifier.patient_id = ?</sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>st_code_identifier_type_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>person_id</name>
         <type>Number</type>
@@ -2125,7 +2143,7 @@ where patient_identifier.voided = false
     </remotesteps>
     <GUI>
       <xloc>1168</xloc>
-      <yloc>528</yloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2165,7 +2183,7 @@ order by obs.obs_id desc</sql>
     </remotesteps>
     <GUI>
       <xloc>736</xloc>
-      <yloc>640</yloc>
+      <yloc>896</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2208,7 +2226,7 @@ where location_attribute.attribute_type_id = ?
     </remotesteps>
     <GUI>
       <xloc>768</xloc>
-      <yloc>384</yloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2252,7 +2270,7 @@ where patient_identifier.identifier_type = ?
     </remotesteps>
     <GUI>
       <xloc>560</xloc>
-      <yloc>384</yloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2296,7 +2314,7 @@ where patient_identifier.identifier_type = ?
     </remotesteps>
     <GUI>
       <xloc>416</xloc>
-      <yloc>832</yloc>
+      <yloc>1088</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2364,7 +2382,7 @@ where patient_identifier.identifier_type = ?
     </remotesteps>
     <GUI>
       <xloc>736</xloc>
-      <yloc>832</yloc>
+      <yloc>1088</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2390,7 +2408,7 @@ where patient_identifier.identifier_type = ?
     </remotesteps>
     <GUI>
       <xloc>592</xloc>
-      <yloc>832</yloc>
+      <yloc>1088</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2432,6 +2450,70 @@ where patient_identifier.identifier_type = ?
     </GUI>
   </step>
   <step>
+    <name>Load National ID Identifier Type</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <sql>select patient_identifier_type.patient_identifier_type_id national_id_identifier_type_id from patient_identifier_type where uuid = '9fb4533d-4fd5-4276-875b-2ab41597f5dd'</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>688</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Load ST Code Identifier Type</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <sql>select patient_identifier_type.patient_identifier_type_id st_code_identifier_type_id from patient_identifier_type where uuid = 'd059f6d0-9e42-4760-8de1-8316b48bc5f1'</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>688</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Load iSante ID Identifier Type</name>
     <type>TableInput</type>
     <description/>
@@ -2459,7 +2541,7 @@ where patient_identifier.identifier_type = ?
     </remotesteps>
     <GUI>
       <xloc>688</xloc>
-      <yloc>272</yloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2491,7 +2573,7 @@ where patient_identifier.identifier_type = ?
     </remotesteps>
     <GUI>
       <xloc>688</xloc>
-      <yloc>144</yloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2523,7 +2605,7 @@ where patient_identifier.identifier_type = ?
     </remotesteps>
     <GUI>
       <xloc>688</xloc>
-      <yloc>208</yloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2581,7 +2663,7 @@ where patient_identifier.identifier_type = ?
     </remotesteps>
     <GUI>
       <xloc>976</xloc>
-      <yloc>832</yloc>
+      <yloc>1088</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2619,7 +2701,7 @@ where patient_identifier.identifier_type = ?
     </remotesteps>
     <GUI>
       <xloc>848</xloc>
-      <yloc>528</yloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2659,7 +2741,7 @@ where patient_identifier.identifier_type = ?
     </remotesteps>
     <GUI>
       <xloc>384</xloc>
-      <yloc>640</yloc>
+      <yloc>896</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2711,7 +2793,7 @@ where patient_identifier.identifier_type = ?
     </remotesteps>
     <GUI>
       <xloc>272</xloc>
-      <yloc>832</yloc>
+      <yloc>1088</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3142,7 +3224,7 @@ where patient_identifier.identifier_type = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>code_pc</name>
+        <name>st_code</name>
         <type>None</type>
         <format/>
         <currency/>
@@ -3548,7 +3630,7 @@ where patient_identifier.identifier_type = ?
     </remotesteps>
     <GUI>
       <xloc>848</xloc>
-      <yloc>832</yloc>
+      <yloc>1088</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
