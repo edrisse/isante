@@ -496,11 +496,6 @@
   </connection>
   <order>
     <hop>
-      <from>Fetch Next Visit Date</from>
-      <to>Fetch Visit Date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Last ETL Excution Date</from>
       <to>Fetch Encounters</to>
       <enabled>Y</enabled>
@@ -571,11 +566,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Visit Date</from>
-      <to>Fetch Pediatric</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Pediatric</from>
       <to>Is Pediatric?</to>
       <enabled>Y</enabled>
@@ -593,6 +583,11 @@
     <hop>
       <from>Encounter Type Mapping Pediatric</from>
       <to>Decompose Next Visit Date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Next Visit Date</from>
+      <to>Fetch Pediatric</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -735,6 +730,218 @@
     <GUI>
       <xloc>224</xloc>
       <yloc>416</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Encounter Type Mapping Adult</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>encounter_type_uuid</field_to_use>
+    <target_field>mapped_encounter_type</target_field>
+    <non_match_default>0</non_match_default>
+    <fields>
+      <field>
+        <source_value>f037e97b-471e-4898-a07c-b8e169e0ddc4</source_value>
+        <target_value>6</target_value>
+      </field>
+      <field>
+        <source_value>c45d7299-ad08-4cb5-8e5d-e0ce40532939</source_value>
+        <target_value>14</target_value>
+      </field>
+      <field>
+        <source_value>9d0113c6-f23a-4461-8428-7e9a7344f2ba</source_value>
+        <target_value>12</target_value>
+      </field>
+      <field>
+        <source_value>873f968a-73a8-4f9c-ac78-9f4778b751b6</source_value>
+        <target_value>10</target_value>
+      </field>
+      <field>
+        <source_value>a4cab59f-f0ce-46c3-bd76-416db36ec719</source_value>
+        <target_value>32</target_value>
+      </field>
+      <field>
+        <source_value>49592bec-dd22-4b6c-a97f-4dd2af6f2171</source_value>
+        <target_value>25</target_value>
+      </field>
+      <field>
+        <source_value>10d73929-54b6-4d18-a647-8b7316bc1ae3</source_value>
+        <target_value>5</target_value>
+      </field>
+      <field>
+        <source_value>a9392241-109f-4d67-885b-57cc4b8c638f</source_value>
+        <target_value>18</target_value>
+      </field>
+      <field>
+        <source_value>17536ba6-dd7c-4f58-8014-08c7cb798ac7</source_value>
+        <target_value>3</target_value>
+      </field>
+      <field>
+        <source_value>5c312603-25c1-4dbe-be18-1a167eb85f97</source_value>
+        <target_value>24</target_value>
+      </field>
+      <field>
+        <source_value>349ae0b4-65c1-4122-aa06-480f186c8350</source_value>
+        <target_value>16</target_value>
+      </field>
+      <field>
+        <source_value>fdb5b14f-555f-4282-b4c1-9286addf0aae</source_value>
+        <target_value>31</target_value>
+      </field>
+      <field>
+        <source_value>a5600919-4dde-4eb8-a45b-05c204af8284</source_value>
+        <target_value>28</target_value>
+      </field>
+      <field>
+        <source_value>709610ff-5e39-4a47-9c27-a60e740b0944</source_value>
+        <target_value>29</target_value>
+      </field>
+      <field>
+        <source_value>12f4d7c3-e047-4455-a607-47a40fe32460</source_value>
+        <target_value>27</target_value>
+      </field>
+      <field>
+        <source_value>204ad066-c5c2-4229-9a62-644bc5617ca2</source_value>
+        <target_value>4</target_value>
+      </field>
+      <field>
+        <source_value>33491314-c352-42d0-bd5d-a9d0bffc9bf1</source_value>
+        <target_value>17</target_value>
+      </field>
+      <field>
+        <source_value>d95b3540-a39f-4d1e-a301-8ee0e03d5eab</source_value>
+        <target_value>7</target_value>
+      </field>
+      <field>
+        <source_value>1dd1e63a-1543-4885-b807-e49c6d18cffd</source_value>
+        <target_value>7</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>624</xloc>
+      <yloc>352</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Encounter Type Mapping Pediatric</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>encounter_type_uuid</field_to_use>
+    <target_field>mapped_encounter_type</target_field>
+    <non_match_default>0</non_match_default>
+    <fields>
+      <field>
+        <source_value>f037e97b-471e-4898-a07c-b8e169e0ddc4</source_value>
+        <target_value>19</target_value>
+      </field>
+      <field>
+        <source_value>c45d7299-ad08-4cb5-8e5d-e0ce40532939</source_value>
+        <target_value>14</target_value>
+      </field>
+      <field>
+        <source_value>9d0113c6-f23a-4461-8428-7e9a7344f2ba</source_value>
+        <target_value>12</target_value>
+      </field>
+      <field>
+        <source_value>873f968a-73a8-4f9c-ac78-9f4778b751b6</source_value>
+        <target_value>15</target_value>
+      </field>
+      <field>
+        <source_value>a4cab59f-f0ce-46c3-bd76-416db36ec719</source_value>
+        <target_value>32</target_value>
+      </field>
+      <field>
+        <source_value>49592bec-dd22-4b6c-a97f-4dd2af6f2171</source_value>
+        <target_value>25</target_value>
+      </field>
+      <field>
+        <source_value>10d73929-54b6-4d18-a647-8b7316bc1ae3</source_value>
+        <target_value>5</target_value>
+      </field>
+      <field>
+        <source_value>a9392241-109f-4d67-885b-57cc4b8c638f</source_value>
+        <target_value>18</target_value>
+      </field>
+      <field>
+        <source_value>17536ba6-dd7c-4f58-8014-08c7cb798ac7</source_value>
+        <target_value>3</target_value>
+      </field>
+      <field>
+        <source_value>5c312603-25c1-4dbe-be18-1a167eb85f97</source_value>
+        <target_value>24</target_value>
+      </field>
+      <field>
+        <source_value>349ae0b4-65c1-4122-aa06-480f186c8350</source_value>
+        <target_value>16</target_value>
+      </field>
+      <field>
+        <source_value>fdb5b14f-555f-4282-b4c1-9286addf0aae</source_value>
+        <target_value>31</target_value>
+      </field>
+      <field>
+        <source_value>a5600919-4dde-4eb8-a45b-05c204af8284</source_value>
+        <target_value>28</target_value>
+      </field>
+      <field>
+        <source_value>709610ff-5e39-4a47-9c27-a60e740b0944</source_value>
+        <target_value>29</target_value>
+      </field>
+      <field>
+        <source_value>12f4d7c3-e047-4455-a607-47a40fe32460</source_value>
+        <target_value>27</target_value>
+      </field>
+      <field>
+        <source_value>204ad066-c5c2-4229-9a62-644bc5617ca2</source_value>
+        <target_value>4</target_value>
+      </field>
+      <field>
+        <source_value>33491314-c352-42d0-bd5d-a9d0bffc9bf1</source_value>
+        <target_value>17</target_value>
+      </field>
+      <field>
+        <source_value>d95b3540-a39f-4d1e-a301-8ee0e03d5eab</source_value>
+        <target_value>7</target_value>
+      </field>
+      <field>
+        <source_value>1dd1e63a-1543-4885-b807-e49c6d18cffd</source_value>
+        <target_value>7</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>624</xloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -891,7 +1098,7 @@ where obs.concept_id = 5096
     </GUI>
   </step>
   <step>
-    <name>Fetch Visit Date</name>
+    <name>Fetch Pediatric</name>
     <type>DBJoin</type>
     <description/>
     <distribute>Y</distribute>
@@ -903,14 +1110,17 @@ where obs.concept_id = 5096
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select v.date_started visit_date from visit v
-where v.visit_id = ?</sql>
+    <sql>select date_add(?, interval 14 year) > ? as pediatric</sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
       <field>
-        <name>visit_id</name>
-        <type>Number</type>
+        <name>birthdate</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>encounter_datetime</name>
+        <type>Date</type>
       </field>
     </parameter>
     <attributes/>
@@ -922,7 +1132,7 @@ where v.visit_id = ?</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1184</xloc>
+      <xloc>1008</xloc>
       <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1422,6 +1632,50 @@ where v.visit_id = ?</sql>
     <GUI>
       <xloc>96</xloc>
       <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Is Pediatric?</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Encounter Type Mapping Pediatric</send_true_to>
+    <send_false_to>Encounter Type Mapping Adult</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>pediatric</leftvalue>
+        <function>=</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>Integer</type>
+          <text>1</text>
+          <length>-1</length>
+          <precision>0</precision>
+          <isnull>N</isnull>
+          <mask>####0;-####0</mask>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>848</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2212,7 +2466,7 @@ where v.visit_id = ?</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>visit_date</name>
+        <name>encounter_datetime</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2259,302 +2513,6 @@ where v.visit_id = ?</sql>
     <GUI>
       <xloc>64</xloc>
       <yloc>416</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Encounter Type Mapping Adult</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>encounter_type_uuid</field_to_use>
-    <target_field>mapped_encounter_type</target_field>
-    <non_match_default>0</non_match_default>
-    <fields>
-      <field>
-        <source_value>f037e97b-471e-4898-a07c-b8e169e0ddc4</source_value>
-        <target_value>6</target_value>
-      </field>
-      <field>
-        <source_value>c45d7299-ad08-4cb5-8e5d-e0ce40532939</source_value>
-        <target_value>14</target_value>
-      </field>
-      <field>
-        <source_value>9d0113c6-f23a-4461-8428-7e9a7344f2ba</source_value>
-        <target_value>12</target_value>
-      </field>
-      <field>
-        <source_value>873f968a-73a8-4f9c-ac78-9f4778b751b6</source_value>
-        <target_value>10</target_value>
-      </field>
-      <field>
-        <source_value>a4cab59f-f0ce-46c3-bd76-416db36ec719</source_value>
-        <target_value>32</target_value>
-      </field>
-      <field>
-        <source_value>49592bec-dd22-4b6c-a97f-4dd2af6f2171</source_value>
-        <target_value>25</target_value>
-      </field>
-      <field>
-        <source_value>10d73929-54b6-4d18-a647-8b7316bc1ae3</source_value>
-        <target_value>5</target_value>
-      </field>
-      <field>
-        <source_value>a9392241-109f-4d67-885b-57cc4b8c638f</source_value>
-        <target_value>18</target_value>
-      </field>
-      <field>
-        <source_value>17536ba6-dd7c-4f58-8014-08c7cb798ac7</source_value>
-        <target_value>3</target_value>
-      </field>
-      <field>
-        <source_value>5c312603-25c1-4dbe-be18-1a167eb85f97</source_value>
-        <target_value>24</target_value>
-      </field>
-      <field>
-        <source_value>349ae0b4-65c1-4122-aa06-480f186c8350</source_value>
-        <target_value>16</target_value>
-      </field>
-      <field>
-        <source_value>fdb5b14f-555f-4282-b4c1-9286addf0aae</source_value>
-        <target_value>31</target_value>
-      </field>
-      <field>
-        <source_value>a5600919-4dde-4eb8-a45b-05c204af8284</source_value>
-        <target_value>28</target_value>
-      </field>
-      <field>
-        <source_value>709610ff-5e39-4a47-9c27-a60e740b0944</source_value>
-        <target_value>29</target_value>
-      </field>
-      <field>
-        <source_value>12f4d7c3-e047-4455-a607-47a40fe32460</source_value>
-        <target_value>27</target_value>
-      </field>
-      <field>
-        <source_value>204ad066-c5c2-4229-9a62-644bc5617ca2</source_value>
-        <target_value>4</target_value>
-      </field>
-      <field>
-        <source_value>33491314-c352-42d0-bd5d-a9d0bffc9bf1</source_value>
-        <target_value>17</target_value>
-      </field>
-      <field>
-        <source_value>d95b3540-a39f-4d1e-a301-8ee0e03d5eab</source_value>
-        <target_value>7</target_value>
-      </field>
-      <field>
-        <source_value>1dd1e63a-1543-4885-b807-e49c6d18cffd</source_value>
-        <target_value>7</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>624</xloc>
-      <yloc>352</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Pediatric</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select date_add(?, interval 14 year) > ? as pediatric</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>birthdate</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>encounter_datetime</name>
-        <type>Date</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1008</xloc>
-      <yloc>416</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Is Pediatric?</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Encounter Type Mapping Pediatric</send_true_to>
-    <send_false_to>Encounter Type Mapping Adult</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>pediatric</leftvalue>
-        <function>=</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>1</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>848</xloc>
-      <yloc>416</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Encounter Type Mapping Pediatric</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>encounter_type_uuid</field_to_use>
-    <target_field>mapped_encounter_type</target_field>
-    <non_match_default>0</non_match_default>
-    <fields>
-      <field>
-        <source_value>f037e97b-471e-4898-a07c-b8e169e0ddc4</source_value>
-        <target_value>19</target_value>
-      </field>
-      <field>
-        <source_value>c45d7299-ad08-4cb5-8e5d-e0ce40532939</source_value>
-        <target_value>14</target_value>
-      </field>
-      <field>
-        <source_value>9d0113c6-f23a-4461-8428-7e9a7344f2ba</source_value>
-        <target_value>12</target_value>
-      </field>
-      <field>
-        <source_value>873f968a-73a8-4f9c-ac78-9f4778b751b6</source_value>
-        <target_value>15</target_value>
-      </field>
-      <field>
-        <source_value>a4cab59f-f0ce-46c3-bd76-416db36ec719</source_value>
-        <target_value>32</target_value>
-      </field>
-      <field>
-        <source_value>49592bec-dd22-4b6c-a97f-4dd2af6f2171</source_value>
-        <target_value>25</target_value>
-      </field>
-      <field>
-        <source_value>10d73929-54b6-4d18-a647-8b7316bc1ae3</source_value>
-        <target_value>5</target_value>
-      </field>
-      <field>
-        <source_value>a9392241-109f-4d67-885b-57cc4b8c638f</source_value>
-        <target_value>18</target_value>
-      </field>
-      <field>
-        <source_value>17536ba6-dd7c-4f58-8014-08c7cb798ac7</source_value>
-        <target_value>3</target_value>
-      </field>
-      <field>
-        <source_value>5c312603-25c1-4dbe-be18-1a167eb85f97</source_value>
-        <target_value>24</target_value>
-      </field>
-      <field>
-        <source_value>349ae0b4-65c1-4122-aa06-480f186c8350</source_value>
-        <target_value>16</target_value>
-      </field>
-      <field>
-        <source_value>fdb5b14f-555f-4282-b4c1-9286addf0aae</source_value>
-        <target_value>31</target_value>
-      </field>
-      <field>
-        <source_value>a5600919-4dde-4eb8-a45b-05c204af8284</source_value>
-        <target_value>28</target_value>
-      </field>
-      <field>
-        <source_value>709610ff-5e39-4a47-9c27-a60e740b0944</source_value>
-        <target_value>29</target_value>
-      </field>
-      <field>
-        <source_value>12f4d7c3-e047-4455-a607-47a40fe32460</source_value>
-        <target_value>27</target_value>
-      </field>
-      <field>
-        <source_value>204ad066-c5c2-4229-9a62-644bc5617ca2</source_value>
-        <target_value>4</target_value>
-      </field>
-      <field>
-        <source_value>33491314-c352-42d0-bd5d-a9d0bffc9bf1</source_value>
-        <target_value>17</target_value>
-      </field>
-      <field>
-        <source_value>d95b3540-a39f-4d1e-a301-8ee0e03d5eab</source_value>
-        <target_value>7</target_value>
-      </field>
-      <field>
-        <source_value>1dd1e63a-1543-4885-b807-e49c6d18cffd</source_value>
-        <target_value>7</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>624</xloc>
-      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
