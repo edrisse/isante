@@ -960,7 +960,7 @@
     <rowlimit>0</rowlimit>
     <sql>select en.visit_id, en.date_created, en.encounter_type, en.encounter_id, en.encounter_datetime, en.patient_id person_id, 
 	isante_location_attribute.value_reference isante_location_id, dbsite_location_attribute.value_reference dbSiteValue, 
-	patient_identifier.identifier patient_identifier, seqnum as seqnum_value, encounter_type.uuid encounter_type_uuid, person.birthdate from encounter en
+	patient_identifier.identifier patient_identifier, seqnum as seqnum_value, encounter_type.uuid encounter_type_uuid, person.birthdate, ifnull(en.date_changed, '\0') last_modified from encounter en
 join encounter_type on encounter_type.encounter_type_id = en.encounter_type
 join location_attribute isante_location_attribute on isante_location_attribute.location_id = en.location_id and isante_location_attribute.attribute_type_id = ?
 join location_attribute dbsite_location_attribute on dbsite_location_attribute.location_id = en.location_id and dbsite_location_attribute.attribute_type_id = 7
@@ -1586,6 +1586,17 @@ where obs.concept_id = 5096
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
+      <field>
+        <name>lastModified</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
     </fields>
     <data>
       <line>
@@ -1619,6 +1630,7 @@ where obs.concept_id = 5096
         <item>\0</item>
         <item>1</item>
         <item>2000</item>
+        <item>lastModified</item>
       </line>
     </data>
     <attributes/>
@@ -2492,6 +2504,30 @@ where obs.concept_id = 5096
       <field>
         <name>mapped_encounter_type</name>
         <type>None</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>lastModified</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>last_modified</name>
+        <type>String</type>
         <format/>
         <currency/>
         <decimal/>
