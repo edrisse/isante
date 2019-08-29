@@ -3475,7 +3475,7 @@
       <field_b />
       <field_c />
       <value_type>None</value_type>
-      <value_length>-1</value_length>
+      <value_length>2</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3490,7 +3490,7 @@
       <field_b />
       <field_c />
       <value_type>None</value_type>
-      <value_length>-1</value_length>
+      <value_length>2</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3546,7 +3546,7 @@
       <field_b />
       <field_c />
       <value_type>None</value_type>
-      <value_length>-1</value_length>
+      <value_length>2</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3561,7 +3561,7 @@
       <field_b />
       <field_c />
       <value_type>None</value_type>
-      <value_length>-1</value_length>
+      <value_length>2</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3617,7 +3617,7 @@
       <field_b />
       <field_c />
       <value_type>None</value_type>
-      <value_length>-1</value_length>
+      <value_length>2</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3632,7 +3632,7 @@
       <field_b />
       <field_c />
       <value_type>None</value_type>
-      <value_length>-1</value_length>
+      <value_length>2</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3687,8 +3687,8 @@
       <field_a>encounter_datetime</field_a>
       <field_b />
       <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
+      <value_type>None</value_type>
+      <value_length>2</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3702,8 +3702,8 @@
       <field_a>encounter_datetime</field_a>
       <field_b />
       <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
+      <value_type>None</value_type>
+      <value_length>2</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3717,7 +3717,7 @@
       <field_a>encounter_datetime</field_a>
       <field_b />
       <field_c />
-      <value_type>String</value_type>
+      <value_type>None</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
@@ -3759,7 +3759,7 @@
       <field_b />
       <field_c />
       <value_type>None</value_type>
-      <value_length>-1</value_length>
+      <value_length>2</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3774,7 +3774,7 @@
       <field_b />
       <field_c />
       <value_type>None</value_type>
-      <value_length>-1</value_length>
+      <value_length>2</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3830,7 +3830,7 @@
       <field_b />
       <field_c />
       <value_type>None</value_type>
-      <value_length>-1</value_length>
+      <value_length>2</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3885,8 +3885,8 @@
       <field_a>lowest_cd4_count_date</field_a>
       <field_b />
       <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
+      <value_type>None</value_type>
+      <value_length>2</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3900,8 +3900,8 @@
       <field_a>lowest_cd4_count_date</field_a>
       <field_b />
       <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
+      <value_type>None</value_type>
+      <value_length>2</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3957,7 +3957,7 @@
       <field_b />
       <field_c />
       <value_type>None</value_type>
-      <value_length>-1</value_length>
+      <value_length>2</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -4013,7 +4013,7 @@
       <field_b />
       <field_c />
       <value_type>None</value_type>
-      <value_length>-1</value_length>
+      <value_length>2</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -4028,7 +4028,7 @@
       <field_b />
       <field_c />
       <value_type>None</value_type>
-      <value_length>-1</value_length>
+      <value_length>2</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -9409,14 +9409,14 @@ where location_attribute.attribute_type_id = ?
       </field>
       <field>
         <name>visitDateDd_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>-1</length>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -9433,14 +9433,14 @@ where location_attribute.attribute_type_id = ?
       </field>
       <field>
         <name>visitDateMm_cn</name>
-        <type>String</type>
+        <type>None</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>-1</length>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -9685,14 +9685,14 @@ where location_attribute.attribute_type_id = ?
       </field>
       <field>
         <name>hiv_test_day</name>
-        <type>String</type>
+        <type>None</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>-1</length>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -9709,14 +9709,14 @@ where location_attribute.attribute_type_id = ?
       </field>
       <field>
         <name>hiv_test_month</name>
-        <type>String</type>
+        <type>None</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>-1</length>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -10021,14 +10021,14 @@ where location_attribute.attribute_type_id = ?
       </field>
       <field>
         <name>lowest_cd4_day</name>
-        <type>String</type>
+        <type>None</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>-1</length>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -10052,7 +10052,7 @@ where location_attribute.attribute_type_id = ?
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>-1</length>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -10141,14 +10141,14 @@ where location_attribute.attribute_type_id = ?
       </field>
       <field>
         <name>vl_date_day</name>
-        <type>String</type>
+        <type>None</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>-1</length>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -10165,14 +10165,14 @@ where location_attribute.attribute_type_id = ?
       </field>
       <field>
         <name>vl_date_month</name>
-        <type>String</type>
+        <type>None</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>-1</length>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -10237,14 +10237,14 @@ where location_attribute.attribute_type_id = ?
       </field>
       <field>
         <name>hepatitis_vacination_month</name>
-        <type>String</type>
+        <type>None</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>-1</length>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -10285,14 +10285,14 @@ where location_attribute.attribute_type_id = ?
       </field>
       <field>
         <name>tetanus_vacination_month</name>
-        <type>String</type>
+        <type>None</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>-1</length>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -11005,14 +11005,14 @@ where location_attribute.attribute_type_id = ?
       </field>
       <field>
         <name>pretal_visit_day</name>
-        <type>String</type>
+        <type>None</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>-1</length>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -11036,7 +11036,7 @@ where location_attribute.attribute_type_id = ?
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>-1</length>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -11077,14 +11077,14 @@ where location_attribute.attribute_type_id = ?
       </field>
       <field>
         <name>last_pretal_visit_day</name>
-        <type>String</type>
+        <type>None</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>-1</length>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -11101,14 +11101,14 @@ where location_attribute.attribute_type_id = ?
       </field>
       <field>
         <name>last_pretal_visit_month</name>
-        <type>String</type>
+        <type>None</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>-1</length>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -11197,14 +11197,14 @@ where location_attribute.attribute_type_id = ?
       </field>
       <field>
         <name>last_papanicolau_day</name>
-        <type>String</type>
+        <type>None</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>-1</length>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -11221,14 +11221,14 @@ where location_attribute.attribute_type_id = ?
       </field>
       <field>
         <name>last_papanicolau_month</name>
-        <type>String</type>
+        <type>None</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>-1</length>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
