@@ -2248,6 +2248,7 @@ where obs.concept_id = 6098
     <rowlimit>0</rowlimit>
     <sql>select obs.value_coded treatment_code, obs.obs_group_id drug_group_id from obs
 where obs.concept_id = 1282
+  and obs.value_coded &lt;&gt; 5622
   and obs.voided = false
   and obs.encounter_id = ?
 </sql>
@@ -2741,6 +2742,46 @@ where location_attribute.attribute_type_id = ?
       <field>
         <source_value>83412</source_value>
         <target_value>26</target_value>
+      </field>
+      <field>
+        <source_value>78280</source_value>
+        <target_value>18</target_value>
+      </field>
+      <field>
+        <source_value>75948</source_value>
+        <target_value>13</target_value>
+      </field>
+      <field>
+        <source_value>82900</source_value>
+        <target_value>24</target_value>
+      </field>
+      <field>
+        <source_value>767</source_value>
+        <target_value>25</target_value>
+      </field>
+      <field>
+        <source_value>84360</source_value>
+        <target_value>30</target_value>
+      </field>
+      <field>
+        <source_value>70245</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>105281</source_value>
+        <target_value>69</target_value>
+      </field>
+      <field>
+        <source_value>76488</source_value>
+        <target_value>14</target_value>
+      </field>
+      <field>
+        <source_value>78476</source_value>
+        <target_value>19</target_value>
+      </field>
+      <field>
+        <source_value>5841</source_value>
+        <target_value>35</target_value>
       </field>
     </fields>
     <attributes/>
