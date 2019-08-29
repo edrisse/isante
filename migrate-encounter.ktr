@@ -511,21 +511,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Decompose Next Visit Date</from>
-      <to>Save on CSV</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Decompose Encounter Datetime</from>
-      <to>Replace in string</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Replace in string</from>
-      <to>Fetch Next Visit Date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Filter rows</from>
       <to>Save Records Processed</to>
       <enabled>Y</enabled>
@@ -581,13 +566,28 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Fetch Next Visit Date</from>
+      <to>Fetch Pediatric</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Encounter Type Mapping Pediatric</from>
       <to>Decompose Next Visit Date</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Next Visit Date</from>
-      <to>Fetch Pediatric</to>
+      <from>Decompose Encounter Datetime</from>
+      <to>Fetch Next Visit Date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Decompose Next Visit Date</from>
+      <to>Replace in string</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string</from>
+      <to>Save on CSV</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -609,8 +609,8 @@
       <field_a>encounter_datetime</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -624,8 +624,8 @@
       <field_a>encounter_datetime</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -680,8 +680,8 @@
       <field_a>next_visit_date</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -695,8 +695,8 @@
       <field_a>next_visit_date</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -728,8 +728,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
-      <yloc>416</yloc>
+      <xloc>416</xloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1793,45 +1793,6 @@ where obs.concept_id = 5096
     </GUI>
   </step>
   <step>
-    <name>Replace in string</name>
-    <type>ReplaceString</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>visit_year</in_stream_name>
-        <out_stream_name>visit_year_yy</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>\d\d(\d\d)</replace_string>
-        <replace_by_string>$1</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1360</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Save Records Processed</name>
     <type>TableOutput</type>
     <description />
@@ -1998,15 +1959,15 @@ where obs.concept_id = 5096
         <precision>-1</precision>
       </field>
       <field>
-        <name>visit_day</name>
-        <type>None</type>
+        <name>visit_day_dd</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2022,15 +1983,15 @@ where obs.concept_id = 5096
         <precision>-1</precision>
       </field>
       <field>
-        <name>visit_month</name>
-        <type>None</type>
+        <name>visit_month_mm</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2382,15 +2343,15 @@ where obs.concept_id = 5096
         <precision>-1</precision>
       </field>
       <field>
-        <name>next_visit_day</name>
-        <type>None</type>
+        <name>next_visit_day_dd</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2406,15 +2367,15 @@ where obs.concept_id = 5096
         <precision>-1</precision>
       </field>
       <field>
-        <name>next_visit_month</name>
-        <type>None</type>
+        <name>next_visit_month_mm</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2549,6 +2510,93 @@ where obs.concept_id = 5096
     <GUI>
       <xloc>64</xloc>
       <yloc>416</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Replace in string</name>
+    <type>ReplaceString</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>visit_year</in_stream_name>
+        <out_stream_name>visit_year_yy</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\d\d(\d\d)</replace_string>
+        <replace_by_string>$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>visit_day</in_stream_name>
+        <out_stream_name>visit_day_dd</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>visit_month</in_stream_name>
+        <out_stream_name>visit_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>next_visit_day</in_stream_name>
+        <out_stream_name>next_visit_day_dd</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>next_visit_month</in_stream_name>
+        <out_stream_name>next_visit_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

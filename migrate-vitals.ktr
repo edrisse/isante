@@ -3486,8 +3486,8 @@
       <field_a>first_prenatal_visit</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3501,8 +3501,8 @@
       <field_a>first_prenatal_visit</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3557,8 +3557,8 @@
       <field_a>last_papanicolau</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3572,8 +3572,8 @@
       <field_a>last_papanicolau</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3628,8 +3628,8 @@
       <field_a>last_prenatal_visit</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3643,8 +3643,8 @@
       <field_a>last_prenatal_visit</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3699,8 +3699,8 @@
       <field_a>encounter_datetime</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3714,8 +3714,8 @@
       <field_a>encounter_datetime</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3770,8 +3770,8 @@
       <field_a>hiv_test_date</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3785,8 +3785,8 @@
       <field_a>hiv_test_date</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3841,8 +3841,8 @@
       <field_a>hepatitis_vacination_date</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3897,8 +3897,8 @@
       <field_a>lowest_cd4_count_date</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3912,8 +3912,8 @@
       <field_a>lowest_cd4_count_date</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3968,8 +3968,8 @@
       <field_a>tetanus_vacination_date</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -4024,8 +4024,8 @@
       <field_a>vl_date</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -4039,8 +4039,8 @@
       <field_a>vl_date</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -9203,11 +9203,59 @@ where location_attribute.attribute_type_id = ?
     </partitioning>
     <fields>
       <field>
+        <in_stream_name>visit_day</in_stream_name>
+        <out_stream_name>visit_day_dd</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>visit_month</in_stream_name>
+        <out_stream_name>visit_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
         <in_stream_name>visit_year</in_stream_name>
         <out_stream_name>visit_year_yy</out_stream_name>
         <use_regex>yes</use_regex>
         <replace_string>\d\d(\d\d)</replace_string>
         <replace_by_string>$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>hiv_test_day</in_stream_name>
+        <out_stream_name>hiv_test_day_dd</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>hiv_test_month</in_stream_name>
+        <out_stream_name>hiv_test_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
         <replace_field_by_string />
         <whole_word>no</whole_word>
@@ -9227,6 +9275,30 @@ where location_attribute.attribute_type_id = ?
         <is_unicode>no</is_unicode>
       </field>
       <field>
+        <in_stream_name>lowest_cd4_day</in_stream_name>
+        <out_stream_name>lowest_cd4_day_dd</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>lowest_cd4_month</in_stream_name>
+        <out_stream_name>lowest_cd4_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
         <in_stream_name>lowest_cd4_year</in_stream_name>
         <out_stream_name>lowest_cd4_year_yy</out_stream_name>
         <use_regex>yes</use_regex>
@@ -9239,11 +9311,131 @@ where location_attribute.attribute_type_id = ?
         <is_unicode>no</is_unicode>
       </field>
       <field>
+        <in_stream_name>vl_date_day</in_stream_name>
+        <out_stream_name>vl_date_day_dd</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>vl_date_month</in_stream_name>
+        <out_stream_name>vl_date_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
         <in_stream_name>vl_date_year</in_stream_name>
         <out_stream_name>vl_date_year_yy</out_stream_name>
         <use_regex>yes</use_regex>
         <replace_string>\d\d(\d\d)</replace_string>
         <replace_by_string>$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>hepatitis_vacination_month</in_stream_name>
+        <out_stream_name>hepatitis_vacination_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>tetanus_vacination_month</in_stream_name>
+        <out_stream_name>tetanus_vacination_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>pretal_visit_day</in_stream_name>
+        <out_stream_name>pretal_visit_day_dd</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>pretal_visit_month</in_stream_name>
+        <out_stream_name>pretal_visit_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>last_pretal_visit_day</in_stream_name>
+        <out_stream_name>last_pretal_visit_day_dd</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>last_pretal_visit_month</in_stream_name>
+        <out_stream_name>last_pretal_visit_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>last_papanicolau_day</in_stream_name>
+        <out_stream_name>last_papanicolau_day_dd</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>last_papanicolau_month</in_stream_name>
+        <out_stream_name>last_papanicolau_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
         <replace_field_by_string />
         <whole_word>no</whole_word>
@@ -9432,15 +9624,15 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>visit_day</name>
-        <type>None</type>
+        <name>visit_day_dd</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -9456,15 +9648,15 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>visit_month</name>
-        <type>None</type>
+        <name>visit_month_mm</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -9696,15 +9888,15 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>hiv_test_day</name>
-        <type>None</type>
+        <name>hiv_test_day_dd</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -9720,15 +9912,15 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>hiv_test_month</name>
-        <type>None</type>
+        <name>hiv_test_month_mm</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -10032,15 +10224,15 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>lowest_cd4_day</name>
-        <type>None</type>
+        <name>lowest_cd4_day_dd</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -10056,7 +10248,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>lowest_cd4_month</name>
+        <name>lowest_cd4_month_mm</name>
         <type>String</type>
         <format />
         <currency />
@@ -10064,7 +10256,7 @@ where location_attribute.attribute_type_id = ?
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -10152,15 +10344,15 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>vl_date_day</name>
-        <type>None</type>
+        <name>vl_date_day_dd</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -10176,15 +10368,15 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>vl_date_month</name>
-        <type>None</type>
+        <name>vl_date_month_mm</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -10248,15 +10440,15 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>hepatitis_vacination_month</name>
-        <type>None</type>
+        <name>hepatitis_vacination_month_mm</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -10297,14 +10489,14 @@ where location_attribute.attribute_type_id = ?
       </field>
       <field>
         <name>tetanus_vacination_month</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -11016,15 +11208,15 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>pretal_visit_day</name>
-        <type>None</type>
+        <name>pretal_visit_day_dd</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -11040,7 +11232,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>pretal_visit_month</name>
+        <name>pretal_visit_month_mm</name>
         <type>String</type>
         <format />
         <currency />
@@ -11048,7 +11240,7 @@ where location_attribute.attribute_type_id = ?
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -11088,15 +11280,15 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>last_pretal_visit_day</name>
-        <type>None</type>
+        <name>last_pretal_visit_day_dd</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -11112,15 +11304,15 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>last_pretal_visit_month</name>
-        <type>None</type>
+        <name>last_pretal_visit_month_mm</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -11208,15 +11400,15 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>last_papanicolau_day</name>
-        <type>None</type>
+        <name>last_papanicolau_day_dd</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -11232,15 +11424,15 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>last_papanicolau_month</name>
-        <type>None</type>
+        <name>last_papanicolau_month_mm</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>

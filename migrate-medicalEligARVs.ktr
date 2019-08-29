@@ -719,8 +719,8 @@
       <field_a>exp_from</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -734,8 +734,8 @@
       <field_a>exp_from</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -790,8 +790,8 @@
       <field_a>encounter_datetime</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -805,8 +805,8 @@
       <field_a>encounter_datetime</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -3184,6 +3184,54 @@ where obs.concept_id = 162703
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
       </field>
+      <field>
+        <in_stream_name>visit_month</in_stream_name>
+        <out_stream_name>visit_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>visit_day</in_stream_name>
+        <out_stream_name>visit_day_dd</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>exp_from_dt</in_stream_name>
+        <out_stream_name>exp_from_dt_dd</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>exp_from_mm</in_stream_name>
+        <out_stream_name>exp_from_mm_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
     </fields>
     <attributes />
     <cluster_schema />
@@ -3366,15 +3414,15 @@ where obs.concept_id = 162703
         <precision>-1</precision>
       </field>
       <field>
-        <name>visit_day</name>
-        <type>None</type>
+        <name>visit_day_dd</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3390,15 +3438,15 @@ where obs.concept_id = 162703
         <precision>-1</precision>
       </field>
       <field>
-        <name>visit_month</name>
-        <type>None</type>
+        <name>visit_month_mm</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3475,7 +3523,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>currentHivStage</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3487,7 +3535,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>current_hiv_stage_mapped</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3499,7 +3547,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>CD4</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3511,7 +3559,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3523,7 +3571,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>cellsPmm</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3535,7 +3583,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3547,7 +3595,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>CD4DateMM</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3559,7 +3607,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3571,7 +3619,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>ChildLT5ans</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3583,7 +3631,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3595,7 +3643,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>TLC</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3607,7 +3655,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3619,7 +3667,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>TLCDateMM</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3631,7 +3679,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3643,7 +3691,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>TLCDateYY</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3655,7 +3703,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3667,7 +3715,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>ViralLoad</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3679,7 +3727,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3691,7 +3739,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>ViralLoadMM</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3703,7 +3751,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3715,7 +3763,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>TLCDateYY</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3727,7 +3775,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3739,7 +3787,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>medElig</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3751,7 +3799,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>med_elig</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3763,7 +3811,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>cd4LT200</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3775,7 +3823,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>cd4_LT_200</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3787,7 +3835,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>WHOIII</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3799,7 +3847,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>WHO_III</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3811,7 +3859,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>PMTCT</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3823,7 +3871,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>PMTCT_answer</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3835,7 +3883,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>tlcLT1200</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3847,7 +3895,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3859,7 +3907,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>WHOIV</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3871,7 +3919,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>WHO_IV</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3883,7 +3931,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>medEligHAART</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3895,7 +3943,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>med_elig_HAART</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3907,7 +3955,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>ChildLT5ans</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3919,7 +3967,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>child_LT_5_ans</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3931,7 +3979,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>coinfectionTbHiv</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3943,7 +3991,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>coinfection_tb_hiv</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3955,7 +4003,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>coinfectionHbvHiv</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3967,7 +4015,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>coinfection_hbv_hiv</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3979,7 +4027,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>coupleSerodiscordant</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -3991,7 +4039,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>couple_serodiscordant</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4003,7 +4051,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>pregnantWomen</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4015,7 +4063,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>pregnant_women</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4027,7 +4075,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>breastfeedingWomen</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4039,7 +4087,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>breastfeeding_women</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4051,7 +4099,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>patientGt50ans</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4063,7 +4111,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>patient_gt_50_ans</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4075,7 +4123,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>nephropathieVih</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4087,7 +4135,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>nephropathie_vih</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4099,7 +4147,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>protocoleTestTraitement</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4111,7 +4159,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>protocole_test_traitement</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4123,7 +4171,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>CD4DateDD</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4135,7 +4183,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4147,7 +4195,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>TLCDateDD</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4159,7 +4207,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4171,7 +4219,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>ViralLoadDD</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4183,7 +4231,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4195,7 +4243,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>commAuthEnroll</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4207,7 +4255,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4219,7 +4267,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>commDelayEnrollDD</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4231,7 +4279,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4243,7 +4291,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>commAuthEnrollMM</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4255,7 +4303,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4267,7 +4315,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>commDelayEnrollYY</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4279,7 +4327,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4291,7 +4339,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>formerARVtherapy</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4303,7 +4351,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>former_ARV_therapy</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4315,7 +4363,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>PEP</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4327,7 +4375,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4339,7 +4387,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>expFromDt</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4350,20 +4398,20 @@ where obs.concept_id = 162703
         <precision>-1</precision>
       </field>
       <field>
-        <name>exp_from_dt</name>
-        <type>None</type>
+        <name>exp_from_dt_dd</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>expFromMm</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4374,20 +4422,20 @@ where obs.concept_id = 162703
         <precision>-1</precision>
       </field>
       <field>
-        <name>exp_from_mm</name>
-        <type>None</type>
+        <name>exp_from_mm_mm</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>expFromYy</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4399,7 +4447,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>exp_from_yy</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4411,7 +4459,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>pedMedEligCd4Cnt</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4423,7 +4471,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>ped_med_elig_Cd4_cnt</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4435,7 +4483,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>pedMedEligWho3</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4447,7 +4495,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>ped_med_elig_who_3</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4459,7 +4507,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>pedMedEligWho4</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4471,7 +4519,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>ped_med_elig_who_4</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4483,7 +4531,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>pedMedEligTlc</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4495,7 +4543,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4507,7 +4555,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>pedMedEligPmtct</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4519,7 +4567,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4531,7 +4579,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>pedMedEligFormerTherapy</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4543,7 +4591,7 @@ where obs.concept_id = 162703
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
