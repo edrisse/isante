@@ -9421,30 +9421,18 @@ where location_attribute.attribute_type_id = ?
       </field>
       <field>
         <name>visitDateDd_cn</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>visit_day</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>visitDateMm_cn</name>
         <type>None</type>
         <format />
         <currency />
@@ -9456,7 +9444,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>visit_month</name>
+        <name>visitDateMm_cn</name>
         <type>String</type>
         <format />
         <currency />
@@ -9465,6 +9453,18 @@ where location_attribute.attribute_type_id = ?
         <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>visit_month</name>
+        <type>None</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
