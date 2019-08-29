@@ -2261,6 +2261,46 @@ where person_attribute.person_id = ?
     </GUI>
   </step>
   <step>
+    <name>Fetch Registration encounter</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select e.encounter_id from encounter e join encounter_type et
+on e.encounter_type = et.encounter_type_id and et.uuid = '873f968a-73a8-4f9c-ac78-9f4778b751b6' 
+where e.voided = false
+and e.patient_id = ?
+</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>person_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>944</xloc>
+      <yloc>848</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Fetch ST Code</name>
     <type>DBJoin</type>
     <description />
@@ -3248,7 +3288,7 @@ where patient_identifier.identifier_type = ?
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>-1</length>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3272,7 +3312,7 @@ where patient_identifier.identifier_type = ?
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>-1</length>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3839,46 +3879,6 @@ where patient_identifier.identifier_type = ?
     <GUI>
       <xloc>848</xloc>
       <yloc>1104</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Registration encounter</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select e.encounter_id from encounter e join encounter_type et
-on e.encounter_type = et.encounter_type_id and et.uuid = '873f968a-73a8-4f9c-ac78-9f4778b751b6' 
-where e.voided = false
-and e.patient_id = ?
-</sql>
-    <outer_join>N</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>person_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>944</xloc>
-      <yloc>848</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
