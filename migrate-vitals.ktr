@@ -3250,6 +3250,17 @@
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
+      <field>
+        <name>default_one</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
     </fields>
     <data>
       <line>
@@ -3440,6 +3451,7 @@
         <item>pedImmVacc</item>
         <item />
         <item>seqNum</item>
+        <item>1</item>
       </line>
     </data>
     <attributes />
@@ -3717,7 +3729,7 @@
       <field_a>encounter_datetime</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
+      <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
@@ -4763,7 +4775,7 @@ where obs.concept_id = 159590
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_numeric diastolic_bp from obs
+    <sql>select obs.value_numeric diastolic_bp, if(obs.value_numeric is null, '', '1') bpUnits from obs
 where obs.concept_id = 5086
   and obs.voided = false
   and obs.encounter_id = ?
@@ -7097,7 +7109,7 @@ where obs.concept_id = 163580
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_numeric systolic_bp from obs
+    <sql>select obs.value_numeric systolic_bp, if(obs.value_numeric is null, '', '1') bpUnits from obs
 where obs.concept_id = 5085
   and obs.voided = false
   and obs.encounter_id = ?
@@ -7218,7 +7230,7 @@ where obs.concept_id = 163323
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_numeric temp from obs
+    <sql>select obs.value_numeric temp, if(obs.value_numeric is null, '', '1') tempUnits from obs
 where obs.concept_id = 5088
   and obs.voided = false
   and obs.encounter_id = ?
@@ -7655,7 +7667,7 @@ where encounter_type.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7',
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_numeric weight from obs
+    <sql>select obs.value_numeric weight, if(obs.value_numeric is null, '', '1') weightUnits  from obs
 where obs.concept_id = 5089
   and obs.voided = false
   and obs.encounter_id = ?
@@ -11628,7 +11640,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>empty_value</name>
+        <name>tempUnits</name>
         <type>None</type>
         <format />
         <currency />
@@ -11652,7 +11664,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>empty_value</name>
+        <name>bpUnits</name>
         <type>None</type>
         <format />
         <currency />
@@ -11700,7 +11712,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>empty_value</name>
+        <name>weightUnits</name>
         <type>None</type>
         <format />
         <currency />
