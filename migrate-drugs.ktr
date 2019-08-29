@@ -1336,13 +1336,17 @@
     <sql>select 1 as alternative_treatment from obs
 where obs.concept_id = 6098
   and obs.value_coded = 151316
-  and obs.obs_group_id = 160741
+  and obs.obs_group_id = ?
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>drug_group_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>encounter_id</name>
         <type>Number</type>
@@ -1378,13 +1382,17 @@ where obs.concept_id = 6098
     <sql>select 1 as clinical_failure from obs
 where obs.concept_id = 6098
   and obs.value_coded = 102
-  and obs.obs_group_id = 160741
+  and obs.obs_group_id = ?
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>drug_group_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>encounter_id</name>
         <type>Number</type>
@@ -1420,13 +1428,17 @@ where obs.concept_id = 6098
     <sql>select 1 as continuing_use from obs
 where obs.concept_id = 159367
   and obs.value_coded = 1065
-  and obs.obs_group_id = 160741
+  and obs.obs_group_id = ?
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>drug_group_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>encounter_id</name>
         <type>Number</type>
@@ -1526,13 +1538,17 @@ where encounter_type.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7', '204ad066-
     <rowlimit>1</rowlimit>
     <sql>select obs.value_datetime drug_start_date from obs
 where obs.concept_id = 1190
-  and obs.obs_group_id = 160741
+  and obs.obs_group_id = ?
   and obs.voided = false
   and obs.encounter_id = ?
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>drug_group_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>encounter_id</name>
         <type>Number</type>
@@ -1567,13 +1583,17 @@ where obs.concept_id = 1190
     <rowlimit>1</rowlimit>
     <sql>select obs.value_datetime drug_stop_date from obs
 where obs.concept_id = 1191
-  and obs.obs_group_id = 160741
+  and obs.obs_group_id = ?
   and obs.voided = false
   and obs.encounter_id = ?
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>drug_group_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>encounter_id</name>
         <type>Number</type>
@@ -1609,13 +1629,17 @@ where obs.concept_id = 1191
     <sql>select 1 as end_pmtct from obs
 where obs.concept_id = 6098
   and obs.value_coded = 1253
-  and obs.obs_group_id = 160741
+  and obs.obs_group_id = ?
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>drug_group_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>encounter_id</name>
         <type>Number</type>
@@ -1651,13 +1675,17 @@ where obs.concept_id = 6098
     <sql>select 1 as failure from obs
 where obs.concept_id = 6098
   and obs.value_coded = 843
-  and obs.obs_group_id = 160741
+  and obs.obs_group_id = ?
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>drug_group_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>encounter_id</name>
         <type>Number</type>
@@ -1693,13 +1721,17 @@ where obs.concept_id = 6098
     <sql>select 1 as hospitalization from obs
 where obs.concept_id = 6098
   and obs.value_coded = 5485
-  and obs.obs_group_id = 160741
+  and obs.obs_group_id = ?
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>drug_group_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>encounter_id</name>
         <type>Number</type>
@@ -1735,13 +1767,17 @@ where obs.concept_id = 6098
     <sql>select 1 as imm_fail from obs
 where obs.concept_id = 6098
   and obs.value_coded = 102
-  and obs.obs_group_id = 160741
+  and obs.obs_group_id = ?
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>drug_group_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>encounter_id</name>
         <type>Number</type>
@@ -1777,13 +1813,17 @@ where obs.concept_id = 6098
     <sql>select 1 as intolerance from obs
 where obs.concept_id = 6098
   and obs.value_coded = 987
-  and obs.obs_group_id = 160741
+  and obs.obs_group_id = ?
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>drug_group_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>encounter_id</name>
         <type>Number</type>
@@ -1853,13 +1893,17 @@ order by date desc</sql>
     <sql>select 1 as lost from obs
 where obs.concept_id = 6098
   and obs.value_coded = 162192
-  and obs.obs_group_id = 160741
+  and obs.obs_group_id = ?
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>drug_group_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>encounter_id</name>
         <type>Number</type>
@@ -1895,13 +1939,17 @@ where obs.concept_id = 6098
     <sql>select 1 as money from obs
 where obs.concept_id = 6098
   and obs.value_coded = 819
-  and obs.obs_group_id = 160741
+  and obs.obs_group_id = ?
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>drug_group_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>encounter_id</name>
         <type>Number</type>
@@ -1981,13 +2029,17 @@ where patient_identifier.identifier_type = ?
     <sql>select 1 as preference from obs
 where obs.concept_id = 6098
   and obs.value_coded = 160018
-  and obs.obs_group_id = 160741
+  and obs.obs_group_id = ?
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>drug_group_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>encounter_id</name>
         <type>Number</type>
@@ -2023,13 +2075,17 @@ where obs.concept_id = 6098
     <sql>select 1 as pregnancy from obs
 where obs.concept_id = 6098
   and obs.value_coded = 1434
-  and obs.obs_group_id = 160741
+  and obs.obs_group_id = ?
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>drug_group_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>encounter_id</name>
         <type>Number</type>
@@ -2101,13 +2157,17 @@ where obs.concept_id = 6098
     <sql>select 1 as stock from obs
 where obs.concept_id = 6098
   and obs.value_coded = 1754
-  and obs.obs_group_id = 160741
+  and obs.obs_group_id = ?
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>drug_group_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>encounter_id</name>
         <type>Number</type>
@@ -2143,13 +2203,17 @@ where obs.concept_id = 6098
     <sql>select 1 as toxicity from obs
 where obs.concept_id = 6098
   and obs.value_coded = 102
-  and obs.obs_group_id = 160741
+  and obs.obs_group_id = ?
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>drug_group_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>encounter_id</name>
         <type>Number</type>
@@ -2181,14 +2245,14 @@ where obs.concept_id = 6098
       <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded treatment_code from obs
+    <rowlimit>0</rowlimit>
+    <sql>select obs.value_coded treatment_code, obs.obs_group_id drug_group_id from obs
 where obs.concept_id = 1282
-  and obs.obs_group_id = 160741
+  and obs.value_coded &lt;&gt; 5622
   and obs.voided = false
   and obs.encounter_id = ?
 </sql>
-    <outer_join>Y</outer_join>
+    <outer_join>N</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
       <field>
@@ -2226,13 +2290,17 @@ where obs.concept_id = 1282
     <sql>select 1 as unknown from obs
 where obs.concept_id = 6098
   and obs.value_coded = 1067
-  and obs.obs_group_id = 160741
+  and obs.obs_group_id = ?
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>drug_group_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>encounter_id</name>
         <type>Number</type>
@@ -2268,13 +2336,17 @@ where obs.concept_id = 6098
     <sql>select 1 as vir_fail from obs
 where obs.concept_id = 6098
   and obs.value_coded = 102
-  and obs.obs_group_id = 160741
+  and obs.obs_group_id = ?
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>drug_group_id</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>encounter_id</name>
         <type>Number</type>
@@ -2671,6 +2743,46 @@ where location_attribute.attribute_type_id = ?
         <source_value>83412</source_value>
         <target_value>26</target_value>
       </field>
+      <field>
+        <source_value>78280</source_value>
+        <target_value>18</target_value>
+      </field>
+      <field>
+        <source_value>75948</source_value>
+        <target_value>13</target_value>
+      </field>
+      <field>
+        <source_value>82900</source_value>
+        <target_value>24</target_value>
+      </field>
+      <field>
+        <source_value>767</source_value>
+        <target_value>25</target_value>
+      </field>
+      <field>
+        <source_value>84360</source_value>
+        <target_value>30</target_value>
+      </field>
+      <field>
+        <source_value>70245</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>105281</source_value>
+        <target_value>69</target_value>
+      </field>
+      <field>
+        <source_value>76488</source_value>
+        <target_value>14</target_value>
+      </field>
+      <field>
+        <source_value>78476</source_value>
+        <target_value>19</target_value>
+      </field>
+      <field>
+        <source_value>5841</source_value>
+        <target_value>35</target_value>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -2683,6 +2795,69 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>1056</xloc>
       <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Replace in string</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>visit_year</in_stream_name>
+        <out_stream_name>visit_year_yy</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\d\d(\d\d)</replace_string>
+        <replace_by_string>$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>drug_start_year</in_stream_name>
+        <out_stream_name>drug_start_year_yy</out_stream_name>
+        <use_regex>no</use_regex>
+        <replace_string/>
+        <replace_by_string/>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>drug_stop_year</in_stream_name>
+        <out_stream_name>drug_stop_year_yy</out_stream_name>
+        <use_regex>no</use_regex>
+        <replace_string/>
+        <replace_by_string/>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>672</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3595,69 +3770,6 @@ where location_attribute.attribute_type_id = ?
     </remotesteps>
     <GUI>
       <xloc>560</xloc>
-      <yloc>672</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Replace in string</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>visit_year</in_stream_name>
-        <out_stream_name>visit_year_yy</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>\d\d(\d\d)</replace_string>
-        <replace_by_string>$1</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>drug_start_year</in_stream_name>
-        <out_stream_name>drug_start_year_yy</out_stream_name>
-        <use_regex>no</use_regex>
-        <replace_string/>
-        <replace_by_string/>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>drug_stop_year</in_stream_name>
-        <out_stream_name>drug_stop_year_yy</out_stream_name>
-        <use_regex>no</use_regex>
-        <replace_string/>
-        <replace_by_string/>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>304</xloc>
       <yloc>672</yloc>
       <draw>Y</draw>
     </GUI>
