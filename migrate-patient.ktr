@@ -496,11 +496,6 @@
   </connection>
   <order>
     <hop>
-      <from>Decompose Birthday</from>
-      <to>Map Sex</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Map Sex</from>
       <to>Fetch Mother Name</to>
       <enabled>Y</enabled>
@@ -718,6 +713,16 @@
     <hop>
       <from>Fetch Registration encounter</from>
       <to>Fetch Comune</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Decompose Birthday</from>
+      <to>Replace in string</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string</from>
+      <to>Map Sex</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1178,8 +1183,8 @@
       <field_a>birthdate</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -1193,8 +1198,8 @@
       <field_a>birthdate</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -1226,7 +1231,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>672</xloc>
+      <xloc>544</xloc>
       <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2215,7 +2220,7 @@ order by person_name.person_name_id desc
       </output>
     </remotesteps>
     <GUI>
-      <xloc>512</xloc>
+      <xloc>384</xloc>
       <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3280,15 +3285,15 @@ where patient_identifier.identifier_type = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>birthday_day</name>
-        <type>None</type>
+        <name>birthday_day_dd</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3304,15 +3309,15 @@ where patient_identifier.identifier_type = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>birthday_month</name>
-        <type>None</type>
+        <name>birthday_month_mm</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3879,6 +3884,57 @@ where patient_identifier.identifier_type = ?
     <GUI>
       <xloc>848</xloc>
       <yloc>1104</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Replace in string</name>
+    <type>ReplaceString</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>birthday_day</in_stream_name>
+        <out_stream_name>birthday_day_dd</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>birthday_month</in_stream_name>
+        <out_stream_name>birthday_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
