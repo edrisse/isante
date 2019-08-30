@@ -551,11 +551,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Seqnum</from>
-      <to>Save on CSV</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch  Disclosure 2 Phone</from>
       <to>Fetch dbSite</to>
       <enabled>Y</enabled>
@@ -628,6 +623,16 @@
     <hop>
       <from>Decompose Encounter Datetime</from>
       <to>Fetch Disclosure 1 Name</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Seqnum</from>
+      <to>Replace in string</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string</from>
+      <to>Save on CSV</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -827,6 +832,77 @@
     <GUI>
       <xloc>80</xloc>
       <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Decompose Encounter Datetime</name>
+    <type>Calculator</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>visit_day</field_name>
+      <calc_type>DAY_OF_MONTH</calc_type>
+      <field_a>encounter_datetime</field_a>
+      <field_b />
+      <field_c />
+      <value_type>None</value_type>
+      <value_length>2</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>visit_month</field_name>
+      <calc_type>MONTH_OF_DATE</calc_type>
+      <field_a>encounter_datetime</field_a>
+      <field_b />
+      <field_c />
+      <value_type>None</value_type>
+      <value_length>2</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>visit_year</field_name>
+      <calc_type>YEAR_OF_DATE</calc_type>
+      <field_a>encounter_datetime</field_a>
+      <field_b />
+      <field_c />
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1504</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1369,6 +1445,46 @@ where patient_identifier.identifier_type = ?
     <GUI>
       <xloc>912</xloc>
       <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Registration encounter</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select e.encounter_id, e.encounter_datetime from encounter e join encounter_type et
+on e.encounter_type = et.encounter_type_id and et.uuid = '873f968a-73a8-4f9c-ac78-9f4778b751b6' 
+where e.voided = false
+and e.patient_id = ?
+</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>person_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1935,15 +2051,15 @@ where obs.person_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>visit_day</name>
-        <type>None</type>
+        <name>visit_day_dd</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -1959,15 +2075,15 @@ where obs.person_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>visit_month</name>
-        <type>None</type>
+        <name>visit_month_mm</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -2178,8 +2294,8 @@ where obs.person_id = ?
     </GUI>
   </step>
   <step>
-    <name>Fetch Registration encounter</name>
-    <type>DBJoin</type>
+    <name>Replace in string</name>
+    <type>ReplaceString</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -2188,21 +2304,32 @@ where obs.person_id = ?
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select e.encounter_id, e.encounter_datetime from encounter e join encounter_type et
-on e.encounter_type = et.encounter_type_id and et.uuid = '873f968a-73a8-4f9c-ac78-9f4778b751b6' 
-where e.voided = false
-and e.patient_id = ?
-</sql>
-    <outer_join>N</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
+    <fields>
       <field>
-        <name>person_id</name>
-        <type>Number</type>
+        <in_stream_name>visit_day</in_stream_name>
+        <out_stream_name>visit_day_dd</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
       </field>
-    </parameter>
+      <field>
+        <in_stream_name>visit_month</in_stream_name>
+        <out_stream_name>visit_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
     <attributes />
     <cluster_schema />
     <remotesteps>
@@ -2212,79 +2339,8 @@ and e.patient_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1392</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Decompose Encounter Datetime</name>
-    <type>Calculator</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <failIfNoFile>Y</failIfNoFile>
-    <calculation>
-      <field_name>visit_day</field_name>
-      <calc_type>DAY_OF_MONTH</calc_type>
-      <field_a>encounter_datetime</field_a>
-      <field_b />
-      <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <calculation>
-      <field_name>visit_month</field_name>
-      <calc_type>MONTH_OF_DATE</calc_type>
-      <field_a>encounter_datetime</field_a>
-      <field_b />
-      <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <calculation>
-      <field_name>visit_year</field_name>
-      <calc_type>YEAR_OF_DATE</calc_type>
-      <field_a>encounter_datetime</field_a>
-      <field_b />
-      <field_c />
-      <value_type>None</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1504</xloc>
-      <yloc>176</yloc>
+      <xloc>624</xloc>
+      <yloc>576</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

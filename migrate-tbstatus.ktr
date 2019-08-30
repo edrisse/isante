@@ -800,8 +800,8 @@
       <field_a>encounter_datetime</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -815,8 +815,8 @@
       <field_a>encounter_datetime</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -871,8 +871,8 @@
       <field_a>inh_end_date</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -927,8 +927,8 @@
       <field_a>inh_start_date</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -983,8 +983,8 @@
       <field_a>ped_complete_treat_start_date</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -1039,8 +1039,8 @@
       <field_a>ped_tb_eval_ppd_recent_date</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
-      <value_length>2</value_length>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
       <conversion_mask />
@@ -2853,6 +2853,30 @@ where location_attribute.attribute_type_id = ?
         <is_unicode>no</is_unicode>
       </field>
       <field>
+        <in_stream_name>visit_day</in_stream_name>
+        <out_stream_name>visit_day_dd</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>visit_month</in_stream_name>
+        <out_stream_name>visit_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
         <in_stream_name>ped_tb_eval_ppd_recent_date_year</in_stream_name>
         <out_stream_name>ped_tb_eval_ppd_recent_date_year_yy</out_stream_name>
         <use_regex>yes</use_regex>
@@ -2870,6 +2894,78 @@ where location_attribute.attribute_type_id = ?
         <use_regex>yes</use_regex>
         <replace_string>\d\d(\d\d)</replace_string>
         <replace_by_string>$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>completed_treat_date_day</in_stream_name>
+        <out_stream_name>completed_treat_date_day_dd</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>completed_treat_date_month</in_stream_name>
+        <out_stream_name>completed_treat_date_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>inh_start_date_month</in_stream_name>
+        <out_stream_name>inh_start_date_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>inh_end_date_month</in_stream_name>
+        <out_stream_name>inh_end_date_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>ped_complete_treat_start_date_month</in_stream_name>
+        <out_stream_name>ped_complete_treat_start_date_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>ped_tb_eval_ppd_recent_date_month</in_stream_name>
+        <out_stream_name>ped_tb_eval_ppd_recent_date_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
         <replace_field_by_string />
         <whole_word>no</whole_word>
@@ -3058,15 +3154,15 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>visit_day</name>
-        <type>None</type>
+        <name>visit_day_dd</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3082,15 +3178,15 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>visit_month</name>
-        <type>None</type>
+        <name>visit_month_mm</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3322,15 +3418,15 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>completed_treat_date_day</name>
-        <type>None</type>
+        <name>completed_treat_date_day_dd</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3346,15 +3442,15 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>completed_treat_date_month</name>
-        <type>None</type>
+        <name>completed_treat_date_month_mm</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3562,15 +3658,15 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>inh_start_date_month</name>
-        <type>None</type>
+        <name>inh_start_date_month_mm</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3610,15 +3706,15 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>inh_end_date_month</name>
-        <type>None</type>
+        <name>inh_end_date_month_mm</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3682,15 +3778,15 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>ped_complete_treat_start_date_month</name>
-        <type>None</type>
+        <name>ped_complete_treat_start_date_month_mm</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3754,15 +3850,15 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>ped_tb_eval_ppd_recent_date_month</name>
-        <type>None</type>
+        <name>ped_tb_eval_ppd_recent_date_month_mm</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
         <nullif />
         <trim_type>none</trim_type>
-        <length>2</length>
+        <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
