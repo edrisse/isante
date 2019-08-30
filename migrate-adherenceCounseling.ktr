@@ -4108,7 +4108,7 @@ where location_attribute.attribute_type_id = ?
       <field>
         <in_stream_name>visit_day</in_stream_name>
         <out_stream_name>visit_day_dd</out_stream_name>
-        <use_regex>no</use_regex>
+        <use_regex>yes</use_regex>
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
@@ -4120,7 +4120,7 @@ where location_attribute.attribute_type_id = ?
       <field>
         <in_stream_name>visit_month</in_stream_name>
         <out_stream_name>visit_month_mm</out_stream_name>
-        <use_regex>no</use_regex>
+        <use_regex>yes</use_regex>
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
