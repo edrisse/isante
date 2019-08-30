@@ -682,6 +682,11 @@
     </hop>
     <hop>
       <from>Replace in string</from>
+      <to>Days and Months w/ 2 digits</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Days and Months w/ 2 digits</from>
       <to>Save on CSV</to>
       <enabled>Y</enabled>
     </hop>
@@ -2825,9 +2830,9 @@ where location_attribute.attribute_type_id = ?
       <field>
         <in_stream_name>drug_start_year</in_stream_name>
         <out_stream_name>drug_start_year_yy</out_stream_name>
-        <use_regex>no</use_regex>
-        <replace_string/>
-        <replace_by_string/>
+        <use_regex>yes</use_regex>
+        <replace_string>\d\d(\d\d)</replace_string>
+        <replace_by_string>$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
         <replace_field_by_string/>
         <whole_word>no</whole_word>
@@ -2837,9 +2842,9 @@ where location_attribute.attribute_type_id = ?
       <field>
         <in_stream_name>drug_stop_year</in_stream_name>
         <out_stream_name>drug_stop_year_yy</out_stream_name>
-        <use_regex>no</use_regex>
-        <replace_string/>
-        <replace_by_string/>
+        <use_regex>yes</use_regex>
+        <replace_string>\d\d(\d\d)</replace_string>
+        <replace_by_string>$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
         <replace_field_by_string/>
         <whole_word>no</whole_word>
@@ -3028,7 +3033,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>visit_day</name>
+        <name>visit_day_dd</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3052,7 +3057,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>visit_month</name>
+        <name>visit_month_mm</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3172,7 +3177,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>drug_start_month</name>
+        <name>drug_start_month_mm</name>
         <type>None</type>
         <format/>
         <currency/>
@@ -3268,7 +3273,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>drug_stop_month</name>
+        <name>drug_stop_month_mm</name>
         <type>None</type>
         <format/>
         <currency/>
@@ -3769,7 +3774,86 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>560</xloc>
+      <xloc>624</xloc>
+      <yloc>672</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Days and Months w/ 2 digits</name>
+    <type>StringOperations</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>visit_day</in_stream_name>
+        <out_stream_name>visit_day_dd</out_stream_name>
+        <trim_type>none</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>left</padding_type>
+        <pad_char>0</pad_char>
+        <pad_len>2</pad_len>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>visit_month</in_stream_name>
+        <out_stream_name>visit_month_mm</out_stream_name>
+        <trim_type>none</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>left</padding_type>
+        <pad_char>0</pad_char>
+        <pad_len>2</pad_len>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>drug_start_month</in_stream_name>
+        <out_stream_name>drug_start_month_mm</out_stream_name>
+        <trim_type>none</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>left</padding_type>
+        <pad_char>0</pad_char>
+        <pad_len>2</pad_len>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>drug_stop_month</in_stream_name>
+        <out_stream_name>drug_stop_month_mm</out_stream_name>
+        <trim_type>none</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>left</padding_type>
+        <pad_char>0</pad_char>
+        <pad_len>2</pad_len>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>464</xloc>
       <yloc>672</yloc>
       <draw>Y</draw>
     </GUI>
