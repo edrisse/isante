@@ -1131,11 +1131,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Seqnum</from>
-      <to>Replace in string</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Replace in string</from>
       <to>Save on CSV</to>
       <enabled>Y</enabled>
@@ -1178,6 +1173,31 @@
     <hop>
       <from>Load iSante ID Identifier Type</from>
       <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Date of repeat test at this facility</from>
+      <to>Decompose Date of repeat test at this facility</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Seqnum</from>
+      <to>Fetch Date of repeat test at this facility</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Test results received by patient</from>
+      <to>Map Test results received by patient</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Decompose Date of repeat test at this facility</from>
+      <to>Fetch Test results received by patient</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map Test results received by patient</from>
+      <to>Replace in string</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -7011,7 +7031,7 @@ where obs.concept_id = 5092
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
+      <xloc>432</xloc>
       <yloc>2080</yloc>
       <draw>Y</draw>
     </GUI>
@@ -9433,6 +9453,30 @@ where location_attribute.attribute_type_id = ?
       <field>
         <in_stream_name>last_papanicolau_month</in_stream_name>
         <out_stream_name>last_papanicolau_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>repeat_test_day</in_stream_name>
+        <out_stream_name>repeat_test_day_dd</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>repeat_test_month</in_stream_name>
+        <out_stream_name>repeat_test_month_mm</out_stream_name>
         <use_regex>yes</use_regex>
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
@@ -12168,8 +12212,8 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>empty_value</name>
-        <type>None</type>
+        <name>repeat_test_day_dd</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -12192,8 +12236,8 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>empty_value</name>
-        <type>None</type>
+        <name>repeat_test_month_mm</name>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -12216,7 +12260,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>empty_value</name>
+        <name>repeat_test_year</name>
         <type>None</type>
         <format />
         <currency />
@@ -12240,7 +12284,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>empty_value</name>
+        <name>first_test_results_received_mapped</name>
         <type>None</type>
         <format />
         <currency />
@@ -13439,6 +13483,195 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>960</xloc>
       <yloc>2080</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Decompose Date of repeat test at this facility</name>
+    <type>Calculator</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>repeat_test_day</field_name>
+      <calc_type>DAY_OF_MONTH</calc_type>
+      <field_a>repeat_test_dt</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>repeat_test_month</field_name>
+      <calc_type>MONTH_OF_DATE</calc_type>
+      <field_a>repeat_test_dt</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>repeat_test_year</field_name>
+      <calc_type>YEAR_OF_DATE</calc_type>
+      <field_a>repeat_test_dt</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>400</xloc>
+      <yloc>2288</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Date of repeat test at this facility</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_datetime repeat_test_dt from obs
+where obs.concept_id = 165642
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>400</xloc>
+      <yloc>2176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Test results received by patient</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded first_test_results_received from obs
+where obs.concept_id = 164848
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>640</xloc>
+      <yloc>2320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Test results received by patient</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>first_test_results_received</field_to_use>
+    <target_field>first_test_results_received_mapped</target_field>
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>1065</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>1066</source_value>
+        <target_value>2</target_value>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>720</xloc>
+      <yloc>2288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
