@@ -2412,6 +2412,54 @@ where location_attribute.attribute_type_id = ?
         <source_value>165093</source_value>
         <target_value>91</target_value>
       </field>
+      <field>
+        <source_value>817</source_value>
+        <target_value>33</target_value>
+      </field>
+      <field>
+        <source_value>70116</source_value>
+        <target_value>36</target_value>
+      </field>
+      <field>
+        <source_value>70439</source_value>
+        <target_value>41</target_value>
+      </field>
+      <field>
+        <source_value>71160</source_value>
+        <target_value>55</target_value>
+      </field>
+      <field>
+        <source_value>73449</source_value>
+        <target_value>42</target_value>
+      </field>
+      <field>
+        <source_value>75222</source_value>
+        <target_value>79</target_value>
+      </field>
+      <field>
+        <source_value>77897</source_value>
+        <target_value>38</target_value>
+      </field>
+      <field>
+        <source_value>78280</source_value>
+        <target_value>18</target_value>
+      </field>
+      <field>
+        <source_value>82767</source_value>
+        <target_value>51</target_value>
+      </field>
+      <field>
+        <source_value>82919</source_value>
+        <target_value>61</target_value>
+      </field>
+      <field>
+        <source_value>71617</source_value>
+        <target_value>37</target_value>
+      </field>
+      <field>
+        <source_value>159810</source_value>
+        <target_value>90</target_value>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
