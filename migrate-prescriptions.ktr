@@ -647,11 +647,6 @@
     </hop>
     <hop>
       <from>Fetch Duration</from>
-      <to>Duration to integer</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Duration to integer</from>
       <to>Fetch Dispensed Quantity</to>
       <enabled>Y</enabled>
     </hop>
@@ -955,6 +950,17 @@ where obs.concept_id = 1444
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
+      <field>
+        <name>numDays_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
     </fields>
     <data>
       <line>
@@ -980,6 +986,7 @@ where obs.concept_id = 1444
         <item>pedDosageDesc</item>
         <item>forPepPmtct</item>
         <item>dispAltNumPills</item>
+        <item>numDays</item>
       </line>
     </data>
     <attributes />
@@ -3093,6 +3100,30 @@ where location_attribute.attribute_type_id = ?
         <length>-1</length>
         <precision>-1</precision>
       </field>
+      <field>
+        <name>numDays_cn</name>
+        <type>None</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>duration</name>
+        <type>None</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
     </fields>
     <attributes />
     <cluster_schema />
@@ -3105,51 +3136,6 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>736</xloc>
       <yloc>432</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Duration to integer</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <select_unspecified>N</select_unspecified>
-      <meta>
-        <name>duration</name>
-        <rename>duration</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>1</precision>
-        <conversion_mask>#</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>720</xloc>
-      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
