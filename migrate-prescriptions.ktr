@@ -1502,7 +1502,7 @@ where obs.concept_id = 1282
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_numeric duration from obs
+    <sql>select format(obs.value_numeric, 0) duration from obs
 where obs.concept_id = 159368
   and obs.obs_group_id = ?
   and obs.voided = false
