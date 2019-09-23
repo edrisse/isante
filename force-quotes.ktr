@@ -836,7 +836,7 @@
     <fileNameField/>
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>${user.home}/isante/data</name>
+      <name>${user.home}/isante/${FILE_NAME_PREFIX}</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
       <extention>csv</extention>
