@@ -1131,12 +1131,12 @@ where obs.concept_id = 162724
     <rowlimit>0</rowlimit>
     <sql>select encounter.encounter_id, encounter.encounter_datetime, encounter.patient_id person_id, encounter.location_id isante_plus_location_id from encounter
 join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
-where encounter_type.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7', '204ad066-c5c2-4229-9a62-644bc5617ca2')
+where encounter_type.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7', '204ad066-c5c2-4229-9a62-644bc5617ca2', '33491314-c352-42d0-bd5d-a9d0bffc9bf1', '349ae0b4-65c1-4122-aa06-480f186c8350')
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
    or encounter.date_voided >= ?
    or encounter.date_created >= ?
-   or encounter.date_changed &gt;= ?
+   or encounter.date_changed >= ?
    or encounter.date_voided >= ?)
 </sql>
     <outer_join>N</outer_join>

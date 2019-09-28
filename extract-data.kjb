@@ -565,8 +565,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>384</xloc>
-      <yloc>480</yloc>
+      <xloc>976</xloc>
+      <yloc>496</yloc>
       <attributes_kjc />
     </entry>
     <entry>
@@ -603,8 +603,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>544</xloc>
-      <yloc>384</yloc>
+      <xloc>288</xloc>
+      <yloc>496</yloc>
       <attributes_kjc />
     </entry>
     <entry>
@@ -1391,7 +1391,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>704</xloc>
+      <xloc>288</xloc>
       <yloc>384</yloc>
       <attributes_kjc />
     </entry>
@@ -1429,8 +1429,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>400</xloc>
-      <yloc>384</yloc>
+      <xloc>416</xloc>
+      <yloc>496</yloc>
       <attributes_kjc />
     </entry>
     <entry>
@@ -1450,7 +1450,7 @@
         <field>
           <source_filefolder>EMPTY_SOURCE_URL-0-file://${ISANTE-PLUS-REPLICATION-REPOSITORY-DIR}/etc/report-file-template.txt</source_filefolder>
           <source_configuration_name>LOCAL-SOURCE-FILE-0</source_configuration_name>
-          <destination_filefolder>EMPTY_DEST_URL-0-file://${user.home}/isante/data.csv.gz-report.txt</destination_filefolder>
+          <destination_filefolder>EMPTY_DEST_URL-0-file://${user.home}/isante/${FILE_NAME_PREFIX}.csv.gz-report.txt</destination_filefolder>
           <destination_configuration_name>LOCAL-DEST-FILE-0</destination_configuration_name>
           <wildcard />
         </field>
@@ -1458,8 +1458,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>208</xloc>
-      <yloc>384</yloc>
+      <xloc>576</xloc>
+      <yloc>496</yloc>
       <attributes_kjc />
     </entry>
     <entry>
@@ -1496,8 +1496,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>64</xloc>
-      <yloc>384</yloc>
+      <xloc>688</xloc>
+      <yloc>496</yloc>
       <attributes_kjc />
     </entry>
     <entry>
@@ -1549,7 +1549,7 @@
         <field>
           <source_filefolder>EMPTY_SOURCE_URL-0-file://${ISANTE-PLUS-REPLICATION-REPOSITORY-DIR}/etc/error-file-template.txt</source_filefolder>
           <source_configuration_name>LOCAL-SOURCE-FILE-0</source_configuration_name>
-          <destination_filefolder>EMPTY_DEST_URL-0-file://${user.home}/isante/data.csv.gz-error.txt</destination_filefolder>
+          <destination_filefolder>EMPTY_DEST_URL-0-file://${user.home}/isante/${FILE_NAME_PREFIX}.csv.gz-error.txt</destination_filefolder>
           <destination_configuration_name>LOCAL-DEST-FILE-0</destination_configuration_name>
           <wildcard />
         </field>
@@ -1557,8 +1557,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>64</xloc>
-      <yloc>480</yloc>
+      <xloc>784</xloc>
+      <yloc>496</yloc>
       <attributes_kjc />
     </entry>
     <entry>
@@ -1577,13 +1577,13 @@
       <add_date>N</add_date>
       <add_time>N</add_time>
       <insertScript>Y</insertScript>
-      <script>${ISANTE-PLUS-CURL-COMMAND} -k --user itech:jaif5Ahg5mei --url https://200.2.133.226/receiver/receive-file.pl --form "startTime=2019-07-15 13:49:48" --form "stopTime=2019-07-15 13:49:48" --form "serverName=d95s13109" --form "databaseName=itech" --form "targetName=papConsolidated" --form "dataFileName=@${user.home}/isante/data.csv.gz" --form "reportFileName=@${user.home}/isante/data.csv.gz-report.txt" --form "errorFileName=@${user.home}/isante/data.csv.gz-error.txt"</script>
+      <script>${ISANTE-PLUS-CURL-COMMAND} -k --user itech:jaif5Ahg5mei --url https://200.2.133.226/receiver/receive-file.pl --form "startTime=2019-07-15 13:49:48" --form "stopTime=2019-07-15 13:49:48" --form "serverName=d95s13109" --form "databaseName=itech" --form "targetName=papConsolidated" --form "dataFileName=@${user.home}/isante/${FILE_NAME_PREFIX}.csv.gz" --form "reportFileName=@${user.home}/isante/${FILE_NAME_PREFIX}.csv.gz-report.txt" --form "errorFileName=@${user.home}/isante/${FILE_NAME_PREFIX}.csv.gz-error.txt"</script>
       <loglevel>Debug</loglevel>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>224</xloc>
-      <yloc>480</yloc>
+      <xloc>896</xloc>
+      <yloc>496</yloc>
       <attributes_kjc />
     </entry>
     <entry>
@@ -1620,8 +1620,198 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>624</xloc>
-      <yloc>432</yloc>
+      <xloc>160</xloc>
+      <yloc>384</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>set-file-name-prefix-variable</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>filename</specification_method>
+      <trans_object_id />
+      <filename>${Internal.Entry.Current.Directory}/set-file-name-prefix-variable.ktr</filename>
+      <transname />
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>160</xloc>
+      <yloc>496</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>migrate-obs-tbsurveillance</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>filename</specification_method>
+      <trans_object_id />
+      <filename>${Internal.Entry.Current.Directory}/migrate-obs-tbsurveillance.ktr</filename>
+      <transname />
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>736</xloc>
+      <yloc>384</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>migrate-obs-bloodtype</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>filename</specification_method>
+      <trans_object_id />
+      <filename>${Internal.Entry.Current.Directory}/migrate-obs-bloodtype.ktr</filename>
+      <transname />
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>416</xloc>
+      <yloc>384</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>migrate-otherDrugs</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>filename</specification_method>
+      <trans_object_id />
+      <filename>${Internal.Entry.Current.Directory}/migrate-otherDrugs.ktr</filename>
+      <transname />
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>32</xloc>
+      <yloc>384</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>migrate-obs-labvisittype</name>
+      <description />
+      <type>TRANS</type>
+      <attributes />
+      <specification_method>filename</specification_method>
+      <trans_object_id />
+      <filename>${Internal.Entry.Current.Directory}/migrate-obs-labvisittype.ktr</filename>
+      <transname />
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>560</xloc>
+      <yloc>368</yloc>
       <attributes_kjc />
     </entry>
   </entries>
@@ -1843,15 +2033,6 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>migrate-obs-numeric</from>
-      <to>migrate-obs</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
       <from>add-quotes</from>
       <to>set-etl-excution-as-completed</to>
       <from_nr>0</from_nr>
@@ -1863,15 +2044,6 @@
     <hop>
       <from>set-etl-excution-as-completed</from>
       <to>Copy Report Template</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>Copy Report Template</from>
-      <to>fill-report</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -1951,8 +2123,71 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>migrate-discontinuation</from>
+      <from>set-file-name-prefix-variable</from>
       <to>add-quotes</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>migrate-obs-numeric</from>
+      <to>migrate-obs-tbsurveillance</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>migrate-obs-bloodtype</from>
+      <to>migrate-obs</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Copy Report Template</from>
+      <to>fill-report</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>migrate-discontinuation</from>
+      <to>migrate-otherDrugs</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>migrate-otherDrugs</from>
+      <to>set-file-name-prefix-variable</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>migrate-obs-tbsurveillance</from>
+      <to>migrate-obs-labvisittype</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>migrate-obs-labvisittype</from>
+      <to>migrate-obs-bloodtype</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>

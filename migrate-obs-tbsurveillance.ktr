@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>migrate-obs-grouped</name>
+    <name>migrate-obs-tbsurveillance</name>
     <description />
     <extended_description />
     <trans_version />
@@ -427,10 +427,10 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2019/05/09 12:36:39.899</created_date>
+    <created_date>2019/09/23 20:15:50.867</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/05/09 12:36:39.899</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2019/09/23 20:15:50.867</modified_date>
+    <key_for_session_key />
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -448,10 +448,6 @@
     <data_tablespace />
     <index_tablespace />
     <attributes>
-      <attribute>
-        <code>EXTRA_OPTION_MYSQL.zeroDateTimeBehavior</code>
-        <attribute>convertToNull</attribute>
-      </attribute>
       <attribute>
         <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
         <attribute>N</attribute>
@@ -501,18 +497,13 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Join rows (cartesian product)</from>
-      <to>Fetch Last ETL Excution Date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>concepts</from>
-      <to>Join rows (cartesian product)</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Last ETL Excution Date</from>
       <to>Database Join Groups</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Person Id</from>
+      <to>Select values format</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -521,38 +512,13 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values format</from>
-      <to>Save on CSV</to>
+      <from>Fetch iSante Location</from>
+      <to>Fetch Person Id</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Database join Coded</from>
-      <to>Fetch Person Identifier</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Database Join Groups</from>
-      <to>Filter rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows</from>
-      <to>Database join Coded</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows</from>
-      <to>Database join Non coded</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Database join Non coded</from>
-      <to>Fetch Person Identifier</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Load iSanteLocation Location Attribute</from>
-      <to>Join rows (cartesian product)</to>
+      <from>Join rows (cartesian product)</from>
+      <to>Fetch Last ETL Excution Date</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -561,13 +527,43 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch iSante Location</from>
-      <to>Fetch Person Id</to>
+      <from>Load iSanteLocation Location Attribute</from>
+      <to>Join rows (cartesian product)</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Person Id</from>
-      <to>Select values format</to>
+      <from>Select values format</from>
+      <to>Save on CSV</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>concepts</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Database Join Groups</from>
+      <to>Fetch date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch date</from>
+      <to>Fetch Bacilloscopie</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Bacilloscopie</from>
+      <to>Map Answers</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map Answers</from>
+      <to>Fetch Mois</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Mois</from>
+      <to>Fetch Person Identifier</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -945,8 +941,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
-      <yloc>91</yloc>
+      <xloc>46</xloc>
+      <yloc>83</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -963,97 +959,13 @@
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
-    <sql>select obs1.obs_group_id group_id from obs obs1 join obs obs2
-on obs1.obs_group_id = obs2.obs_id
-join encounter on encounter.encounter_id = obs1.encounter_id
+    <sql>select encounter.encounter_id, obs.obs_datetime, obs.date_voided, obs.void_reason, obs.date_created, obs.voided, encounter.location_id, obs.person_id, obs.obs_id group_id from obs
+join encounter on encounter.encounter_id = obs.encounter_id
 join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
-and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae')
-where obs1.value_coded = ?
+and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171')
+join concept on concept.concept_id = obs.concept_id
+where concept.uuid = ?
   and encounter.voided = false
-  and (encounter.date_created >= ?
-   or encounter.date_changed >= ?
-   or encounter.date_voided >= ?
-   or encounter.date_created >= ?
-   or encounter.date_changed >= ?
-   or encounter.date_voided >= ?
-   or obs1.date_voided >= ?
-   or obs1.date_created >= ?)
-</sql>
-    <outer_join>N</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>grouped_with_concept</name>
-        <type>Integer</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>592</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Database join Coded</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>0</rowlimit>
-    <sql>select obs.person_id, obs.obs_datetime, obs.encounter_id, encounter.location_id, encounter.encounter_datetime, obs.date_created, obs.voided,
-obs.date_voided, obs.void_reason, obs.comments, obs.value_text, obs.value_numeric, obs.value_datetime  from obs
-join encounter on encounter.encounter_id = obs.encounter_id
-where obs.obs_group_id = ?
-  and obs.concept_id = ?
-  and obs.value_coded = ?
-  and encounter.voided = false
-  and encounter.encounter_type in (15, 16, 17, 18)
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
    or encounter.date_voided >= ?
@@ -1067,16 +979,8 @@ where obs.obs_group_id = ?
     <replace_vars>N</replace_vars>
     <parameter>
       <field>
-        <name>group_id</name>
-        <type>Integer</type>
-      </field>
-      <field>
-        <name>isante_plus_question</name>
-        <type>Integer</type>
-      </field>
-      <field>
-        <name>isante_plus_answer</name>
-        <type>Integer</type>
+        <name>concept_group</name>
+        <type>String</type>
       </field>
       <field>
         <name>last_execution</name>
@@ -1120,95 +1024,8 @@ where obs.obs_group_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
-      <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Database join Non coded</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>0</rowlimit>
-    <sql>select obs.person_id, obs.obs_datetime, obs.encounter_id, encounter.location_id, encounter.encounter_datetime, obs.date_created, obs.voided,
-obs.date_voided, obs.void_reason, obs.comments, obs.value_text, obs.value_numeric, obs.value_datetime  from obs
-join encounter on encounter.encounter_id = obs.encounter_id
-where obs.obs_group_id = ?
-  and obs.concept_id = ?
-  and encounter.voided = false
-  and encounter.encounter_type in (15, 16, 17, 18)
-  and (encounter.date_created >= ?
-   or encounter.date_changed >= ?
-   or encounter.date_voided >= ?
-   or encounter.date_created >= ?
-   or encounter.date_changed >= ?
-   or encounter.date_voided >= ?
-   or obs.date_voided >= ?
-   or obs.date_created >= ?)
-</sql>
-    <outer_join>N</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>group_id</name>
-        <type>Integer</type>
-      </field>
-      <field>
-        <name>isante_plus_question</name>
-        <type>Integer</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>800</xloc>
-      <yloc>208</yloc>
+      <xloc>576</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1242,7 +1059,7 @@ order by date desc</sql>
     </remotesteps>
     <GUI>
       <xloc>384</xloc>
-      <yloc>144</yloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1281,7 +1098,7 @@ order by date desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1088</xloc>
+      <xloc>384</xloc>
       <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1325,8 +1142,8 @@ where patient_identifier.identifier_type = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>944</xloc>
-      <yloc>144</yloc>
+      <xloc>800</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1368,52 +1185,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1088</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter rows</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to>Database join Coded</send_true_to>
-    <send_false_to>Database join Non coded</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>isante_plus_answer</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue />
-        <value>
-          <name>constant</name>
-          <type>String</type>
-          <text>N</text>
-          <length>-1</length>
-          <precision>-1</precision>
-          <isnull>N</isnull>
-          <mask />
-        </value>
-      </condition>
-    </compare>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>720</xloc>
-      <yloc>160</yloc>
+      <xloc>608</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1449,8 +1222,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>144</xloc>
-      <yloc>139</yloc>
+      <xloc>192</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1481,8 +1254,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
-      <yloc>208</yloc>
+      <xloc>46</xloc>
+      <yloc>200</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1513,8 +1286,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
-      <yloc>272</yloc>
+      <xloc>46</xloc>
+      <yloc>264</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1801,7 +1574,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>isante_answer</name>
+        <name>default_na</name>
         <type>String</type>
         <format />
         <currency />
@@ -1945,7 +1718,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>value_text</name>
+        <name>default_na</name>
         <type>String</type>
         <format />
         <currency />
@@ -2017,7 +1790,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>comments</name>
+        <name>default_na</name>
         <type>String</type>
         <format />
         <currency />
@@ -2182,7 +1955,7 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>912</xloc>
+      <xloc>704</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2295,7 +2068,7 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1088</xloc>
+      <xloc>384</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2335,17 +2108,6 @@ where location_attribute.attribute_type_id = ?
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>isante_plus_answer</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
         <name>isante_question</name>
         <type>Integer</type>
         <format />
@@ -2357,30 +2119,8 @@ where location_attribute.attribute_type_id = ?
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>isante_answer</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>grouped_with_concept</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
         <name>concept_group</name>
-        <type>Integer</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -2392,364 +2132,94 @@ where location_attribute.attribute_type_id = ?
     </fields>
     <data>
       <line>
-        <item>Asthme: Mère</item>
-        <item>1560</item>
-        <item>970</item>
-        <item>70800</item>
-        <item>1</item>
-        <item>140234</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>Asthme: Père</item>
-        <item>1560</item>
-        <item>971</item>
-        <item>70801</item>
-        <item>1</item>
-        <item>140234</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>Asthme: Frère/Sœur</item>
-        <item>1560</item>
-        <item>972</item>
-        <item>70803</item>
-        <item>1</item>
-        <item>140234</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>Cancer: Mère</item>
-        <item>1560</item>
-        <item>970</item>
-        <item>70802</item>
-        <item>1</item>
-        <item>151521</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>Cancer: Père</item>
-        <item>1560</item>
-        <item>971</item>
-        <item>70804</item>
-        <item>1</item>
-        <item>151521</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>Cancer: Frère/Sœur</item>
-        <item>1560</item>
-        <item>972</item>
-        <item>70805</item>
-        <item>1</item>
-        <item>151521</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>Diabète: Mère</item>
-        <item>1560</item>
-        <item>970</item>
-        <item>70810</item>
-        <item>1</item>
-        <item>140228</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>Diabète: Père</item>
-        <item>1560</item>
-        <item>971</item>
-        <item>70811</item>
-        <item>1</item>
-        <item>140228</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>Diabète: Frère/Sœur</item>
-        <item>1560</item>
-        <item>972</item>
-        <item>70812</item>
-        <item>1</item>
-        <item>140228</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>Epilepsie: Mère</item>
-        <item>1560</item>
-        <item>970</item>
-        <item>70813</item>
-        <item>1</item>
-        <item>152450</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>Epilepsie: Père</item>
-        <item>1560</item>
-        <item>971</item>
-        <item>70814</item>
-        <item>1</item>
-        <item>152450</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>Epilepsie: Frère/Sœur</item>
-        <item>1560</item>
-        <item>972</item>
-        <item>70815</item>
-        <item>1</item>
-        <item>152450</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>HTA: Mère</item>
-        <item>1560</item>
-        <item>970</item>
-        <item>70810</item>
-        <item>1</item>
-        <item>151927</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>HTA: Père</item>
-        <item>1560</item>
-        <item>971</item>
-        <item>70811</item>
-        <item>1</item>
-        <item>151927</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>HTA: Frère/Sœur</item>
-        <item>1560</item>
-        <item>972</item>
-        <item>70812</item>
-        <item>1</item>
-        <item>151927</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>Tuberculose: Mère</item>
-        <item>1560</item>
-        <item>970</item>
-        <item>70819</item>
-        <item>1</item>
-        <item>152460</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>Tuberculose: Père</item>
-        <item>1560</item>
-        <item>971</item>
-        <item>70820</item>
-        <item>1</item>
-        <item>152460</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>Tuberculose: Frère/Sœur</item>
-        <item>1560</item>
-        <item>972</item>
-        <item>70821</item>
-        <item>1</item>
-        <item>152460</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>MDR TB: Mère</item>
-        <item>1560</item>
-        <item>970</item>
-        <item>71237</item>
-        <item>1</item>
-        <item>164102</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>MDR TB: Père</item>
-        <item>1560</item>
-        <item>971</item>
-        <item>71238</item>
-        <item>1</item>
-        <item>164102</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>MDR TB: Frère/Sœur</item>
-        <item>1560</item>
-        <item>972</item>
-        <item>71239</item>
-        <item>1</item>
-        <item>164102</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>Cardiopathie: Mère</item>
-        <item>1560</item>
-        <item>970</item>
-        <item>70807</item>
-        <item>1</item>
-        <item>163114</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>Cardiopathie: Père</item>
-        <item>1560</item>
-        <item>971</item>
-        <item>70808</item>
-        <item>1</item>
-        <item>163114</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>Cardiopathie: Frère/Sœur</item>
-        <item>1560</item>
-        <item>972</item>
-        <item>70809</item>
-        <item>1</item>
-        <item>163114</item>
-        <item>160593</item>
-      </line>
-      <line>
-        <item>Allergies, précisez</item>
-        <item>160221</item>
+        <item>Mois 0 date</item>
         <item />
-        <item>71002</item>
-        <item />
-        <item>110247</item>
-        <item>1633</item>
+        <item>71158</item>
+        <item>c2c7db51-d427-4c21-9655-ae9ee604c81c</item>
       </line>
       <line>
-        <item>Cancer, précisez</item>
-        <item>160221</item>
+        <item>Mois 0 Bacilloscopie</item>
         <item />
-        <item>71003</item>
-        <item />
-        <item>151286</item>
-        <item>1633</item>
+        <item>71159</item>
+        <item>c2c7db51-d427-4c21-9655-ae9ee604c81c</item>
       </line>
       <line>
-        <item>Chirurgie, précisez</item>
-        <item>160221</item>
+        <item>Mois 0 Poids</item>
         <item />
-        <item>70737</item>
-        <item />
-        <item>163521</item>
-        <item>1633</item>
+        <item>71160</item>
+        <item>c2c7db51-d427-4c21-9655-ae9ee604c81c</item>
       </line>
       <line>
-        <item>Trauma, précisez</item>
-        <item>160221</item>
+        <item>Mois 2 date</item>
         <item />
-        <item>70737</item>
-        <item />
-        <item>163520</item>
-        <item>1633</item>
+        <item>71161</item>
+        <item>be7a27bb-2dcd-4bff-b696-ccdbbd2d3192</item>
       </line>
       <line>
-        <item>Hémoglobinopathie, précisez</item>
-        <item>160221</item>
+        <item>Mois 2 Bacilloscopie</item>
         <item />
-        <item>70739</item>
-        <item />
-        <item>163583</item>
-        <item>1633</item>
+        <item>71162</item>
+        <item>be7a27bb-2dcd-4bff-b696-ccdbbd2d3192</item>
       </line>
       <line>
-        <item>IST, précisez</item>
-        <item>160221</item>
+        <item>Mois 2 Poids</item>
         <item />
-        <item>71016</item>
-        <item />
-        <item>156660</item>
-        <item>1633</item>
+        <item>71163</item>
+        <item>be7a27bb-2dcd-4bff-b696-ccdbbd2d3192</item>
       </line>
       <line>
-        <item>Troubles psychiatriques, précisez</item>
-        <item>160221</item>
+        <item>Mois 3 date</item>
         <item />
-        <item>71009</item>
-        <item />
-        <item>151282</item>
-        <item>1633</item>
+        <item>71164</item>
+        <item>fdd9d953-004a-4e9a-ab93-9afaa0e090fa</item>
       </line>
       <line>
-        <item>Drogue, précisez</item>
-        <item>160221</item>
+        <item>Mois 3 Bacilloscopie</item>
         <item />
-        <item>71011</item>
-        <item />
-        <item>162556</item>
-        <item>1633</item>
+        <item>71165</item>
+        <item>fdd9d953-004a-4e9a-ab93-9afaa0e090fa</item>
       </line>
       <line>
-        <item>Malf. Congénitales, précisez</item>
-        <item>160221</item>
+        <item>Mois 3 Poids</item>
         <item />
-        <item>71071</item>
-        <item />
-        <item>163390</item>
-        <item>1633</item>
+        <item>71166</item>
+        <item>fdd9d953-004a-4e9a-ab93-9afaa0e090fa</item>
       </line>
       <line>
-        <item>Vitamine A</item>
-        <item>1190</item>
+        <item>Mois 5 date</item>
         <item />
-        <item>70698</item>
-        <item />
-        <item>86339</item>
-        <item>160741</item>
+        <item>71167</item>
+        <item>224546bb-03da-4793-9ef6-3d42adc5b353</item>
       </line>
       <line>
-        <item>Fer.</item>
-        <item>1190</item>
+        <item>Mois 5 Bacilloscopie</item>
         <item />
-        <item>70699</item>
-        <item />
-        <item>5843</item>
-        <item>160741</item>
+        <item>71168</item>
+        <item>224546bb-03da-4793-9ef6-3d42adc5b353</item>
       </line>
       <line>
-        <item>Iode</item>
-        <item>1190</item>
+        <item>Mois 5 Poids</item>
         <item />
-        <item>70700</item>
-        <item />
-        <item>78130</item>
-        <item>160741</item>
+        <item>71169</item>
+        <item>224546bb-03da-4793-9ef6-3d42adc5b353</item>
       </line>
       <line>
-        <item>Déparasitage</item>
-        <item>1190</item>
+        <item>Mois rx date</item>
         <item />
-        <item>70769</item>
-        <item />
-        <item>163395</item>
-        <item>160741</item>
+        <item>71170</item>
+        <item>7ae17faf-5935-46f2-a1fb-88e51b65480e</item>
       </line>
       <line>
-        <item>Zinc</item>
-        <item>1190</item>
+        <item>Mois rx Bacilloscopie</item>
         <item />
-        <item>70770</item>
-        <item />
-        <item>86672</item>
-        <item>160741</item>
+        <item>71171</item>
+        <item>7ae17faf-5935-46f2-a1fb-88e51b65480e</item>
       </line>
       <line>
-        <item>Dépistage CA du Col, date</item>
-        <item>160715</item>
+        <item>Mois rx Poids</item>
         <item />
-        <item>70075</item>
-        <item />
-        <item>151185</item>
-        <item />
-      </line>
-      <line>
-        <item>Dépistage CA de la Prostate (Homme > 40ans), date</item>
-        <item>160715</item>
-        <item />
-        <item>70076</item>
-        <item />
-        <item>163464</item>
-        <item />
+        <item>71172</item>
+        <item>7ae17faf-5935-46f2-a1fb-88e51b65480e</item>
       </line>
     </data>
     <attributes />
@@ -2761,8 +2231,157 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
-      <yloc>144</yloc>
+      <xloc>46</xloc>
+      <yloc>136</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch date</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>0</rowlimit>
+    <sql>select obs.value_datetime from obs where obs.obs_group_id = ? and obs.concept_id = 159964
+</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>concept_group</name>
+        <type>Integer</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>720</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Bacilloscopie</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded from obs where obs.obs_group_id = ? and obs.concept_id = 307
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>concept_group</name>
+        <type>Integer</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>832</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Mois</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded from obs where obs.obs_group_id = ? and obs.concept_id = 5089
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>concept_group</name>
+        <type>Integer</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>976</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Answers</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>value_coded</field_to_use>
+    <target_field>value_numeric</target_field>
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>703</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>664</source_value>
+        <target_value>2</target_value>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>976</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
