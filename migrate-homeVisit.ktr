@@ -4379,7 +4379,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>contactDuringVisit</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4391,7 +4391,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>contact_during_visit_mapped</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4403,7 +4403,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>freqSupportBuddy</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4415,7 +4415,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>freq_support_buddy_mapped</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4427,7 +4427,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>missedAppointment</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4439,7 +4439,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>missed_appointment_mapped</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4451,7 +4451,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>missedDateDd</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4463,7 +4463,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>missed_date_day_dd</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4475,7 +4475,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>missedDateMm</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4487,7 +4487,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>missed_date_month_mm</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4499,7 +4499,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>missedDateYy</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4511,7 +4511,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>missed_date_year</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4523,7 +4523,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>reasonMissed</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4535,7 +4535,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>reason_missed_mapped</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4547,7 +4547,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>reasonMissedText</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4559,7 +4559,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>reason_missed_text</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4571,7 +4571,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>illnessDescription</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4583,7 +4583,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>illness_description</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4595,7 +4595,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>illnessDescriptionOther</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4607,7 +4607,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>illness_description_other</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4619,7 +4619,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>nextClinicVisitDays</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4631,7 +4631,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>next_clinic_visit_days</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4643,7 +4643,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>nextClinicVisitDd</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4655,7 +4655,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>next_clinic_visit_day_dd</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4667,7 +4667,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>nextClinicVisitMm</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4679,7 +4679,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>next_clinic_visit_month_mm</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4691,7 +4691,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>nextClinicVisitYy</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4703,7 +4703,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>next_clinic_visit_year</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4715,7 +4715,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>nextHomeVisitDays</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4727,7 +4727,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>next_home_visit_days</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4739,7 +4739,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>nextHomeVisitDd</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4751,7 +4751,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>next_home_visit_day_dd</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4763,7 +4763,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>nextHomeVisitMm</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4775,7 +4775,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>next_home_visit_month_mm</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4787,7 +4787,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>nextHomeVisitYy</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4799,7 +4799,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>next_home_visit_year</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4811,7 +4811,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>homeVisitRemarks</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4823,7 +4823,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>home_visit_remarks</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4835,7 +4835,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>reasonVisit</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4847,7 +4847,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>reason_visit_mapped</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4859,7 +4859,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>reasonVisitOther</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4871,7 +4871,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>reason_visit_other</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4883,7 +4883,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>serviceDelivery</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4895,7 +4895,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>service_delivery</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4907,7 +4907,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>serviceDeliveryOther</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4919,7 +4919,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>service_delivery_other</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4931,7 +4931,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>arvDiscontinuation</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4943,7 +4943,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4955,7 +4955,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>arvDiscontinuationDd</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4967,7 +4967,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4979,7 +4979,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>arvDiscontinuationMm</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -4991,7 +4991,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -5003,7 +5003,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>arvDiscontinuationYy</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -5015,7 +5015,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -5027,7 +5027,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>careDiscontinuation</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -5039,7 +5039,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>care_discontinuation_mapped</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -5051,7 +5051,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>careDiscReason</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -5063,7 +5063,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>care_disc_reason_mapped</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -5075,7 +5075,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>careDiscDeathDateDd</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -5087,7 +5087,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -5099,7 +5099,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>careDiscDeathDateMm</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -5111,7 +5111,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -5123,7 +5123,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>careDiscDeathDateYy</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -5135,7 +5135,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -5147,7 +5147,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>careDiscTransferText</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -5159,7 +5159,7 @@ where obs.encounter_id = ?
       </field>
       <field>
         <name>default_na</name>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
