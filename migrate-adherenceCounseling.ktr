@@ -3931,7 +3931,7 @@ where location_attribute.attribute_type_id = ?
       <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
-    <sql>select encounter_type_id main_encounter_type_id from encounter_type where uuid = 'c45d7299-ad08-4cb5-8e5d-e0ce40532939'</sql>
+    <sql>select encounter_type_id main_encounter_type_id from encounter_type where uuid in ('c45d7299-ad08-4cb5-8e5d-e0ce40532939', '1dd1e63a-1543-4885-b807-e49c6d18cffd')</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>

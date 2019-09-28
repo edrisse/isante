@@ -1281,7 +1281,7 @@
         <item>visitDateYy</item>
         <item>seqNum</item>
         <item>receiveReferralsText</item>
-        <item>missDateYy</item>
+        <item>homeCareVisits</item>
         <item>contactDuringVisit</item>
         <item>freqSupportBuddy</item>
         <item>missedAppointment</item>
@@ -1317,6 +1317,50 @@
         <item>careDiscTransferText</item>
         <item />
       </line>
+      <line>
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+      </line>
     </data>
     <attributes />
     <cluster_schema />
@@ -1348,10 +1392,10 @@
     <sql>select encounter.patient_id person_id, encounter.encounter_datetime, encounter.encounter_id, encounter.location_id, 
 	isante_location_attribute.value_reference isante_location_id, dbsite_location_attribute.value_reference dbSiteValue, 
 	patient_identifier.identifier patient_identifier, seqnum as seqnum_value from encounter
-left join location_attribute isante_location_attribute on isante_location_attribute.location_id = encounter.location_id and isante_location_attribute.attribute_type_id = ?
-left join location_attribute dbsite_location_attribute on dbsite_location_attribute.location_id = encounter.location_id and dbsite_location_attribute.attribute_type_id = 7
+join location_attribute isante_location_attribute on isante_location_attribute.location_id = encounter.location_id and isante_location_attribute.attribute_type_id = ?
+join location_attribute dbsite_location_attribute on dbsite_location_attribute.location_id = encounter.location_id and dbsite_location_attribute.attribute_type_id = 7
 join patient_identifier on patient_identifier.patient_id = encounter.patient_id and patient_identifier.identifier_type = ?
-left join etl_encounter_seqnum on etl_encounter_seqnum.encounter_id = encounter.encounter_id
+join etl_encounter_seqnum on etl_encounter_seqnum.encounter_id = encounter.encounter_id
 join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
 where encounter_type.uuid = '1dd1e63a-1543-4885-b807-e49c6d18cffd'
   and (encounter.date_created >= ?
