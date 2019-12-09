@@ -3200,7 +3200,7 @@ where location_attribute.attribute_type_id = ?
         <item>163607</item>
         <item>163728</item>
         <item>71096</item>
-        <item>1</item>
+        <item>2</item>
         <item />
       </line>
       <line>
@@ -3465,6 +3465,46 @@ where location_attribute.attribute_type_id = ?
         <item>1066</item>
         <item>71054</item>
         <item>2</item>
+        <item />
+      </line>
+      <line>
+        <item>Current WHO stage I</item>
+        <item>5356</item>
+        <item>1204</item>
+        <item>70753</item>
+        <item>1</item>
+        <item />
+      </line>
+      <line>
+        <item>Current WHO stage II</item>
+        <item>5356</item>
+        <item>1205</item>
+        <item>70754</item>
+        <item>1</item>
+        <item />
+      </line>
+      <line>
+        <item>Current WHO stage III</item>
+        <item>5356</item>
+        <item>1206</item>
+        <item>70755</item>
+        <item>1</item>
+        <item />
+      </line>
+      <line>
+        <item>Current WHO stage IV</item>
+        <item>5356</item>
+        <item>1207</item>
+        <item>70756</item>
+        <item>1</item>
+        <item />
+      </line>
+      <line>
+        <item>Current WHO stage unknown</item>
+        <item>5356</item>
+        <item>1067</item>
+        <item>70757</item>
+        <item>1</item>
         <item />
       </line>
     </data>
