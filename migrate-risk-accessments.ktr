@@ -496,21 +496,6 @@
   </connection>
   <order>
     <hop>
-      <from>Database join</from>
-      <to>Risk Answer Value Mapper</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Risk Answer Value Mapper</from>
-      <to>Fetch Person Identifier</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Last ETL Excution Date</from>
-      <to>Database join</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Mappings</from>
       <to>Join rows (cartesian product)</to>
       <enabled>Y</enabled>
@@ -523,11 +508,6 @@
     <hop>
       <from>Join rows (cartesian product)</from>
       <to>Fetch Last ETL Excution Date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Person Identifier</from>
-      <to>Decompose Encounter Datetime</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -573,6 +553,41 @@
     <hop>
       <from>Sort rows</from>
       <to>Save on CSV</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Last ETL Excution Date</from>
+      <to>Database join</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Database join</from>
+      <to>Fetch obs group</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch obs group</from>
+      <to>Fetch iSante Location</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch iSante Location</from>
+      <to>Fetch Person Identifier</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch dbSite</from>
+      <to>Fetch Seqnum</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Person Identifier</from>
+      <to>Fetch dbSite</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Seqnum</from>
+      <to>Decompose Encounter Datetime</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -824,18 +839,14 @@
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
-    <sql>select encounter.encounter_id, obs.person_id, encounter.encounter_datetime, encounter.location_id, obs.value_coded, isante_location_attribute.value_reference isante_location_id,
-	dbsite_location_attribute.value_reference dbSiteValue, seqnum as seqnum_value from obs
-join encounter on encounter.encounter_id = obs.encounter_id
-join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
-join location_attribute isante_location_attribute on isante_location_attribute.location_id = encounter.location_id and isante_location_attribute.attribute_type_id = ?
-join location_attribute dbsite_location_attribute on dbsite_location_attribute.location_id = encounter.location_id and dbsite_location_attribute.attribute_type_id = 7
-join etl_encounter_seqnum on etl_encounter_seqnum.encounter_id = encounter.encounter_id
-where obs.concept_id = ?
+    <sql>select encounter.encounter_id, encounter.patient_id, encounter.encounter_datetime, encounter.location_id isante_plus_location_id, obs.obs_group_id
+from encounter join encounter_type
+on encounter.encounter_type = encounter_type.encounter_type_id
+join obs on encounter.encounter_id = obs.encounter_id
+  where obs.concept_id = ?
   and obs.value_coded = ?
-  and obs.voided = false
-  and encounter.voided = false
   and encounter_type.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7', '349ae0b4-65c1-4122-aa06-480f186c8350')
+  and encounter.voided = false
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
    or encounter.date_voided >= ?
@@ -846,10 +857,6 @@ where obs.concept_id = ?
     <outer_join>N</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
-      <field>
-        <name>isante_location_location_attribute_id</name>
-        <type>Number</type>
-      </field>
       <field>
         <name>risk_id_isante_plus</name>
         <type>Integer</type>
@@ -892,8 +899,8 @@ where obs.concept_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
-      <yloc>128</yloc>
+      <xloc>480</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1020,7 +1027,7 @@ where patient_identifier.identifier_type = ?
   and patient_identifier.voided = false
   and patient_identifier.patient_id = ?
 </sql>
-    <outer_join>Y</outer_join>
+    <outer_join>N</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
       <field>
@@ -1028,7 +1035,7 @@ where patient_identifier.identifier_type = ?
         <type>Number</type>
       </field>
       <field>
-        <name>person_id</name>
+        <name>patient_id</name>
         <type>Number</type>
       </field>
     </parameter>
@@ -1041,8 +1048,51 @@ where patient_identifier.identifier_type = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>912</xloc>
+      <xloc>1040</xloc>
       <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch obs group</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>0</rowlimit>
+    <sql>select obs.obs_id from obs 
+where obs.concept_id = (select concept.concept_id from concept where concept.uuid = ?)
+and obs.obs_id = ?
+and obs.voided = false</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>group_uuid</name>
+        <type>Integer</type>
+      </field>
+      <field>
+        <name>obs_group_id</name>
+        <type>Integer</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>672</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1310,6 +1360,28 @@ where patient_identifier.identifier_type = ?
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
+      <field>
+        <name>group_uuid</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>type</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
     </fields>
     <data>
       <line>
@@ -1317,102 +1389,392 @@ where patient_identifier.identifier_type = ?
         <item>163290</item>
         <item>1</item>
         <item>1</item>
+        <item>c2b3c5cb-f1e6-4d3d-ad18-5ecf71b26dc2</item>
+        <item />
+      </line>
+      <line>
+        <item>1061</item>
+        <item>1066</item>
+        <item>1</item>
+        <item>2</item>
+        <item>c2b3c5cb-f1e6-4d3d-ad18-5ecf71b26dc2</item>
+        <item />
       </line>
       <line>
         <item>1061</item>
         <item>163291</item>
         <item>3</item>
         <item>1</item>
+        <item>0906f171-72d4-4727-8ede-97a47c2e25ee</item>
+        <item />
+      </line>
+      <line>
+        <item>1061</item>
+        <item>1066</item>
+        <item>3</item>
+        <item>3</item>
+        <item>0906f171-72d4-4727-8ede-97a47c2e25ee</item>
+        <item />
       </line>
       <line>
         <item>1061</item>
         <item>105</item>
         <item>9</item>
         <item>1</item>
+        <item>f6a51d0c-eb19-4875-8c37-85e39f0def00</item>
+        <item />
+      </line>
+      <line>
+        <item>1061</item>
+        <item>1066</item>
+        <item>9</item>
+        <item>2</item>
+        <item>f6a51d0c-eb19-4875-8c37-85e39f0def00</item>
+        <item />
       </line>
       <line>
         <item>1061</item>
         <item>1063</item>
         <item>15</item>
         <item>1</item>
+        <item>92259610-b7b8-4723-b879-6e33fdd4b817</item>
+        <item />
+      </line>
+      <line>
+        <item>1061</item>
+        <item>1066</item>
+        <item>15</item>
+        <item>2</item>
+        <item>92259610-b7b8-4723-b879-6e33fdd4b817</item>
+        <item />
+      </line>
+      <line>
+        <item>163268</item>
+        <item />
+        <item>15</item>
+        <item />
+        <item>92259610-b7b8-4723-b879-6e33fdd4b817</item>
+        <item>date</item>
       </line>
       <line>
         <item>1061</item>
         <item>163273</item>
         <item>14</item>
         <item>1</item>
+        <item>92259610-b7b8-4723-b879-6e33fdd4b817</item>
+        <item />
+      </line>
+      <line>
+        <item>1061</item>
+        <item>1066</item>
+        <item>14</item>
+        <item>2</item>
+        <item>92259610-b7b8-4723-b879-6e33fdd4b817</item>
+        <item />
+      </line>
+      <line>
+        <item>1061</item>
+        <item>1067</item>
+        <item>14</item>
+        <item>4</item>
+        <item>92259610-b7b8-4723-b879-6e33fdd4b817</item>
+        <item />
       </line>
       <line>
         <item>160581</item>
         <item>163274</item>
         <item>12</item>
         <item>1</item>
+        <item>163288AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
+      </line>
+      <line>
+        <item>160581</item>
+        <item>1066</item>
+        <item>12</item>
+        <item>2</item>
+        <item>163288AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
+      </line>
+      <line>
+        <item>162601</item>
+        <item />
+        <item>12</item>
+        <item />
+        <item>163288AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item>date</item>
       </line>
       <line>
         <item>1061</item>
         <item>163289</item>
         <item>19</item>
         <item>1</item>
+        <item>844017f9-8d6a-4b9a-8347-637284b43893</item>
+        <item />
+      </line>
+      <line>
+        <item>1061</item>
+        <item>1066</item>
+        <item>19</item>
+        <item>2</item>
+        <item>844017f9-8d6a-4b9a-8347-637284b43893</item>
+        <item />
+      </line>
+      <line>
+        <item>1061</item>
+        <item>1067</item>
+        <item>19</item>
+        <item>4</item>
+        <item>844017f9-8d6a-4b9a-8347-637284b43893</item>
+        <item />
       </line>
       <line>
         <item>1061</item>
         <item>163289</item>
         <item>5</item>
         <item>1</item>
+        <item>844017f9-8d6a-4b9a-8347-637284b43893</item>
+        <item />
+      </line>
+      <line>
+        <item>1061</item>
+        <item>1066</item>
+        <item>5</item>
+        <item>2</item>
+        <item>844017f9-8d6a-4b9a-8347-637284b43893</item>
+        <item />
+      </line>
+      <line>
+        <item>1061</item>
+        <item>1067</item>
+        <item>5</item>
+        <item>4</item>
+        <item>844017f9-8d6a-4b9a-8347-637284b43893</item>
+        <item />
       </line>
       <line>
         <item>1061</item>
         <item>163275</item>
         <item>6</item>
         <item>1</item>
+        <item>9d6ee2a2-8547-4fa9-a2d8-301d009ca3a5</item>
+        <item />
+      </line>
+      <line>
+        <item>1061</item>
+        <item>1066</item>
+        <item>6</item>
+        <item>2</item>
+        <item>9d6ee2a2-8547-4fa9-a2d8-301d009ca3a5</item>
+        <item />
+      </line>
+      <line>
+        <item>1061</item>
+        <item>1067</item>
+        <item>6</item>
+        <item>4</item>
+        <item>9d6ee2a2-8547-4fa9-a2d8-301d009ca3a5</item>
+        <item />
+      </line>
+      <line>
+        <item>1061</item>
+        <item>1063</item>
+        <item>12</item>
+        <item>1</item>
+        <item>df47e128-268f-4238-9b13-f829c01ae7d8</item>
+        <item />
+      </line>
+      <line>
+        <item>1061</item>
+        <item>1066</item>
+        <item>12</item>
+        <item>2</item>
+        <item>df47e128-268f-4238-9b13-f829c01ae7d8</item>
+        <item />
+      </line>
+      <line>
+        <item>1061</item>
+        <item>1067</item>
+        <item>12</item>
+        <item>4</item>
+        <item>df47e128-268f-4238-9b13-f829c01ae7d8</item>
+        <item />
       </line>
       <line>
         <item>163276</item>
-        <item />
+        <item>1065</item>
         <item>32</item>
         <item>1</item>
+        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
+      </line>
+      <line>
+        <item>163276</item>
+        <item>1066</item>
+        <item>32</item>
+        <item>2</item>
+        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
+      </line>
+      <line>
+        <item>163276</item>
+        <item>1067</item>
+        <item>32</item>
+        <item>4</item>
+        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
       </line>
       <line>
         <item>156660</item>
-        <item />
+        <item>1065</item>
         <item>11</item>
         <item>1</item>
+        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
+      </line>
+      <line>
+        <item>156660</item>
+        <item>1066</item>
+        <item>11</item>
+        <item>2</item>
+        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
+      </line>
+      <line>
+        <item>156660</item>
+        <item>1067</item>
+        <item>11</item>
+        <item>4</item>
+        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
       </line>
       <line>
         <item>123160</item>
-        <item />
+        <item>1065</item>
         <item>13</item>
         <item>1</item>
+        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
+      </line>
+      <line>
+        <item>123160</item>
+        <item>1066</item>
+        <item>13</item>
+        <item>2</item>
+        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
+      </line>
+      <line>
+        <item>123160</item>
+        <item>1067</item>
+        <item>13</item>
+        <item>4</item>
+        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
       </line>
       <line>
         <item>160581</item>
-        <item>5567</item>
+        <item>160580</item>
         <item>33</item>
         <item>1</item>
+        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
       </line>
       <line>
-        <item>160581</item>
         <item>159218</item>
+        <item>1065</item>
         <item>4</item>
         <item>1</item>
+        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
+      </line>
+      <line>
+        <item>159218</item>
+        <item>1066</item>
+        <item>4</item>
+        <item>2</item>
+        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
       </line>
       <line>
         <item>163278</item>
-        <item />
+        <item>1065</item>
         <item>7</item>
         <item>1</item>
+        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
+      </line>
+      <line>
+        <item>163278</item>
+        <item>1066</item>
+        <item>7</item>
+        <item>2</item>
+        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
       </line>
       <line>
         <item>160580</item>
-        <item />
+        <item>1065</item>
         <item>20</item>
         <item>1</item>
+        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
+      </line>
+      <line>
+        <item>160580</item>
+        <item>1066</item>
+        <item>20</item>
+        <item>2</item>
+        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
       </line>
       <line>
         <item>160579</item>
-        <item />
+        <item>1065</item>
         <item>34</item>
         <item>1</item>
+        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
+      </line>
+      <line>
+        <item>160579</item>
+        <item>1066</item>
+        <item>34</item>
+        <item>2</item>
+        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
+      </line>
+      <line>
+        <item>5567</item>
+        <item>1</item>
+        <item>33</item>
+        <item>1</item>
+        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item>boolean</item>
+      </line>
+      <line>
+        <item>5567</item>
+        <item>0</item>
+        <item>33</item>
+        <item>2</item>
+        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item>boolean</item>
+      </line>
+      <line>
+        <item>509165679</item>
+        <item />
+        <item>37</item>
+        <item />
+        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item>text</item>
+      </line>
+      <line>
+        <item>509165680</item>
+        <item />
+        <item>35</item>
+        <item />
+        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item>text</item>
       </line>
     </data>
     <attributes />
@@ -1488,48 +1850,6 @@ where patient_identifier.identifier_type = ?
     </remotesteps>
     <GUI>
       <xloc>1472</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Risk Answer Value Mapper</name>
-    <type>ValueMapper</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <field_to_use>value_coded</field_to_use>
-    <target_field>risk_answer_mapped</target_field>
-    <non_match_default>1</non_match_default>
-    <fields>
-      <field>
-        <source_value>1065</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>1066</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>1067</source_value>
-        <target_value>4</target_value>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>736</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1821,7 +2141,7 @@ where patient_identifier.identifier_type = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>risk_answer_mapped</name>
+        <name>risk_answer_isante</name>
         <type>String</type>
         <format />
         <currency />
@@ -1981,6 +2301,124 @@ where patient_identifier.identifier_type = ?
     </remotesteps>
     <GUI>
       <xloc>1472</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch iSante Location</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select location_attribute.value_reference isante_location_id from location_attribute 
+where location_attribute.attribute_type_id = ?
+  and location_attribute.location_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>isante_location_location_attribute_id</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>isante_plus_location_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>840</xloc>
+      <yloc>103</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Seqnum</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select seqnum as seqnum_value from etl_encounter_seqnum where etl_encounter_seqnum.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1296</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch dbSite</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select location_attribute.value_reference dbSiteValue from location_attribute 
+where location_attribute.attribute_type_id = 7
+  and location_attribute.location_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>isante_plus_location_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1120</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
