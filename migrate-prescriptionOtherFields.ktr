@@ -586,7 +586,7 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Replace in string</from>
+      <from>String operations</from>
       <to>Save on CSV</to>
       <enabled>Y</enabled>
     </hop>
@@ -603,6 +603,11 @@
     <hop>
       <from>Decompose Arv start date</from>
       <to>Fetch dbSite</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string</from>
+      <to>String operations</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -2020,7 +2025,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>art_remarks</name>
+        <name>art_remarks_sanitized</name>
         <type>String</type>
         <format />
         <currency />
@@ -2067,6 +2072,46 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>272</xloc>
       <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>String operations</name>
+    <type>StringOperations</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>art_remarks</in_stream_name>
+        <out_stream_name>art_remarks_sanitized</out_stream_name>
+        <trim_type>none</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char />
+        <pad_len />
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>crlf</remove_special_characters>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>384</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
