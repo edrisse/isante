@@ -1307,6 +1307,11 @@
     </hop>
     <hop>
       <from>Fetch Ped allergy meds</from>
+      <to>Fetch No history of tb</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch No history of tb</from>
       <to>Replace in string</to>
       <enabled>Y</enabled>
     </hop>
@@ -3402,6 +3407,17 @@
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
+      <field>
+        <name>asymptomaticTb_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
     </fields>
     <data>
       <line>
@@ -3594,6 +3610,7 @@
         <item />
         <item>seqNum</item>
         <item>1</item>
+        <item>asymptomaticTb</item>
       </line>
     </data>
     <attributes />
@@ -7260,6 +7277,246 @@ where obs.concept_id = 159936
     </GUI>
   </step>
   <step>
+    <name>Fetch Ped Med Allergies</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded ped_med_allerg from obs
+where obs.concept_id = 160643
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1216</xloc>
+      <yloc>2304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Ped allergy meds</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select 1 ped_med_allergy_meds from obs
+where obs.concept_id = 160643 and obs.value_coded = 141760
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>240</xloc>
+      <yloc>2400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Ped food allergy</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select 1 ped_food_allerg from obs
+where obs.concept_id = 160643 and obs.value_coded = 139994
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1040</xloc>
+      <yloc>2400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Ped food allergy specify</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.comments ped_food_allerg_specify from obs
+where obs.concept_id = 160643 and obs.value_coded = 139994
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>848</xloc>
+      <yloc>2400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Ped other allergy</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select 1 ped_other_allerg from obs
+where obs.concept_id = 160643 and obs.value_coded = 5622
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>656</xloc>
+      <yloc>2400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Ped other allergy specify</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.comments ped_other_allerg_specify from obs
+where obs.concept_id = 160643 and obs.value_coded = 5622
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>448</xloc>
+      <yloc>2400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Fetch Person Identifier</name>
     <type>DBJoin</type>
     <description />
@@ -9632,6 +9889,48 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>80</xloc>
       <yloc>1328</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Ped Med allergies</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>ped_med_allerg</field_to_use>
+    <target_field>ped_med_allerg_mapped</target_field>
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>1065</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>1066</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>1067</source_value>
+        <target_value>4</target_value>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1216</xloc>
+      <yloc>2400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -14559,6 +14858,30 @@ where location_attribute.attribute_type_id = ?
         <length>-1</length>
         <precision>-1</precision>
       </field>
+      <field>
+        <name>asymptomaticTb_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>asymptomatic_tb</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
     </fields>
     <attributes />
     <cluster_schema />
@@ -14575,7 +14898,7 @@ where location_attribute.attribute_type_id = ?
     </GUI>
   </step>
   <step>
-    <name>Fetch Ped Med Allergies</name>
+    <name>Fetch No history of tb</name>
     <type>DBJoin</type>
     <description />
     <distribute>Y</distribute>
@@ -14587,8 +14910,8 @@ where location_attribute.attribute_type_id = ?
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded ped_med_allerg from obs
-where obs.concept_id = 160643
+    <sql>select 1 asymptomatic_tb from obs
+where obs.concept_id = 1659 and obs.value_coded = 1660
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
@@ -14609,250 +14932,8 @@ where obs.concept_id = 160643
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1216</xloc>
-      <yloc>2304</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map Ped Med allergies</name>
-    <type>ValueMapper</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <field_to_use>ped_med_allerg</field_to_use>
-    <target_field>ped_med_allerg_mapped</target_field>
-    <non_match_default />
-    <fields>
-      <field>
-        <source_value>1065</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>1066</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>1067</source_value>
-        <target_value>4</target_value>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1216</xloc>
-      <yloc>2400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Ped food allergy</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select 1 ped_food_allerg from obs
-where obs.concept_id = 160643 and obs.value_coded = 139994
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1040</xloc>
-      <yloc>2400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Ped food allergy specify</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.comments ped_food_allerg_specify from obs
-where obs.concept_id = 160643 and obs.value_coded = 139994
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>848</xloc>
-      <yloc>2400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Ped other allergy</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select 1 ped_other_allerg from obs
-where obs.concept_id = 160643 and obs.value_coded = 5622
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>656</xloc>
-      <yloc>2400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Ped other allergy specify</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.comments ped_other_allerg_specify from obs
-where obs.concept_id = 160643 and obs.value_coded = 5622
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>448</xloc>
-      <yloc>2400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Ped allergy meds</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select 1 ped_med_allergy_meds from obs
-where obs.concept_id = 160643 and obs.value_coded = 141760
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>240</xloc>
-      <yloc>2400</yloc>
+      <xloc>368</xloc>
+      <yloc>2512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
