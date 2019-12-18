@@ -1483,11 +1483,9 @@
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
-    <sql>select obs.obs_id, obs.person_id, encounter.encounter_datetime, encounter.location_id isante_plus_location_id, obs.value_coded, encounter.encounter_id from obs
-join encounter on encounter.encounter_id = obs.encounter_id
+    <sql>select encounter.patient_id person_id, encounter.encounter_datetime, encounter.location_id isante_plus_location_id, encounter.encounter_id from encounter
 join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
-where obs.voided = false
-  and encounter.voided = false
+where encounter.voided = false
   and encounter_type.uuid = "349ae0b4-65c1-4122-aa06-480f186c8350"
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
@@ -4549,7 +4547,7 @@ where location_attribute.attribute_type_id = ?
         <item>pedFratHistHivStatNumDead</item>
         <item>pedInfProArv</item>
         <item>pedInfProPcp</item>
-        <item />
+        <item>pedInfProMac</item>
       </line>
     </data>
     <attributes />
