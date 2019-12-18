@@ -14132,7 +14132,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>care_inititated_day</name>
+        <name>care_initiated_day</name>
         <type>None</type>
         <format/>
         <currency/>
