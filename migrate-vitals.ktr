@@ -1281,11 +1281,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch No history of tb</from>
-      <to>Replace in string</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Family Planing</from>
       <to>Map Family plan</to>
       <enabled>Y</enabled>
@@ -1331,11 +1326,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Decompose Date Care Initiated</from>
-      <to>Fetch No history of tb</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Tubal Ligation</from>
       <to>Fetch None Treatments</to>
       <enabled>Y</enabled>
@@ -1348,6 +1338,11 @@
     <hop>
       <from>Fetch Condom</from>
       <to>Fetch DPMA</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Decompose Date Care Initiated</from>
+      <to>Replace in string</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -3442,17 +3437,6 @@
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
-      <field>
-        <name>asymptomaticTb_cn</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
     </fields>
     <data>
       <line>
@@ -3645,7 +3629,6 @@
         <item/>
         <item>seqNum</item>
         <item>1</item>
-        <item>asymptomaticTb</item>
       </line>
     </data>
     <attributes/>
@@ -7016,7 +6999,7 @@ where obs.concept_id = 1284
     </GUI>
   </step>
   <step>
-    <name>Fetch No history of tb</name>
+    <name>Fetch None Treatments</name>
     <type>DBJoin</type>
     <description/>
     <distribute>Y</distribute>
@@ -7028,8 +7011,9 @@ where obs.concept_id = 1284
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select 1 asymptomatic_tb from obs
-where obs.concept_id = 1659 and obs.value_coded = 1660
+    <sql>select 1 as noneTreatments from obs
+where obs.concept_id = 160643
+  and obs.value_coded = 1107
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
@@ -7050,8 +7034,8 @@ where obs.concept_id = 1659 and obs.value_coded = 1660
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
-      <yloc>2512</yloc>
+      <xloc>1632</xloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -15199,30 +15183,6 @@ where location_attribute.attribute_type_id = ?
         <length>-1</length>
         <precision>-1</precision>
       </field>
-      <field>
-        <name>asymptomaticTb_cn</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>asymptomatic_tb</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -15235,47 +15195,6 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>880</xloc>
       <yloc>2528</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch None Treatments</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select 1 as noneTreatments from obs
-where obs.concept_id = 160643
-  and obs.value_coded = 1107
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1632</xloc>
-      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
