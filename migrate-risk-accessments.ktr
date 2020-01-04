@@ -1054,6 +1054,124 @@ where patient_identifier.identifier_type = ?
     </GUI>
   </step>
   <step>
+    <name>Fetch Seqnum</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select seqnum as seqnum_value from etl_encounter_seqnum where etl_encounter_seqnum.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1296</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch dbSite</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select location_attribute.value_reference dbSiteValue from location_attribute 
+where location_attribute.attribute_type_id = 7
+  and location_attribute.location_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>isante_plus_location_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1120</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch iSante Location</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select location_attribute.value_reference isante_location_id from location_attribute 
+where location_attribute.attribute_type_id = ?
+  and location_attribute.location_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>isante_location_location_attribute_id</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>isante_plus_location_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>840</xloc>
+      <yloc>103</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Fetch obs group</name>
     <type>DBJoin</type>
     <description />
@@ -1579,7 +1697,7 @@ and obs.voided = false</sql>
       <line>
         <item>1061</item>
         <item>1063</item>
-        <item>12</item>
+        <item>31</item>
         <item>1</item>
         <item>df47e128-268f-4238-9b13-f829c01ae7d8</item>
         <item />
@@ -1587,7 +1705,7 @@ and obs.voided = false</sql>
       <line>
         <item>1061</item>
         <item>1066</item>
-        <item>12</item>
+        <item>31</item>
         <item>2</item>
         <item>df47e128-268f-4238-9b13-f829c01ae7d8</item>
         <item />
@@ -1595,7 +1713,7 @@ and obs.voided = false</sql>
       <line>
         <item>1061</item>
         <item>1067</item>
-        <item>12</item>
+        <item>31</item>
         <item>4</item>
         <item>df47e128-268f-4238-9b13-f829c01ae7d8</item>
         <item />
@@ -1775,6 +1893,54 @@ and obs.voided = false</sql>
         <item />
         <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item>text</item>
+      </line>
+      <line>
+        <item>509165681</item>
+        <item>1065</item>
+        <item>36</item>
+        <item>1</item>
+        <item>a3e61f72-6066-4af6-94e5-958458c04418</item>
+        <item />
+      </line>
+      <line>
+        <item>509165681</item>
+        <item>1066</item>
+        <item>36</item>
+        <item>2</item>
+        <item>a3e61f72-6066-4af6-94e5-958458c04418</item>
+        <item />
+      </line>
+      <line>
+        <item>509165681</item>
+        <item>1067</item>
+        <item>36</item>
+        <item>4</item>
+        <item>a3e61f72-6066-4af6-94e5-958458c04418</item>
+        <item />
+      </line>
+      <line>
+        <item>160580</item>
+        <item>1065</item>
+        <item>2</item>
+        <item>1</item>
+        <item>160580AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
+      </line>
+      <line>
+        <item>160580</item>
+        <item>1066</item>
+        <item>2</item>
+        <item>2</item>
+        <item>160580AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
+      </line>
+      <line>
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
       </line>
     </data>
     <attributes />
@@ -2301,124 +2467,6 @@ and obs.voided = false</sql>
     </remotesteps>
     <GUI>
       <xloc>1472</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch iSante Location</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select location_attribute.value_reference isante_location_id from location_attribute 
-where location_attribute.attribute_type_id = ?
-  and location_attribute.location_id = ?
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>isante_location_location_attribute_id</name>
-        <type>Number</type>
-      </field>
-      <field>
-        <name>isante_plus_location_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>840</xloc>
-      <yloc>103</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Seqnum</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select seqnum as seqnum_value from etl_encounter_seqnum where etl_encounter_seqnum.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1296</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch dbSite</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select location_attribute.value_reference dbSiteValue from location_attribute 
-where location_attribute.attribute_type_id = 7
-  and location_attribute.location_id = ?
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>isante_plus_location_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1120</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>

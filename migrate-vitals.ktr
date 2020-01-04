@@ -5658,7 +5658,7 @@ where obs.concept_id = 163579
     <rowlimit>1</rowlimit>
     <sql>select 1 as first_test_other_facility from obs
 where obs.concept_id = 159936
-  and obs.value_coded = 163266
+  and obs.value_coded = 164407
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
@@ -5699,7 +5699,7 @@ where obs.concept_id = 159936
     <rowlimit>1</rowlimit>
     <sql>select obs.comments as first_test_other_facility_comments from obs
 where obs.concept_id = 159936
-  and obs.value_coded = 163266
+  and obs.value_coded = 164407
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
@@ -6124,6 +6124,47 @@ where obs.concept_id = 163554
     <GUI>
       <xloc>1056</xloc>
       <yloc>1792</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Hepatitis Doses</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_numeric as hepatitis_doses from obs
+where obs.concept_id = 1418
+  and obs.obs_group_id = 1421
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>624</xloc>
+      <yloc>720</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -11048,6 +11089,18 @@ where location_attribute.attribute_type_id = ?
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
       </field>
+      <field>
+        <in_stream_name>repeat_test_year</in_stream_name>
+        <out_stream_name>repeat_test_year_yy</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\d\d(\d\d)</replace_string>
+        <replace_by_string>$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
     </fields>
     <attributes />
     <cluster_schema />
@@ -13846,7 +13899,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>repeat_test_year</name>
+        <name>repeat_test_year_yy</name>
         <type>None</type>
         <format />
         <currency />
