@@ -1949,14 +1949,6 @@ where location_attribute.attribute_type_id = ?
         <source_value>1</source_value>
         <target_value>2</target_value>
       </field>
-      <field>
-        <source_value />
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>null</source_value>
-        <target_value>1</target_value>
-      </field>
     </fields>
     <attributes />
     <cluster_schema />
@@ -2103,6 +2095,13 @@ where location_attribute.attribute_type_id = ?
         <item>5483</item>
         <item>71368</item>
         <item>N</item>
+      </line>
+      <line>
+        <item>Symptoms: Autres</item>
+        <item>1728</item>
+        <item>5622</item>
+        <item>7043</item>
+        <item>Y</item>
       </line>
     </data>
     <attributes />
