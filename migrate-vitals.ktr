@@ -656,31 +656,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Last CD4 count</from>
-      <to>Fetch Hepatitis Vacination Date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Hepatitis Vacination</from>
-      <to>Fetch Tetanus Vacination</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Tetanus Vacination</from>
-      <to>Fetch Other Vacination</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Other Vacination</from>
-      <to>Fetch Hepatitis Doses</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Hepatitis Doses</from>
-      <to>Fetch Family Planing</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Family Planing Other</from>
       <to>Fetch Tubal Ligation</to>
       <enabled>Y</enabled>
@@ -1061,21 +1036,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Hepatitis Vacination Date</from>
-      <to>Decompose Hepatitis Vacination Date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Decompose Hepatitis Vacination Date</from>
-      <to>Decompose Tetanus Vacination Date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Decompose Tetanus Vacination Date</from>
-      <to>Fetch Hepatitis Vacination</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Date Last Papanicolau</from>
       <to>Decompose Date of Last Papanicolau</to>
       <enabled>Y</enabled>
@@ -1343,6 +1303,56 @@
     <hop>
       <from>Decompose Date Care Initiated</from>
       <to>Replace in string</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Last CD4 count</from>
+      <to>Fetch Hepatitis Vacination</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Hepatitis Vacination</from>
+      <to>Fetch Hepatitis Vacination Date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Hepatitis Vacination Date</from>
+      <to>Decompose Hepatitis Vacination Date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Decompose Hepatitis Vacination Date</from>
+      <to>Fetch Hepatitis Doses</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Hepatitis Doses</from>
+      <to>Fetch Tetanus Vacination</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Tetanus Vacination</from>
+      <to>Fetch Tetanus Vacination Date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Tetanus Vacination Date</from>
+      <to>Decompose Tetanus Vacination Date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Decompose Tetanus Vacination Date</from>
+      <to>Fetch Tetanus Doses</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Tetanus Doses</from>
+      <to>Fetch Other Vacination</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Other Vacination</from>
+      <to>Fetch Family Planing</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -4193,7 +4203,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1104</xloc>
+      <xloc>1264</xloc>
       <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
@@ -4391,8 +4401,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1392</xloc>
-      <yloc>592</yloc>
+      <xloc>1440</xloc>
+      <yloc>672</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4986,8 +4996,8 @@ where obs.concept_id = 374
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1712</xloc>
-      <yloc>656</yloc>
+      <xloc>1680</xloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5068,7 +5078,7 @@ where obs.concept_id = 374
     </remotesteps>
     <GUI>
       <xloc>1792</xloc>
-      <yloc>720</yloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5548,8 +5558,8 @@ where obs.concept_id = 374
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
-      <yloc>688</yloc>
+      <xloc>288</xloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5588,8 +5598,8 @@ where obs.concept_id = 374
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1472</xloc>
-      <yloc>672</yloc>
+      <xloc>1232</xloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6171,7 +6181,7 @@ where obs.concept_id = 1418
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select 1 as hepatitis_vacination from obs
+    <sql>select 1 as hepatitis_vacination, obs.obs_group_id as hepatitis_group from obs
 where obs.concept_id = 984
   and obs.value_coded = 782
   and obs.encounter_id = ?
@@ -6194,8 +6204,8 @@ where obs.concept_id = 984
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
-      <yloc>720</yloc>
+      <xloc>784</xloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6212,10 +6222,10 @@ where obs.concept_id = 984
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_datetime as hepatitis_vacination_date, obs.value_datetime as tetanus_vacination_date from obs
+    <sql>select obs.value_datetime as hepatitis_vacination_date from obs
 where obs.concept_id = 1410
-  and obs.obs_group_id = 1421
   and obs.encounter_id = ?
+  and obs.obs_group_id = ?
   and obs.voided = false
 </sql>
     <outer_join>Y</outer_join>
@@ -6223,6 +6233,10 @@ where obs.concept_id = 1410
     <parameter>
       <field>
         <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>hepatitis_group</name>
         <type>Number</type>
       </field>
     </parameter>
@@ -6235,7 +6249,7 @@ where obs.concept_id = 1410
       </output>
     </remotesteps>
     <GUI>
-      <xloc>800</xloc>
+      <xloc>1008</xloc>
       <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
@@ -6670,8 +6684,8 @@ where obs.concept_id = 509165666
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1024</xloc>
-      <yloc>688</yloc>
+      <xloc>592</xloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -7033,8 +7047,8 @@ where obs.concept_id = 160643
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1632</xloc>
-      <yloc>736</yloc>
+      <xloc>1568</xloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -7212,10 +7226,9 @@ where obs.concept_id = 163719
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.comments as other_vacination from obs
+    <sql>select obs.comments as other_vacination, obs.obs_group_id as other_group from obs
 where obs.concept_id = 984
   and obs.value_coded = 5622
-  and obs.obs_group_id = 1421
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
@@ -7236,8 +7249,8 @@ where obs.concept_id = 984
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
-      <yloc>720</yloc>
+      <xloc>1040</xloc>
+      <yloc>672</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -8462,10 +8475,9 @@ where obs.concept_id = 164848
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select 1 as tetanus_vacination from obs
+    <sql>select 1 as tetanus_vacination, obs.obs_group_id as tetanus_group from obs
 where obs.concept_id = 984
   and obs.value_coded = 1685
-  and obs.obs_group_id  = 1421
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
@@ -8486,8 +8498,8 @@ where obs.concept_id = 984
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
-      <yloc>720</yloc>
+      <xloc>1680</xloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -8567,8 +8579,8 @@ where obs.concept_id = 509165667
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1216</xloc>
-      <yloc>688</yloc>
+      <xloc>896</xloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -8608,8 +8620,8 @@ where obs.concept_id = 374
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1536</xloc>
-      <yloc>688</yloc>
+      <xloc>1408</xloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -9551,8 +9563,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>880</xloc>
-      <yloc>688</yloc>
+      <xloc>448</xloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10535,8 +10547,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1328</xloc>
-      <yloc>688</yloc>
+      <xloc>1056</xloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10653,8 +10665,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1104</xloc>
-      <yloc>688</yloc>
+      <xloc>736</xloc>
+      <yloc>768</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -12256,6 +12268,30 @@ where location_attribute.attribute_type_id = ?
       </field>
       <field>
         <name>hepatitis_doses</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>tetDoses_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>tetanus_doses</name>
         <type>String</type>
         <format />
         <currency />
@@ -15206,6 +15242,141 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>880</xloc>
       <yloc>2528</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Tetanus Vacination Date</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_datetime as tetanus_vacination_date from obs
+where obs.concept_id = 1410
+  and obs.obs_group_id = ?
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>tetanus_group</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1744</xloc>
+      <yloc>672</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Hepatitis Doses</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_numeric as hepatitis_doses from obs
+where obs.concept_id = 1418
+  and obs.encounter_id = ?
+  and obs.obs_group_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>hepatitis_group</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1488</xloc>
+      <yloc>592</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Tetanus Doses</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_numeric as tetanus_doses from obs
+where obs.concept_id = 1418
+  and obs.encounter_id = ?
+  and obs.obs_group_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>hepatitis_group</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1216</xloc>
+      <yloc>672</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
