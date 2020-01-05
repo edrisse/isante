@@ -2202,7 +2202,7 @@ where location_attribute.attribute_type_id = ?
       <method>none</method>
       <schema_name />
     </partitioning>
-    <field_to_use>genStat</field_to_use>
+    <field_to_use>any_mch</field_to_use>
     <target_field>any_mch_mapped</target_field>
     <non_match_default />
     <fields>
