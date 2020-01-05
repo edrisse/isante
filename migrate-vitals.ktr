@@ -541,18 +541,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Height</from>
-      <to>Fetch Weight</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Respiratory Rate</from>
       <to>Fetch Height</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Weight</from>
-      <to>Fetch Mobility Code</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -1353,6 +1343,41 @@
     <hop>
       <from>Fetch Other Vacination</from>
       <to>Fetch Family Planing</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Genstat</from>
+      <to>Map Genstat</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map Genstat</from>
+      <to>Fetch Mobility Code</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Hospitalized Text</from>
+      <to>Fetch Genstat 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Hospitalized</from>
+      <to>Fetch Hospitalized Text</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Weight</from>
+      <to>Fetch Hospitalized</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Height</from>
+      <to>Fetch Weight</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Genstat 2</from>
+      <to>Fetch Genstat</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -4147,8 +4172,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>304</xloc>
-      <yloc>304</yloc>
+      <xloc>160</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5921,7 +5946,7 @@ where obs.concept_id = 160082
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
+      <xloc>304</xloc>
       <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
@@ -6082,8 +6107,8 @@ where obs.concept_id = 5090
       </output>
     </remotesteps>
     <GUI>
-      <xloc>976</xloc>
-      <yloc>304</yloc>
+      <xloc>1024</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6142,8 +6167,8 @@ where obs.concept_id = 163554
     <rowlimit>1</rowlimit>
     <sql>select obs.value_numeric as hepatitis_doses from obs
 where obs.concept_id = 1418
-  and obs.obs_group_id = 1421
   and obs.encounter_id = ?
+  and obs.obs_group_id = ?
   and obs.voided = false
 </sql>
     <outer_join>Y</outer_join>
@@ -6151,6 +6176,10 @@ where obs.concept_id = 1418
     <parameter>
       <field>
         <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>hepatitis_group</name>
         <type>Number</type>
       </field>
     </parameter>
@@ -6163,8 +6192,8 @@ where obs.concept_id = 1418
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
-      <yloc>720</yloc>
+      <xloc>1488</xloc>
+      <yloc>592</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6845,8 +6874,8 @@ where obs.concept_id = 162753
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
-      <yloc>304</yloc>
+      <xloc>448</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -8463,6 +8492,51 @@ where obs.concept_id = 164848
     </GUI>
   </step>
   <step>
+    <name>Fetch Tetanus Doses</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_numeric as tetanus_doses from obs
+where obs.concept_id = 1418
+  and obs.encounter_id = ?
+  and obs.obs_group_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>hepatitis_group</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1216</xloc>
+      <yloc>672</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Fetch Tetanus Vacination</name>
     <type>DBJoin</type>
     <description />
@@ -8500,6 +8574,51 @@ where obs.concept_id = 984
     <GUI>
       <xloc>1680</xloc>
       <yloc>592</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Tetanus Vacination Date</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_datetime as tetanus_vacination_date from obs
+where obs.concept_id = 1410
+  and obs.obs_group_id = ?
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>tetanus_group</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1744</xloc>
+      <yloc>672</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -8935,8 +9054,8 @@ where obs.concept_id = 5089
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
-      <yloc>304</yloc>
+      <xloc>960</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -9895,8 +10014,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
-      <yloc>304</yloc>
+      <xloc>384</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -13755,7 +13874,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>empty_value</name>
+        <name>genStat_mapped</name>
         <type>None</type>
         <format />
         <currency />
@@ -13779,7 +13898,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>empty_value</name>
+        <name>hospitalized</name>
         <type>None</type>
         <format />
         <currency />
@@ -14811,7 +14930,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>empty_value</name>
+        <name>hospitalized_text</name>
         <type>None</type>
         <format />
         <currency />
@@ -15246,7 +15365,7 @@ where location_attribute.attribute_type_id = ?
     </GUI>
   </step>
   <step>
-    <name>Fetch Tetanus Vacination Date</name>
+    <name>Fetch Genstat</name>
     <type>DBJoin</type>
     <description />
     <distribute>Y</distribute>
@@ -15258,19 +15377,15 @@ where location_attribute.attribute_type_id = ?
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_datetime as tetanus_vacination_date from obs
-where obs.concept_id = 1410
-  and obs.obs_group_id = ?
-  and obs.encounter_id = ?
+    <sql>select obs.value_coded genStat from obs
+where obs.concept_id = 162676
   and obs.voided = false
+  and obs.encounter_id = ?
+
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
-      <field>
-        <name>tetanus_group</name>
-        <type>Number</type>
-      </field>
       <field>
         <name>encounter_id</name>
         <type>Number</type>
@@ -15285,14 +15400,14 @@ where obs.concept_id = 1410
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1744</xloc>
-      <yloc>672</yloc>
+      <xloc>608</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Fetch Hepatitis Doses</name>
-    <type>DBJoin</type>
+    <name>Map Genstat</name>
+    <type>ValueMapper</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -15301,26 +15416,23 @@ where obs.concept_id = 1410
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_numeric as hepatitis_doses from obs
-where obs.concept_id = 1418
-  and obs.encounter_id = ?
-  and obs.obs_group_id = ?
-  and obs.voided = false
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
+    <field_to_use />
+    <target_field>genStat_mapped</target_field>
+    <non_match_default />
+    <fields>
       <field>
-        <name>encounter_id</name>
-        <type>Number</type>
+        <source_value>162679</source_value>
+        <target_value>1</target_value>
       </field>
       <field>
-        <name>hepatitis_group</name>
-        <type>Number</type>
+        <source_value>162678</source_value>
+        <target_value>8</target_value>
       </field>
-    </parameter>
+      <field>
+        <source_value>162677</source_value>
+        <target_value>16</target_value>
+      </field>
+    </fields>
     <attributes />
     <cluster_schema />
     <remotesteps>
@@ -15330,13 +15442,13 @@ where obs.concept_id = 1418
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1488</xloc>
-      <yloc>592</yloc>
+      <xloc>528</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Fetch Tetanus Doses</name>
+    <name>Fetch Genstat 2</name>
     <type>DBJoin</type>
     <description />
     <distribute>Y</distribute>
@@ -15348,21 +15460,18 @@ where obs.concept_id = 1418
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_numeric as tetanus_doses from obs
-where obs.concept_id = 1418
-  and obs.encounter_id = ?
-  and obs.obs_group_id = ?
+    <sql>select 4 genStat_mapped from obs
+where obs.concept_id = 1898
+and obs.value_coded = 1065
   and obs.voided = false
+  and obs.encounter_id = ?
+
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
       <field>
         <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-      <field>
-        <name>hepatitis_group</name>
         <type>Number</type>
       </field>
     </parameter>
@@ -15375,8 +15484,90 @@ where obs.concept_id = 1418
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1216</xloc>
-      <yloc>672</yloc>
+      <xloc>768</xloc>
+      <yloc>272</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Hospitalized</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded hospitalized from obs
+where obs.concept_id = 976
+  and obs.voided = false
+  and obs.encounter_id = ?
+
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Hospitalized Text</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_text hospitalized_text from obs
+where obs.concept_id = 162879
+  and obs.voided = false
+  and obs.encounter_id = ?
+
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>832</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
