@@ -15416,7 +15416,7 @@ where obs.concept_id = 162676
       <method>none</method>
       <schema_name />
     </partitioning>
-    <field_to_use />
+    <field_to_use>genStat<field_to_use />
     <target_field>genStat_mapped</target_field>
     <non_match_default />
     <fields>
