@@ -4883,7 +4883,7 @@ where obs.concept_id = 1343
     <rowlimit>1</rowlimit>
     <sql>select 1 as cd4_never_done from obs
 where obs.concept_id = 1941
-  and obs.value_coded = 1065
+  and obs.value_coded in (1066, 1067)
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
@@ -6861,11 +6861,10 @@ where obs.concept_id = 1121
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded med_record from obs
-where obs.concept_id = 509165666
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
+    <sql>select o.value_coded med_record from obs o
+join concept c on o.concept_id = c.concept_id where c.uuid = '30735143-5968-4bee-8bb9-8a07f3c5b57b'
+  and o.encounter_id = ?
+  and o.voided = false</sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
@@ -8846,11 +8845,10 @@ where obs.concept_id = 159936
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded transferOnArv from obs
-where obs.concept_id = 509165667
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
+    <sql>select o.value_coded transferOnArv from obs o
+join concept c on o.concept_id = c.concept_id where c.uuid = '84ea41d3-fc79-418b-ae8c-6a8cf27de66e'
+  and o.encounter_id = ?
+  and o.voided = false</sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>

@@ -1204,7 +1204,7 @@
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select obs.value_text alternative_dosage_dispensed from obs
-where obs.concept_id = (select concept.concept_id from concept where concept.uuid = "ca8bc9c3-7f97-450a-8f33-e98f776b90e1")
+where obs.concept_id = (select concept.concept_id from concept where concept.uuid =  "1444AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
   and obs.obs_group_id = ?
   and obs.voided = false
   and obs.encounter_id = ?
@@ -1249,7 +1249,7 @@ where obs.concept_id = (select concept.concept_id from concept where concept.uui
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select obs.value_text alternative_dosage_prescribed from obs
-where obs.concept_id = (select concept.concept_id from concept where concept.uuid = "ca8bc9c3-7f97-450a-8f33-e98f776b90e1")
+where obs.concept_id = (select concept.concept_id from concept where concept.uuid = "1444AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
   and obs.obs_group_id = ?
   and obs.voided = false
   and obs.encounter_id = ?
@@ -2991,7 +2991,7 @@ where location_attribute.attribute_type_id = ?
         <currency />
         <decimal />
         <group />
-        <nullif>0</nullif>
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3015,7 +3015,7 @@ where location_attribute.attribute_type_id = ?
         <currency />
         <decimal />
         <group />
-        <nullif>0</nullif>
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3063,7 +3063,7 @@ where location_attribute.attribute_type_id = ?
         <currency />
         <decimal />
         <group />
-        <nullif>0</nullif>
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>

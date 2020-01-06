@@ -1125,7 +1125,7 @@ where patient_identifier.identifier_type = ?
     <rowlimit>0</rowlimit>
     <sql>select encounter.encounter_id, encounter.encounter_datetime, encounter.patient_id person_id, encounter.location_id isante_plus_location_id from encounter
 join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
-where encounter_type.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7', '204ad066-c5c2-4229-9a62-644bc5617ca2')
+where encounter_type.uuid in ('10d73929-54b6-4d18-a647-8b7316bc1ae3', 'a9392241-109f-4d67-885b-57cc4b8c638f')
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
    or encounter.date_voided >= ?
