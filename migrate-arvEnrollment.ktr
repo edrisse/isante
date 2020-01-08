@@ -639,7 +639,7 @@
       <field_a>encounter_datetime</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
+      <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
@@ -716,7 +716,7 @@ where obs.concept_id = 160533
     <rowlimit>0</rowlimit>
     <sql>select en.encounter_id, en.encounter_datetime, en.patient_id person_id, en.location_id isante_plus_location_id from encounter en
 join encounter_type et on et.encounter_type_id = en.encounter_type
-where et.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7', '349ae0b4-65c1-4122-aa06-480f186c8350')
+where et.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7', '349ae0b4-65c1-4122-aa06-480f186c8350','204ad066-c5c2-4229-9a62-644bc5617ca2','33491314-c352-42d0-bd5d-a9d0bffc9bf1')
   and (en.date_created >= ?
    or en.date_changed >= ?
    or en.date_voided >= ?
