@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>migrate-obs-bool</name>
+    <name>migrate-obs-meds</name>
     <description />
     <extended_description />
     <trans_version />
@@ -427,10 +427,10 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2019/12/18 20:20:11.745</created_date>
+    <created_date>2020/01/07 20:46:26.963</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/12/18 20:20:11.745</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2020/01/07 20:46:26.963</modified_date>
+    <key_for_session_key />
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -497,6 +497,11 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Fetch Last ETL Excution Date</from>
+      <to>Database Join non coded</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Fetch Person Id</from>
       <to>Select values format</to>
       <enabled>Y</enabled>
@@ -527,23 +532,23 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Select values format</from>
+      <to>Save on CSV</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>concepts</from>
       <to>Join rows (cartesian product)</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Last ETL Excution Date</from>
-      <to>Database join Coded</to>
+      <from>Database Join non coded</from>
+      <to>Fetch group of concept</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Database join Coded</from>
+      <from>Fetch group of concept</from>
       <to>Fetch Person Identifier</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values format</from>
-      <to>Save on CSV</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -878,6 +883,17 @@
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
+      <field>
+        <name>empty</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
     </fields>
     <data>
       <line>
@@ -910,6 +926,7 @@
         <item>1</item>
         <item />
         <item>0</item>
+        <item />
       </line>
     </data>
     <attributes />
@@ -921,96 +938,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
-      <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Database join Coded</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>0</rowlimit>
-    <sql>select obs.person_id, obs.obs_datetime, obs.encounter_id, encounter.location_id, encounter.encounter_datetime, obs.date_created, obs.voided,
-obs.date_voided, obs.void_reason, obs.comments, obs.value_text, obs.value_numeric, obs.value_datetime  from obs
-join encounter on encounter.encounter_id = obs.encounter_id
-join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
-where obs.concept_id = ?
-  and obs.value_coded = ?
-  and encounter.voided = false
-  and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171')
-  and (encounter.date_created >= ?
-   or encounter.date_changed >= ?
-   or encounter.date_voided >= ?
-   or encounter.date_created >= ?
-   or encounter.date_changed >= ?
-   or encounter.date_voided >= ?
-   or obs.date_voided >= ?
-   or obs.date_created >= ?)
-</sql>
-    <outer_join>N</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>isante_plus_question</name>
-        <type>Integer</type>
-      </field>
-      <field>
-        <name>isante_plus_answer</name>
-        <type>Integer</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>880</xloc>
-      <yloc>80</yloc>
+      <xloc>96</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1026,7 +955,7 @@ where obs.concept_id = ?
       <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
+    <rowlimit>0</rowlimit>
     <sql>select etl_execution.date last_execution from etl_execution
 where etl_execution.completed = true
 order by date desc</sql>
@@ -1043,8 +972,8 @@ order by date desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>80</yloc>
+      <xloc>448</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1083,8 +1012,8 @@ order by date desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1344</xloc>
-      <yloc>224</yloc>
+      <xloc>928</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1127,8 +1056,8 @@ where patient_identifier.identifier_type = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1104</xloc>
-      <yloc>80</yloc>
+      <xloc>1152</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1170,8 +1099,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1344</xloc>
-      <yloc>80</yloc>
+      <xloc>1152</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1207,8 +1136,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
-      <yloc>80</yloc>
+      <xloc>208</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1239,8 +1168,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
-      <yloc>192</yloc>
+      <xloc>96</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1271,8 +1200,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
-      <yloc>272</yloc>
+      <xloc>96</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1343,7 +1272,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>patient_identifier</name>
+        <name>parsed_person_id</name>
         <type>String</type>
         <format />
         <currency />
@@ -1451,7 +1380,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>value_boolean_c</name>
+        <name>value_text_c</name>
         <type>String</type>
         <format />
         <currency />
@@ -1463,7 +1392,31 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>isante_plus_answer</name>
+        <name>comments</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>value_numeric_c</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>isante_answer</name>
         <type>String</type>
         <format />
         <currency />
@@ -1604,8 +1557,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>992</xloc>
-      <yloc>384</yloc>
+      <xloc>592</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1717,8 +1670,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1344</xloc>
-      <yloc>384</yloc>
+      <xloc>752</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1746,7 +1699,7 @@ where location_attribute.attribute_type_id = ?
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>isante_plus_question</name>
+        <name>isanteplus_question</name>
         <type>Integer</type>
         <format />
         <currency />
@@ -1757,7 +1710,7 @@ where location_attribute.attribute_type_id = ?
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>isante_plus_answer</name>
+        <name>isanteplus_answer</name>
         <type>Integer</type>
         <format />
         <currency />
@@ -1779,18 +1732,7 @@ where location_attribute.attribute_type_id = ?
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>isante_answer</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>use_date</name>
+        <name>concept_group_uuid</name>
         <type>String</type>
         <format />
         <currency />
@@ -1803,44 +1745,39 @@ where location_attribute.attribute_type_id = ?
     </fields>
     <data>
       <line>
-        <item>Suivi Diagnostic Actuel</item>
-        <item>160530</item>
-        <item>160523</item>
-        <item>70638</item>
         <item>1</item>
-        <item>N</item>
+        <item>984</item>
+        <item>5622</item>
+        <item>70416</item>
+        <item>1421AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
       </line>
       <line>
-        <item>Nouveau Problème</item>
-        <item>160530</item>
-        <item>164081</item>
-        <item>70637</item>
-        <item>1</item>
-        <item>N</item>
+        <item>2</item>
+        <item>984</item>
+        <item>5622</item>
+        <item>70417</item>
+        <item>0092abda-de8d-4564-9d16-7bda84b78bc5</item>
       </line>
       <line>
-        <item>Résultat de Laboratoire</item>
-        <item>160530</item>
-        <item>1361</item>
-        <item>70167</item>
-        <item>1</item>
-        <item>N</item>
+        <item>3</item>
+        <item>984</item>
+        <item>5622</item>
+        <item>70418</item>
+        <item>d4231f0f-92aa-4f28-9534-0d726d436b98</item>
       </line>
       <line>
-        <item>Dépistage CA de la Prostate (Homme > 40ans)</item>
-        <item>1651</item>
-        <item>163464</item>
-        <item>70074</item>
-        <item>1</item>
-        <item>N</item>
+        <item>4</item>
+        <item>984</item>
+        <item>5622</item>
+        <item>70419</item>
+        <item>99f42a2a-cba7-4baf-822f-1be8ece88705</item>
       </line>
       <line>
-        <item>Dépistage CA du Col </item>
-        <item>1651</item>
-        <item>151185</item>
-        <item>70073</item>
-        <item>1</item>
-        <item>N</item>
+        <item>5</item>
+        <item>984</item>
+        <item>5622</item>
+        <item>70420</item>
+        <item>46cd375f-4324-4fde-b01f-1ec2342f29ca</item>
       </line>
     </data>
     <attributes />
@@ -1852,8 +1789,136 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
-      <yloc>112</yloc>
+      <xloc>48</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Database Join non coded</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>0</rowlimit>
+    <sql>select obs.obs_group_id, obs.person_id, obs.obs_datetime, obs.encounter_id, encounter.location_id, encounter.encounter_datetime, obs.date_created, obs.voided,
+obs.date_voided, obs.void_reason, obs.comments, obs.value_text, obs.value_numeric, obs.value_datetime from obs
+join encounter on encounter.encounter_id = obs.encounter_id
+join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
+and encounter_type.uuid in ('709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae')
+where obs.concept_id = ?
+  and obs.value_coded = ?
+  and encounter.voided = false
+  and (encounter.date_created >= ?
+   or encounter.date_changed >= ?
+   or encounter.date_voided >= ?
+   or encounter.date_created >= ?
+   or encounter.date_changed >= ?
+   or encounter.date_voided >= ?
+   or obs.date_voided >= ?
+   or obs.date_created >= ?)
+</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>isanteplus_question</name>
+        <type>Integer</type>
+      </field>
+      <field>
+        <name>isanteplus_answer</name>
+        <type>Integer</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>672</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch group of concept</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.obs_id obs_group from obs where obs.obs_id = ? and obs.concept_id = (select concept.concept_id from concept where concept.uuid = ?)</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>obs_group_id</name>
+        <type>Integer</type>
+      </field>
+      <field>
+        <name>concept_group_uuid</name>
+        <type>String</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>880</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

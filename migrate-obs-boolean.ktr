@@ -2055,20 +2055,6 @@ where location_attribute.attribute_type_id = ?
         <item>Y</item>
       </line>
       <line>
-        <item>Dépistage CA du Col</item>
-        <item>1651</item>
-        <item>151185</item>
-        <item>70073</item>
-        <item>N</item>
-      </line>
-      <line>
-        <item>Dépistage CA de la Prostate (Homme > 40ans)</item>
-        <item>1651</item>
-        <item>163464</item>
-        <item>70074</item>
-        <item>N</item>
-      </line>
-      <line>
         <item>Patient vue pour consultation: Gyn</item>
         <item>160288</item>
         <item>160456</item>
