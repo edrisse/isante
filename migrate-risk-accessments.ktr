@@ -1209,8 +1209,8 @@ and obs.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>672</xloc>
-      <yloc>176</yloc>
+      <xloc>592</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1530,7 +1530,7 @@ and obs.voided = false</sql>
         <item>1061</item>
         <item>1066</item>
         <item>3</item>
-        <item>3</item>
+        <item>2</item>
         <item>0906f171-72d4-4727-8ede-97a47c2e25ee</item>
         <item />
       </line>
@@ -1648,10 +1648,10 @@ and obs.voided = false</sql>
       </line>
       <line>
         <item>1061</item>
-        <item>163289</item>
+        <item>105</item>
         <item>5</item>
         <item>1</item>
-        <item>844017f9-8d6a-4b9a-8347-637284b43893</item>
+        <item>d526575e-5fa1-45c6-b8ed-73a2cba0fba0</item>
         <item />
       </line>
       <line>
@@ -1659,7 +1659,7 @@ and obs.voided = false</sql>
         <item>1066</item>
         <item>5</item>
         <item>2</item>
-        <item>844017f9-8d6a-4b9a-8347-637284b43893</item>
+        <item>d526575e-5fa1-45c6-b8ed-73a2cba0fba0</item>
         <item />
       </line>
       <line>
@@ -1667,7 +1667,7 @@ and obs.voided = false</sql>
         <item>1067</item>
         <item>5</item>
         <item>4</item>
-        <item>844017f9-8d6a-4b9a-8347-637284b43893</item>
+        <item>d526575e-5fa1-45c6-b8ed-73a2cba0fba0</item>
         <item />
       </line>
       <line>
@@ -1791,147 +1791,43 @@ and obs.voided = false</sql>
         <item />
       </line>
       <line>
-        <item>160581</item>
-        <item>160580</item>
-        <item>33</item>
-        <item>1</item>
-        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
         <item />
       </line>
       <line>
-        <item>159218</item>
-        <item>1065</item>
-        <item>4</item>
-        <item>1</item>
-        <item>159218AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item> </item>
+        <item />
+        <item />
+        <item />
+        <item />
         <item />
       </line>
       <line>
-        <item>159218</item>
-        <item>1066</item>
-        <item>4</item>
-        <item>2</item>
-        <item>159218AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
         <item />
       </line>
       <line>
-        <item>163278</item>
-        <item>1065</item>
-        <item>7</item>
-        <item>1</item>
-        <item>163278AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
+        <item />
+        <item />
+        <item />
+        <item />
         <item />
       </line>
       <line>
-        <item>163278</item>
-        <item>1066</item>
-        <item>7</item>
-        <item>2</item>
-        <item>163278AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
-      </line>
-      <line>
-        <item>160580</item>
-        <item>1065</item>
-        <item>20</item>
-        <item>1</item>
-        <item>160580AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
-      </line>
-      <line>
-        <item>160580</item>
-        <item>1066</item>
-        <item>20</item>
-        <item>2</item>
-        <item>160580AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
-      </line>
-      <line>
-        <item>160579</item>
-        <item>1065</item>
-        <item>34</item>
-        <item>1</item>
-        <item>160579AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
-      </line>
-      <line>
-        <item>160579</item>
-        <item>1066</item>
-        <item>34</item>
-        <item>2</item>
-        <item>160579AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
-      </line>
-      <line>
-        <item>5567</item>
-        <item>1</item>
-        <item>33</item>
-        <item>1</item>
-        <item>5567AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
-        <item>boolean</item>
-      </line>
-      <line>
-        <item>5567</item>
-        <item>0</item>
-        <item>33</item>
-        <item>2</item>
-        <item>5567AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
-        <item>boolean</item>
-      </line>
-      <line>
-        <item>509165679</item>
-        <item />
-        <item>37</item>
-        <item />
-        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
-        <item>text</item>
-      </line>
-      <line>
-        <item>509165680</item>
-        <item />
-        <item>35</item>
-        <item />
-        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
-        <item>text</item>
-      </line>
-      <line>
-        <item>509165681</item>
-        <item>1065</item>
-        <item>36</item>
-        <item>1</item>
-        <item>a3e61f72-6066-4af6-94e5-958458c04418</item>
-        <item />
-      </line>
-      <line>
-        <item>509165681</item>
-        <item>1066</item>
-        <item>36</item>
-        <item>2</item>
-        <item>a3e61f72-6066-4af6-94e5-958458c04418</item>
-        <item />
-      </line>
-      <line>
-        <item>509165681</item>
-        <item>1067</item>
-        <item>36</item>
-        <item>4</item>
-        <item>a3e61f72-6066-4af6-94e5-958458c04418</item>
-        <item />
-      </line>
-      <line>
-        <item>160580</item>
-        <item>1065</item>
-        <item>2</item>
-        <item>1</item>
-        <item>160580AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
-        <item />
-      </line>
-      <line>
-        <item>160580</item>
-        <item>1066</item>
-        <item>2</item>
-        <item>2</item>
-        <item>160580AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
       </line>
       <line>
