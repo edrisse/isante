@@ -1313,6 +1313,51 @@ where obs.concept_id = (select concept.concept_id from concept where concept.uui
     </GUI>
   </step>
   <step>
+    <name>Fetch Alternative Dosage prescribed old concept</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_text alternative_dosage_prescribed from obs
+where obs.concept_id = (select concept.concept_id from concept where concept.uuid = "1444AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+  and obs.obs_group_id = ?
+  and obs.voided = false
+  and obs.encounter_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>drug_group_id_prescribed</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>400</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Fetch Dispensation Date</name>
     <type>DBJoin</type>
     <description />
@@ -2068,6 +2113,50 @@ where location_attribute.attribute_type_id = ?
     </GUI>
   </step>
   <step>
+    <name>Filter dosages</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Fetch Alternative Dosage prescribed new concept</send_true_to>
+    <send_false_to>Fetch Alternative Dosage prescribed old concept</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>use_alt_dosage</leftvalue>
+        <function>=</function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>N</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask />
+        </value>
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>560</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Filter rows</name>
     <type>FilterRows</type>
     <description />
@@ -2627,6 +2716,232 @@ where location_attribute.attribute_type_id = ?
     </remotesteps>
     <GUI>
       <xloc>1040</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Use alt dosage</name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>drug_code_prescribed</field_to_use>
+    <target_field>use_alt_dosage</target_field>
+    <non_match_default>N</non_match_default>
+    <fields>
+      <field>
+        <source_value>450</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>461</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>493</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>767</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>70245</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>70994</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>71184</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>71589</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>72075</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>72401</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>73300</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>73498</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>73546</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>75633</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>75842</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>75948</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>76488</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>76613</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>77696</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>78218</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>78338</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>78342</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>78476</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>79037</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>79413</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>79782</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>79831</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>80945</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>81724</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>82521</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>82667</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>82900</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>82912</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>83023</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>84360</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>84459</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>86341</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>105281</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>70116</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>70439</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>71160</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>73449</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>75222</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>77897</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>78280</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>82767</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>82919</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>71617</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>159810</source_value>
+        <target_value>Y</target_value>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>688</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3239,7 +3554,7 @@ where location_attribute.attribute_type_id = ?
         <currency />
         <decimal />
         <group />
-        <nullif>0</nullif>
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3304,321 +3619,6 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>752</xloc>
       <yloc>688</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map Use alt dosage</name>
-    <type>ValueMapper</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <field_to_use>drug_code_prescribed</field_to_use>
-    <target_field>use_alt_dosage</target_field>
-    <non_match_default>N</non_match_default>
-    <fields>
-      <field>
-        <source_value>450</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>461</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>493</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>767</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>70245</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>70994</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>71184</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>71589</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>72075</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>72401</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>73300</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>73498</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>73546</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>75633</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>75842</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>75948</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>76488</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>76613</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>77696</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>78218</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>78338</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>78342</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>78476</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>79037</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>79413</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>79782</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>79831</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>80945</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>81724</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>82521</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>82667</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>82900</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>82912</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>83023</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>84360</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>84459</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>86341</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>105281</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>70116</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>70439</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>71160</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>73449</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>75222</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>77897</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>78280</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>82767</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>82919</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>71617</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>159810</source_value>
-        <target_value>Y</target_value>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>688</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter dosages</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to>Fetch Alternative Dosage prescribed new concept</send_true_to>
-    <send_false_to>Fetch Alternative Dosage prescribed old concept</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>use_alt_dosage</leftvalue>
-        <function>=</function>
-        <rightvalue />
-        <value>
-          <name>constant</name>
-          <type>String</type>
-          <text>N</text>
-          <length>-1</length>
-          <precision>-1</precision>
-          <isnull>N</isnull>
-          <mask />
-        </value>
-      </condition>
-    </compare>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>560</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Alternative Dosage prescribed old concept</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_text alternative_dosage_prescribed from obs
-where obs.concept_id = (select concept.concept_id from concept where concept.uuid = "1444AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-  and obs.obs_group_id = ?
-  and obs.voided = false
-  and obs.encounter_id = ?
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>drug_group_id_prescribed</name>
-        <type>Number</type>
-      </field>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>400</xloc>
-      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

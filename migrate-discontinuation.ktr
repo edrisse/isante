@@ -2167,7 +2167,7 @@ where obs.concept_id = 164093
     </remotesteps>
     <GUI>
       <xloc>272</xloc>
-      <yloc>320</yloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3551,6 +3551,18 @@ where obs.concept_id = 159811
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
       </field>
+      <field>
+        <in_stream_name>last_contact_yy</in_stream_name>
+        <out_stream_name>last_contact_yy_yy</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\d\d(\d\d)</replace_string>
+        <replace_by_string>$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
     </fields>
     <attributes />
     <cluster_schema />
@@ -4477,7 +4489,7 @@ where obs.concept_id = 159811
         <precision>-1</precision>
       </field>
       <field>
-        <name>last_contact_yy</name>
+        <name>last_contact_yy_yy</name>
         <type>String</type>
         <format />
         <currency />
