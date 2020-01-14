@@ -626,16 +626,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Viral Load Never Done</from>
-      <to>Fetch LV Never Done Description</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch LV Never Done Description</from>
-      <to>Fetch VL Date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch VL Date</from>
       <to>Decompose VL Date</to>
       <enabled>Y</enabled>
@@ -1383,6 +1373,11 @@
     <hop>
       <from>Decompose Date Care Initiated</from>
       <to>Replace in string</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Viral Load Never Done</from>
+      <to>Fetch VL Date</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -6495,46 +6490,6 @@ where obs.concept_id = 159936
     </GUI>
   </step>
   <step>
-    <name>Fetch LV Never Done Description</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select concept_name.name vl_never_done_desc from concept_name 
-where concept_name.concept_id = ?
-  and concept_name.voided = false
-  and concept_name.locale = 'fr'
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>vl_never_done_desc_code</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>80</xloc>
-      <yloc>592</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Fetch Last CD4 count</name>
     <type>DBJoin</type>
     <description />
@@ -9045,8 +9000,9 @@ where obs.concept_id = 163787
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded vl_never_done_desc_code from obs
+    <sql>select 1 as vl_never_done_desc_code from obs
 where obs.concept_id = 163310
+and obs.value_coded in (1118, 1067)
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
@@ -12308,7 +12264,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>vl_never_done_desc</name>
+        <name>vl_never_done_desc_code</name>
         <type>String</type>
         <format />
         <currency />
