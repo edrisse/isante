@@ -2853,7 +2853,15 @@ where location_attribute.attribute_type_id = ?
       </field>
       <field>
         <source_value>105281</source_value>
+        <target_value>9</target_value>
+      </field>
+      <field>
+        <source_value>882</source_value>
         <target_value>69</target_value>
+      </field>
+      <field>
+        <source_value>5622</source_value>
+        <target_value>70</target_value>
       </field>
       <field>
         <source_value>76488</source_value>
