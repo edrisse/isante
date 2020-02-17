@@ -18,4 +18,3 @@ create table etl_records_processed (
   records_processed bigint(20) not null,
   primary key (id)
 );
-alter table etl_records_processed add constraint uq_etl_records_processed unique (table_name);
