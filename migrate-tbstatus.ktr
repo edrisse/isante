@@ -701,8 +701,13 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch TB Statsu: Currently on TB treatment</from>
+      <from>Fetch TB Status: TB Case Number</from>
       <to>Fetch TB Status: Currently on TB treatment: Facility</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch TB Statsu: Currently on TB treatment</from>
+      <to>Fetch TB Status: TB Case Number</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1859,11 +1864,10 @@ where obs.concept_id = 1659
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select pid.identifier current_treat_no from patient_identifier pid inner join encounter en
-on pid.patient_id = en.patient_id
-where en.encounter_id = ?
-  and pid.identifier_type = 7
-  and pid.voided = false</sql>
+    <sql>select obs.value_text curren_treat_no from obs
+where obs.concept_id = 509165879
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
@@ -3906,6 +3910,30 @@ where location_attribute.attribute_type_id = ?
       </field>
       <field>
         <name>current_prop</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>currentTreatNo</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>curren_treat_no</name>
         <type>String</type>
         <format />
         <currency />
