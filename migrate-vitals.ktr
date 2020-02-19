@@ -5276,7 +5276,7 @@ where obs.concept_id = 159590
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select obs.value_datetime repeat_test_dt from obs
-where obs.concept_id = 165642
+where obs.concept_id = 509165668
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
@@ -5297,7 +5297,7 @@ where obs.concept_id = 165642
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
+      <xloc>640</xloc>
       <yloc>2080</yloc>
       <draw>Y</draw>
     </GUI>
@@ -10772,11 +10772,11 @@ where location_attribute.attribute_type_id = ?
     <fields>
       <field>
         <source_value>1066</source_value>
-        <target_value>1</target_value>
+        <target_value>2</target_value>
       </field>
       <field>
         <source_value>1065</source_value>
-        <target_value>2</target_value>
+        <target_value>1</target_value>
       </field>
     </fields>
     <attributes />
@@ -10890,11 +10890,11 @@ where location_attribute.attribute_type_id = ?
     <fields>
       <field>
         <source_value>1066</source_value>
-        <target_value>1</target_value>
+        <target_value>2</target_value>
       </field>
       <field>
         <source_value>1065</source_value>
-        <target_value>2</target_value>
+        <target_value>1</target_value>
       </field>
     </fields>
     <attributes />
