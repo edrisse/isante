@@ -516,7 +516,7 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter rows</from>
+      <from>Filter last row</from>
       <to>Save Records Processed</to>
       <enabled>Y</enabled>
     </hop>
@@ -527,7 +527,7 @@
     </hop>
     <hop>
       <from>Identify last row in a stream</from>
-      <to>Filter rows</to>
+      <to>Filter last row</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -556,18 +556,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Last ETL Excution Date</from>
-      <to>Database join</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Database join</from>
+      <from>Database join date</from>
       <to>Fetch obs group</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch obs group</from>
-      <to>Fetch iSante Location</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -588,6 +578,41 @@
     <hop>
       <from>Fetch Seqnum</from>
       <to>Decompose Encounter Datetime</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Decompose  risk date</from>
+      <to>Replace in string risk date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string risk date</from>
+      <to>Fetch iSante Location</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch obs group</from>
+      <to>Decompose  risk date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Last ETL Excution Date</from>
+      <to>Filter rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows</from>
+      <to>Database join date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows</from>
+      <to>Database join coded</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Database join coded</from>
+      <to>Fetch obs group</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -703,6 +728,17 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
+        <name>riskDd</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
         <name>riskMm</name>
         <type>String</type>
         <format />
@@ -802,6 +838,7 @@
         <item>seqNum</item>
         <item>riskID</item>
         <item>riskAnswer</item>
+        <item>riskDd</item>
         <item>riskMm</item>
         <item>riskYy</item>
         <item>riskComment</item>
@@ -827,7 +864,7 @@
     </GUI>
   </step>
   <step>
-    <name>Database join</name>
+    <name>Database join date</name>
     <type>DBJoin</type>
     <description />
     <distribute>Y</distribute>
@@ -839,12 +876,11 @@
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
-    <sql>select encounter.encounter_id, encounter.patient_id, encounter.encounter_datetime, encounter.location_id isante_plus_location_id, obs.obs_group_id
+    <sql>select encounter.encounter_id, encounter.patient_id, encounter.encounter_datetime, encounter.location_id isante_plus_location_id, obs.obs_group_id, obs.value_datetime
 from encounter join encounter_type
 on encounter.encounter_type = encounter_type.encounter_type_id
 join obs on encounter.encounter_id = obs.encounter_id
   where obs.concept_id = ?
-  and obs.value_coded = ?
   and encounter_type.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7', '349ae0b4-65c1-4122-aa06-480f186c8350')
   and encounter.voided = false
   and (encounter.date_created >= ?
@@ -859,10 +895,6 @@ join obs on encounter.encounter_id = obs.encounter_id
     <parameter>
       <field>
         <name>risk_id_isante_plus</name>
-        <type>Integer</type>
-      </field>
-      <field>
-        <name>risk_answer_isante_plus</name>
         <type>Integer</type>
       </field>
       <field>
@@ -899,8 +931,8 @@ join obs on encounter.encounter_id = obs.encounter_id
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
-      <yloc>288</yloc>
+      <xloc>752</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -970,8 +1002,8 @@ join obs on encounter.encounter_id = obs.encounter_id
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1296</xloc>
-      <yloc>128</yloc>
+      <xloc>1136</xloc>
+      <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1048,8 +1080,8 @@ where patient_identifier.identifier_type = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1040</xloc>
-      <yloc>128</yloc>
+      <xloc>1488</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1084,8 +1116,8 @@ where patient_identifier.identifier_type = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1296</xloc>
-      <yloc>208</yloc>
+      <xloc>1328</xloc>
+      <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1123,8 +1155,8 @@ where location_attribute.attribute_type_id = 7
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1120</xloc>
-      <yloc>208</yloc>
+      <xloc>1488</xloc>
+      <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1166,8 +1198,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>840</xloc>
-      <yloc>103</yloc>
+      <xloc>1488</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1209,13 +1241,13 @@ and obs.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
-      <yloc>224</yloc>
+      <xloc>960</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Filter rows</name>
+    <name>Filter last row</name>
     <type>FilterRows</type>
     <description />
     <distribute>Y</distribute>
@@ -1253,8 +1285,8 @@ and obs.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1008</xloc>
-      <yloc>288</yloc>
+      <xloc>240</xloc>
+      <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1290,8 +1322,8 @@ and obs.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1328</xloc>
-      <yloc>288</yloc>
+      <xloc>560</xloc>
+      <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1316,8 +1348,8 @@ and obs.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1184</xloc>
-      <yloc>288</yloc>
+      <xloc>416</xloc>
+      <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1911,8 +1943,8 @@ and obs.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1472</xloc>
-      <yloc>128</yloc>
+      <xloc>944</xloc>
+      <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1963,8 +1995,8 @@ and obs.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
-      <yloc>288</yloc>
+      <xloc>96</xloc>
+      <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2215,6 +2247,30 @@ and obs.voided = false</sql>
         <precision>-1</precision>
       </field>
       <field>
+        <name>riskDd</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>risk_day_dd</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
         <name>riskMm</name>
         <type>String</type>
         <format />
@@ -2227,7 +2283,7 @@ and obs.voided = false</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>default_na</name>
+        <name>risk_month_mm</name>
         <type>String</type>
         <format />
         <currency />
@@ -2251,7 +2307,7 @@ and obs.voided = false</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>default_na</name>
+        <name>risk_year_yy</name>
         <type>String</type>
         <format />
         <currency />
@@ -2320,8 +2376,8 @@ and obs.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1472</xloc>
-      <yloc>288</yloc>
+      <xloc>704</xloc>
+      <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2362,8 +2418,264 @@ and obs.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1472</xloc>
-      <yloc>208</yloc>
+      <xloc>832</xloc>
+      <yloc>448</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Decompose  risk date</name>
+    <type>Calculator</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <failIfNoFile>N</failIfNoFile>
+    <calculation>
+      <field_name>risk_day</field_name>
+      <calc_type>DAY_OF_MONTH</calc_type>
+      <field_a>value_datetime</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>risk_month</field_name>
+      <calc_type>MONTH_OF_DATE</calc_type>
+      <field_a>value_datetime</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>risk_year</field_name>
+      <calc_type>YEAR_OF_DATE</calc_type>
+      <field_a>value_datetime</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1104</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Replace in string risk date</name>
+    <type>ReplaceString</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>risk_year</in_stream_name>
+        <out_stream_name>risk_year_yy</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\d\d(\d\d)</replace_string>
+        <replace_by_string>$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>risk_month</in_stream_name>
+        <out_stream_name>risk_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>risk_day</in_stream_name>
+        <out_stream_name>risk_day_dd</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1264</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter rows</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Database join date</send_true_to>
+    <send_false_to>Database join coded</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>type</leftvalue>
+        <function>=</function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>date</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask />
+        </value>
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>608</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Database join coded</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>0</rowlimit>
+    <sql>select encounter.encounter_id, encounter.patient_id, encounter.encounter_datetime, encounter.location_id isante_plus_location_id, obs.obs_group_id, obs.value_datetime
+from encounter join encounter_type
+on encounter.encounter_type = encounter_type.encounter_type_id
+join obs on encounter.encounter_id = obs.encounter_id
+  where obs.concept_id = ?
+  and obs.value_coded = ?
+  and encounter_type.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7', '349ae0b4-65c1-4122-aa06-480f186c8350')
+  and encounter.voided = false
+  and (encounter.date_created >= ?
+   or encounter.date_changed >= ?
+   or encounter.date_voided >= ?
+   or encounter.date_created >= ?
+   or encounter.date_changed >= ?
+   or encounter.date_voided >= ?)
+</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>risk_id_isante_plus</name>
+        <type>Integer</type>
+      </field>
+      <field>
+        <name>risk_answer_isante_plus</name>
+        <type>Integer</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
