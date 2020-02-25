@@ -1428,17 +1428,6 @@ where location_attribute.attribute_type_id = ?
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>group_uuid</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
         <name>type</name>
         <type>String</type>
         <format />
@@ -1456,7 +1445,6 @@ where location_attribute.attribute_type_id = ?
         <item>1065</item>
         <item>20</item>
         <item>1</item>
-        <item>160580AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
       </line>
       <line>
@@ -1464,7 +1452,6 @@ where location_attribute.attribute_type_id = ?
         <item>1066</item>
         <item>20</item>
         <item>2</item>
-        <item>160580AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
       </line>
       <line>
@@ -1472,7 +1459,6 @@ where location_attribute.attribute_type_id = ?
         <item>1065</item>
         <item>34</item>
         <item>1</item>
-        <item>160579AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
       </line>
       <line>
@@ -1480,7 +1466,6 @@ where location_attribute.attribute_type_id = ?
         <item>1066</item>
         <item>34</item>
         <item>2</item>
-        <item>160579AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
       </line>
       <line>
@@ -1488,7 +1473,6 @@ where location_attribute.attribute_type_id = ?
         <item>1</item>
         <item>33</item>
         <item>1</item>
-        <item>5567AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item>boolean</item>
       </line>
       <line>
@@ -1496,7 +1480,6 @@ where location_attribute.attribute_type_id = ?
         <item>0</item>
         <item>33</item>
         <item>2</item>
-        <item>5567AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item>boolean</item>
       </line>
       <line>
@@ -1504,7 +1487,6 @@ where location_attribute.attribute_type_id = ?
         <item />
         <item>37</item>
         <item />
-        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item>text</item>
       </line>
       <line>
@@ -1512,7 +1494,6 @@ where location_attribute.attribute_type_id = ?
         <item />
         <item>35</item>
         <item />
-        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item>text</item>
       </line>
       <line>
@@ -1520,7 +1501,6 @@ where location_attribute.attribute_type_id = ?
         <item>1065</item>
         <item>36</item>
         <item>1</item>
-        <item>a3e61f72-6066-4af6-94e5-958458c04418</item>
         <item />
       </line>
       <line>
@@ -1528,7 +1508,6 @@ where location_attribute.attribute_type_id = ?
         <item>1066</item>
         <item>36</item>
         <item>2</item>
-        <item>a3e61f72-6066-4af6-94e5-958458c04418</item>
         <item />
       </line>
       <line>
@@ -1536,7 +1515,6 @@ where location_attribute.attribute_type_id = ?
         <item>1067</item>
         <item>36</item>
         <item>4</item>
-        <item>a3e61f72-6066-4af6-94e5-958458c04418</item>
         <item />
       </line>
       <line>
@@ -1544,7 +1522,6 @@ where location_attribute.attribute_type_id = ?
         <item>1065</item>
         <item>2</item>
         <item>1</item>
-        <item>160580AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
       </line>
       <line>
@@ -1552,7 +1529,6 @@ where location_attribute.attribute_type_id = ?
         <item>1066</item>
         <item>2</item>
         <item>2</item>
-        <item>160580AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
       </line>
       <line>
@@ -1561,14 +1537,12 @@ where location_attribute.attribute_type_id = ?
         <item>4</item>
         <item>1</item>
         <item />
-        <item />
       </line>
       <line>
         <item>159218</item>
         <item>1066</item>
         <item>4</item>
         <item>2</item>
-        <item />
         <item />
       </line>
       <line>
@@ -1577,7 +1551,6 @@ where location_attribute.attribute_type_id = ?
         <item>7</item>
         <item>1</item>
         <item />
-        <item />
       </line>
       <line>
         <item>163278</item>
@@ -1585,10 +1558,8 @@ where location_attribute.attribute_type_id = ?
         <item>7</item>
         <item>2</item>
         <item />
-        <item />
       </line>
       <line>
-        <item />
         <item />
         <item />
         <item />
