@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>migrate-risk-accessments</name>
+    <name>migrate-risk-assessments_ungrouped</name>
     <description />
     <extended_description />
     <trans_version />
@@ -427,10 +427,10 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2019/04/12 21:17:53.939</created_date>
+    <created_date>2020/02/25 18:13:41.275</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/04/12 21:17:53.939</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2020/02/25 18:13:41.275</modified_date>
+    <key_for_session_key />
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -448,10 +448,6 @@
     <data_tablespace />
     <index_tablespace />
     <attributes>
-      <attribute>
-        <code>EXTRA_OPTION_MYSQL.zeroDateTimeBehavior</code>
-        <attribute>convertToNull</attribute>
-      </attribute>
       <attribute>
         <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
         <attribute>N</attribute>
@@ -496,18 +492,8 @@
   </connection>
   <order>
     <hop>
-      <from>Mappings</from>
-      <to>Join rows (cartesian product)</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Columns</from>
       <to>Join rows (cartesian product)</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Join rows (cartesian product)</from>
-      <to>Fetch Last ETL Excution Date</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -516,58 +502,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter last row</from>
-      <to>Save Records Processed</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Group by</from>
-      <to>Identify last row in a stream</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Identify last row in a stream</from>
-      <to>Filter last row</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Save on CSV</from>
-      <to>Group by</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Load iSanteLocation Location Attribute</from>
-      <to>Join rows (cartesian product)</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Load iSante ID Identifier Type</from>
-      <to>Join rows (cartesian product)</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Replace in string</from>
-      <to>Sort rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort rows</from>
-      <to>Save on CSV</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Database join date</from>
-      <to>Fetch obs group</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch iSante Location</from>
-      <to>Fetch Person Identifier</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch dbSite</from>
-      <to>Fetch Seqnum</to>
+      <from>Fetch Last ETL Excution Date</from>
+      <to>Filter rows</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -581,28 +517,13 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Decompose  risk date</from>
-      <to>Replace in string risk date</to>
+      <from>Fetch dbSite</from>
+      <to>Fetch Seqnum</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Replace in string risk date</from>
-      <to>Fetch iSante Location</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch obs group</from>
-      <to>Decompose  risk date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Last ETL Excution Date</from>
-      <to>Filter rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows</from>
-      <to>Database join date</to>
+      <from>Fetch iSante Location</from>
+      <to>Fetch Person Identifier</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -611,8 +532,63 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Filter rows</from>
+      <to>Database join date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Group by</from>
+      <to>Identify last row in a stream</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Identify last row in a stream</from>
+      <to>Filter last row</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join rows (cartesian product)</from>
+      <to>Fetch Last ETL Excution Date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Load iSante ID Identifier Type</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Load iSanteLocation Location Attribute</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Mappings</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string</from>
+      <to>Sort rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Save on CSV</from>
+      <to>Group by</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows</from>
+      <to>Save on CSV</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Database join date</from>
+      <to>Fetch iSante Location</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Database join coded</from>
-      <to>Fetch obs group</to>
+      <to>Fetch iSante Location</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -858,8 +834,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>48</xloc>
-      <yloc>128</yloc>
+      <xloc>39</xloc>
+      <yloc>109</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -876,11 +852,11 @@
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
-    <sql>select encounter.encounter_id, encounter.patient_id, encounter.encounter_datetime, encounter.location_id isante_plus_location_id, obs.obs_group_id, obs.value_datetime
+    <sql>select encounter.encounter_id, encounter.patient_id, encounter.encounter_datetime, encounter.location_id isante_plus_location_id, obs.obs_group_id, obs.value_text
 from encounter join encounter_type
 on encounter.encounter_type = encounter_type.encounter_type_id
 join obs on encounter.encounter_id = obs.encounter_id
-  where obs.concept_id = ?
+  where obs.concept_id = (select c.concept_id from concept c where c.uuid = ?)
   and obs.value_coded = ?
   and encounter_type.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7', '349ae0b4-65c1-4122-aa06-480f186c8350')
   and encounter.voided = false
@@ -896,7 +872,7 @@ join obs on encounter.encounter_id = obs.encounter_id
     <parameter>
       <field>
         <name>risk_id_isante_plus</name>
-        <type>Integer</type>
+        <type>String</type>
       </field>
       <field>
         <name>risk_answer_isante_plus</name>
@@ -936,8 +912,8 @@ join obs on encounter.encounter_id = obs.encounter_id
       </output>
     </remotesteps>
     <GUI>
-      <xloc>752</xloc>
-      <yloc>160</yloc>
+      <xloc>743</xloc>
+      <yloc>141</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -954,11 +930,11 @@ join obs on encounter.encounter_id = obs.encounter_id
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
-    <sql>select encounter.encounter_id, encounter.patient_id, encounter.encounter_datetime, encounter.location_id isante_plus_location_id, obs.obs_group_id, obs.value_datetime
+    <sql>select encounter.encounter_id, encounter.patient_id, encounter.encounter_datetime, encounter.location_id isante_plus_location_id, obs.obs_group_id, obs.value_text
 from encounter join encounter_type
 on encounter.encounter_type = encounter_type.encounter_type_id
 join obs on encounter.encounter_id = obs.encounter_id
-  where obs.concept_id = ?
+  where obs.concept_id = (select c.concept_id from concept c where c.uuid = ?)
   and encounter_type.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7', '349ae0b4-65c1-4122-aa06-480f186c8350')
   and encounter.voided = false
   and (encounter.date_created >= ?
@@ -973,7 +949,7 @@ join obs on encounter.encounter_id = obs.encounter_id
     <parameter>
       <field>
         <name>risk_id_isante_plus</name>
-        <type>Integer</type>
+        <type>String</type>
       </field>
       <field>
         <name>last_execution</name>
@@ -1009,79 +985,8 @@ join obs on encounter.encounter_id = obs.encounter_id
       </output>
     </remotesteps>
     <GUI>
-      <xloc>752</xloc>
-      <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Decompose  risk date</name>
-    <type>Calculator</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <failIfNoFile>N</failIfNoFile>
-    <calculation>
-      <field_name>risk_day</field_name>
-      <calc_type>DAY_OF_MONTH</calc_type>
-      <field_a>value_datetime</field_a>
-      <field_b />
-      <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <calculation>
-      <field_name>risk_month</field_name>
-      <calc_type>MONTH_OF_DATE</calc_type>
-      <field_a>value_datetime</field_a>
-      <field_b />
-      <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <calculation>
-      <field_name>risk_year</field_name>
-      <calc_type>YEAR_OF_DATE</calc_type>
-      <field_a>value_datetime</field_a>
-      <field_b />
-      <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1104</xloc>
-      <yloc>64</yloc>
+      <xloc>743</xloc>
+      <yloc>29</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1151,8 +1056,8 @@ join obs on encounter.encounter_id = obs.encounter_id
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1136</xloc>
-      <yloc>448</yloc>
+      <xloc>1127</xloc>
+      <yloc>429</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1185,8 +1090,8 @@ order by date desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>416</xloc>
-      <yloc>128</yloc>
+      <xloc>407</xloc>
+      <yloc>109</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1229,8 +1134,8 @@ where patient_identifier.identifier_type = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1488</xloc>
-      <yloc>336</yloc>
+      <xloc>1479</xloc>
+      <yloc>317</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1265,8 +1170,8 @@ where patient_identifier.identifier_type = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1328</xloc>
-      <yloc>448</yloc>
+      <xloc>1319</xloc>
+      <yloc>429</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1304,8 +1209,8 @@ where location_attribute.attribute_type_id = 7
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1488</xloc>
-      <yloc>448</yloc>
+      <xloc>1479</xloc>
+      <yloc>429</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1347,51 +1252,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1488</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch obs group</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>0</rowlimit>
-    <sql>select obs.obs_id from obs 
-where obs.concept_id = (select concept.concept_id from concept where concept.uuid = ?)
-and obs.obs_id = ?
-and obs.voided = false</sql>
-    <outer_join>N</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>group_uuid</name>
-        <type>Integer</type>
-      </field>
-      <field>
-        <name>obs_group_id</name>
-        <type>Integer</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>960</xloc>
-      <yloc>128</yloc>
+      <xloc>1479</xloc>
+      <yloc>205</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1434,8 +1296,8 @@ and obs.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>240</xloc>
-      <yloc>448</yloc>
+      <xloc>231</xloc>
+      <yloc>429</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1461,7 +1323,7 @@ and obs.voided = false</sql>
         <value>
           <name>constant</name>
           <type>String</type>
-          <text>date</text>
+          <text>text</text>
           <length>-1</length>
           <precision>-1</precision>
           <isnull>N</isnull>
@@ -1478,8 +1340,8 @@ and obs.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
-      <yloc>128</yloc>
+      <xloc>599</xloc>
+      <yloc>109</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1515,8 +1377,8 @@ and obs.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>560</xloc>
-      <yloc>448</yloc>
+      <xloc>551</xloc>
+      <yloc>429</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1541,8 +1403,8 @@ and obs.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>416</xloc>
-      <yloc>448</yloc>
+      <xloc>407</xloc>
+      <yloc>429</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1578,8 +1440,8 @@ and obs.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>128</yloc>
+      <xloc>199</xloc>
+      <yloc>109</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1610,8 +1472,8 @@ and obs.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>48</xloc>
-      <yloc>208</yloc>
+      <xloc>39</xloc>
+      <yloc>189</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1642,8 +1504,8 @@ and obs.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>48</xloc>
-      <yloc>288</yloc>
+      <xloc>39</xloc>
+      <yloc>269</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1661,7 +1523,7 @@ and obs.voided = false</sql>
     <fields>
       <field>
         <name>risk_id_isante_plus</name>
-        <type>Integer</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -1704,17 +1566,6 @@ and obs.voided = false</sql>
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>group_uuid</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
         <name>type</name>
         <type>String</type>
         <format />
@@ -1728,291 +1579,122 @@ and obs.voided = false</sql>
     </fields>
     <data>
       <line>
-        <item>1061</item>
-        <item>163290</item>
-        <item>1</item>
-        <item>1</item>
-        <item>c2b3c5cb-f1e6-4d3d-ad18-5ecf71b26dc2</item>
+        <item>da351ae6-b482-441d-9c47-2242e5600c1d</item>
         <item />
+        <item>35</item>
+        <item />
+        <item>text</item>
       </line>
       <line>
-        <item>1061</item>
-        <item>1066</item>
-        <item>1</item>
-        <item>2</item>
-        <item>c2b3c5cb-f1e6-4d3d-ad18-5ecf71b26dc2</item>
+        <item> 5392c31c-0432-4210-99e1-7698d4470eec</item>
         <item />
+        <item>37</item>
+        <item />
+        <item>text</item>
       </line>
       <line>
-        <item>1061</item>
-        <item>163291</item>
-        <item>3</item>
-        <item>1</item>
-        <item>0906f171-72d4-4727-8ede-97a47c2e25ee</item>
-        <item />
-      </line>
-      <line>
-        <item>1061</item>
-        <item>1066</item>
-        <item>3</item>
-        <item>2</item>
-        <item>0906f171-72d4-4727-8ede-97a47c2e25ee</item>
-        <item />
-      </line>
-      <line>
-        <item>1061</item>
-        <item>105</item>
-        <item>9</item>
-        <item>1</item>
-        <item>f6a51d0c-eb19-4875-8c37-85e39f0def00</item>
-        <item />
-      </line>
-      <line>
-        <item>1061</item>
-        <item>1066</item>
-        <item>9</item>
-        <item>2</item>
-        <item>f6a51d0c-eb19-4875-8c37-85e39f0def00</item>
-        <item />
-      </line>
-      <line>
-        <item>1061</item>
-        <item>1063</item>
-        <item>15</item>
-        <item>1</item>
-        <item>92259610-b7b8-4723-b879-6e33fdd4b817</item>
-        <item />
-      </line>
-      <line>
-        <item>1061</item>
-        <item>1066</item>
-        <item>15</item>
-        <item>2</item>
-        <item>92259610-b7b8-4723-b879-6e33fdd4b817</item>
-        <item />
-      </line>
-      <line>
-        <item>163268</item>
-        <item />
-        <item>15</item>
-        <item />
-        <item>92259610-b7b8-4723-b879-6e33fdd4b817</item>
-        <item>date</item>
-      </line>
-      <line>
-        <item>1061</item>
-        <item>163273</item>
-        <item>14</item>
-        <item>1</item>
-        <item>92259610-b7b8-4723-b879-6e33fdd4b817</item>
-        <item />
-      </line>
-      <line>
-        <item>1061</item>
-        <item>1066</item>
-        <item>14</item>
-        <item>2</item>
-        <item>92259610-b7b8-4723-b879-6e33fdd4b817</item>
-        <item />
-      </line>
-      <line>
-        <item>1061</item>
-        <item>1067</item>
-        <item>14</item>
-        <item>4</item>
-        <item>92259610-b7b8-4723-b879-6e33fdd4b817</item>
-        <item />
-      </line>
-      <line>
-        <item>160581</item>
-        <item>163274</item>
-        <item>12</item>
-        <item>1</item>
-        <item>163288AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
-        <item />
-      </line>
-      <line>
-        <item>160581</item>
-        <item>1066</item>
-        <item>12</item>
-        <item>2</item>
-        <item>163288AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
-        <item />
-      </line>
-      <line>
-        <item>162601</item>
-        <item />
-        <item>12</item>
-        <item />
-        <item>163288AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
-        <item>date</item>
-      </line>
-      <line>
-        <item>1061</item>
-        <item>163289</item>
-        <item>19</item>
-        <item>1</item>
-        <item>844017f9-8d6a-4b9a-8347-637284b43893</item>
-        <item />
-      </line>
-      <line>
-        <item>1061</item>
-        <item>1066</item>
-        <item>19</item>
-        <item>2</item>
-        <item>844017f9-8d6a-4b9a-8347-637284b43893</item>
-        <item />
-      </line>
-      <line>
-        <item>1061</item>
-        <item>1067</item>
-        <item>19</item>
-        <item>4</item>
-        <item>844017f9-8d6a-4b9a-8347-637284b43893</item>
-        <item />
-      </line>
-      <line>
-        <item>1061</item>
-        <item>105</item>
-        <item>5</item>
-        <item>1</item>
-        <item>d526575e-5fa1-45c6-b8ed-73a2cba0fba0</item>
-        <item />
-      </line>
-      <line>
-        <item>1061</item>
-        <item>1066</item>
-        <item>5</item>
-        <item>2</item>
-        <item>d526575e-5fa1-45c6-b8ed-73a2cba0fba0</item>
-        <item />
-      </line>
-      <line>
-        <item>1061</item>
-        <item>1067</item>
-        <item>5</item>
-        <item>4</item>
-        <item>d526575e-5fa1-45c6-b8ed-73a2cba0fba0</item>
-        <item />
-      </line>
-      <line>
-        <item>1061</item>
-        <item>163275</item>
-        <item>6</item>
-        <item>1</item>
-        <item>9d6ee2a2-8547-4fa9-a2d8-301d009ca3a5</item>
-        <item />
-      </line>
-      <line>
-        <item>1061</item>
-        <item>1066</item>
-        <item>6</item>
-        <item>2</item>
-        <item>9d6ee2a2-8547-4fa9-a2d8-301d009ca3a5</item>
-        <item />
-      </line>
-      <line>
-        <item>1061</item>
-        <item>1067</item>
-        <item>6</item>
-        <item>4</item>
-        <item>9d6ee2a2-8547-4fa9-a2d8-301d009ca3a5</item>
-        <item />
-      </line>
-      <line>
-        <item>1061</item>
-        <item>1063</item>
-        <item>31</item>
-        <item>1</item>
-        <item>df47e128-268f-4238-9b13-f829c01ae7d8</item>
-        <item />
-      </line>
-      <line>
-        <item>1061</item>
-        <item>1066</item>
-        <item>31</item>
-        <item>2</item>
-        <item>df47e128-268f-4238-9b13-f829c01ae7d8</item>
-        <item />
-      </line>
-      <line>
-        <item>1061</item>
-        <item>1067</item>
-        <item>31</item>
-        <item>4</item>
-        <item>df47e128-268f-4238-9b13-f829c01ae7d8</item>
-        <item />
-      </line>
-      <line>
-        <item>163276</item>
+        <item>160580AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item>1065</item>
-        <item>32</item>
+        <item>20</item>
         <item>1</item>
-        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
       </line>
       <line>
-        <item>163276</item>
+        <item>160580AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item>1066</item>
-        <item>32</item>
+        <item>20</item>
         <item>2</item>
-        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
       </line>
       <line>
-        <item>163276</item>
-        <item>1067</item>
-        <item>32</item>
-        <item>4</item>
-        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
-        <item />
-      </line>
-      <line>
-        <item>156660</item>
+        <item>160579AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item>1065</item>
-        <item>11</item>
+        <item>34</item>
         <item>1</item>
-        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
       </line>
       <line>
-        <item>156660</item>
+        <item>160579AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item>1066</item>
-        <item>11</item>
+        <item>34</item>
         <item>2</item>
-        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
       </line>
       <line>
-        <item>156660</item>
-        <item>1067</item>
-        <item>11</item>
-        <item>4</item>
-        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item>5567AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item>1</item>
+        <item>33</item>
+        <item>1</item>
         <item />
       </line>
       <line>
-        <item>123160</item>
+        <item>5567AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item>0</item>
+        <item>33</item>
+        <item>2</item>
+        <item />
+      </line>
+      <line>
+        <item>a3e61f72-6066-4af6-94e5-958458c04418</item>
         <item>1065</item>
-        <item>13</item>
+        <item>36</item>
         <item>1</item>
-        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
       </line>
       <line>
-        <item>123160</item>
+        <item>a3e61f72-6066-4af6-94e5-958458c04418</item>
         <item>1066</item>
-        <item>13</item>
+        <item>36</item>
         <item>2</item>
-        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
       </line>
       <line>
-        <item>123160</item>
+        <item>a3e61f72-6066-4af6-94e5-958458c04418</item>
         <item>1067</item>
-        <item>13</item>
+        <item>36</item>
         <item>4</item>
-        <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
+      </line>
+      <line>
+        <item>160580AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item>1065</item>
+        <item>2</item>
+        <item>1</item>
+        <item />
+      </line>
+      <line>
+        <item>160580AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item>1066</item>
+        <item>2</item>
+        <item>2</item>
+        <item />
+      </line>
+      <line>
+        <item>159218AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item>1065</item>
+        <item>4</item>
+        <item>1</item>
+        <item />
+      </line>
+      <line>
+        <item>159218AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item>1066</item>
+        <item>4</item>
+        <item>2</item>
+        <item />
+      </line>
+      <line>
+        <item>163278AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item>1065</item>
+        <item>7</item>
+        <item>1</item>
+        <item />
+      </line>
+      <line>
+        <item>163278AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item>1066</item>
+        <item>7</item>
+        <item>2</item>
         <item />
       </line>
     </data>
@@ -2025,8 +1707,8 @@ and obs.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>48</xloc>
-      <yloc>48</yloc>
+      <xloc>39</xloc>
+      <yloc>29</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2088,123 +1770,8 @@ and obs.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>944</xloc>
-      <yloc>448</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Replace in string risk date</name>
-    <type>ReplaceString</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>risk_year</in_stream_name>
-        <out_stream_name>risk_year_yy</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>\d\d(\d\d)</replace_string>
-        <replace_by_string>$1</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>risk_month</in_stream_name>
-        <out_stream_name>risk_month_mm</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>\b([0-9])\b</replace_string>
-        <replace_by_string>0$1</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>risk_day</in_stream_name>
-        <out_stream_name>risk_day_dd</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>\b([0-9])\b</replace_string>
-        <replace_by_string>0$1</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1264</xloc>
-      <yloc>64</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Save Records Processed</name>
-    <type>TableOutput</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <schema />
-    <table>etl_records_processed</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field />
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field />
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field />
-    <fields>
-      <field>
-        <column_name>table_name</column_name>
-        <stream_name>table_name</stream_name>
-      </field>
-      <field>
-        <column_name>records_processed</column_name>
-        <stream_name>record_number</stream_name>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>96</xloc>
-      <yloc>448</yloc>
+      <xloc>935</xloc>
+      <yloc>429</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2455,78 +2022,6 @@ and obs.voided = false</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>riskDd</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>risk_day_dd</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>riskMm</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>risk_month_mm</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>riskYy</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>risk_year_yy</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
         <name>riskComment</name>
         <type>String</type>
         <format />
@@ -2539,7 +2034,7 @@ and obs.voided = false</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>default_na</name>
+        <name>value_text</name>
         <type>String</type>
         <format />
         <currency />
@@ -2584,8 +2079,8 @@ and obs.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>448</yloc>
+      <xloc>695</xloc>
+      <yloc>429</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2626,8 +2121,8 @@ and obs.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>832</xloc>
-      <yloc>448</yloc>
+      <xloc>823</xloc>
+      <yloc>429</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
