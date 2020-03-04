@@ -3299,6 +3299,142 @@ where location_attribute.attribute_type_id = ?
         <item>1</item>
         <item/>
       </line>
+      <line>
+        <item>Age of menarche</item>
+        <item>160598</item>
+        <item/>
+        <item>8067</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>Age of first intercourse</item>
+        <item>163587</item>
+        <item/>
+        <item>8068</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>Cumulative number of sexual partners</item>
+        <item>5570</item>
+        <item/>
+        <item>70464</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>Length Rules</item>
+        <item>163732</item>
+        <item/>
+        <item>7866</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>Duration of Cycle</item>
+        <item>160597</item>
+        <item/>
+        <item>7867</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>DDR</item>
+        <item>1427</item>
+        <item/>
+        <item>70465</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>DPA</item>
+        <item>5596</item>
+        <item/>
+        <item>70466</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>Dysmenorrhea</item>
+        <item>1628</item>
+        <item>158306</item>
+        <item>7868</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Dysmenorrhea Primary</item>
+        <item>1628</item>
+        <item>129135</item>
+        <item>7869</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Dysmenorrhea Secundary</item>
+        <item>1628</item>
+        <item>152336</item>
+        <item>7869</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Infertilité </item>
+        <item>1628</item>
+        <item>158308</item>
+        <item>71352</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Live children</item>
+        <item>1825</item>
+        <item/>
+        <item>7870</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>Multiple pregnancy</item>
+        <item>1628</item>
+        <item>115491</item>
+        <item>70032</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Severe preeclampsia</item>
+        <item>1628</item>
+        <item>113006</item>
+        <item>70032</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Hemorrhage of pregnancy / postpartum</item>
+        <item>1628</item>
+        <item>117612</item>
+        <item>70032</item>
+        <item>4</item>
+        <item/>
+      </line>
+      <line>
+        <item>Pregnancy 1 date</item>
+        <item>160602</item>
+        <item/>
+        <item>71353</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>ATCD of Cesarean</item>
+        <item>1651</item>
+        <item>1171</item>
+        <item>70480</item>
+        <item>1</item>
+        <item/>
+      </line>
     </data>
     <attributes/>
     <cluster_schema/>
