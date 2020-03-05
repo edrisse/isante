@@ -4319,6 +4319,34 @@ where location_attribute.attribute_type_id = ?
         <item>70164</item>
         <item>Y</item>
       </line>
+      <line>
+        <item>Aménorrhée</item>
+        <item>159614</item>
+        <item>148989</item>
+        <item>70587</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Aménorrhée, précisez</item>
+        <item>159614</item>
+        <item>148989</item>
+        <item>70622</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Fièvre &lt; 2 semaines</item>
+        <item>159614</item>
+        <item>163740</item>
+        <item>70172</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Vomiting</item>
+        <item>159614</item>
+        <item>122983</item>
+        <item>7025</item>
+        <item>N</item>
+      </line>
     </data>
     <attributes/>
     <cluster_schema/>
