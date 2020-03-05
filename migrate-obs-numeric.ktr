@@ -3435,6 +3435,102 @@ where location_attribute.attribute_type_id = ?
         <item>1</item>
         <item/>
       </line>
+      <line>
+        <item>Latest Cervical Cancer Screening</item>
+        <item>163267</item>
+        <item/>
+        <item>70485</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>Latest Cervical Cancer Screening Result - Normal</item>
+        <item>885</item>
+        <item>1115</item>
+        <item>70029</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Latest Cervical Cancer Screening Result - Abnormal</item>
+        <item>885</item>
+        <item>1116</item>
+        <item>70029</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Latest Cervical Cancer Screening Result - Not done</item>
+        <item>885</item>
+        <item>1118</item>
+        <item>70029</item>
+        <item>4</item>
+        <item/>
+      </line>
+      <line>
+        <item>Monthly Breast palpation -Yes</item>
+        <item>163590</item>
+        <item>1065</item>
+        <item>70487</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Monthly Breast palpation -No</item>
+        <item>163590</item>
+        <item>1066</item>
+        <item>70487</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Mammogram (age> 35 years) Yes</item>
+        <item>163591</item>
+        <item>1226</item>
+        <item>7873</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Mammogram (age> 35 years) No</item>
+        <item>163591</item>
+        <item>1118</item>
+        <item>7873</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Mammogram (age> 35 years) Normal</item>
+        <item>163591</item>
+        <item>1115</item>
+        <item>70163</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Mammogram (age> 35 years) Abnormal</item>
+        <item>163591</item>
+        <item>1116</item>
+        <item>70163</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Menopause</item>
+        <item>1628</item>
+        <item>134346</item>
+        <item>7871</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Menopause age</item>
+        <item>160599</item>
+        <item/>
+        <item>7872</item>
+        <item/>
+        <item/>
+      </line>
     </data>
     <attributes/>
     <cluster_schema/>

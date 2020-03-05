@@ -4305,6 +4305,20 @@ where location_attribute.attribute_type_id = ?
         <item>70414</item>
         <item>Y</item>
       </line>
+      <line>
+        <item>Latest Cervical Cancer Screening Method</item>
+        <item>163589</item>
+        <item>162816</item>
+        <item>70486</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Family planning other</item>
+        <item>374</item>
+        <item>5622</item>
+        <item>70164</item>
+        <item>Y</item>
+      </line>
     </data>
     <attributes/>
     <cluster_schema/>
