@@ -2412,6 +2412,30 @@ where location_attribute.attribute_type_id = ?
         <item/>
       </line>
       <line>
+        <item>Neck + Thyroid: Normal</item>
+        <item>163388</item>
+        <item>1115</item>
+        <item>7087</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Neck + Thyroid: Abnormal</item>
+        <item>163388</item>
+        <item>1116</item>
+        <item>7087</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Neck + Thyroid: Non Effectué</item>
+        <item>163388</item>
+        <item>1118</item>
+        <item>7087</item>
+        <item>3</item>
+        <item/>
+      </line>
+      <line>
         <item>Coeur: Normal</item>
         <item>1124</item>
         <item>1115</item>
@@ -3529,6 +3553,70 @@ where location_attribute.attribute_type_id = ?
         <item/>
         <item>7872</item>
         <item/>
+        <item/>
+      </line>
+      <line>
+        <item>Food supplementation, Yes</item>
+        <item>161542</item>
+        <item>1065</item>
+        <item>71214</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Food supplementation, No</item>
+        <item>161542</item>
+        <item>1066</item>
+        <item>71214</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Supplémentation en vitamine B</item>
+        <item>1193</item>
+        <item>86341</item>
+        <item>71411</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Gueri</item>
+        <item>159786</item>
+        <item>159791</item>
+        <item>71216</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Traitement Terminé</item>
+        <item>159786</item>
+        <item>160035</item>
+        <item>71216</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Abandon</item>
+        <item>159786</item>
+        <item>159874</item>
+        <item>71216</item>
+        <item>4</item>
+        <item/>
+      </line>
+      <line>
+        <item>Transfere</item>
+        <item>159786</item>
+        <item>160031</item>
+        <item>71216</item>
+        <item>8</item>
+        <item/>
+      </line>
+      <line>
+        <item>Decede</item>
+        <item>159786</item>
+        <item>160034</item>
+        <item>71216</item>
+        <item>16</item>
         <item/>
       </line>
     </data>

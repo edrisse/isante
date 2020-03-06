@@ -3221,6 +3221,13 @@ where location_attribute.attribute_type_id = ?
         <item>N</item>
       </line>
       <line>
+        <item>Agression sexuelle [T74.21XA] Obgyn</item>
+        <item>1284</item>
+        <item>152370</item>
+        <item>70360</item>
+        <item>N</item>
+      </line>
+      <line>
         <item>Brûlure [T30.0]</item>
         <item>1284</item>
         <item>146623</item>
@@ -4345,6 +4352,20 @@ where location_attribute.attribute_type_id = ?
         <item>159614</item>
         <item>122983</item>
         <item>7025</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Food supplementation, Yes</item>
+        <item>161542</item>
+        <item>1065</item>
+        <item>71228</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Date of judgment of treatment</item>
+        <item>159431</item>
+        <item/>
+        <item>71215</item>
         <item>N</item>
       </line>
     </data>
