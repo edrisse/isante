@@ -4417,6 +4417,27 @@ where location_attribute.attribute_type_id = ?
         <item>7961</item>
         <item>Y</item>
       </line>
+      <line>
+        <item>Eruption cutanée, precisez</item>
+        <item>1728</item>
+        <item>512</item>
+        <item>7031</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Toux persistante, préciser</item>
+        <item>1728</item>
+        <item>143264</item>
+        <item>7030</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Autres, préciser</item>
+        <item>1728</item>
+        <item>5622</item>
+        <item>7044</item>
+        <item>Y</item>
+      </line>
     </data>
     <attributes/>
     <cluster_schema/>

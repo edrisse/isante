@@ -2,21 +2,21 @@
 <transformation>
   <info>
     <name>migrate-pedHistory</name>
-    <description />
-    <extended_description />
-    <trans_version />
+    <description/>
+    <extended_description/>
+    <trans_version/>
     <trans_type>Normal</trans_type>
     <directory>/</directory>
     <parameters>
     </parameters>
     <log>
       <trans-log-table>
-        <connection />
-        <schema />
-        <table />
-        <size_limit_lines />
-        <interval />
-        <timeout_days />
+        <connection/>
+        <schema/>
+        <table/>
+        <size_limit_lines/>
+        <interval/>
+        <timeout_days/>
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -41,37 +41,37 @@
           <id>LINES_READ</id>
           <enabled>Y</enabled>
           <name>LINES_READ</name>
-          <subject />
+          <subject/>
         </field>
         <field>
           <id>LINES_WRITTEN</id>
           <enabled>Y</enabled>
           <name>LINES_WRITTEN</name>
-          <subject />
+          <subject/>
         </field>
         <field>
           <id>LINES_UPDATED</id>
           <enabled>Y</enabled>
           <name>LINES_UPDATED</name>
-          <subject />
+          <subject/>
         </field>
         <field>
           <id>LINES_INPUT</id>
           <enabled>Y</enabled>
           <name>LINES_INPUT</name>
-          <subject />
+          <subject/>
         </field>
         <field>
           <id>LINES_OUTPUT</id>
           <enabled>Y</enabled>
           <name>LINES_OUTPUT</name>
-          <subject />
+          <subject/>
         </field>
         <field>
           <id>LINES_REJECTED</id>
           <enabled>Y</enabled>
           <name>LINES_REJECTED</name>
-          <subject />
+          <subject/>
         </field>
         <field>
           <id>ERRORS</id>
@@ -125,11 +125,11 @@
         </field>
       </trans-log-table>
       <perf-log-table>
-        <connection />
-        <schema />
-        <table />
-        <interval />
-        <timeout_days />
+        <connection/>
+        <schema/>
+        <table/>
+        <interval/>
+        <timeout_days/>
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -207,10 +207,10 @@
         </field>
       </perf-log-table>
       <channel-log-table>
-        <connection />
-        <schema />
-        <table />
-        <timeout_days />
+        <connection/>
+        <schema/>
+        <table/>
+        <timeout_days/>
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -273,10 +273,10 @@
         </field>
       </channel-log-table>
       <step-log-table>
-        <connection />
-        <schema />
-        <table />
-        <timeout_days />
+        <connection/>
+        <schema/>
+        <table/>
+        <timeout_days/>
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -349,10 +349,10 @@
         </field>
       </step-log-table>
       <metrics-log-table>
-        <connection />
-        <schema />
-        <table />
-        <timeout_days />
+        <connection/>
+        <schema/>
+        <table/>
+        <timeout_days/>
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -401,9 +401,9 @@
       </metrics-log-table>
     </log>
     <maxdate>
-      <connection />
-      <table />
-      <field />
+      <connection/>
+      <table/>
+      <field/>
       <offset>0.0</offset>
       <maxdiff>0.0</maxdiff>
     </maxdate>
@@ -414,7 +414,7 @@
     <feedback_shown>Y</feedback_shown>
     <feedback_size>50000</feedback_size>
     <using_thread_priorities>Y</using_thread_priorities>
-    <shared_objects_file />
+    <shared_objects_file/>
     <capture_step_performance>N</capture_step_performance>
     <step_performance_capturing_delay>1000</step_performance_capturing_delay>
     <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
@@ -444,9 +444,9 @@
     <port>${ISANTE-PLUS-DB-PORT}</port>
     <username>${ISANTE-PLUS-DB-USER}</username>
     <password>${ISANTE-PLUS-DB-PASSWORD}</password>
-    <servername />
-    <data_tablespace />
-    <index_tablespace />
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
     <attributes>
       <attribute>
         <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
@@ -892,75 +892,100 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Map Ped received mac prophylaxis</from>
-      <to>Fetch dbSite</to>
+      <from>Map Ped received pcr prophylaxis</from>
+      <to>Fetch Ped received mac prophylaxis</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Map Ped received pcr prophylaxis</from>
-      <to>Fetch Ped received mac prophylaxis</to>
+      <from>Map Ped received mac prophylaxis</from>
+      <to>Fetch Is the child aware</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Is the child aware</from>
+      <to>Map Fetch Is the child aware</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Is the parent aware</from>
+      <to>Map Fetch Is the parent aware</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map Fetch Is the child aware</from>
+      <to>Fetch Is the parent aware</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map Fetch Is the parent aware</from>
+      <to>Fetch Ped family recent tb</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Ped family recent tb</from>
+      <to>Fetch dbSite</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
     <name>Decompose Encounter Datetime</name>
     <type>Calculator</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <failIfNoFile>Y</failIfNoFile>
     <calculation>
       <field_name>visit_day</field_name>
       <calc_type>DAY_OF_MONTH</calc_type>
       <field_a>encounter_datetime</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
     <calculation>
       <field_name>visit_month</field_name>
       <calc_type>MONTH_OF_DATE</calc_type>
       <field_a>encounter_datetime</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
     <calculation>
       <field_name>visit_year</field_name>
       <calc_type>YEAR_OF_DATE</calc_type>
       <field_a>encounter_datetime</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -976,62 +1001,62 @@
   <step>
     <name>Decompose Ped family history date of treat</name>
     <type>Calculator</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <failIfNoFile>Y</failIfNoFile>
     <calculation>
       <field_name>ped_frat_hist_treat_tb_dt_day</field_name>
       <calc_type>DAY_OF_MONTH</calc_type>
       <field_a>ped_frat_hist_treat_tb_dt</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
     <calculation>
       <field_name>ped_frat_hist_treat_tb_dt_month</field_name>
       <calc_type>MONTH_OF_DATE</calc_type>
       <field_a>ped_frat_hist_treat_tb_dt</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
     <calculation>
       <field_name>ped_frat_hist_treat_tb_dt_year</field_name>
       <calc_type>YEAR_OF_DATE</calc_type>
       <field_a>ped_frat_hist_treat_tb_dt</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1047,62 +1072,62 @@
   <step>
     <name>Decompose Ped mother history arv prophylaxis end data</name>
     <type>Calculator</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <failIfNoFile>Y</failIfNoFile>
     <calculation>
       <field_name>ped_mother_hist_hiv_arv_preg_stop_dt_day</field_name>
       <calc_type>DAY_OF_MONTH</calc_type>
       <field_a>ped_mother_hist_hiv_arv_preg_stop_dt</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
     <calculation>
       <field_name>ped_mother_hist_hiv_arv_preg_stop_dt_month</field_name>
       <calc_type>MONTH_OF_DATE</calc_type>
       <field_a>ped_mother_hist_hiv_arv_preg_stop_dt</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
     <calculation>
       <field_name>ped_mother_hist_hiv_arv_preg_stop_dt_year</field_name>
       <calc_type>YEAR_OF_DATE</calc_type>
       <field_a>ped_mother_hist_hiv_arv_preg_stop_dt</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1118,62 +1143,62 @@
   <step>
     <name>Decompose Ped mother history arv prophylaxis start data</name>
     <type>Calculator</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <failIfNoFile>Y</failIfNoFile>
     <calculation>
       <field_name>ped_mother_hist_hiv_arv_preg_start_dt_day</field_name>
       <calc_type>DAY_OF_MONTH</calc_type>
       <field_a>ped_mother_hist_hiv_arv_preg_start_dt</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
     <calculation>
       <field_name>ped_mother_hist_hiv_arv_preg_start_dt_month</field_name>
       <calc_type>MONTH_OF_DATE</calc_type>
       <field_a>ped_mother_hist_hiv_arv_preg_start_dt</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
     <calculation>
       <field_name>ped_mother_hist_hiv_arv_preg_start_dt_year</field_name>
       <calc_type>YEAR_OF_DATE</calc_type>
       <field_a>ped_mother_hist_hiv_arv_preg_start_dt</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1189,62 +1214,62 @@
   <step>
     <name>Decompose Ped mother history dob</name>
     <type>Calculator</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <failIfNoFile>Y</failIfNoFile>
     <calculation>
       <field_name>ped_mother_hist_dob_day</field_name>
       <calc_type>DAY_OF_MONTH</calc_type>
       <field_a>ped_mother_hist_dob</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
     <calculation>
       <field_name>ped_mother_hist_dob_month</field_name>
       <calc_type>MONTH_OF_DATE</calc_type>
       <field_a>ped_mother_hist_dob</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
     <calculation>
       <field_name>ped_mother_hist_dob_year</field_name>
       <calc_type>YEAR_OF_DATE</calc_type>
       <field_a>ped_mother_hist_dob</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1260,62 +1285,62 @@
   <step>
     <name>Decompose Ped mother history hiv haart start date</name>
     <type>Calculator</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <failIfNoFile>Y</failIfNoFile>
     <calculation>
       <field_name>ped_mother_hist_hiv_haart_preg_start_dt_day</field_name>
       <calc_type>DAY_OF_MONTH</calc_type>
       <field_a>ped_mother_hist_hiv_haart_preg_start_dt</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
     <calculation>
       <field_name>ped_mother_hist_hiv_haart_preg_start_dt_month</field_name>
       <calc_type>MONTH_OF_DATE</calc_type>
       <field_a>ped_mother_hist_hiv_haart_preg_start_dt</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
     <calculation>
       <field_name>ped_mother_hist_hiv_haart_preg_start_dt_year</field_name>
       <calc_type>YEAR_OF_DATE</calc_type>
       <field_a>ped_mother_hist_hiv_haart_preg_start_dt</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1331,62 +1356,62 @@
   <step>
     <name>Decompose Ped mother history hiv haart top date</name>
     <type>Calculator</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <failIfNoFile>Y</failIfNoFile>
     <calculation>
       <field_name>ped_mother_hist_hiv_haart_preg_stop_dt_day</field_name>
       <calc_type>DAY_OF_MONTH</calc_type>
       <field_a>ped_mother_hist_hiv_haart_preg_stop_dt</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
     <calculation>
       <field_name>ped_mother_hist_hiv_haart_preg_stop_dt_month</field_name>
       <calc_type>MONTH_OF_DATE</calc_type>
       <field_a>ped_mother_hist_hiv_haart_preg_stop_dt</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
     <calculation>
       <field_name>ped_mother_hist_hiv_haart_preg_stop_dt_year</field_name>
       <calc_type>YEAR_OF_DATE</calc_type>
       <field_a>ped_mother_hist_hiv_haart_preg_stop_dt</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1402,62 +1427,62 @@
   <step>
     <name>Decompose Ped mother history treat tb dt</name>
     <type>Calculator</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <failIfNoFile>Y</failIfNoFile>
     <calculation>
       <field_name>ped_mother_hist_treat_tb_dt_day</field_name>
       <calc_type>DAY_OF_MONTH</calc_type>
       <field_a>ped_mother_hist_treat_tb_dt</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
     <calculation>
       <field_name>ped_mother_hist_treat_tb_dt_month</field_name>
       <calc_type>MONTH_OF_DATE</calc_type>
       <field_a>ped_mother_hist_treat_tb_dt</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
     <calculation>
       <field_name>ped_mother_hist_treat_tb_dt_year</field_name>
       <calc_type>YEAR_OF_DATE</calc_type>
       <field_a>ped_mother_hist_treat_tb_dt</field_a>
-      <field_b />
-      <field_c />
+      <field_b/>
+      <field_c/>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
     </calculation>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1473,13 +1498,13 @@
   <step>
     <name>Fetch Encounters</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
@@ -1522,8 +1547,8 @@ where encounter.voided = false
         <type>Date</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1539,13 +1564,13 @@ where encounter.voided = false
   <step>
     <name>Fetch Last ETL Excution Date</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1556,8 +1581,8 @@ order by date desc</sql>
     <replace_vars>N</replace_vars>
     <parameter>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1573,13 +1598,13 @@ order by date desc</sql>
   <step>
     <name>Fetch Ped family active tb</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1596,8 +1621,8 @@ where obs.concept_id = 160592
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1613,13 +1638,13 @@ where obs.concept_id = 160592
   <step>
     <name>Fetch Ped family father hiv status</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1635,8 +1660,8 @@ where obs.concept_id = 1397
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1652,13 +1677,13 @@ where obs.concept_id = 1397
   <step>
     <name>Fetch Ped family history date of treat</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1674,8 +1699,8 @@ where obs.concept_id = 163526
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1691,13 +1716,13 @@ where obs.concept_id = 163526
   <step>
     <name>Fetch Ped family num hiv cases 1</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1713,8 +1738,8 @@ where obs.concept_id = 159906
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1730,13 +1755,13 @@ where obs.concept_id = 159906
   <step>
     <name>Fetch Ped family num hiv cases 2</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1752,8 +1777,8 @@ where obs.concept_id = 163535
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1769,13 +1794,13 @@ where obs.concept_id = 163535
   <step>
     <name>Fetch Ped family num hiv cases 3</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1791,8 +1816,8 @@ where obs.concept_id = 163536
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1808,13 +1833,13 @@ where obs.concept_id = 163536
   <step>
     <name>Fetch Ped family num hiv cases 4</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1830,8 +1855,8 @@ where obs.concept_id = 163537
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1847,13 +1872,13 @@ where obs.concept_id = 163537
   <step>
     <name>Fetch Ped family sibling hiv status</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1869,8 +1894,8 @@ where obs.concept_id = 5587
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1886,13 +1911,13 @@ where obs.concept_id = 5587
   <step>
     <name>Fetch Ped family treat tb</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1908,8 +1933,8 @@ where obs.concept_id = 160749
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1925,13 +1950,13 @@ where obs.concept_id = 160749
   <step>
     <name>Fetch Ped family unknown</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1948,8 +1973,8 @@ where obs.concept_id = 163533
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1965,13 +1990,13 @@ where obs.concept_id = 163533
   <step>
     <name>Fetch Ped mother history active tb</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1988,8 +2013,8 @@ where obs.concept_id = 160592
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2005,13 +2030,13 @@ where obs.concept_id = 160592
   <step>
     <name>Fetch Ped mother history arv proph during labor</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2027,8 +2052,8 @@ where obs.concept_id = 159595
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2044,13 +2069,13 @@ where obs.concept_id = 159595
   <step>
     <name>Fetch Ped mother history arv proph during labor, specify</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2067,8 +2092,8 @@ where obs.concept_id = 163786
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2084,13 +2109,13 @@ where obs.concept_id = 163786
   <step>
     <name>Fetch Ped mother history arv prophylaxis end data</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2106,8 +2131,8 @@ where obs.concept_id = 163782
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2123,13 +2148,13 @@ where obs.concept_id = 163782
   <step>
     <name>Fetch Ped mother history arv prophylaxis start data</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2145,8 +2170,8 @@ where obs.concept_id = 163781
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2162,13 +2187,13 @@ where obs.concept_id = 163781
   <step>
     <name>Fetch Ped mother history dob</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2184,8 +2209,8 @@ where obs.concept_id = 160751
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2201,13 +2226,13 @@ where obs.concept_id = 160751
   <step>
     <name>Fetch Ped mother history gros abor</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2223,8 +2248,8 @@ where obs.concept_id = 1823
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2240,13 +2265,13 @@ where obs.concept_id = 1823
   <step>
     <name>Fetch Ped mother history gros birth method</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2262,8 +2287,8 @@ where obs.concept_id = 5630
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2279,13 +2304,13 @@ where obs.concept_id = 5630
   <step>
     <name>Fetch Ped mother history gros birth place</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2301,8 +2326,8 @@ where obs.concept_id = 163774
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2318,13 +2343,13 @@ where obs.concept_id = 163774
   <step>
     <name>Fetch Ped mother history gros birth place, specify</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2340,8 +2365,8 @@ where obs.concept_id = 163531
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2357,13 +2382,13 @@ where obs.concept_id = 163531
   <step>
     <name>Fetch Ped mother history gros cause of death</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2379,8 +2404,8 @@ where obs.concept_id = 159482
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2396,13 +2421,13 @@ where obs.concept_id = 159482
   <step>
     <name>Fetch Ped mother history gros dead age</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2418,8 +2443,8 @@ where obs.concept_id = 163527
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2435,13 +2460,13 @@ where obs.concept_id = 163527
   <step>
     <name>Fetch Ped mother history gros grav</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2457,8 +2482,8 @@ where obs.concept_id = 5624
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2474,13 +2499,13 @@ where obs.concept_id = 5624
   <step>
     <name>Fetch Ped mother history gros ist</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2496,8 +2521,8 @@ where obs.concept_id = 163771
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2513,13 +2538,13 @@ where obs.concept_id = 163771
   <step>
     <name>Fetch Ped mother history gros ist trimester</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2535,8 +2560,8 @@ where obs.concept_id = 163772
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2552,13 +2577,13 @@ where obs.concept_id = 163772
   <step>
     <name>Fetch Ped mother history gros mother num</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2574,8 +2599,8 @@ where obs.concept_id = 163530
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2591,13 +2616,13 @@ where obs.concept_id = 163530
   <step>
     <name>Fetch Ped mother history gros para</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2613,8 +2638,8 @@ where obs.concept_id = 1053
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2630,13 +2655,13 @@ where obs.concept_id = 1053
   <step>
     <name>Fetch Ped mother history gros paretal care</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2652,8 +2677,8 @@ where obs.concept_id = 163773
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2669,13 +2694,13 @@ where obs.concept_id = 163773
   <step>
     <name>Fetch Ped mother history gros paretal care site</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2691,8 +2716,8 @@ where obs.concept_id = 163529
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2708,13 +2733,13 @@ where obs.concept_id = 163529
   <step>
     <name>Fetch Ped mother history gros viva</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2730,8 +2755,8 @@ where obs.concept_id = 1825
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2747,13 +2772,13 @@ where obs.concept_id = 1825
   <step>
     <name>Fetch Ped mother history haart pregnancy</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2769,8 +2794,8 @@ where obs.concept_id = 163783
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2786,13 +2811,13 @@ where obs.concept_id = 163783
   <step>
     <name>Fetch Ped mother history hiv haart start date</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2808,8 +2833,8 @@ where obs.concept_id = 163784
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2825,13 +2850,13 @@ where obs.concept_id = 163784
   <step>
     <name>Fetch Ped mother history hiv haart stop date</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2847,8 +2872,8 @@ where obs.concept_id = 163785
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2864,13 +2889,13 @@ where obs.concept_id = 163785
   <step>
     <name>Fetch Ped mother history hiv status</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2886,8 +2911,8 @@ where obs.concept_id = 1396
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2903,13 +2928,13 @@ where obs.concept_id = 1396
   <step>
     <name>Fetch Ped mother history pmtct</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2925,8 +2950,8 @@ where obs.concept_id = 163776
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2942,13 +2967,13 @@ where obs.concept_id = 163776
   <step>
     <name>Fetch Ped mother history pmtct specify</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2964,8 +2989,8 @@ where obs.concept_id = 163779
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2981,13 +3006,13 @@ where obs.concept_id = 163779
   <step>
     <name>Fetch Ped mother history prophylaxis</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -3003,8 +3028,8 @@ where obs.concept_id = 163780
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -3020,13 +3045,13 @@ where obs.concept_id = 163780
   <step>
     <name>Fetch Ped mother history recent tb</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -3043,8 +3068,8 @@ where obs.concept_id = 160592
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -3060,13 +3085,13 @@ where obs.concept_id = 160592
   <step>
     <name>Fetch Ped mother history treat tb</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -3082,8 +3107,8 @@ where obs.concept_id = 160749
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -3099,13 +3124,13 @@ where obs.concept_id = 160749
   <step>
     <name>Fetch Ped mother history treat tb dt</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -3121,8 +3146,8 @@ where obs.concept_id = 163526
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -3138,13 +3163,13 @@ where obs.concept_id = 163526
   <step>
     <name>Fetch Ped mother history unknown</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -3161,8 +3186,8 @@ where obs.concept_id = 1856
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -3178,13 +3203,13 @@ where obs.concept_id = 1856
   <step>
     <name>Fetch Ped prophylaxis within 72 hours</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -3200,8 +3225,8 @@ where obs.concept_id = 5665
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -3217,13 +3242,13 @@ where obs.concept_id = 5665
   <step>
     <name>Fetch Ped received mac prophylaxis</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -3239,8 +3264,8 @@ where obs.concept_id = 163539
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -3256,13 +3281,13 @@ where obs.concept_id = 163539
   <step>
     <name>Fetch Ped received pcr prophylaxis</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -3278,8 +3303,8 @@ where obs.concept_id = 163538
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -3295,13 +3320,13 @@ where obs.concept_id = 163538
   <step>
     <name>Fetch Person Identifier</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -3322,8 +3347,8 @@ where patient_identifier.identifier_type = ?
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -3339,13 +3364,13 @@ where patient_identifier.identifier_type = ?
   <step>
     <name>Fetch Seqnum</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -3358,8 +3383,8 @@ where patient_identifier.identifier_type = ?
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -3367,21 +3392,21 @@ where patient_identifier.identifier_type = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>944</xloc>
-      <yloc>1456</yloc>
+      <xloc>912</xloc>
+      <yloc>1776</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
     <name>Fetch dbSite</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -3397,8 +3422,8 @@ where location_attribute.attribute_type_id = 7
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -3406,21 +3431,21 @@ where location_attribute.attribute_type_id = 7
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
-      <yloc>1456</yloc>
+      <xloc>720</xloc>
+      <yloc>1792</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
     <name>Fetch iSante Location</name>
     <type>DBJoin</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -3440,8 +3465,8 @@ where location_attribute.attribute_type_id = ?
         <type>Number</type>
       </field>
     </parameter>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -3457,22 +3482,22 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Filter rows</name>
     <type>FilterRows</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <send_true_to>Save Records Processed</send_true_to>
-    <send_false_to />
+    <send_false_to/>
     <compare>
       <condition>
         <negated>N</negated>
         <leftvalue>last_row</leftvalue>
         <function>=</function>
-        <rightvalue />
+        <rightvalue/>
         <value>
           <name>constant</name>
           <type>Boolean</type>
@@ -3480,12 +3505,12 @@ where location_attribute.attribute_type_id = ?
           <length>-1</length>
           <precision>-1</precision>
           <isnull>N</isnull>
-          <mask />
+          <mask/>
         </value>
       </condition>
     </compare>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -3493,25 +3518,25 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1008</xloc>
-      <yloc>1584</yloc>
+      <xloc>976</xloc>
+      <yloc>1904</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
     <name>Group by</name>
     <type>GroupBy</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <all_rows>Y</all_rows>
     <ignore_aggregate>N</ignore_aggregate>
-    <field_ignore />
+    <field_ignore/>
     <directory>%%java.io.tmpdir%%</directory>
     <prefix>grp</prefix>
     <add_linenr>Y</add_linenr>
@@ -3521,8 +3546,8 @@ where location_attribute.attribute_type_id = ?
       </group>
     <fields>
       </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -3530,25 +3555,25 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1328</xloc>
-      <yloc>1584</yloc>
+      <xloc>1296</xloc>
+      <yloc>1904</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
     <name>Identify last row in a stream</name>
     <type>DetectLastRow</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <resultfieldname>last_row</resultfieldname>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -3556,30 +3581,30 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1184</xloc>
-      <yloc>1584</yloc>
+      <xloc>1152</xloc>
+      <yloc>1904</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
     <name>Input grid</name>
     <type>DataGrid</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <fields>
       <field>
         <name>table_name</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3587,10 +3612,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>siteCode</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3598,10 +3623,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>patientID</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3609,10 +3634,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>visitDateDd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3620,10 +3645,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>visitDateMm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3631,10 +3656,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>visitDateYy</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3642,10 +3667,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>seqNum</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3653,10 +3678,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>dbSite</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3664,10 +3689,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>default_zero</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3675,10 +3700,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3686,10 +3711,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>default_one</name>
         <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3697,10 +3722,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedChildAware</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3708,10 +3733,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedParentAware</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3719,10 +3744,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistUnk</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3730,10 +3755,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistDobDd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3741,10 +3766,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistDobMm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3752,10 +3777,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistDobYy</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3763,10 +3788,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistAge</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3774,10 +3799,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistRecentTb</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3785,10 +3810,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistTreatTb</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3796,10 +3821,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistActiveTb</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3807,10 +3832,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistTreatTbDd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3818,10 +3843,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistTreatTbMm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3829,10 +3854,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistTreatTbYy</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3840,10 +3865,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosGrav</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3851,10 +3876,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosPara</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3862,10 +3887,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosAbor</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3873,10 +3898,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosViva</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3884,10 +3909,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosDeadAge1</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3895,10 +3920,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosDeadCause1</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3906,10 +3931,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosDeadUnk1</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3917,10 +3942,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosDeadAge2</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3928,10 +3953,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosDeadCause2</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3939,10 +3964,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosDeadUnk2</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3950,10 +3975,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosDeadAge3</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3961,10 +3986,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosDeadCause3</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3972,10 +3997,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosDeadUnk3</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3983,10 +4008,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosIst</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3994,10 +4019,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosIstTri</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4005,10 +4030,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosPreCare</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4016,10 +4041,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosPreCareSite</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4027,10 +4052,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosPreCareNum</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4038,10 +4063,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosMeth</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4049,10 +4074,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosWhere</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4060,10 +4085,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosWhereHosp</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4071,10 +4096,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosWhereOther</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4082,10 +4107,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivStat</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4093,10 +4118,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivPmtct</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4104,10 +4129,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivPmtctWhere</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4115,10 +4140,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivArvPreg</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4126,10 +4151,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivArvPregStartDd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4137,10 +4162,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivArvPregStartMm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4148,10 +4173,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivArvPregStartYy</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4159,10 +4184,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivArvPregStopDd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4170,10 +4195,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivArvPregStopMm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4181,10 +4206,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivArvPregStopYy</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4192,10 +4217,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivHaartPreg</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4203,10 +4228,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivHaartPregStDd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4214,10 +4239,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivHaartPregStMm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4225,10 +4250,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivHaartPregStYy</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4236,10 +4261,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivHaartPregSpDd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4247,10 +4272,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivHaartPregSpMm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4258,10 +4283,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivHaartPregSpYy</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4269,10 +4294,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivArvDel</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4280,10 +4305,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivReg</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4291,10 +4316,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistUnk</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4302,10 +4327,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistRecentTb</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4313,10 +4338,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistTreatTb</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4324,10 +4349,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistActiveTb</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4335,10 +4360,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistTreatTbDd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4346,10 +4371,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistTreatTbMm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4357,10 +4382,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistTreatTbYy</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4368,10 +4393,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistHivStat</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4379,10 +4404,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistHivStatFrat</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4390,10 +4415,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistHivStatNumNeg</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4401,10 +4426,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistHivStatNumPos</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4412,10 +4437,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistHivStatNumUnk</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4423,10 +4448,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistHivStatNumDead</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4434,10 +4459,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedInfProArv</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4445,10 +4470,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedInfProPcp</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4456,10 +4481,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedInfProMac</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -4476,7 +4501,7 @@ where location_attribute.attribute_type_id = ?
         <item>seqNum</item>
         <item>dbSite</item>
         <item>0</item>
-        <item />
+        <item/>
         <item>1</item>
         <item>pedChildAware</item>
         <item>pedParentAware</item>
@@ -4550,8 +4575,8 @@ where location_attribute.attribute_type_id = ?
         <item>pedInfProMac</item>
       </line>
     </data>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -4567,28 +4592,28 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Join rows (cartesian product)</name>
     <type>JoinRows</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <directory>%%java.io.tmpdir%%</directory>
     <prefix>out</prefix>
     <cache_size>500</cache_size>
-    <main />
+    <main/>
     <compare>
       <condition>
         <negated>N</negated>
-        <leftvalue />
+        <leftvalue/>
         <function>=</function>
-        <rightvalue />
+        <rightvalue/>
       </condition>
     </compare>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -4604,23 +4629,23 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Load iSante ID Identifier Type</name>
     <type>TableInput</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <sql>select patient_identifier_type.patient_identifier_type_id isante_id_identifier_type_id from patient_identifier_type where uuid = '0e0c7cc2-3491-4675-b705-746e372ff346'</sql>
     <limit>0</limit>
-    <lookup />
+    <lookup/>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -4636,23 +4661,23 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Load iSanteLocation Location Attribute</name>
     <type>TableInput</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <sql>select location_attribute_type_id isante_location_location_attribute_id from location_attribute_type where name = 'iSanteSiteCode'</sql>
     <limit>1</limit>
-    <lookup />
+    <lookup/>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -4668,17 +4693,17 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Map Fetch Ped mother history gros paretal care</name>
     <type>ValueMapper</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <field_to_use>ped_mother_hist_gros_pare_care</field_to_use>
     <target_field>ped_mother_hist_gros_pare_care_mapped</target_field>
-    <non_match_default />
+    <non_match_default/>
     <fields>
       <field>
         <source_value>1065</source_value>
@@ -4693,8 +4718,8 @@ where location_attribute.attribute_type_id = ?
         <target_value>4</target_value>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -4710,17 +4735,17 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Map Fetch Ped mother history treat tb</name>
     <type>ValueMapper</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <field_to_use>ped_mother_hist_treat_tb</field_to_use>
     <target_field>ped_mother_hist_treat_tb_mapped</target_field>
-    <non_match_default />
+    <non_match_default/>
     <fields>
       <field>
         <source_value>1065</source_value>
@@ -4731,8 +4756,8 @@ where location_attribute.attribute_type_id = ?
         <target_value>2</target_value>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -4748,17 +4773,17 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Map Ped family sibling hiv status</name>
     <type>ValueMapper</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <field_to_use>ped_frat_hist_hiv_stat_frat</field_to_use>
     <target_field>ped_frat_hist_hiv_stat_frat_mapped</target_field>
-    <non_match_default />
+    <non_match_default/>
     <fields>
       <field>
         <source_value>1065</source_value>
@@ -4773,8 +4798,8 @@ where location_attribute.attribute_type_id = ?
         <target_value>4</target_value>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -4790,17 +4815,17 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Map Ped family treat tb</name>
     <type>ValueMapper</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <field_to_use>ped_frat_hist_treat_tb</field_to_use>
     <target_field>ped_frat_hist_treat_tb_mapped</target_field>
-    <non_match_default />
+    <non_match_default/>
     <fields>
       <field>
         <source_value>1065</source_value>
@@ -4811,8 +4836,8 @@ where location_attribute.attribute_type_id = ?
         <target_value>2</target_value>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -4828,17 +4853,17 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Map Ped mother history arv prophylaxis</name>
     <type>ValueMapper</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <field_to_use>ped_mother_hist_hiv_arv_preg</field_to_use>
     <target_field>ped_mother_hist_hiv_arv_preg_mapped</target_field>
-    <non_match_default />
+    <non_match_default/>
     <fields>
       <field>
         <source_value>1065</source_value>
@@ -4853,8 +4878,8 @@ where location_attribute.attribute_type_id = ?
         <target_value>4</target_value>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -4870,17 +4895,17 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Map Ped mother history gros birth method</name>
     <type>ValueMapper</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <field_to_use>ped_mother_hist_gros_meth</field_to_use>
     <target_field>ped_mother_hist_gros_meth_mapped</target_field>
-    <non_match_default />
+    <non_match_default/>
     <fields>
       <field>
         <source_value>1170</source_value>
@@ -4895,8 +4920,8 @@ where location_attribute.attribute_type_id = ?
         <target_value>4</target_value>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -4912,17 +4937,17 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Map Ped mother history gros birth place</name>
     <type>ValueMapper</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <field_to_use>ped_mother_hist_gros_where</field_to_use>
     <target_field>ped_mother_hist_gros_where_mapped</target_field>
-    <non_match_default />
+    <non_match_default/>
     <fields>
       <field>
         <source_value>1536</source_value>
@@ -4937,8 +4962,8 @@ where location_attribute.attribute_type_id = ?
         <target_value>4</target_value>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -4954,17 +4979,17 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Map Ped mother history haart pregnancy</name>
     <type>ValueMapper</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <field_to_use>ped_mother_hist_hiv_haart_preg</field_to_use>
     <target_field>ped_mother_hist_hiv_haart_preg_mapped</target_field>
-    <non_match_default />
+    <non_match_default/>
     <fields>
       <field>
         <source_value>1065</source_value>
@@ -4979,8 +5004,8 @@ where location_attribute.attribute_type_id = ?
         <target_value>4</target_value>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -4996,17 +5021,17 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Map Ped mother history hiv status</name>
     <type>ValueMapper</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <field_to_use>ped_mother_hist_hiv_stat</field_to_use>
     <target_field>ped_mother_hist_hiv_stat_mapped</target_field>
-    <non_match_default />
+    <non_match_default/>
     <fields>
       <field>
         <source_value>664</source_value>
@@ -5021,8 +5046,8 @@ where location_attribute.attribute_type_id = ?
         <target_value>4</target_value>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -5038,17 +5063,17 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Map Ped mother history pmtct</name>
     <type>ValueMapper</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <field_to_use>ped_mother_hist_hiv_pmtct</field_to_use>
     <target_field>ped_mother_hist_hiv_pmtct_mapped</target_field>
-    <non_match_default />
+    <non_match_default/>
     <fields>
       <field>
         <source_value>1065</source_value>
@@ -5063,8 +5088,8 @@ where location_attribute.attribute_type_id = ?
         <target_value>4</target_value>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -5080,17 +5105,17 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Map Ped prophylaxis within 72 hours</name>
     <type>ValueMapper</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <field_to_use>ped_info_pro_arv</field_to_use>
     <target_field>ped_info_pro_arv_mapped</target_field>
-    <non_match_default />
+    <non_match_default/>
     <fields>
       <field>
         <source_value>1065</source_value>
@@ -5105,8 +5130,8 @@ where location_attribute.attribute_type_id = ?
         <target_value>4</target_value>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -5122,17 +5147,17 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Map Ped received mac prophylaxis</name>
     <type>ValueMapper</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <field_to_use>ped_info_pro_mac</field_to_use>
     <target_field>ped_info_pro_mac_mapped</target_field>
-    <non_match_default />
+    <non_match_default/>
     <fields>
       <field>
         <source_value>1065</source_value>
@@ -5147,8 +5172,8 @@ where location_attribute.attribute_type_id = ?
         <target_value>4</target_value>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -5164,17 +5189,17 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Map Ped received pcr prophylaxis</name>
     <type>ValueMapper</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <field_to_use>ped_info_pro_pcr</field_to_use>
     <target_field>ped_info_pro_pcr_mapped</target_field>
-    <non_match_default />
+    <non_match_default/>
     <fields>
       <field>
         <source_value>1065</source_value>
@@ -5189,8 +5214,8 @@ where location_attribute.attribute_type_id = ?
         <target_value>4</target_value>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -5206,17 +5231,17 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Map ed family father hiv status</name>
     <type>ValueMapper</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <field_to_use>ped_frat_hist_hiv_stat</field_to_use>
     <target_field>ped_frat_hist_hiv_stat_mapped</target_field>
-    <non_match_default />
+    <non_match_default/>
     <fields>
       <field>
         <source_value>664</source_value>
@@ -5231,8 +5256,8 @@ where location_attribute.attribute_type_id = ?
         <target_value>4</target_value>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -5248,17 +5273,17 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Map ped mother history gros ist trimester</name>
     <type>ValueMapper</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <field_to_use>ped_mother_hist_gros_ist_tri</field_to_use>
     <target_field>ped_mother_hist_gros_ist_tri_mapped</target_field>
-    <non_match_default />
+    <non_match_default/>
     <fields>
       <field>
         <source_value>1721</source_value>
@@ -5273,8 +5298,8 @@ where location_attribute.attribute_type_id = ?
         <target_value>4</target_value>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -5290,13 +5315,13 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Replace in string</name>
     <type>ReplaceString</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <fields>
       <field>
@@ -5306,7 +5331,7 @@ where location_attribute.attribute_type_id = ?
         <replace_string>\d\d(\d\d)</replace_string>
         <replace_by_string>$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
+        <replace_field_by_string/>
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -5318,7 +5343,7 @@ where location_attribute.attribute_type_id = ?
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
+        <replace_field_by_string/>
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -5330,7 +5355,7 @@ where location_attribute.attribute_type_id = ?
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
+        <replace_field_by_string/>
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -5342,7 +5367,7 @@ where location_attribute.attribute_type_id = ?
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
+        <replace_field_by_string/>
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -5354,7 +5379,7 @@ where location_attribute.attribute_type_id = ?
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
+        <replace_field_by_string/>
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -5366,7 +5391,7 @@ where location_attribute.attribute_type_id = ?
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
+        <replace_field_by_string/>
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -5378,7 +5403,7 @@ where location_attribute.attribute_type_id = ?
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
+        <replace_field_by_string/>
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -5390,7 +5415,7 @@ where location_attribute.attribute_type_id = ?
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
+        <replace_field_by_string/>
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -5402,7 +5427,7 @@ where location_attribute.attribute_type_id = ?
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
+        <replace_field_by_string/>
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -5414,7 +5439,7 @@ where location_attribute.attribute_type_id = ?
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
+        <replace_field_by_string/>
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -5426,7 +5451,7 @@ where location_attribute.attribute_type_id = ?
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
+        <replace_field_by_string/>
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -5438,7 +5463,7 @@ where location_attribute.attribute_type_id = ?
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
+        <replace_field_by_string/>
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -5450,7 +5475,7 @@ where location_attribute.attribute_type_id = ?
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
+        <replace_field_by_string/>
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -5462,7 +5487,7 @@ where location_attribute.attribute_type_id = ?
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
+        <replace_field_by_string/>
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -5474,7 +5499,7 @@ where location_attribute.attribute_type_id = ?
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
+        <replace_field_by_string/>
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -5486,7 +5511,7 @@ where location_attribute.attribute_type_id = ?
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
+        <replace_field_by_string/>
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -5498,14 +5523,14 @@ where location_attribute.attribute_type_id = ?
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
+        <replace_field_by_string/>
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -5513,24 +5538,24 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1136</xloc>
-      <yloc>1456</yloc>
+      <xloc>1104</xloc>
+      <yloc>1776</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
     <name>Save Records Processed</name>
     <type>TableOutput</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <connection>Openmrs HTY</connection>
-    <schema />
+    <schema/>
     <table>etl_records_processed</table>
     <commit>1000</commit>
     <truncate>N</truncate>
@@ -5538,14 +5563,14 @@ where location_attribute.attribute_type_id = ?
     <use_batch>Y</use_batch>
     <specify_fields>Y</specify_fields>
     <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field />
+    <partitioning_field/>
     <partitioning_daily>N</partitioning_daily>
     <partitioning_monthly>Y</partitioning_monthly>
     <tablename_in_field>N</tablename_in_field>
-    <tablename_field />
+    <tablename_field/>
     <tablename_in_table>Y</tablename_in_table>
     <return_keys>N</return_keys>
-    <return_field />
+    <return_field/>
     <fields>
       <field>
         <column_name>table_name</column_name>
@@ -5556,8 +5581,8 @@ where location_attribute.attribute_type_id = ?
         <stream_name>record_number</stream_name>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -5565,21 +5590,21 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
-      <yloc>1584</yloc>
+      <xloc>832</xloc>
+      <yloc>1904</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
     <name>Save on CSV</name>
     <type>TextFileOutput</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <separator>,</separator>
     <enclosure>"</enclosure>
@@ -5590,9 +5615,9 @@ where location_attribute.attribute_type_id = ?
     <format>DOS</format>
     <compression>None</compression>
     <encoding>UTF-8</encoding>
-    <endedLine />
+    <endedLine/>
     <fileNameInField>N</fileNameInField>
-    <fileNameField />
+    <fileNameField/>
     <create_parent_folder>Y</create_parent_folder>
     <file>
       <name>${user.home}/isante/data</name>
@@ -5605,21 +5630,21 @@ where location_attribute.attribute_type_id = ?
       <add_date>N</add_date>
       <add_time>N</add_time>
       <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format />
+      <date_time_format/>
       <add_to_result_filenames>Y</add_to_result_filenames>
       <pad>N</pad>
       <fast_dump>N</fast_dump>
-      <splitevery />
+      <splitevery/>
     </file>
     <fields>
       <field>
         <name>table_name</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5627,11 +5652,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>patientID</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5639,11 +5664,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>patient_identifier</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5651,11 +5676,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>siteCode</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5663,11 +5688,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>isante_location_id</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5675,11 +5700,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>visitDateDd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5687,11 +5712,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>visit_day_dd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5699,11 +5724,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>visitDateMm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5711,11 +5736,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>visit_month_mm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5723,11 +5748,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>visitDateYy</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5735,11 +5760,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>visit_year_yy</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5747,11 +5772,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>seqNum</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5759,11 +5784,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>seqnum_value</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5771,11 +5796,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>dbSite</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5783,11 +5808,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>dbSiteValue</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5795,11 +5820,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistUnk</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5807,11 +5832,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_unk</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5819,11 +5844,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistDobDd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5831,11 +5856,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_dob_day_dd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5843,11 +5868,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistDobMm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5855,11 +5880,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_dob_month_mm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5867,11 +5892,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistDobYy</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5879,11 +5904,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_dob_year</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5891,11 +5916,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistAge</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5903,11 +5928,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5915,11 +5940,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistRecentTb</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5927,11 +5952,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_rec_tb</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5939,11 +5964,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistTreatTb</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5951,11 +5976,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_treat_tb_mapped</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5963,11 +5988,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistActiveTb</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5975,11 +6000,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_active_tb</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5987,11 +6012,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistTreatTbDd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5999,11 +6024,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_treat_tb_dt_day_dd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6011,11 +6036,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistTreatTbMm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6023,11 +6048,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_treat_tb_dt_month_mm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6035,11 +6060,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistTreatTbYy</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6047,11 +6072,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_treat_tb_dt_year</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6059,11 +6084,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosGrav</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6071,11 +6096,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_gros_grav</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6083,11 +6108,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosPara</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6095,11 +6120,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_gros_para</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6107,11 +6132,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosAbor</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6119,11 +6144,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_gros_abor</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6131,11 +6156,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosViva</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6143,11 +6168,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_gros_viva</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6155,11 +6180,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosDeadAge1</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6167,11 +6192,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_gros_dead_age</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6179,11 +6204,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosDeadCause1</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6191,11 +6216,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_gros_cause_death</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6203,11 +6228,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosIst</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6215,11 +6240,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_gros_ist</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6227,11 +6252,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosIstTri</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6239,11 +6264,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_gros_ist_tri_mapped</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6251,11 +6276,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosPreCare</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6263,11 +6288,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_gros_pare_care_mapped</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6275,11 +6300,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosPreCareSite</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6287,11 +6312,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_gros_pare_care_site</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6299,11 +6324,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosPreCareNum</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6311,11 +6336,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_gros_pare_care_num</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6323,11 +6348,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosMeth</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6335,11 +6360,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_gros_meth_mapped</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6347,11 +6372,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosWhere</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6359,11 +6384,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_gros_where_mapped</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6371,11 +6396,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosWhereHosp</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6383,11 +6408,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6395,11 +6420,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistGrosWhereOther</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6407,11 +6432,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_gros_where_other</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6419,11 +6444,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivStat</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6431,11 +6456,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_hiv_stat_mapped</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6443,11 +6468,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivPmtct</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6455,11 +6480,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_hiv_pmtct_mapped</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6467,11 +6492,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivPmtctWhere</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6479,23 +6504,23 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_hiv_pmtct_where</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>pedMotherHistHivReg</name>
+        <name>pedMotherHistHivArvPreg</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6503,11 +6528,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_hiv_arv_preg_mapped</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6515,11 +6540,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivArvPregStartDd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6527,11 +6552,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_hiv_arv_preg_start_dt_day_dd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6539,11 +6564,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivArvPregStartMm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6551,11 +6576,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_hiv_arv_preg_start_dt_month_mm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6563,11 +6588,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivArvPregStartYy</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6575,11 +6600,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_hiv_arv_preg_start_dt_year</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6587,11 +6612,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivArvPregStopDd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6599,11 +6624,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_hiv_arv_preg_stop_dt_day_dd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6611,11 +6636,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivArvPregStopMm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6623,11 +6648,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_hiv_arv_preg_stop_dt_month_mm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6635,11 +6660,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivArvPregStopYy</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6647,11 +6672,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_hiv_arv_preg_stop_dt_year</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6659,11 +6684,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivHaartPreg</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6671,11 +6696,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_hiv_haart_preg_mapped</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6683,11 +6708,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivHaartPregStDd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6695,11 +6720,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_hiv_haart_preg_start_dt_day_dd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6707,11 +6732,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivHaartPregStMm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6719,11 +6744,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_hiv_haart_preg_start_dt_month_mm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6731,11 +6756,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivHaartPregStYy</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6743,11 +6768,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_hiv_haart_preg_start_dt_year</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6755,11 +6780,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivHaartPregSpDd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6767,11 +6792,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_hiv_haart_preg_start_dt_day_dd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6779,11 +6804,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivHaartPregSpMm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6791,11 +6816,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_hiv_haart_preg_stop_dt_month_mm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6803,11 +6828,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivHaartPregSpYy</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6815,11 +6840,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_hiv_haart_preg_stop_dt_year</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6827,11 +6852,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivArvDel</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6839,11 +6864,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_hiv_arv_del</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6851,11 +6876,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistHivReg</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6863,11 +6888,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_mother_hist_hiv_reg</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6875,11 +6900,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistUnk</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6887,11 +6912,35 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_frat_hist_unk</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pedFratHistRecentTb</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ped_frat_hist_recent_tb</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6899,11 +6948,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistTreatTb</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6911,11 +6960,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_frat_hist_treat_tb_mapped</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6923,11 +6972,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedMotherHistActiveTb</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6935,11 +6984,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_frat_hist_active_tb</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6947,11 +6996,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistTreatTbDd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6959,11 +7008,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_frat_hist_treat_tb_dt_dd</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6971,11 +7020,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistTreatTbMm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6983,11 +7032,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_frat_hist_treat_tb_dt_mm</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -6995,11 +7044,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistTreatTbYy</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -7007,11 +7056,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_frat_hist_treat_tb_dt_year</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -7019,11 +7068,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistHivStat</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -7031,11 +7080,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_frat_hist_hiv_stat_mapped</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -7043,11 +7092,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistHivStatFrat</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -7055,11 +7104,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_frat_hist_hiv_stat_frat_mapped</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -7067,11 +7116,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistHivStatNumNeg</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -7079,11 +7128,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_frat_hist_hiv_stat_num_neg</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -7091,11 +7140,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistHivStatNumPos</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -7103,11 +7152,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_frat_hist_hiv_stat_num_pos</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -7115,11 +7164,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistHivStatNumUnk</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -7127,11 +7176,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_frat_hist_hiv_stat_num_unk</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -7139,11 +7188,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedFratHistHivStatNumDead</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -7151,11 +7200,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_frat_hist_hiv_stat_num_dead</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -7163,11 +7212,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedInfProArv</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -7175,11 +7224,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_info_pro_arv_mapped</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -7187,11 +7236,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedInfProPcp</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -7199,11 +7248,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_info_pro_pcr_mapped</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -7211,11 +7260,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>pedInfProMac</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -7223,18 +7272,66 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>ped_info_pro_mac_mapped</name>
         <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pedChildAware</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ped_child_aware_mapped</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pedParentAware</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ped_parent_aware_mapped</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -7242,8 +7339,210 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1328</xloc>
-      <yloc>1456</yloc>
+      <xloc>1296</xloc>
+      <yloc>1776</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Is the child aware</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded ped_child_aware from obs
+where obs.concept_id = 163524
+  and obs.encounter_id = ?
+  and obs.voided = false</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>1440</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Fetch Is the child aware</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>ped_child_aware</field_to_use>
+    <target_field>ped_child_aware_mapped</target_field>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>1065</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>1066</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>1067</source_value>
+        <target_value>4</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>1440</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Is the parent aware</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded ped_parent_aware from obs
+where obs.concept_id = 163525
+  and obs.encounter_id = ?
+  and obs.voided = false</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>992</xloc>
+      <yloc>1440</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Fetch Is the parent aware</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>ped_parent_aware</field_to_use>
+    <target_field>ped_parent_aware_mapped</target_field>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>1065</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>1066</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>1067</source_value>
+        <target_value>4</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1344</xloc>
+      <yloc>1440</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Ped family recent tb</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select 1 ped_frat_hist_recent_tb from obs
+where obs.concept_id = 160592
+  and obs.value_coded = 42
+  and obs.encounter_id = ?
+  and obs.voided = false</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1346</xloc>
+      <yloc>1577</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -7252,5 +7551,5 @@ where location_attribute.attribute_type_id = ?
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
-  <attributes />
+  <attributes/>
 </transformation>
