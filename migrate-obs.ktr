@@ -4368,6 +4368,20 @@ where location_attribute.attribute_type_id = ?
         <item>71215</item>
         <item>N</item>
       </line>
+      <line>
+        <item>Intervention date</item>
+        <item>160715</item>
+        <item/>
+        <item>160715</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Week of Gestation</item>
+        <item>1438</item>
+        <item/>
+        <item>70750</item>
+        <item>N</item>
+      </line>
     </data>
     <attributes/>
     <cluster_schema/>
