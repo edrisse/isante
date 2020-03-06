@@ -4382,6 +4382,41 @@ where location_attribute.attribute_type_id = ?
         <item>70750</item>
         <item>N</item>
       </line>
+      <line>
+        <item>Return visit date obgyn</item>
+        <item>5096</item>
+        <item/>
+        <item>71067</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Date Probable d’accouchement</item>
+        <item>5596</item>
+        <item/>
+        <item>71069</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Lieu - Hôpital - précisez</item>
+        <item>159758</item>
+        <item>1589</item>
+        <item>7957</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Si domicile et femme VIH positif - Precisez</item>
+        <item>163764</item>
+        <item>1065</item>
+        <item>7959</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Si domicile : Planification pour la présence d’une matrone - Si oui, nom de la matrone</item>
+        <item>161007</item>
+        <item>1065</item>
+        <item>7961</item>
+        <item>Y</item>
+      </line>
     </data>
     <attributes/>
     <cluster_schema/>

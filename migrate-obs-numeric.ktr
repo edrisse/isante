@@ -3803,6 +3803,166 @@ where location_attribute.attribute_type_id = ?
         <item/>
         <item>Y</item>
       </line>
+      <line>
+        <item>Suivi Prénatal</item>
+        <item>1592</item>
+        <item>1622</item>
+        <item>70729</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Dispensation ARV</item>
+        <item>1592</item>
+        <item>5576</item>
+        <item>70730</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Education Individualle</item>
+        <item>1592</item>
+        <item>163106</item>
+        <item>70731</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Education des Accompagnateurs</item>
+        <item>1592</item>
+        <item>163763</item>
+        <item>70732</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Visite Domiciliaire</item>
+        <item>1592</item>
+        <item>162186</item>
+        <item>70733</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Club des Mères / Groupe de Support</item>
+        <item>1592</item>
+        <item>5486</item>
+        <item>71068</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Conseils sur l’allaitement maternel</item>
+        <item>1592</item>
+        <item>1910</item>
+        <item>71398</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Lieu - Domicile</item>
+        <item>159758</item>
+        <item>1536</item>
+        <item>7955</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Lieu - Hôpital</item>
+        <item>159758</item>
+        <item>1589</item>
+        <item>7955</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Lieu - Hôpital - précisez</item>
+        <item>159758</item>
+        <item>1589</item>
+        <item>7957</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>Si domicile et femme VIH positif - Yes</item>
+        <item>163764</item>
+        <item>1065</item>
+        <item>7958</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Si domicile et femme VIH positif - No</item>
+        <item>163764</item>
+        <item>1066</item>
+        <item>7958</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Si domicile : Planification pour la présence d’une matrone - Yes</item>
+        <item>161007</item>
+        <item>1065</item>
+        <item>7960</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Si domicile : Planification pour la présence d’une matrone - No</item>
+        <item>161007</item>
+        <item>1066</item>
+        <item>7960</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Planification pour un Accompagnateur - Yes</item>
+        <item>160112</item>
+        <item>1065</item>
+        <item>7307</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Planification pour un Accompagnateur - No</item>
+        <item>160112</item>
+        <item>1066</item>
+        <item>7307</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Planification pour transition dans une Maison de Naissance - Yes</item>
+        <item>163765</item>
+        <item>1065</item>
+        <item>71070</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Planification pour transition dans une Maison de Naissance - No</item>
+        <item>163765</item>
+        <item>1066</item>
+        <item>71070</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Inscrite dans un Club des Mères - Yes</item>
+        <item>163766</item>
+        <item>1065</item>
+        <item>7967</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Inscrite dans un Club des Mères - No</item>
+        <item>163766</item>
+        <item>1066</item>
+        <item>7967</item>
+        <item>2</item>
+        <item/>
+      </line>
     </data>
     <attributes/>
     <cluster_schema/>
