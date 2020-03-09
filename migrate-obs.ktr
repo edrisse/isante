@@ -4438,6 +4438,13 @@ where location_attribute.attribute_type_id = ?
         <item>7044</item>
         <item>Y</item>
       </line>
+      <line>
+        <item>DDR</item>
+        <item>1427</item>
+        <item/>
+        <item>70465</item>
+        <item>N</item>
+      </line>
     </data>
     <attributes/>
     <cluster_schema/>

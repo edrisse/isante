@@ -3963,6 +3963,22 @@ where location_attribute.attribute_type_id = ?
         <item>2</item>
         <item/>
       </line>
+      <line>
+        <item>Monthly Breast palpation: Yes</item>
+        <item>163590</item>
+        <item>1065</item>
+        <item>70487</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Monthly Breast palpation: No</item>
+        <item>163590</item>
+        <item>1066</item>
+        <item>70487</item>
+        <item>2</item>
+        <item/>
+      </line>
     </data>
     <attributes/>
     <cluster_schema/>
