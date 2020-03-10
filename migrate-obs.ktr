@@ -995,7 +995,7 @@ join encounter_type on encounter_type.encounter_type_id = encounter.encounter_ty
 where obs.concept_id = ?
   and obs.value_coded = ?
   and encounter.voided = false
-  and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171')
+  and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171', 'd95b3540-a39f-4d1e-a301-8ee0e03d5eab')
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
    or encounter.date_voided >= ?
@@ -4444,6 +4444,118 @@ where location_attribute.attribute_type_id = ?
         <item/>
         <item>70465</item>
         <item>N</item>
+      </line>
+      <line>
+        <item>Labor Weight </item>
+        <item>5089</item>
+        <item/>
+        <item>7842</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Lieu - Hôpital - précisez</item>
+        <item>159758</item>
+        <item>1589</item>
+        <item>7957</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Gestational age</item>
+        <item>1409</item>
+        <item/>
+        <item>7803</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Uterine size</item>
+        <item>1439</item>
+        <item/>
+        <item>7804</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Presentation, precisez</item>
+        <item>160090</item>
+        <item>160091</item>
+        <item>70532</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Fetal heart rate</item>
+        <item>1440</item>
+        <item/>
+        <item>7806</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Rupture of membranes: date</item>
+        <item>160710</item>
+        <item/>
+        <item>7809</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Vaginal bleeding: other</item>
+        <item>147232</item>
+        <item>5622</item>
+        <item>70535</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Estimated blood loss</item>
+        <item>161928</item>
+        <item/>
+        <item>70518</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>If HIV positive : TAR: Specify</item>
+        <item>160117</item>
+        <item>160119</item>
+        <item>71130</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Child birth: Date and Time</item>
+        <item>5599</item>
+        <item/>
+        <item>7819</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Cesarian: Indication</item>
+        <item>5630</item>
+        <item>1171</item>
+        <item>70519</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Other drugs, Specify, dosage</item>
+        <item>5665</item>
+        <item>1065</item>
+        <item>7817</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Evolution mother: Other</item>
+        <item>1887</item>
+        <item>5622</item>
+        <item>71300</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Evolution mother: Other, specify</item>
+        <item>160433</item>
+        <item>5622</item>
+        <item>70522</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Choosing a contraceptive method: other</item>
+        <item>374</item>
+        <item>5622</item>
+        <item>71300</item>
+        <item>Y</item>
       </line>
     </data>
     <attributes/>

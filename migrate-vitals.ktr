@@ -4959,6 +4959,46 @@ where obs.concept_id = 1343
     </GUI>
   </step>
   <step>
+    <name>Fetch Brest Findings</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded ped_exam_breast_code from obs
+where obs.concept_id = 5310
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>64</xloc>
+      <yloc>2624</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Fetch CD4 Never Done</name>
     <type>DBJoin</type>
     <description/>
@@ -5118,6 +5158,46 @@ where obs.concept_id = 374
     <GUI>
       <xloc>1680</xloc>
       <yloc>768</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Curr HIV status</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded ped_curr_hiv from obs
+where obs.concept_id = 1401
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>720</xloc>
+      <yloc>2864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5644,6 +5724,46 @@ where obs.concept_id = 163309
     </GUI>
   </step>
   <step>
+    <name>Fetch Eyes Findings</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded ped_exam_eyes_code from obs
+where obs.concept_id = 163309
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1280</xloc>
+      <yloc>2512</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Fetch Family Planing</name>
     <type>DBJoin</type>
     <description/>
@@ -5760,6 +5880,46 @@ where obs.concept_id = 163579
     <GUI>
       <xloc>1392</xloc>
       <yloc>1984</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Fine motor</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded ped_psycho_motor_fine from obs
+where obs.concept_id = 163579
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>640</xloc>
+      <yloc>2752</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6007,6 +6167,46 @@ where obs.concept_id = 1409
     </GUI>
   </step>
   <step>
+    <name>Fetch Gross motor</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded ped_psycho_motor_gross from obs
+where obs.concept_id = 163578
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>2752</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Fetch HIV Test Date</name>
     <type>DBJoin</type>
     <description/>
@@ -6163,6 +6363,46 @@ where obs.concept_id = 5314
     <GUI>
       <xloc>352</xloc>
       <yloc>2192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Head/Neck Findings</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded ped_exam_head_neck_code from obs
+where obs.concept_id = 163388
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1088</xloc>
+      <yloc>2624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6502,6 +6742,46 @@ where obs.concept_id = 159936
     </GUI>
   </step>
   <step>
+    <name>Fetch Language/Comprehension</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded ped_psycho_motor_lang from obs
+where obs.concept_id = 163787
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1008</xloc>
+      <yloc>2752</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Fetch Last CD4 count</name>
     <type>DBJoin</type>
     <description/>
@@ -6612,6 +6892,46 @@ where obs.concept_id = 1427
     <GUI>
       <xloc>224</xloc>
       <yloc>2304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Limbs Findings</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded ped_exam_limbs_code from obs
+where obs.concept_id = 1127
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>624</xloc>
+      <yloc>2624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6851,6 +7171,46 @@ join concept c on o.concept_id = c.concept_id where c.uuid = '30735143-5968-4bee
     <GUI>
       <xloc>592</xloc>
       <yloc>768</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Menses</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded ped_repro_health_menses from obs
+where obs.concept_id = 160109
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>864</xloc>
+      <yloc>2512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -8426,6 +8786,46 @@ where obs.concept_id = 163580
     </GUI>
   </step>
   <step>
+    <name>Fetch Social skills</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded ped_psycho_motor_social from obs
+where obs.concept_id = 163580
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1280</xloc>
+      <yloc>2864</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Fetch Systolic BP</name>
     <type>DBJoin</type>
     <description/>
@@ -9104,7 +9504,8 @@ where encounter_type.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7',
 								'709610ff-5e39-4a47-9c27-a60e740b0944',
 								'fdb5b14f-555f-4282-b4c1-9286addf0aae',
 								'349ae0b4-65c1-4122-aa06-480f186c8350',
-								'33491314-c352-42d0-bd5d-a9d0bffc9bf1')
+								'33491314-c352-42d0-bd5d-a9d0bffc9bf1',
+								'd95b3540-a39f-4d1e-a301-8ee0e03d5eab')
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
    or encounter.date_voided >= ?
@@ -9654,6 +10055,48 @@ where location_attribute.attribute_type_id = ?
     </GUI>
   </step>
   <step>
+    <name>Map Brest Findings</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>ped_exam_breast_code</field_to_use>
+    <target_field>ped_exam_breast_mapped</target_field>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>1115</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>1116</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>1118</source_value>
+        <target_value>4</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>64</xloc>
+      <yloc>2752</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Map Cardiac Findings</name>
     <type>ValueMapper</type>
     <description/>
@@ -9692,6 +10135,52 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>1392</xloc>
       <yloc>1040</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Curr Hiv Status</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>ped_curr_hiv</field_to_use>
+    <target_field>ped_curr_hiv_mapped</target_field>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>1405</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>163718</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>163717</source_value>
+        <target_value>4</target_value>
+      </field>
+      <field>
+        <source_value>163767</source_value>
+        <target_value>8</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>2864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -9826,6 +10315,48 @@ where location_attribute.attribute_type_id = ?
     </GUI>
   </step>
   <step>
+    <name>Map Eyes Findings</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>ped_exam_eyes_code</field_to_use>
+    <target_field>ped_exam_eyes_mapped</target_field>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>1115</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>1116</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>1118</source_value>
+        <target_value>4</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1280</xloc>
+      <yloc>2624</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Map Family plan</name>
     <type>ValueMapper</type>
     <description/>
@@ -9898,6 +10429,44 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>1168</xloc>
       <yloc>1984</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Fine motor</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>ped_psycho_motor_fine</field_to_use>
+    <target_field>ped_psycho_motor_fine_mapped</target_field>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>160275</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>160276</source_value>
+        <target_value>2</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>800</xloc>
+      <yloc>2752</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10028,6 +10597,44 @@ where location_attribute.attribute_type_id = ?
     </GUI>
   </step>
   <step>
+    <name>Map Gross Motor</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>ped_psycho_motor_gross</field_to_use>
+    <target_field>ped_psycho_motor_gross_mapped</target_field>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>160275</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>160276</source_value>
+        <target_value>2</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>464</xloc>
+      <yloc>2752</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Map Head Neck Findings</name>
     <type>ValueMapper</type>
     <description/>
@@ -10066,6 +10673,128 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>448</xloc>
       <yloc>1888</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Head/Neck Findings</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>ped_exam_head_neck_code</field_to_use>
+    <target_field>ped_exam_head_neck_mapped</target_field>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>1115</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>1116</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>1118</source_value>
+        <target_value>4</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>864</xloc>
+      <yloc>2624</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Language/Comprehension</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>ped_psycho_motor_lang</field_to_use>
+    <target_field>ped_psycho_motor_lang_mapped</target_field>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>160275</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>160276</source_value>
+        <target_value>2</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1280</xloc>
+      <yloc>2752</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Limbs Findings</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>ped_exam_limbs_code</field_to_use>
+    <target_field>ped_exam_limbs_mapped</target_field>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>1115</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>1116</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>1118</source_value>
+        <target_value>4</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>400</xloc>
+      <yloc>2624</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10150,6 +10879,48 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>1200</xloc>
       <yloc>944</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Menses</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>ped_repro_health_menses</field_to_use>
+    <target_field>ped_repro_health_menses_mapped</target_field>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>1065</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>1066</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>1067</source_value>
+        <target_value>4</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1072</xloc>
+      <yloc>2512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10772,6 +11543,44 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>368</xloc>
       <yloc>1984</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Social skills</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>ped_psycho_motor_social</field_to_use>
+    <target_field>ped_psycho_motor_social_mapped</target_field>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>160275</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>160276</source_value>
+        <target_value>2</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>976</xloc>
+      <yloc>2864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -15983,814 +16792,6 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>896</xloc>
       <yloc>2944</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Menses</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded ped_repro_health_menses from obs
-where obs.concept_id = 160109
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>864</xloc>
-      <yloc>2512</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map Menses</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>ped_repro_health_menses</field_to_use>
-    <target_field>ped_repro_health_menses_mapped</target_field>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>1065</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>1066</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>1067</source_value>
-        <target_value>4</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1072</xloc>
-      <yloc>2512</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Eyes Findings</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded ped_exam_eyes_code from obs
-where obs.concept_id = 163309
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1280</xloc>
-      <yloc>2512</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map Eyes Findings</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>ped_exam_eyes_code</field_to_use>
-    <target_field>ped_exam_eyes_mapped</target_field>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>1115</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>1116</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>1118</source_value>
-        <target_value>4</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1280</xloc>
-      <yloc>2624</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Head/Neck Findings</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded ped_exam_head_neck_code from obs
-where obs.concept_id = 163388
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1088</xloc>
-      <yloc>2624</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map Head/Neck Findings</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>ped_exam_head_neck_code</field_to_use>
-    <target_field>ped_exam_head_neck_mapped</target_field>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>1115</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>1116</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>1118</source_value>
-        <target_value>4</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>864</xloc>
-      <yloc>2624</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Limbs Findings</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded ped_exam_limbs_code from obs
-where obs.concept_id = 1127
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>624</xloc>
-      <yloc>2624</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map Limbs Findings</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>ped_exam_limbs_code</field_to_use>
-    <target_field>ped_exam_limbs_mapped</target_field>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>1115</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>1116</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>1118</source_value>
-        <target_value>4</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>400</xloc>
-      <yloc>2624</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Brest Findings</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded ped_exam_breast_code from obs
-where obs.concept_id = 5310
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>64</xloc>
-      <yloc>2624</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map Brest Findings</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>ped_exam_breast_code</field_to_use>
-    <target_field>ped_exam_breast_mapped</target_field>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>1115</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>1116</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>1118</source_value>
-        <target_value>4</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>64</xloc>
-      <yloc>2752</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Gross motor</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded ped_psycho_motor_gross from obs
-where obs.concept_id = 163578
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>272</xloc>
-      <yloc>2752</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map Gross Motor</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>ped_psycho_motor_gross</field_to_use>
-    <target_field>ped_psycho_motor_gross_mapped</target_field>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>160275</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>160276</source_value>
-        <target_value>2</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>464</xloc>
-      <yloc>2752</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Fine motor</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded ped_psycho_motor_fine from obs
-where obs.concept_id = 163579
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>640</xloc>
-      <yloc>2752</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map Fine motor</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>ped_psycho_motor_fine</field_to_use>
-    <target_field>ped_psycho_motor_fine_mapped</target_field>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>160275</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>160276</source_value>
-        <target_value>2</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>800</xloc>
-      <yloc>2752</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Language/Comprehension</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded ped_psycho_motor_lang from obs
-where obs.concept_id = 163787
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1008</xloc>
-      <yloc>2752</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map Language/Comprehension</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>ped_psycho_motor_lang</field_to_use>
-    <target_field>ped_psycho_motor_lang_mapped</target_field>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>160275</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>160276</source_value>
-        <target_value>2</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1280</xloc>
-      <yloc>2752</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Social skills</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded ped_psycho_motor_social from obs
-where obs.concept_id = 163580
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1280</xloc>
-      <yloc>2864</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map Social skills</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>ped_psycho_motor_social</field_to_use>
-    <target_field>ped_psycho_motor_social_mapped</target_field>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>160275</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>160276</source_value>
-        <target_value>2</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>976</xloc>
-      <yloc>2864</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Curr HIV status</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded ped_curr_hiv from obs
-where obs.concept_id = 1401
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>720</xloc>
-      <yloc>2864</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map Curr Hiv Status</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>ped_curr_hiv</field_to_use>
-    <target_field>ped_curr_hiv_mapped</target_field>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>1405</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>163718</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>163717</source_value>
-        <target_value>4</target_value>
-      </field>
-      <field>
-        <source_value>163767</source_value>
-        <target_value>8</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>2864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

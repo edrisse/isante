@@ -1000,7 +1000,7 @@ join encounter_type on encounter_type.encounter_type_id = encounter.encounter_ty
 where obs.concept_id = ?
   and obs.value_coded = ?
   and encounter.voided = false
-  and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171')
+  and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171', 'd95b3540-a39f-4d1e-a301-8ee0e03d5eab')
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
    or encounter.date_voided >= ?
@@ -1087,7 +1087,7 @@ join encounter on encounter.encounter_id = obs.encounter_id
 join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
 where obs.concept_id = ?
   and encounter.voided = false
-  and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171')
+  and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171', 'd95b3540-a39f-4d1e-a301-8ee0e03d5eab')
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
    or encounter.date_voided >= ?
@@ -3876,14 +3876,6 @@ where location_attribute.attribute_type_id = ?
         <item/>
       </line>
       <line>
-        <item>Lieu - Hôpital - précisez</item>
-        <item>159758</item>
-        <item>1589</item>
-        <item>7957</item>
-        <item/>
-        <item/>
-      </line>
-      <line>
         <item>Si domicile et femme VIH positif - Yes</item>
         <item>163764</item>
         <item>1065</item>
@@ -3976,6 +3968,630 @@ where location_attribute.attribute_type_id = ?
         <item>163590</item>
         <item>1066</item>
         <item>70487</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Pregnancy Followed: Yes</item>
+        <item>1622</item>
+        <item>1</item>
+        <item>70523</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Pregnancy Followed: No</item>
+        <item>1622</item>
+        <item>2</item>
+        <item>70523</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Wanted pregnancy: Yes</item>
+        <item>163085</item>
+        <item>122933</item>
+        <item>71275</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Wanted pregnancy: No</item>
+        <item>163085</item>
+        <item>123572</item>
+        <item>71275</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Referred:  Yes</item>
+        <item>1648</item>
+        <item>1</item>
+        <item>71276</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Referred: No</item>
+        <item>1648</item>
+        <item>2</item>
+        <item>71276</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Referred, if yes: Matrone</item>
+        <item>160482</item>
+        <item>71277</item>
+        <item>1578</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Referred, if yes: Autre</item>
+        <item>160482</item>
+        <item>71277</item>
+        <item>5622</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Prophylaxis against Malaria: Yes</item>
+        <item>159610</item>
+        <item>1</item>
+        <item>71278</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Prophylaxis against Malaria: No</item>
+        <item>159610</item>
+        <item>2</item>
+        <item>71278</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Pregnancy: Single</item>
+        <item>159949</item>
+        <item>159913</item>
+        <item>70531</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Pregnancy: Twins</item>
+        <item>159949</item>
+        <item>159914</item>
+        <item>70531</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Pregnancy: Multiple</item>
+        <item>159949</item>
+        <item>115491</item>
+        <item>70531</item>
+        <item>4</item>
+        <item/>
+      </line>
+      <line>
+        <item>Presentation: Cephalic</item>
+        <item>160090</item>
+        <item>160091</item>
+        <item>7805</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Presentation: Breech</item>
+        <item>160090</item>
+        <item>139814</item>
+        <item>7805</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Presentation: Transverse</item>
+        <item>160090</item>
+        <item>112259</item>
+        <item>7805</item>
+        <item>4</item>
+        <item/>
+      </line>
+      <line>
+        <item>Fever: Yes</item>
+        <item>140238</item>
+        <item>1065</item>
+        <item>7807</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Fever: No</item>
+        <item>140238</item>
+        <item>1066</item>
+        <item>7807</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Rupture of membranes :  Spontaneous</item>
+        <item>140238</item>
+        <item>126069</item>
+        <item>7808</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Amniotic fluid :  Clear</item>
+        <item>163446</item>
+        <item>1115</item>
+        <item>7810</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Amniotic fluid :  Tinted</item>
+        <item>163446</item>
+        <item>155311</item>
+        <item>7810</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Amniotic fluid :  Meconium</item>
+        <item>163446</item>
+        <item>134488</item>
+        <item>7810</item>
+        <item>4</item>
+        <item/>
+      </line>
+      <line>
+        <item>Dystocia :  Mechanical</item>
+        <item>163449</item>
+        <item>163447</item>
+        <item>71279</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Dystocia :  Dynamic</item>
+        <item>163449</item>
+        <item>163448</item>
+        <item>71279</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Dystocia :  Other</item>
+        <item>163449</item>
+        <item>5622</item>
+        <item>71279</item>
+        <item>4</item>
+        <item/>
+      </line>
+      <line>
+        <item>Prolapsed cord :  Yes</item>
+        <item>128420</item>
+        <item>1065</item>
+        <item>71280</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Prolapsed cord :  No</item>
+        <item>128420</item>
+        <item>1066</item>
+        <item>71280</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Vaginal bleeding :  Yes</item>
+        <item>147232</item>
+        <item>1065</item>
+        <item>7828</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Vaginal bleeding :  No</item>
+        <item>147232</item>
+        <item>1066</item>
+        <item>7828</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Abruptio placentae</item>
+        <item>147232</item>
+        <item>130108</item>
+        <item>70534</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Placenta previa</item>
+        <item>147232</item>
+        <item>138902</item>
+        <item>70534</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>uterine rupture</item>
+        <item>147232</item>
+        <item>127259</item>
+        <item>70534</item>
+        <item>4</item>
+        <item/>
+      </line>
+      <line>
+        <item>Vaginal bleeding other</item>
+        <item>147232</item>
+        <item>5622</item>
+        <item>70534</item>
+        <item>8</item>
+        <item/>
+      </line>
+      <line>
+        <item>Labor transfusion: Yes</item>
+        <item>1063</item>
+        <item>1</item>
+        <item>7829</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Labor transfusion: No</item>
+        <item>1063</item>
+        <item>2</item>
+        <item>7829</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Labor HTA</item>
+        <item>1284</item>
+        <item>113858</item>
+        <item>70525</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Severe preeclampsia</item>
+        <item>1284</item>
+        <item>113006</item>
+        <item>70529</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Eclampsia</item>
+        <item>1284</item>
+        <item>118744</item>
+        <item>71281</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>If HIV positive : TAR  Yes</item>
+        <item>160117</item>
+        <item>160119</item>
+        <item>71129</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>If HIV positive : TAR  No</item>
+        <item>160117</item>
+        <item>1461</item>
+        <item>71129</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Delivery Location: Current health facility</item>
+        <item>1572</item>
+        <item>163266</item>
+        <item>71282</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Delivery Location: Delivery at home</item>
+        <item>1572</item>
+        <item>1501</item>
+        <item>71282</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Delivery Location: Delivery at health facility</item>
+        <item>1572</item>
+        <item>1502</item>
+        <item>71282</item>
+        <item>4</item>
+        <item/>
+      </line>
+      <line>
+        <item>Delivery Location: Other</item>
+        <item>1572</item>
+        <item>5622</item>
+        <item>71282</item>
+        <item>8</item>
+        <item/>
+      </line>
+      <line>
+        <item>If home birth assisted by Matron :  Yes</item>
+        <item>1573</item>
+        <item>1574</item>
+        <item>7823</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Vaginal :  Yes</item>
+        <item>1170</item>
+        <item>1065</item>
+        <item>71137</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Vaginal :  No</item>
+        <item>1170</item>
+        <item>1066</item>
+        <item>71137</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Forceps :  Yes</item>
+        <item>159901</item>
+        <item>1065</item>
+        <item>70524</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Forceps :  No</item>
+        <item>159901</item>
+        <item>1066</item>
+        <item>70524</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Vacuum :  Yes</item>
+        <item>159902</item>
+        <item>1065</item>
+        <item>7822</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Vacuum :  No</item>
+        <item>159902</item>
+        <item>1066</item>
+        <item>7822</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Late cord ligation :  Yes</item>
+        <item>163450</item>
+        <item>122933</item>
+        <item>71283</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Late cord ligation :  No</item>
+        <item>163450</item>
+        <item>123572</item>
+        <item>71283</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Delivery :  Natural</item>
+        <item>163453</item>
+        <item>163451</item>
+        <item>7824</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Delivery :  Artificial</item>
+        <item>163453</item>
+        <item>163452</item>
+        <item>7824</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Placenta :  Complete / Total</item>
+        <item>163454</item>
+        <item>163455</item>
+        <item>7827</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Placenta :  Incomplete</item>
+        <item>163454</item>
+        <item>163456</item>
+        <item>7827</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Perineal laceration :  Yes </item>
+        <item>160084</item>
+        <item>112253</item>
+        <item>7825</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Perineal laceration :  No</item>
+        <item>160084</item>
+        <item>1115</item>
+        <item>7825</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>If yes, repaired :  Yes</item>
+        <item>163457</item>
+        <item>1065</item>
+        <item>7826</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>If yes, repaired :  No</item>
+        <item>163457</item>
+        <item>1066</item>
+        <item>7826</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Cesarian</item>
+        <item>5630</item>
+        <item>1171</item>
+        <item>7820</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Cesarean section hysterectomy +</item>
+        <item>5630</item>
+        <item>161848</item>
+        <item>7820</item>
+        <item>4</item>
+        <item/>
+      </line>
+      <line>
+        <item>Counseling on Nutrition of the Newborn :  Yes</item>
+        <item>161070</item>
+        <item>1065</item>
+        <item>7835</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Counseling on Nutrition of the Newborn :  No</item>
+        <item>161070</item>
+        <item>1066</item>
+        <item>7835</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>ARV prophylaxis Newborn :  Yes</item>
+        <item>5665</item>
+        <item>1065</item>
+        <item>70528</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>ARV prophylaxis Newborn :  No</item>
+        <item>5665</item>
+        <item>1066</item>
+        <item>70528</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Referred in puerperium</item>
+        <item>161630</item>
+        <item>1623</item>
+        <item>70521</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Referred to in pathology</item>
+        <item>161630</item>
+        <item>161625</item>
+        <item>70521</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Evolution mother: HTA</item>
+        <item>1887</item>
+        <item>117399</item>
+        <item>71297</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Hemorrhage</item>
+        <item>1887</item>
+        <item>230</item>
+        <item>71297</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Infection</item>
+        <item>1887</item>
+        <item>121262</item>
+        <item>71297</item>
+        <item>4</item>
+        <item/>
+      </line>
+      <line>
+        <item>Post op</item>
+        <item>1887</item>
+        <item>159007</item>
+        <item>71297</item>
+        <item>8</item>
+        <item/>
+      </line>
+      <line>
+        <item>Cardiomyopathie</item>
+        <item>1887</item>
+        <item>5016</item>
+        <item>71297</item>
+        <item>16</item>
+        <item/>
+      </line>
+      <line>
+        <item>Exéatée</item>
+        <item>160433</item>
+        <item>1692</item>
+        <item>70521</item>
+        <item>4</item>
+        <item/>
+      </line>
+      <line>
+        <item>Died</item>
+        <item>160433</item>
+        <item>159</item>
+        <item>70521</item>
+        <item>8</item>
+        <item/>
+      </line>
+      <line>
+        <item>Choosing a contraceptive method: Yes</item>
+        <item>374</item>
+        <item>162332</item>
+        <item>71299</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Choosing a contraceptive method: No</item>
+        <item>374</item>
+        <item>1175</item>
+        <item>71299</item>
         <item>2</item>
         <item/>
       </line>
