@@ -884,6 +884,7 @@ join obs on encounter.encounter_id = obs.encounter_id
   and obs.value_coded = ?
   and encounter_type.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7', '349ae0b4-65c1-4122-aa06-480f186c8350')
   and encounter.voided = false
+and obs.date_voided is null
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
    or encounter.date_voided >= ?
@@ -961,6 +962,7 @@ join obs on encounter.encounter_id = obs.encounter_id
   where obs.concept_id = ?
   and encounter_type.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7', '349ae0b4-65c1-4122-aa06-480f186c8350')
   and encounter.voided = false
+and obs.date_voided is null 
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
    or encounter.date_voided >= ?

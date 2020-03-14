@@ -2,21 +2,21 @@
 <transformation>
   <info>
     <name>migrate-obs-grouped</name>
-    <description/>
-    <extended_description/>
-    <trans_version/>
+    <description />
+    <extended_description />
+    <trans_version />
     <trans_type>Normal</trans_type>
     <directory>/</directory>
     <parameters>
     </parameters>
     <log>
       <trans-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <size_limit_lines/>
-        <interval/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <size_limit_lines />
+        <interval />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -41,37 +41,37 @@
           <id>LINES_READ</id>
           <enabled>Y</enabled>
           <name>LINES_READ</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_WRITTEN</id>
           <enabled>Y</enabled>
           <name>LINES_WRITTEN</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_UPDATED</id>
           <enabled>Y</enabled>
           <name>LINES_UPDATED</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_INPUT</id>
           <enabled>Y</enabled>
           <name>LINES_INPUT</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_OUTPUT</id>
           <enabled>Y</enabled>
           <name>LINES_OUTPUT</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_REJECTED</id>
           <enabled>Y</enabled>
           <name>LINES_REJECTED</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>ERRORS</id>
@@ -125,11 +125,11 @@
         </field>
       </trans-log-table>
       <perf-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <interval/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <interval />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -207,10 +207,10 @@
         </field>
       </perf-log-table>
       <channel-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -273,10 +273,10 @@
         </field>
       </channel-log-table>
       <step-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -349,10 +349,10 @@
         </field>
       </step-log-table>
       <metrics-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -401,9 +401,9 @@
       </metrics-log-table>
     </log>
     <maxdate>
-      <connection/>
-      <table/>
-      <field/>
+      <connection />
+      <table />
+      <field />
       <offset>0.0</offset>
       <maxdiff>0.0</maxdiff>
     </maxdate>
@@ -414,7 +414,7 @@
     <feedback_shown>Y</feedback_shown>
     <feedback_size>50000</feedback_size>
     <using_thread_priorities>Y</using_thread_priorities>
-    <shared_objects_file/>
+    <shared_objects_file />
     <capture_step_performance>N</capture_step_performance>
     <step_performance_capturing_delay>1000</step_performance_capturing_delay>
     <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
@@ -444,9 +444,9 @@
     <port>${ISANTE-PLUS-DB-PORT}</port>
     <username>${ISANTE-PLUS-DB-USER}</username>
     <password>${ISANTE-PLUS-DB-PASSWORD}</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
     <attributes>
       <attribute>
         <code>EXTRA_OPTION_MYSQL.zeroDateTimeBehavior</code>
@@ -574,22 +574,22 @@
   <step>
     <name>Columns</name>
     <type>DataGrid</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <field>
         <name>table_name</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -597,10 +597,10 @@
       <field>
         <name>person_id_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -608,10 +608,10 @@
       <field>
         <name>concept_id_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -619,10 +619,10 @@
       <field>
         <name>encounter_id_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -630,10 +630,10 @@
       <field>
         <name>order_id_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -641,10 +641,10 @@
       <field>
         <name>obs_datetime_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -652,10 +652,10 @@
       <field>
         <name>location_id_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -663,10 +663,10 @@
       <field>
         <name>obs_group_id_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -674,10 +674,10 @@
       <field>
         <name>accession_number_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -685,10 +685,10 @@
       <field>
         <name>value_group_id_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -696,10 +696,10 @@
       <field>
         <name>value_boolean_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -707,10 +707,10 @@
       <field>
         <name>value_coded_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -718,10 +718,10 @@
       <field>
         <name>value_drug_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -729,10 +729,10 @@
       <field>
         <name>value_datetime_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -740,10 +740,10 @@
       <field>
         <name>value_numeric_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -751,10 +751,10 @@
       <field>
         <name>value_modifier_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -762,10 +762,10 @@
       <field>
         <name>value_text_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -773,10 +773,10 @@
       <field>
         <name>date_started_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -784,10 +784,10 @@
       <field>
         <name>date_stopped_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -795,10 +795,10 @@
       <field>
         <name>comments_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -806,10 +806,10 @@
       <field>
         <name>creator_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -817,10 +817,10 @@
       <field>
         <name>date_created_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -828,10 +828,10 @@
       <field>
         <name>voided_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -839,10 +839,10 @@
       <field>
         <name>voided_by_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -850,10 +850,10 @@
       <field>
         <name>date_voided_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -861,10 +861,10 @@
       <field>
         <name>void_reason_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -872,10 +872,10 @@
       <field>
         <name>default_one</name>
         <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -883,10 +883,10 @@
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -894,10 +894,10 @@
       <field>
         <name>default_zero</name>
         <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -936,8 +936,8 @@
         <item>0</item>
       </line>
     </data>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -953,13 +953,13 @@
   <step>
     <name>Database Join Groups</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
@@ -1018,8 +1018,8 @@ where obs.value_coded = ?
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1035,13 +1035,13 @@ where obs.value_coded = ?
   <step>
     <name>Database join Coded</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
@@ -1109,8 +1109,8 @@ where obs.obs_group_id = ?
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1126,13 +1126,13 @@ where obs.obs_group_id = ?
   <step>
     <name>Database join Non coded</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
@@ -1195,8 +1195,8 @@ where obs.obs_group_id = ?
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1212,13 +1212,13 @@ where obs.obs_group_id = ?
   <step>
     <name>Fetch Last ETL Excution Date</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
@@ -1229,8 +1229,8 @@ order by date desc</sql>
     <replace_vars>N</replace_vars>
     <parameter>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1246,13 +1246,13 @@ order by date desc</sql>
   <step>
     <name>Fetch Person Id</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1269,8 +1269,8 @@ order by date desc</sql>
         <type>Number</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1286,13 +1286,13 @@ order by date desc</sql>
   <step>
     <name>Fetch Person Identifier</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1313,8 +1313,8 @@ where patient_identifier.identifier_type = ?
         <type>Number</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1330,13 +1330,13 @@ where patient_identifier.identifier_type = ?
   <step>
     <name>Fetch iSante Location</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1356,8 +1356,8 @@ where location_attribute.attribute_type_id = ?
         <type>Number</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1373,13 +1373,13 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Filter rows</name>
     <type>FilterRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <send_true_to>Database join Coded</send_true_to>
     <send_false_to>Database join Non coded</send_false_to>
@@ -1388,7 +1388,7 @@ where location_attribute.attribute_type_id = ?
         <negated>N</negated>
         <leftvalue>isante_plus_answer</leftvalue>
         <function>IS NOT NULL</function>
-        <rightvalue/>
+        <rightvalue />
         <value>
           <name>constant</name>
           <type>String</type>
@@ -1396,12 +1396,12 @@ where location_attribute.attribute_type_id = ?
           <length>-1</length>
           <precision>-1</precision>
           <isnull>N</isnull>
-          <mask/>
+          <mask />
         </value>
       </condition>
     </compare>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1417,28 +1417,28 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Join rows (cartesian product)</name>
     <type>JoinRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <directory>%%java.io.tmpdir%%</directory>
     <prefix>out</prefix>
     <cache_size>500</cache_size>
-    <main/>
+    <main />
     <compare>
       <condition>
         <negated>N</negated>
-        <leftvalue/>
+        <leftvalue />
         <function>=</function>
-        <rightvalue/>
+        <rightvalue />
       </condition>
     </compare>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1454,23 +1454,23 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Load iSante ID Identifier Type</name>
     <type>TableInput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <sql>select patient_identifier_type.patient_identifier_type_id isante_id_identifier_type_id from patient_identifier_type where uuid = '0e0c7cc2-3491-4675-b705-746e372ff346'</sql>
     <limit>0</limit>
-    <lookup/>
+    <lookup />
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1486,23 +1486,23 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Load iSanteLocation Location Attribute</name>
     <type>TableInput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <sql>select location_attribute_type_id isante_location_location_attribute_id from location_attribute_type where name = 'iSanteSiteCode'</sql>
     <limit>1</limit>
-    <lookup/>
+    <lookup />
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1518,13 +1518,13 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Save on CSV</name>
     <type>TextFileOutput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <separator>,</separator>
     <enclosure>"</enclosure>
@@ -1535,9 +1535,9 @@ where location_attribute.attribute_type_id = ?
     <format>DOS</format>
     <compression>None</compression>
     <encoding>UTF-8</encoding>
-    <endedLine/>
+    <endedLine />
     <fileNameInField>N</fileNameInField>
-    <fileNameField/>
+    <fileNameField />
     <create_parent_folder>Y</create_parent_folder>
     <file>
       <name>${user.home}/isante/data</name>
@@ -1550,21 +1550,21 @@ where location_attribute.attribute_type_id = ?
       <add_date>N</add_date>
       <add_time>N</add_time>
       <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
+      <date_time_format />
       <add_to_result_filenames>Y</add_to_result_filenames>
       <pad>N</pad>
       <fast_dump>N</fast_dump>
-      <splitevery/>
+      <splitevery />
     </file>
     <fields>
       <field>
         <name>table_name</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1572,11 +1572,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>person_id_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1584,11 +1584,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>parsed_person_id</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1596,11 +1596,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>concept_id_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1608,11 +1608,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>isante_question</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1620,11 +1620,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>encounter_id_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1632,11 +1632,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>encounter_id</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1644,11 +1644,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>obs_datetime_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1656,11 +1656,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>obs_datetime</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1668,11 +1668,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>location_id_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1680,11 +1680,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>isante_location_id</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1692,11 +1692,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>accession_number_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1704,11 +1704,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1716,11 +1716,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>value_boolean_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1728,11 +1728,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>isante_answer</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1740,11 +1740,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>value_datetime_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1752,11 +1752,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>value_datetime</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1764,11 +1764,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>value_numeric_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1776,11 +1776,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>value_numeric</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1788,11 +1788,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>value_text_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1800,11 +1800,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>value_text</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1812,11 +1812,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>comments_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1824,11 +1824,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>comments</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1836,11 +1836,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>creator_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1848,11 +1848,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>default_one</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1860,11 +1860,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>date_created_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1872,11 +1872,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>date_created</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1884,11 +1884,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>voided_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1896,11 +1896,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>voided</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1908,11 +1908,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>date_voided_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1920,11 +1920,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>date_voided</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1932,11 +1932,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>void_reason_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1944,18 +1944,18 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>void_reason</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1971,13 +1971,13 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Select values format</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <select_unspecified>N</select_unspecified>
@@ -1987,16 +1987,16 @@ where location_attribute.attribute_type_id = ?
         <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
-        <conversion_mask/>
+        <conversion_mask />
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
       </meta>
       <meta>
         <name>obs_datetime</name>
@@ -2006,14 +2006,14 @@ where location_attribute.attribute_type_id = ?
         <precision>-2</precision>
         <conversion_mask>yyyy-MM-dd HH:mm:ss</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
       </meta>
       <meta>
         <name>date_voided</name>
@@ -2023,14 +2023,14 @@ where location_attribute.attribute_type_id = ?
         <precision>-2</precision>
         <conversion_mask>yyyy-MM-dd HH:mm:ss</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
       </meta>
       <meta>
         <name>date_created</name>
@@ -2040,14 +2040,14 @@ where location_attribute.attribute_type_id = ?
         <precision>-2</precision>
         <conversion_mask>yyyy-MM-dd HH:mm:ss</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
       </meta>
       <meta>
         <name>value_datetime</name>
@@ -2057,18 +2057,18 @@ where location_attribute.attribute_type_id = ?
         <precision>-2</precision>
         <conversion_mask>yyyy-MM-dd HH:mm:ss</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
       </meta>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -2084,22 +2084,22 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>concepts</name>
     <type>DataGrid</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <field>
         <name>concept_name</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2107,10 +2107,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>isante_plus_question</name>
         <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2118,10 +2118,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>isante_plus_answer</name>
         <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2129,10 +2129,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>isante_question</name>
         <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2140,10 +2140,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>isante_answer</name>
         <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2151,10 +2151,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>grouped_with_concept</name>
         <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2162,10 +2162,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>concept_group</name>
         <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2391,146 +2391,146 @@ where location_attribute.attribute_type_id = ?
       <line>
         <item>Allergies, précisez</item>
         <item>160221</item>
-        <item/>
+        <item />
         <item>71002</item>
-        <item/>
+        <item />
         <item>110247</item>
         <item>1633</item>
       </line>
       <line>
         <item>Cancer, précisez</item>
         <item>160221</item>
-        <item/>
+        <item />
         <item>71003</item>
-        <item/>
+        <item />
         <item>151286</item>
         <item>1633</item>
       </line>
       <line>
         <item>Chirurgie, précisez</item>
         <item>160221</item>
-        <item/>
+        <item />
         <item>70737</item>
-        <item/>
+        <item />
         <item>163521</item>
         <item>1633</item>
       </line>
       <line>
         <item>Trauma, précisez</item>
         <item>160221</item>
-        <item/>
+        <item />
         <item>70737</item>
-        <item/>
+        <item />
         <item>163520</item>
         <item>1633</item>
       </line>
       <line>
         <item>Hémoglobinopathie, précisez</item>
         <item>160221</item>
-        <item/>
+        <item />
         <item>70739</item>
-        <item/>
+        <item />
         <item>163583</item>
         <item>1633</item>
       </line>
       <line>
         <item>IST, précisez</item>
         <item>160221</item>
-        <item/>
+        <item />
         <item>71016</item>
-        <item/>
+        <item />
         <item>156660</item>
         <item>1633</item>
       </line>
       <line>
         <item>Troubles psychiatriques, précisez</item>
         <item>160221</item>
-        <item/>
+        <item />
         <item>71009</item>
-        <item/>
+        <item />
         <item>151282</item>
         <item>1633</item>
       </line>
       <line>
         <item>Drogue, précisez</item>
         <item>160221</item>
-        <item/>
+        <item />
         <item>71011</item>
-        <item/>
+        <item />
         <item>162556</item>
         <item>1633</item>
       </line>
       <line>
         <item>Malf. Congénitales, précisez</item>
         <item>160221</item>
-        <item/>
+        <item />
         <item>71071</item>
-        <item/>
+        <item />
         <item>163390</item>
         <item>1633</item>
       </line>
       <line>
         <item>Vitamine A</item>
         <item>1190</item>
-        <item/>
+        <item />
         <item>70698</item>
-        <item/>
+        <item />
         <item>86339</item>
         <item>160741</item>
       </line>
       <line>
         <item>Fer.</item>
         <item>1190</item>
-        <item/>
+        <item />
         <item>70699</item>
-        <item/>
+        <item />
         <item>5843</item>
         <item>160741</item>
       </line>
       <line>
         <item>Iode</item>
         <item>1190</item>
-        <item/>
+        <item />
         <item>70700</item>
-        <item/>
+        <item />
         <item>78130</item>
         <item>160741</item>
       </line>
       <line>
         <item>Déparasitage</item>
         <item>1190</item>
-        <item/>
+        <item />
         <item>70769</item>
-        <item/>
+        <item />
         <item>163395</item>
         <item>160741</item>
       </line>
       <line>
         <item>Zinc</item>
         <item>1190</item>
-        <item/>
+        <item />
         <item>70770</item>
-        <item/>
+        <item />
         <item>86672</item>
         <item>160741</item>
       </line>
       <line>
         <item>Dépistage CA du Col, date</item>
         <item>160715</item>
-        <item/>
+        <item />
         <item>70075</item>
-        <item/>
+        <item />
         <item>151185</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Dépistage CA de la Prostate (Homme > 40ans), date</item>
         <item>160715</item>
-        <item/>
+        <item />
         <item>70076</item>
-        <item/>
+        <item />
         <item>163464</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Douleur abdominale</item>
@@ -2539,7 +2539,7 @@ where location_attribute.attribute_type_id = ?
         <item>7000</item>
         <item>1</item>
         <item>151</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item> Anorexie/Perte d'appétit</item>
@@ -2548,7 +2548,7 @@ where location_attribute.attribute_type_id = ?
         <item>7001</item>
         <item>1</item>
         <item>6031</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Toux</item>
@@ -2557,7 +2557,7 @@ where location_attribute.attribute_type_id = ?
         <item>7004</item>
         <item>1</item>
         <item>143264</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Toux/Expectoration (sauf hémoptysie)</item>
@@ -2566,7 +2566,7 @@ where location_attribute.attribute_type_id = ?
         <item>7008</item>
         <item>1</item>
         <item>5957</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Dyspnée</item>
@@ -2575,7 +2575,7 @@ where location_attribute.attribute_type_id = ?
         <item>7007</item>
         <item>1</item>
         <item>122496</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Céphalée</item>
@@ -2584,7 +2584,7 @@ where location_attribute.attribute_type_id = ?
         <item>7011</item>
         <item>1</item>
         <item>139084</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Hémoptysie</item>
@@ -2593,7 +2593,7 @@ where location_attribute.attribute_type_id = ?
         <item>7012</item>
         <item>1</item>
         <item>138905</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Nausée</item>
@@ -2602,7 +2602,7 @@ where location_attribute.attribute_type_id = ?
         <item>7013</item>
         <item>1</item>
         <item>5978</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Sueurs nocturnes</item>
@@ -2611,7 +2611,7 @@ where location_attribute.attribute_type_id = ?
         <item>7014</item>
         <item>1</item>
         <item>133027</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Perte de sensibilité</item>
@@ -2620,7 +2620,7 @@ where location_attribute.attribute_type_id = ?
         <item>7015</item>
         <item>1</item>
         <item>141635</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Odynophagie/dysphagie</item>
@@ -2629,7 +2629,7 @@ where location_attribute.attribute_type_id = ?
         <item>7016</item>
         <item>1</item>
         <item>118789</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Eruption cutanée</item>
@@ -2638,7 +2638,7 @@ where location_attribute.attribute_type_id = ?
         <item>7024</item>
         <item>1</item>
         <item>512</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Vomissement</item>
@@ -2647,7 +2647,7 @@ where location_attribute.attribute_type_id = ?
         <item>7025</item>
         <item>1</item>
         <item>122983</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Prurigo</item>
@@ -2656,7 +2656,7 @@ where location_attribute.attribute_type_id = ?
         <item>7042</item>
         <item>1</item>
         <item>128319</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Asthénie</item>
@@ -2665,7 +2665,7 @@ where location_attribute.attribute_type_id = ?
         <item>7029</item>
         <item>1</item>
         <item>121377</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Convulsions</item>
@@ -2674,7 +2674,7 @@ where location_attribute.attribute_type_id = ?
         <item>7037</item>
         <item>1</item>
         <item>113054</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Diarrhée &lt; 14 jours</item>
@@ -2683,7 +2683,7 @@ where location_attribute.attribute_type_id = ?
         <item>7017</item>
         <item>1</item>
         <item>163465</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Douleurs musculaires</item>
@@ -2692,7 +2692,7 @@ where location_attribute.attribute_type_id = ?
         <item>7034</item>
         <item>1</item>
         <item>133632</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Fièvre inexpliquée &lt; 1 mois</item>
@@ -2701,7 +2701,7 @@ where location_attribute.attribute_type_id = ?
         <item>7009</item>
         <item>1</item>
         <item>163282</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Irritabilité</item>
@@ -2710,7 +2710,7 @@ where location_attribute.attribute_type_id = ?
         <item>7032</item>
         <item>1</item>
         <item>6023</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Malaise</item>
@@ -2719,7 +2719,7 @@ where location_attribute.attribute_type_id = ?
         <item>7033</item>
         <item>1</item>
         <item>151907</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Œdèmes bilateraux (nutritionnel)</item>
@@ -2728,7 +2728,7 @@ where location_attribute.attribute_type_id = ?
         <item>7173</item>
         <item>1</item>
         <item>460</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Otalgie / Otorrhée</item>
@@ -2737,7 +2737,7 @@ where location_attribute.attribute_type_id = ?
         <item>7018</item>
         <item>1</item>
         <item>141584</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Poids, insuffisance de gain</item>
@@ -2746,7 +2746,7 @@ where location_attribute.attribute_type_id = ?
         <item>7019</item>
         <item>1</item>
         <item>5050</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Poids, perte jusqu'à 1 écart type (ET)</item>
@@ -2755,7 +2755,7 @@ where location_attribute.attribute_type_id = ?
         <item>7023</item>
         <item>1</item>
         <item>832</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Problèmes de vision</item>
@@ -2764,7 +2764,7 @@ where location_attribute.attribute_type_id = ?
         <item>7038</item>
         <item>1</item>
         <item>118938</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Prurigo ped</item>
@@ -2773,7 +2773,7 @@ where location_attribute.attribute_type_id = ?
         <item>7035</item>
         <item>1</item>
         <item>128319</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Régurgitations</item>
@@ -2782,11 +2782,11 @@ where location_attribute.attribute_type_id = ?
         <item>7036</item>
         <item>1</item>
         <item>127744</item>
-        <item/>
+        <item />
       </line>
     </data>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -2804,5 +2804,5 @@ where location_attribute.attribute_type_id = ?
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
-  <attributes/>
+  <attributes />
 </transformation>
