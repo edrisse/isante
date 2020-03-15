@@ -4557,6 +4557,55 @@ where location_attribute.attribute_type_id = ?
         <item>71300</item>
         <item>Y</item>
       </line>
+      <line>
+        <item>Currently in school, specify</item>
+        <item>5629</item>
+        <item/>
+        <item>70766</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Cancer, precisez PC</item>
+        <item>160592</item>
+        <item>151521</item>
+        <item>70806</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Médicaments actuels</item>
+        <item>160221</item>
+        <item/>
+        <item>69999</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Allaitement maternel exclusif: duration in months</item>
+        <item>163548</item>
+        <item/>
+        <item>70659</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Dépistage CA du Col Date</item>
+        <item>160715</item>
+        <item/>
+        <item>70075</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Dépistage CA de la Prostate (Homme > 40ans): Date</item>
+        <item>160715</item>
+        <item/>
+        <item>70076</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>TB Registration date</item>
+        <item>161552</item>
+        <item/>
+        <item>71173</item>
+        <item>N</item>
+      </line>
     </data>
     <attributes/>
     <cluster_schema/>

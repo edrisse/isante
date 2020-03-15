@@ -592,6 +592,11 @@
     </hop>
     <hop>
       <from>Map Form Version</from>
+      <to>Fetch Form author</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Form author</from>
       <to>Replace in string</to>
       <enabled>Y</enabled>
     </hop>
@@ -2357,7 +2362,7 @@ where obs.concept_id = 5096
         <precision>-1</precision>
       </field>
       <field>
-        <name>default_na</name>
+        <name>form_author</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2739,6 +2744,45 @@ where obs.concept_id = 5096
     </remotesteps>
     <GUI>
       <xloc>64</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Form author</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_text form_author from obs
+where obs.concept_id = 1473
+  and obs.voided = false
+  and obs.encounter_id = ?</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>656</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>

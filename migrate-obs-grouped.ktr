@@ -2284,7 +2284,7 @@ where location_attribute.attribute_type_id = ?
         <item>HTA: Mère</item>
         <item>1560</item>
         <item>970</item>
-        <item>70810</item>
+        <item>70816</item>
         <item>1</item>
         <item>151927</item>
         <item>160593</item>
@@ -2293,7 +2293,7 @@ where location_attribute.attribute_type_id = ?
         <item>HTA: Père</item>
         <item>1560</item>
         <item>971</item>
-        <item>70811</item>
+        <item>70817</item>
         <item>1</item>
         <item>151927</item>
         <item>160593</item>
@@ -2302,7 +2302,7 @@ where location_attribute.attribute_type_id = ?
         <item>HTA: Frère/Sœur</item>
         <item>1560</item>
         <item>972</item>
-        <item>70812</item>
+        <item>70818</item>
         <item>1</item>
         <item>151927</item>
         <item>160593</item>

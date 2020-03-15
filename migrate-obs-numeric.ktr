@@ -2924,22 +2924,6 @@ where location_attribute.attribute_type_id = ?
         <item/>
       </line>
       <line>
-        <item>Dépistage CA du Col Date</item>
-        <item>160715</item>
-        <item/>
-        <item>70075</item>
-        <item/>
-        <item/>
-      </line>
-      <line>
-        <item>Dépistage CA de la Prostate (Homme > 40ans): Date</item>
-        <item>160715</item>
-        <item/>
-        <item>70076</item>
-        <item/>
-        <item/>
-      </line>
-      <line>
         <item>Résultats</item>
         <item>160716</item>
         <item/>
@@ -4593,6 +4577,38 @@ where location_attribute.attribute_type_id = ?
         <item>1175</item>
         <item>71299</item>
         <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Patient view for Consultation :Gynecological</item>
+        <item>160288</item>
+        <item>160456</item>
+        <item>7860</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Patient view for Consultation: Prenatale</item>
+        <item>160288</item>
+        <item>1622</item>
+        <item>70018</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Patient view for Consultation: Postnatale</item>
+        <item>160288</item>
+        <item>1623</item>
+        <item>71240</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Patient view for Consultation: Family Planning</item>
+        <item>160288</item>
+        <item>5483</item>
+        <item>71368</item>
+        <item>1</item>
         <item/>
       </line>
     </data>
