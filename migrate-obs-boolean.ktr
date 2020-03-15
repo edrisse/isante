@@ -2083,25 +2083,11 @@ where location_attribute.attribute_type_id = ?
         <item>N</item>
       </line>
       <line>
-        <item>Symptoms: Autres</item>
-        <item>1728</item>
-        <item>5622</item>
-        <item>7043</item>
-        <item>N</item>
-      </line>
-      <line>
         <item>Symptoms: Autres Text</item>
         <item>1728</item>
         <item>5622</item>
         <item>7044</item>
         <item>Y</item>
-      </line>
-      <line>
-        <item />
-        <item />
-        <item />
-        <item />
-        <item />
       </line>
     </data>
     <attributes />

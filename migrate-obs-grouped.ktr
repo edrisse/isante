@@ -2784,6 +2784,15 @@ where location_attribute.attribute_type_id = ?
         <item>127744</item>
         <item />
       </line>
+      <line>
+        <item>symptoms: autre</item>
+        <item>1729</item>
+        <item>1065</item>
+        <item>7043</item>
+        <item>1</item>
+        <item>5622</item>
+        <item />
+      </line>
     </data>
     <attributes />
     <cluster_schema />

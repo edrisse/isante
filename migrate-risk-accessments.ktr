@@ -556,11 +556,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Database join date</from>
-      <to>Fetch obs group</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch iSante Location</from>
       <to>Fetch Person Identifier</to>
       <enabled>Y</enabled>
@@ -581,28 +576,13 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Decompose  risk date</from>
-      <to>Replace in string risk date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Replace in string risk date</from>
-      <to>Fetch iSante Location</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch obs group</from>
-      <to>Decompose  risk date</to>
+      <from>Filter rows</from>
+      <to>Database join date</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Fetch Last ETL Excution Date</from>
       <to>Filter rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows</from>
-      <to>Database join date</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -613,6 +593,26 @@
     <hop>
       <from>Database join coded</from>
       <to>Fetch obs group</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Database join date</from>
+      <to>Fetch obs group</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string risk date</from>
+      <to>Fetch iSante Location</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Decompose  risk date</from>
+      <to>Replace in string risk date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch obs group</from>
+      <to>Decompose  risk date</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -876,7 +876,7 @@
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
-    <sql>select encounter.encounter_id, encounter.patient_id, encounter.encounter_datetime, encounter.location_id isante_plus_location_id, obs.obs_group_id, obs.value_datetime
+    <sql>select encounter.encounter_id, encounter.patient_id, encounter.encounter_datetime, encounter.location_id isante_plus_location_id, obs.obs_group_id, obs.value_datetime riskdate
 from encounter join encounter_type
 on encounter.encounter_type = encounter_type.encounter_type_id
 join obs on encounter.encounter_id = obs.encounter_id
@@ -937,8 +937,8 @@ and obs.date_voided is null
       </output>
     </remotesteps>
     <GUI>
-      <xloc>752</xloc>
-      <yloc>160</yloc>
+      <xloc>800</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -955,14 +955,18 @@ and obs.date_voided is null
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
-    <sql>select encounter.encounter_id, encounter.patient_id, encounter.encounter_datetime, encounter.location_id isante_plus_location_id, obs.obs_group_id, obs.value_datetime
+    <sql>select encounter.encounter_id, encounter.patient_id, encounter.encounter_datetime, encounter.location_id isante_plus_location_id, o.obs_group_id, p.value_datetime riskdate
 from encounter join encounter_type
 on encounter.encounter_type = encounter_type.encounter_type_id
-join obs on encounter.encounter_id = obs.encounter_id
-  where obs.concept_id = ?
+join obs o on encounter.encounter_id = o.encounter_id
+join obs p on encounter.encounter_id = p.encounter_id
+  where o.concept_id = ?
+  and o.value_coded = ?
+and p.concept_id = ?
   and encounter_type.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7', '349ae0b4-65c1-4122-aa06-480f186c8350')
   and encounter.voided = false
-and obs.date_voided is null 
+and o.date_voided is null
+and p.date_voided is null
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
    or encounter.date_voided >= ?
@@ -975,6 +979,14 @@ and obs.date_voided is null
     <parameter>
       <field>
         <name>risk_id_isante_plus</name>
+        <type>Integer</type>
+      </field>
+      <field>
+        <name>risk_answer_isante_plus</name>
+        <type>Integer</type>
+      </field>
+      <field>
+        <name>type_id</name>
         <type>Integer</type>
       </field>
       <field>
@@ -1011,8 +1023,8 @@ and obs.date_voided is null
       </output>
     </remotesteps>
     <GUI>
-      <xloc>752</xloc>
-      <yloc>48</yloc>
+      <xloc>720</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1031,7 +1043,7 @@ and obs.date_voided is null
     <calculation>
       <field_name>risk_day</field_name>
       <calc_type>DAY_OF_MONTH</calc_type>
-      <field_a>value_datetime</field_a>
+      <field_a>riskdate</field_a>
       <field_b />
       <field_c />
       <value_type>String</value_type>
@@ -1046,7 +1058,7 @@ and obs.date_voided is null
     <calculation>
       <field_name>risk_month</field_name>
       <calc_type>MONTH_OF_DATE</calc_type>
-      <field_a>value_datetime</field_a>
+      <field_a>riskdate</field_a>
       <field_b />
       <field_c />
       <value_type>String</value_type>
@@ -1061,7 +1073,7 @@ and obs.date_voided is null
     <calculation>
       <field_name>risk_year</field_name>
       <calc_type>YEAR_OF_DATE</calc_type>
-      <field_a>value_datetime</field_a>
+      <field_a>riskdate</field_a>
       <field_b />
       <field_c />
       <value_type>String</value_type>
@@ -1083,7 +1095,7 @@ and obs.date_voided is null
     </remotesteps>
     <GUI>
       <xloc>1104</xloc>
-      <yloc>64</yloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1349,8 +1361,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1488</xloc>
-      <yloc>224</yloc>
+      <xloc>1376</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1480,7 +1492,7 @@ and obs.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
+      <xloc>560</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1727,6 +1739,17 @@ and obs.voided = false</sql>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
+      <field>
+        <name>type_id</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
     </fields>
     <data>
       <line>
@@ -1736,6 +1759,7 @@ and obs.voided = false</sql>
         <item>1</item>
         <item>c2b3c5cb-f1e6-4d3d-ad18-5ecf71b26dc2</item>
         <item />
+        <item />
       </line>
       <line>
         <item>1061</item>
@@ -1743,6 +1767,7 @@ and obs.voided = false</sql>
         <item>1</item>
         <item>2</item>
         <item>c2b3c5cb-f1e6-4d3d-ad18-5ecf71b26dc2</item>
+        <item />
         <item />
       </line>
       <line>
@@ -1752,6 +1777,7 @@ and obs.voided = false</sql>
         <item>1</item>
         <item>0906f171-72d4-4727-8ede-97a47c2e25ee</item>
         <item />
+        <item />
       </line>
       <line>
         <item>1061</item>
@@ -1760,6 +1786,7 @@ and obs.voided = false</sql>
         <item>2</item>
         <item>0906f171-72d4-4727-8ede-97a47c2e25ee</item>
         <item />
+        <item />
       </line>
       <line>
         <item>1061</item>
@@ -1768,6 +1795,7 @@ and obs.voided = false</sql>
         <item>1</item>
         <item>f6a51d0c-eb19-4875-8c37-85e39f0def00</item>
         <item />
+        <item />
       </line>
       <line>
         <item>1061</item>
@@ -1775,6 +1803,7 @@ and obs.voided = false</sql>
         <item>9</item>
         <item>2</item>
         <item>f6a51d0c-eb19-4875-8c37-85e39f0def00</item>
+        <item />
         <item />
       </line>
       <line>
@@ -1783,7 +1812,8 @@ and obs.voided = false</sql>
         <item>15</item>
         <item>1</item>
         <item>92259610-b7b8-4723-b879-6e33fdd4b817</item>
-        <item />
+        <item>date</item>
+        <item>163268</item>
       </line>
       <line>
         <item>1061</item>
@@ -1791,15 +1821,8 @@ and obs.voided = false</sql>
         <item>15</item>
         <item>2</item>
         <item>92259610-b7b8-4723-b879-6e33fdd4b817</item>
-        <item />
-      </line>
-      <line>
-        <item>163268</item>
-        <item />
-        <item>15</item>
-        <item />
-        <item>92259610-b7b8-4723-b879-6e33fdd4b817</item>
         <item>date</item>
+        <item>163268</item>
       </line>
       <line>
         <item>1061</item>
@@ -1808,6 +1831,7 @@ and obs.voided = false</sql>
         <item>1</item>
         <item>92259610-b7b8-4723-b879-6e33fdd4b817</item>
         <item />
+        <item />
       </line>
       <line>
         <item>1061</item>
@@ -1816,6 +1840,7 @@ and obs.voided = false</sql>
         <item>2</item>
         <item>92259610-b7b8-4723-b879-6e33fdd4b817</item>
         <item />
+        <item />
       </line>
       <line>
         <item>1061</item>
@@ -1823,6 +1848,7 @@ and obs.voided = false</sql>
         <item>14</item>
         <item>4</item>
         <item>92259610-b7b8-4723-b879-6e33fdd4b817</item>
+        <item />
         <item />
       </line>
       <line>
@@ -1831,7 +1857,8 @@ and obs.voided = false</sql>
         <item>12</item>
         <item>1</item>
         <item>163288AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
-        <item />
+        <item>date</item>
+        <item>162601</item>
       </line>
       <line>
         <item>160581</item>
@@ -1839,15 +1866,8 @@ and obs.voided = false</sql>
         <item>12</item>
         <item>2</item>
         <item>163288AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
-        <item />
-      </line>
-      <line>
-        <item>162601</item>
-        <item />
-        <item>12</item>
-        <item />
-        <item>163288AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item>date</item>
+        <item>162601</item>
       </line>
       <line>
         <item>1061</item>
@@ -1856,6 +1876,7 @@ and obs.voided = false</sql>
         <item>1</item>
         <item>844017f9-8d6a-4b9a-8347-637284b43893</item>
         <item />
+        <item />
       </line>
       <line>
         <item>1061</item>
@@ -1864,6 +1885,7 @@ and obs.voided = false</sql>
         <item>2</item>
         <item>844017f9-8d6a-4b9a-8347-637284b43893</item>
         <item />
+        <item />
       </line>
       <line>
         <item>1061</item>
@@ -1871,6 +1893,7 @@ and obs.voided = false</sql>
         <item>19</item>
         <item>4</item>
         <item>844017f9-8d6a-4b9a-8347-637284b43893</item>
+        <item />
         <item />
       </line>
       <line>
@@ -1880,6 +1903,7 @@ and obs.voided = false</sql>
         <item>1</item>
         <item>d526575e-5fa1-45c6-b8ed-73a2cba0fba0</item>
         <item />
+        <item />
       </line>
       <line>
         <item>1061</item>
@@ -1888,6 +1912,7 @@ and obs.voided = false</sql>
         <item>2</item>
         <item>d526575e-5fa1-45c6-b8ed-73a2cba0fba0</item>
         <item />
+        <item />
       </line>
       <line>
         <item>1061</item>
@@ -1895,6 +1920,7 @@ and obs.voided = false</sql>
         <item>5</item>
         <item>4</item>
         <item>d526575e-5fa1-45c6-b8ed-73a2cba0fba0</item>
+        <item />
         <item />
       </line>
       <line>
@@ -1904,6 +1930,7 @@ and obs.voided = false</sql>
         <item>1</item>
         <item>9d6ee2a2-8547-4fa9-a2d8-301d009ca3a5</item>
         <item />
+        <item />
       </line>
       <line>
         <item>1061</item>
@@ -1912,6 +1939,7 @@ and obs.voided = false</sql>
         <item>2</item>
         <item>9d6ee2a2-8547-4fa9-a2d8-301d009ca3a5</item>
         <item />
+        <item />
       </line>
       <line>
         <item>1061</item>
@@ -1919,6 +1947,7 @@ and obs.voided = false</sql>
         <item>6</item>
         <item>4</item>
         <item>9d6ee2a2-8547-4fa9-a2d8-301d009ca3a5</item>
+        <item />
         <item />
       </line>
       <line>
@@ -1928,6 +1957,7 @@ and obs.voided = false</sql>
         <item>1</item>
         <item>df47e128-268f-4238-9b13-f829c01ae7d8</item>
         <item />
+        <item />
       </line>
       <line>
         <item>1061</item>
@@ -1936,6 +1966,7 @@ and obs.voided = false</sql>
         <item>2</item>
         <item>df47e128-268f-4238-9b13-f829c01ae7d8</item>
         <item />
+        <item />
       </line>
       <line>
         <item>1061</item>
@@ -1944,6 +1975,7 @@ and obs.voided = false</sql>
         <item>4</item>
         <item>df47e128-268f-4238-9b13-f829c01ae7d8</item>
         <item />
+        <item />
       </line>
       <line>
         <item>163276</item>
@@ -1951,6 +1983,7 @@ and obs.voided = false</sql>
         <item>32</item>
         <item>1</item>
         <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
         <item />
       </line>
       <line>
@@ -1960,6 +1993,7 @@ and obs.voided = false</sql>
         <item>2</item>
         <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
+        <item />
       </line>
       <line>
         <item>163276</item>
@@ -1968,6 +2002,7 @@ and obs.voided = false</sql>
         <item>4</item>
         <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
+        <item />
       </line>
       <line>
         <item>156660</item>
@@ -1975,6 +2010,7 @@ and obs.voided = false</sql>
         <item>11</item>
         <item>1</item>
         <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
         <item />
       </line>
       <line>
@@ -1984,6 +2020,7 @@ and obs.voided = false</sql>
         <item>2</item>
         <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
+        <item />
       </line>
       <line>
         <item>156660</item>
@@ -1991,6 +2028,7 @@ and obs.voided = false</sql>
         <item>11</item>
         <item>4</item>
         <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
         <item />
       </line>
       <line>
@@ -2000,6 +2038,7 @@ and obs.voided = false</sql>
         <item>1</item>
         <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
+        <item />
       </line>
       <line>
         <item>123160</item>
@@ -2008,6 +2047,7 @@ and obs.voided = false</sql>
         <item>2</item>
         <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
         <item />
+        <item />
       </line>
       <line>
         <item>123160</item>
@@ -2015,6 +2055,7 @@ and obs.voided = false</sql>
         <item>13</item>
         <item>4</item>
         <item>163292AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item />
         <item />
       </line>
     </data>
@@ -2153,8 +2194,8 @@ and obs.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1264</xloc>
-      <yloc>64</yloc>
+      <xloc>1248</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
