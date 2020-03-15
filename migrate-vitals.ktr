@@ -603,7 +603,7 @@
     <hop>
       <from>Fetch Community Based Program</from>
       <to>Fetch Transfer in from another HF</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Fetch Transfer in from another HF</from>
@@ -636,9 +636,9 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Family Planing Other</from>
+      <from>Fetch Family Planing Other Text</from>
       <to>Fetch Tubal Ligation</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Fetch DPMA</from>
@@ -1227,7 +1227,7 @@
     </hop>
     <hop>
       <from>Map Transfer on ARV</from>
-      <to>Fetch Family Planing Other</to>
+      <to>Fetch Family Planing Other Text</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -1317,11 +1317,11 @@
     </hop>
     <hop>
       <from>Fetch Tetanus Doses</from>
-      <to>Fetch Other Vacination</to>
+      <to>Fetch Other Vacination text</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Other Vacination</from>
+      <from>Fetch Other Vacination text</from>
       <to>Fetch Family Planing</to>
       <enabled>Y</enabled>
     </hop>
@@ -1473,6 +1473,31 @@
     <hop>
       <from>Map Curr Hiv Status</from>
       <to>Replace in string</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Transfer in from another HF Text</from>
+      <to>Fetch Transfer in from another HF</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Family Planing Other </from>
+      <to>Fetch Tubal Ligation</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Family Planing Other Text</from>
+      <to>Fetch Family Planing Other </to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Community Based Program</from>
+      <to>Fetch allergy medication other text</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch allergy medication other text</from>
+      <to>Fetch Transfer in from another HF Text</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -3567,6 +3592,17 @@
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
+      <field>
+        <name>famPlanOther_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
     </fields>
     <data>
       <line>
@@ -3759,6 +3795,7 @@
         <item/>
         <item>seqNum</item>
         <item>1</item>
+        <item>famPlanOther</item>
       </line>
     </data>
     <attributes/>
@@ -5495,7 +5532,7 @@ where obs.concept_id = 509165668
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_numeric diastolic_bp, if(obs.value_numeric is null, '', '1') bpUnits from obs
+    <sql>select obs.value_numeric diastolic_bp, if(obs.value_numeric is null, '', '2') bpUnits from obs
 where obs.concept_id = 5086
   and obs.voided = false
   and obs.encounter_id = ?
@@ -5804,7 +5841,7 @@ where obs.concept_id = 374
     </GUI>
   </step>
   <step>
-    <name>Fetch Family Planing Other</name>
+    <name>Fetch Family Planing Other </name>
     <type>DBJoin</type>
     <description/>
     <distribute>Y</distribute>
@@ -5816,8 +5853,9 @@ where obs.concept_id = 374
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.comments family_planning_other from obs
+    <sql>select 1 famPlanOther from obs
 where obs.concept_id = 374
+and obs.value_coded in (907,1107,159524,136163,5622,5279,5278,136452,164814,159837,159589,78796,164813,5277,162332,1359,1067,1175,160570,5275,5276,1489) 
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
@@ -5838,8 +5876,51 @@ where obs.concept_id = 374
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1232</xloc>
-      <yloc>768</yloc>
+      <xloc>1280</xloc>
+      <yloc>752</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Family Planing Other Text</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select c.name family_planning_other from obs join concept_name c on obs.value_coded = c.concept_id
+where obs.concept_id = 374
+and c.locale= 'fr'
+  and obs.encounter_id = ?
+and obs.value_coded in (907,1107,159524,136163,5622,5278,136452,164814,159837,159589,78796,164813,5277,162332,1359,1067,1175,5275,160570,5276,1489) 
+  and obs.voided = false
+
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1136</xloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -7739,7 +7820,7 @@ where obs.concept_id = 163719
     </GUI>
   </step>
   <step>
-    <name>Fetch Other Vacination</name>
+    <name>Fetch Other Vacination text</name>
     <type>DBJoin</type>
     <description/>
     <distribute>Y</distribute>
@@ -7751,11 +7832,13 @@ where obs.concept_id = 163719
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.comments as other_vacination, obs.obs_group_id as other_group from obs
+    <sql>select c.name as other_vacination, obs.obs_group_id as other_group from obs join concept_name c on obs.value_coded = c.concept_id
 where obs.concept_id = 984
-  and obs.value_coded = 5622
-  and obs.encounter_id = ?
+  and obs.value_coded in (5622,1107,886,17,1423,783,54,84879,36,82215,781,1422,83531,5261,159701,86339,5864,162586)
+  and c.locale = 'fr'
   and obs.voided = false
+  and obs.encounter_id = ?
+
 </sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
@@ -7774,7 +7857,7 @@ where obs.concept_id = 984
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1040</xloc>
+      <xloc>864</xloc>
       <yloc>672</yloc>
       <draw>Y</draw>
     </GUI>
@@ -8838,7 +8921,7 @@ where obs.concept_id = 163580
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_numeric systolic_bp, if(obs.value_numeric is null, '', '1') bpUnits from obs
+    <sql>select obs.value_numeric systolic_bp, if(obs.value_numeric is null, '', '2') bpUnits from obs
 where obs.concept_id = 5085
   and obs.voided = false
   and obs.encounter_id = ?
@@ -9054,7 +9137,7 @@ where obs.concept_id = 1418
         <type>Number</type>
       </field>
       <field>
-        <name>hepatitis_group</name>
+        <name>tetanus_group</name>
         <type>Number</type>
       </field>
     </parameter>
@@ -9196,6 +9279,47 @@ where obs.concept_id = 159936
     <GUI>
       <xloc>1392</xloc>
       <yloc>496</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Transfer in from another HF Text</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.comments as firstCareOtherFacText from obs
+where obs.concept_id = 159936
+  and obs.value_coded = 5622
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1552</xloc>
+      <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -9633,6 +9757,46 @@ where obs.concept_id = 5916
     <GUI>
       <xloc>1216</xloc>
       <yloc>1792</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch allergy medication other text</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_text as amedotherText from obs
+where obs.concept_id = 160644
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1552</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -11697,8 +11861,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>768</yloc>
+      <xloc>1008</xloc>
+      <yloc>752</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -15457,7 +15621,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>empty_value</name>
+        <name>firstCareOtherFacText</name>
         <type>None</type>
         <format/>
         <currency/>
@@ -15865,7 +16029,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>empty_value</name>
+        <name>amedotherText</name>
         <type>None</type>
         <format/>
         <currency/>
@@ -16740,6 +16904,30 @@ where location_attribute.attribute_type_id = ?
         <length>-1</length>
         <precision>-1</precision>
       </field>
+      <field>
+        <name>famPlanOther_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>famPlanOther</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -16770,6 +16958,19 @@ where location_attribute.attribute_type_id = ?
       <field>
         <in_stream_name>hospitalized_text</in_stream_name>
         <out_stream_name>hospitalized_text_sanitized</out_stream_name>
+        <trim_type>none</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>crlf</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>amedotherText</in_stream_name>
+        <out_stream_name>amedotherText_sanitized</out_stream_name>
         <trim_type>none</trim_type>
         <lower_upper>none</lower_upper>
         <padding_type>none</padding_type>
