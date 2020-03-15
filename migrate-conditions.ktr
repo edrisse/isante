@@ -3720,26 +3720,180 @@
         <item>1</item>
       </line>
       <line>
-        <item />
-        <item />
-        <item />
-        <item />
-        <item />
-        <item />
-        <item />
-        <item />
-        <item />
-        <item />
-        <item />
-        <item />
-        <item />
-        <item />
-        <item />
-        <item />
-        <item />
-        <item />
-        <item />
-        <item />
+        <item>6042</item>
+        <item>413</item>
+        <item>145443</item>
+        <item>1</item>
+        <item>conditions</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>conditionID</item>
+        <item>conditionMm</item>
+        <item>conditionYy</item>
+        <item>conditionActive</item>
+        <item>conditionComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
+        <item>1</item>
+      </line>
+      <line>
+        <item>6097</item>
+        <item>413</item>
+        <item>145443</item>
+        <item>2</item>
+        <item>conditions</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>conditionID</item>
+        <item>conditionMm</item>
+        <item>conditionYy</item>
+        <item>conditionActive</item>
+        <item>conditionComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
+        <item>1</item>
+      </line>
+      <line>
+        <item>6042</item>
+        <item>407</item>
+        <item>111721</item>
+        <item>1</item>
+        <item>conditions</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>conditionID</item>
+        <item>conditionMm</item>
+        <item>conditionYy</item>
+        <item>conditionActive</item>
+        <item>conditionComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
+        <item>1</item>
+      </line>
+      <line>
+        <item>6097</item>
+        <item>407</item>
+        <item>111721</item>
+        <item>2</item>
+        <item>conditions</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>conditionID</item>
+        <item>conditionMm</item>
+        <item>conditionYy</item>
+        <item>conditionActive</item>
+        <item>conditionComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
+        <item>1</item>
+      </line>
+      <line>
+        <item>6042</item>
+        <item>717</item>
+        <item>160155</item>
+        <item>1</item>
+        <item>conditions</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>conditionID</item>
+        <item>conditionMm</item>
+        <item>conditionYy</item>
+        <item>conditionActive</item>
+        <item>conditionComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
+        <item>1</item>
+      </line>
+      <line>
+        <item>6097</item>
+        <item>717</item>
+        <item>160155</item>
+        <item>2</item>
+        <item>conditions</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>conditionID</item>
+        <item>conditionMm</item>
+        <item>conditionYy</item>
+        <item>conditionActive</item>
+        <item>conditionComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
+        <item>1</item>
+      </line>
+      <line>
+        <item>6042</item>
+        <item>287</item>
+        <item>990</item>
+        <item>1</item>
+        <item>conditions</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>conditionID</item>
+        <item>conditionMm</item>
+        <item>conditionYy</item>
+        <item>conditionActive</item>
+        <item>conditionComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
+        <item>1</item>
+      </line>
+      <line>
+        <item>6097</item>
+        <item>287</item>
+        <item>990</item>
+        <item>2</item>
+        <item>conditions</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>conditionID</item>
+        <item>conditionMm</item>
+        <item>conditionYy</item>
+        <item>conditionActive</item>
+        <item>conditionComment</item>
+        <item>dbSite</item>
+        <item>0</item>
+        <item>\0</item>
+        <item>1</item>
       </line>
     </data>
     <attributes />
@@ -3780,7 +3934,7 @@ where obs.concept_id = ?
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
    or encounter.date_voided >= ?
-   or encounter.date_created >= ?
+   or obs.date_created >= ?
    or encounter.date_changed >= ?
    or encounter.date_voided >= ?)
 </sql>
