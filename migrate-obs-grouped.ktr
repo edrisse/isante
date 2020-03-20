@@ -1118,8 +1118,8 @@ where obs.obs_group_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
-      <yloc>48</yloc>
+      <xloc>816</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

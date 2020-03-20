@@ -999,7 +999,7 @@ join encounter on encounter.encounter_id = obs.encounter_id
 join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
 where obs.concept_id = ?
   and obs.value_coded = ?
-  and encounter.voided = false
+  and obs.voided = false
   and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171','17536ba6-dd7c-4f58-8014-08c7cb798ac7', 'd95b3540-a39f-4d1e-a301-8ee0e03d5eab')
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
@@ -1086,7 +1086,7 @@ obs.date_voided, obs.void_reason, obs.comments, obs.value_text, obs.value_numeri
 join encounter on encounter.encounter_id = obs.encounter_id
 join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
 where obs.concept_id = ?
-  and encounter.voided = false
+  and obs.voided = false
   and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171','17536ba6-dd7c-4f58-8014-08c7cb798ac7', 'd95b3540-a39f-4d1e-a301-8ee0e03d5eab')
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
@@ -3969,7 +3969,7 @@ where location_attribute.attribute_type_id = ?
         <item>1065</item>
         <item>70487</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Monthly Breast palpation: No</item>
@@ -3977,7 +3977,7 @@ where location_attribute.attribute_type_id = ?
         <item>1066</item>
         <item>70487</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Pregnancy Followed: Yes</item>
@@ -3985,7 +3985,7 @@ where location_attribute.attribute_type_id = ?
         <item>1</item>
         <item>70523</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Pregnancy Followed: No</item>
@@ -3993,7 +3993,7 @@ where location_attribute.attribute_type_id = ?
         <item>2</item>
         <item>70523</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Wanted pregnancy: Yes</item>
@@ -4001,7 +4001,7 @@ where location_attribute.attribute_type_id = ?
         <item>122933</item>
         <item>71275</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Wanted pregnancy: No</item>
@@ -4009,7 +4009,7 @@ where location_attribute.attribute_type_id = ?
         <item>123572</item>
         <item>71275</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Referred:  Yes</item>
@@ -4017,7 +4017,7 @@ where location_attribute.attribute_type_id = ?
         <item>1</item>
         <item>71276</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Referred: No</item>
@@ -4025,7 +4025,7 @@ where location_attribute.attribute_type_id = ?
         <item>2</item>
         <item>71276</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Referred, if yes: Matrone</item>
@@ -4033,7 +4033,7 @@ where location_attribute.attribute_type_id = ?
         <item>71277</item>
         <item>1578</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Referred, if yes: Autre</item>
@@ -4041,7 +4041,7 @@ where location_attribute.attribute_type_id = ?
         <item>71277</item>
         <item>5622</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Prophylaxis against Malaria: Yes</item>
@@ -4049,7 +4049,7 @@ where location_attribute.attribute_type_id = ?
         <item>1</item>
         <item>71278</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Prophylaxis against Malaria: No</item>
@@ -4057,7 +4057,7 @@ where location_attribute.attribute_type_id = ?
         <item>2</item>
         <item>71278</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Pregnancy: Single</item>
@@ -4065,7 +4065,7 @@ where location_attribute.attribute_type_id = ?
         <item>159913</item>
         <item>70531</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Pregnancy: Twins</item>
@@ -4073,7 +4073,7 @@ where location_attribute.attribute_type_id = ?
         <item>159914</item>
         <item>70531</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Pregnancy: Multiple</item>
@@ -4081,7 +4081,7 @@ where location_attribute.attribute_type_id = ?
         <item>115491</item>
         <item>70531</item>
         <item>4</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Presentation: Cephalic</item>
@@ -4089,7 +4089,7 @@ where location_attribute.attribute_type_id = ?
         <item>160091</item>
         <item>7805</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Presentation: Breech</item>
@@ -4097,7 +4097,7 @@ where location_attribute.attribute_type_id = ?
         <item>139814</item>
         <item>7805</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Presentation: Transverse</item>
@@ -4105,7 +4105,7 @@ where location_attribute.attribute_type_id = ?
         <item>112259</item>
         <item>7805</item>
         <item>4</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Fever: Yes</item>
@@ -4113,7 +4113,7 @@ where location_attribute.attribute_type_id = ?
         <item>1065</item>
         <item>7807</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Fever: No</item>
@@ -4121,7 +4121,7 @@ where location_attribute.attribute_type_id = ?
         <item>1066</item>
         <item>7807</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Rupture of membranes :  Spontaneous</item>
@@ -4129,7 +4129,7 @@ where location_attribute.attribute_type_id = ?
         <item>126069</item>
         <item>7808</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Amniotic fluid :  Clear</item>
@@ -4137,7 +4137,7 @@ where location_attribute.attribute_type_id = ?
         <item>1115</item>
         <item>7810</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Amniotic fluid :  Tinted</item>
@@ -4145,7 +4145,7 @@ where location_attribute.attribute_type_id = ?
         <item>155311</item>
         <item>7810</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Amniotic fluid :  Meconium</item>
@@ -4153,7 +4153,7 @@ where location_attribute.attribute_type_id = ?
         <item>134488</item>
         <item>7810</item>
         <item>4</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Dystocia :  Mechanical</item>
@@ -4161,7 +4161,7 @@ where location_attribute.attribute_type_id = ?
         <item>163447</item>
         <item>71279</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Dystocia :  Dynamic</item>
@@ -4169,7 +4169,7 @@ where location_attribute.attribute_type_id = ?
         <item>163448</item>
         <item>71279</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Dystocia :  Other</item>
@@ -4177,7 +4177,7 @@ where location_attribute.attribute_type_id = ?
         <item>5622</item>
         <item>71279</item>
         <item>4</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Prolapsed cord :  Yes</item>
@@ -4185,7 +4185,7 @@ where location_attribute.attribute_type_id = ?
         <item>1065</item>
         <item>71280</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Prolapsed cord :  No</item>
@@ -4193,7 +4193,7 @@ where location_attribute.attribute_type_id = ?
         <item>1066</item>
         <item>71280</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Vaginal bleeding :  Yes</item>
@@ -4201,7 +4201,7 @@ where location_attribute.attribute_type_id = ?
         <item>1065</item>
         <item>7828</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Vaginal bleeding :  No</item>
@@ -4209,7 +4209,7 @@ where location_attribute.attribute_type_id = ?
         <item>1066</item>
         <item>7828</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Abruptio placentae</item>
@@ -4217,7 +4217,7 @@ where location_attribute.attribute_type_id = ?
         <item>130108</item>
         <item>70534</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Placenta previa</item>
@@ -4225,7 +4225,7 @@ where location_attribute.attribute_type_id = ?
         <item>138902</item>
         <item>70534</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>uterine rupture</item>
@@ -4233,7 +4233,7 @@ where location_attribute.attribute_type_id = ?
         <item>127259</item>
         <item>70534</item>
         <item>4</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Vaginal bleeding other</item>
@@ -4241,7 +4241,7 @@ where location_attribute.attribute_type_id = ?
         <item>5622</item>
         <item>70534</item>
         <item>8</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Labor transfusion: Yes</item>
@@ -4249,7 +4249,7 @@ where location_attribute.attribute_type_id = ?
         <item>1</item>
         <item>7829</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Labor transfusion: No</item>
@@ -4257,7 +4257,7 @@ where location_attribute.attribute_type_id = ?
         <item>2</item>
         <item>7829</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Labor HTA</item>
@@ -4265,7 +4265,7 @@ where location_attribute.attribute_type_id = ?
         <item>113858</item>
         <item>70525</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Severe preeclampsia</item>
@@ -4273,7 +4273,7 @@ where location_attribute.attribute_type_id = ?
         <item>113006</item>
         <item>70529</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Eclampsia</item>
@@ -4281,7 +4281,7 @@ where location_attribute.attribute_type_id = ?
         <item>118744</item>
         <item>71281</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>If HIV positive : TAR  Yes</item>
@@ -4289,7 +4289,7 @@ where location_attribute.attribute_type_id = ?
         <item>160119</item>
         <item>71129</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>If HIV positive : TAR  No</item>
@@ -4297,7 +4297,7 @@ where location_attribute.attribute_type_id = ?
         <item>1461</item>
         <item>71129</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Delivery Location: Current health facility</item>
@@ -4305,7 +4305,7 @@ where location_attribute.attribute_type_id = ?
         <item>163266</item>
         <item>71282</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Delivery Location: Delivery at home</item>
@@ -4313,7 +4313,7 @@ where location_attribute.attribute_type_id = ?
         <item>1501</item>
         <item>71282</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Delivery Location: Delivery at health facility</item>
@@ -4321,7 +4321,7 @@ where location_attribute.attribute_type_id = ?
         <item>1502</item>
         <item>71282</item>
         <item>4</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Delivery Location: Other</item>
@@ -4329,7 +4329,7 @@ where location_attribute.attribute_type_id = ?
         <item>5622</item>
         <item>71282</item>
         <item>8</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>If home birth assisted by Matron :  Yes</item>
@@ -4337,7 +4337,7 @@ where location_attribute.attribute_type_id = ?
         <item>1574</item>
         <item>7823</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Vaginal :  Yes</item>
@@ -4345,7 +4345,7 @@ where location_attribute.attribute_type_id = ?
         <item>1065</item>
         <item>71137</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Vaginal :  No</item>
@@ -4353,7 +4353,7 @@ where location_attribute.attribute_type_id = ?
         <item>1066</item>
         <item>71137</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Forceps :  Yes</item>
@@ -4361,7 +4361,7 @@ where location_attribute.attribute_type_id = ?
         <item>1065</item>
         <item>70524</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Forceps :  No</item>
@@ -4369,7 +4369,7 @@ where location_attribute.attribute_type_id = ?
         <item>1066</item>
         <item>70524</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Vacuum :  Yes</item>
@@ -4377,7 +4377,7 @@ where location_attribute.attribute_type_id = ?
         <item>1065</item>
         <item>7822</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Vacuum :  No</item>
@@ -4385,7 +4385,7 @@ where location_attribute.attribute_type_id = ?
         <item>1066</item>
         <item>7822</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Late cord ligation :  Yes</item>
@@ -4393,7 +4393,7 @@ where location_attribute.attribute_type_id = ?
         <item>122933</item>
         <item>71283</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Late cord ligation :  No</item>
@@ -4401,7 +4401,7 @@ where location_attribute.attribute_type_id = ?
         <item>123572</item>
         <item>71283</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Delivery :  Natural</item>
@@ -4409,7 +4409,7 @@ where location_attribute.attribute_type_id = ?
         <item>163451</item>
         <item>7824</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Delivery :  Artificial</item>
@@ -4417,7 +4417,7 @@ where location_attribute.attribute_type_id = ?
         <item>163452</item>
         <item>7824</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Placenta :  Complete / Total</item>
@@ -4425,7 +4425,7 @@ where location_attribute.attribute_type_id = ?
         <item>163455</item>
         <item>7827</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Placenta :  Incomplete</item>
@@ -4433,7 +4433,7 @@ where location_attribute.attribute_type_id = ?
         <item>163456</item>
         <item>7827</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Perineal laceration :  Yes </item>
@@ -4441,7 +4441,7 @@ where location_attribute.attribute_type_id = ?
         <item>112253</item>
         <item>7825</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Perineal laceration :  No</item>
@@ -4449,7 +4449,7 @@ where location_attribute.attribute_type_id = ?
         <item>1115</item>
         <item>7825</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>If yes, repaired :  Yes</item>
@@ -4457,7 +4457,7 @@ where location_attribute.attribute_type_id = ?
         <item>1065</item>
         <item>7826</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>If yes, repaired :  No</item>
@@ -4465,7 +4465,7 @@ where location_attribute.attribute_type_id = ?
         <item>1066</item>
         <item>7826</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Cesarian</item>
@@ -4473,7 +4473,7 @@ where location_attribute.attribute_type_id = ?
         <item>1171</item>
         <item>7820</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Cesarean section hysterectomy +</item>
@@ -4481,7 +4481,7 @@ where location_attribute.attribute_type_id = ?
         <item>161848</item>
         <item>7820</item>
         <item>4</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Counseling on Nutrition of the Newborn :  Yes</item>
@@ -4489,7 +4489,7 @@ where location_attribute.attribute_type_id = ?
         <item>1065</item>
         <item>7835</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Counseling on Nutrition of the Newborn :  No</item>
@@ -4497,7 +4497,7 @@ where location_attribute.attribute_type_id = ?
         <item>1066</item>
         <item>7835</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>ARV prophylaxis Newborn :  Yes</item>
@@ -4505,7 +4505,7 @@ where location_attribute.attribute_type_id = ?
         <item>1065</item>
         <item>70528</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>ARV prophylaxis Newborn :  No</item>
@@ -4513,7 +4513,7 @@ where location_attribute.attribute_type_id = ?
         <item>1066</item>
         <item>70528</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Referred in puerperium</item>
@@ -4521,7 +4521,7 @@ where location_attribute.attribute_type_id = ?
         <item>1623</item>
         <item>70521</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Referred to in pathology</item>
@@ -4529,7 +4529,7 @@ where location_attribute.attribute_type_id = ?
         <item>161625</item>
         <item>70521</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Evolution mother: HTA</item>
@@ -4537,7 +4537,7 @@ where location_attribute.attribute_type_id = ?
         <item>117399</item>
         <item>71297</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Hemorrhage</item>
@@ -4545,7 +4545,7 @@ where location_attribute.attribute_type_id = ?
         <item>230</item>
         <item>71297</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Infection</item>
@@ -4553,7 +4553,7 @@ where location_attribute.attribute_type_id = ?
         <item>121262</item>
         <item>71297</item>
         <item>4</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Post op</item>
@@ -4561,7 +4561,7 @@ where location_attribute.attribute_type_id = ?
         <item>159007</item>
         <item>71297</item>
         <item>8</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Cardiomyopathie</item>
@@ -4569,7 +4569,7 @@ where location_attribute.attribute_type_id = ?
         <item>5016</item>
         <item>71297</item>
         <item>16</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Exéatée</item>
@@ -4577,7 +4577,7 @@ where location_attribute.attribute_type_id = ?
         <item>1692</item>
         <item>70521</item>
         <item>4</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Died</item>
@@ -4585,7 +4585,7 @@ where location_attribute.attribute_type_id = ?
         <item>159</item>
         <item>70521</item>
         <item>8</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Choosing a contraceptive method: Yes</item>
@@ -4593,7 +4593,7 @@ where location_attribute.attribute_type_id = ?
         <item>162332</item>
         <item>71299</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Choosing a contraceptive method: No</item>
@@ -4601,7 +4601,7 @@ where location_attribute.attribute_type_id = ?
         <item>1175</item>
         <item>71299</item>
         <item>2</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Patient view for Consultation :Gynecological</item>
@@ -4609,7 +4609,7 @@ where location_attribute.attribute_type_id = ?
         <item>160456</item>
         <item>7860</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Patient view for Consultation: Prenatale</item>
@@ -4617,7 +4617,7 @@ where location_attribute.attribute_type_id = ?
         <item>1622</item>
         <item>70018</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Patient view for Consultation: Postnatale</item>
@@ -4625,7 +4625,7 @@ where location_attribute.attribute_type_id = ?
         <item>1623</item>
         <item>71240</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Patient view for Consultation: Family Planning</item>
@@ -4633,7 +4633,7 @@ where location_attribute.attribute_type_id = ?
         <item>5483</item>
         <item>71368</item>
         <item>1</item>
-        <item/>
+        <item />
       </line>
     </data>
     <attributes />
