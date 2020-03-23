@@ -3140,7 +3140,7 @@ where location_attribute.attribute_type_id = ?
         <item>Poliomyélite [A80.9]</item>
         <item>1284</item>
         <item>5258</item>
-        <item>70327</item>
+        <item>70333</item>
         <item>N</item>
       </line>
       <line>
@@ -3876,6 +3876,13 @@ where location_attribute.attribute_type_id = ?
         <item>1628</item>
         <item>151286</item>
         <item>71003</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Cancer , précisez OBGYN</item>
+        <item>1628</item>
+        <item>151286</item>
+        <item>70806</item>
         <item>Y</item>
       </line>
       <line>
@@ -4630,8 +4637,8 @@ where location_attribute.attribute_type_id = ?
       <line>
         <item>Tabac, precisez</item>
         <item>1628</item>
-        <item>71015</item>
         <item>163731</item>
+        <item>71015</item>
         <item>Y</item>
       </line>
       <line>
@@ -4689,6 +4696,34 @@ where location_attribute.attribute_type_id = ?
         <item/>
         <item>70648</item>
         <item>N</item>
+      </line>
+      <line>
+        <item>CD4 cellules</item>
+        <item>159375</item>
+        <item/>
+        <item>71208</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>CD4 date</item>
+        <item>159376</item>
+        <item/>
+        <item>71226</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>TB CD4</item>
+        <item>5497</item>
+        <item/>
+        <item>71208</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item/>
+        <item/>
+        <item/>
+        <item/>
+        <item/>
       </line>
     </data>
     <attributes/>

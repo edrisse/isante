@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>migrate-obs-bloodtype</name>
+    <name>migrate-imagerie</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -427,10 +427,10 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2019/09/23 21:53:26.992</created_date>
+    <created_date>2020/03/23 18:14:52.253</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/09/23 21:53:26.992</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2020/03/23 18:14:52.253</modified_date>
+    <key_for_session_key/>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -497,53 +497,18 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Database join Coded</from>
-      <to>Select values</to>
+      <from>Database join</from>
+      <to>Decompose Encounter Datetime</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Database join Non-Coded</from>
-      <to>Select values 2</to>
+      <from>Decompose Encounter Datetime</from>
+      <to>Map Answers</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Fetch Last ETL Excution Date</from>
-      <to>Filter rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Person Id</from>
-      <to>Select values format</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Person Identifier</from>
-      <to>Fetch iSante Location</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch iSante Location</from>
-      <to>Fetch Person Id</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows</from>
-      <to>Database join Coded</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows</from>
-      <to>Database join Non-Coded</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows Use date</from>
-      <to>Fetch Person Identifier</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows Use date</from>
-      <to>Set field value date</to>
+      <to>Database join</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -562,38 +527,13 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Remove new line from Address</from>
+      <from>Map Answers</from>
+      <to>Replace in string</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string</from>
       <to>Save on CSV</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values</from>
-      <to>Set field value numeric</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values 2</from>
-      <to>Filter rows Use date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values format</from>
-      <to>Remove new line from Address</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Set field value date</from>
-      <to>Fetch Person Identifier</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Set field value numeric</from>
-      <to>Fetch Person Identifier</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>concepts</from>
-      <to>Join rows (cartesian product)</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -621,7 +561,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>person_id_c</name>
+        <name>siteCode</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -632,7 +572,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>concept_id_c</name>
+        <name>patientID</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -643,7 +583,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>encounter_id_c</name>
+        <name>visitDateDd</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -654,7 +594,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>order_id_c</name>
+        <name>visitDateMm</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -665,7 +605,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>obs_datetime_c</name>
+        <name>visitDateYy</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -676,7 +616,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>location_id_c</name>
+        <name>seqNum</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -687,7 +627,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>obs_group_id_c</name>
+        <name>labID</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -698,7 +638,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>accession_number_c</name>
+        <name>result</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -709,7 +649,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>value_group_id_c</name>
+        <name>result2</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -720,7 +660,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>value_boolean_c</name>
+        <name>units</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -731,7 +671,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>value_coded_c</name>
+        <name>riskComment</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -742,7 +682,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>value_drug_c</name>
+        <name>resultDateDd</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -753,7 +693,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>value_datetime_c</name>
+        <name>resultDateMm</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -764,7 +704,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>value_numeric_c</name>
+        <name>resultDateYy</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -775,7 +715,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>value_modifier_c</name>
+        <name>ordered</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -786,7 +726,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>value_text_c</name>
+        <name>resultAbnormal</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -797,7 +737,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>date_started_c</name>
+        <name>resultRemarks</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -808,7 +748,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>date_stopped_c</name>
+        <name>dbSite</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -819,7 +759,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>comments_c</name>
+        <name>result3</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -830,7 +770,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>creator_c</name>
+        <name>result4</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -841,7 +781,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>date_created_c</name>
+        <name>accessionNumber</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -852,7 +792,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>voided_c</name>
+        <name>sendingSiteName</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -863,7 +803,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>voided_by_c</name>
+        <name>sendingSiteID</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -874,7 +814,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>date_voided_c</name>
+        <name>labGroup</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -885,7 +825,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>void_reason_c</name>
+        <name>sectionOrder</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -896,8 +836,195 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>default_one</name>
-        <type>Integer</type>
+        <name>panelName</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>panelOrder</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>testNameFr</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>testNameEn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>testOrder</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>sampleType</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>loincCode</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>externalResultType</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>minValue</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>maxValue</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>validRangeMin</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>validRangeMax</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>referenceRange</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>resultTimestamp</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>resultStatus</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>supersededDate</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>labMessageStorage_id</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>labMessageStorage_seq</name>
+        <type>String</type>
         <format/>
         <currency/>
         <decimal/>
@@ -928,38 +1055,79 @@
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
+      <field>
+        <name>default_one</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>sample_type</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
     </fields>
     <data>
       <line>
-        <item>obs</item>
-        <item>person_id</item>
-        <item>concept_id</item>
-        <item>encounter_id</item>
-        <item>order_id</item>
-        <item>obs_datetime</item>
-        <item>location_id</item>
-        <item>obs_group_id</item>
-        <item>accession_number</item>
-        <item>value_group_id</item>
-        <item>value_boolean</item>
-        <item>value_coded</item>
-        <item>value_drug</item>
-        <item>value_datetime</item>
-        <item>value_numeric</item>
-        <item>value_modifier</item>
-        <item>value_text</item>
-        <item>date_started</item>
-        <item>date_stopped</item>
-        <item>comments</item>
-        <item>creator</item>
-        <item>date_created</item>
-        <item>voided</item>
-        <item>voided_by</item>
-        <item>date_voided</item>
-        <item>void_reason</item>
-        <item>1</item>
-        <item/>
+        <item>labs</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>seqNum</item>
+        <item>labID</item>
+        <item>result</item>
+        <item>result2</item>
+        <item>units</item>
+        <item>riskComment</item>
+        <item>resultDateDd</item>
+        <item>resultDateMm</item>
+        <item>resultDateYy</item>
+        <item>ordered</item>
+        <item>resultAbnormal</item>
+        <item>resultRemarks</item>
+        <item>dbSite</item>
+        <item>result3</item>
+        <item>result4</item>
+        <item>accessionNumber</item>
+        <item>sendingSiteName</item>
+        <item>sendingSiteID</item>
+        <item>labGroup</item>
+        <item>sectionOrder</item>
+        <item>panelName</item>
+        <item>panelOrder</item>
+        <item>testNameFr</item>
+        <item>testNameEn</item>
+        <item>testOrder</item>
+        <item>sampleType</item>
+        <item>loincCode</item>
+        <item>externalResultType</item>
+        <item>minValue</item>
+        <item>maxValue</item>
+        <item>validRangeMin</item>
+        <item>validRangeMax</item>
+        <item>referenceRange</item>
+        <item>resultTimestamp</item>
+        <item>resultStatus</item>
+        <item>supersededDate</item>
+        <item>labMessageStorage_id</item>
+        <item>labMessageStorage_seq</item>
+        <item>\0</item>
         <item>0</item>
+        <item>1</item>
+        <item>iSanté</item>
       </line>
     </data>
     <attributes/>
@@ -971,13 +1139,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>51</xloc>
-      <yloc>52</yloc>
+      <xloc>105</xloc>
+      <yloc>82</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Database join Coded</name>
+    <name>Database join</name>
     <type>DBJoin</type>
     <description/>
     <distribute>Y</distribute>
@@ -989,41 +1157,34 @@
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
-    <sql>select obs.person_id, obs.obs_datetime, obs.encounter_id, encounter.location_id, encounter.encounter_datetime, obs.date_created, obs.voided,
-obs.date_voided, obs.void_reason, obs.comments, obs.value_text, obs.value_numeric, obs.value_datetime  from obs
+    <sql>select obs.person_id, encounter.encounter_datetime, encounter.encounter_id, encounter.location_id, obs.value_text result_text, 137 as test_id_isante, obs.comments as remarks, 'chest' as result_3,
+	isante_location_attribute.value_reference isante_location_id, dbsite_location_attribute.value_reference dbSiteValue, 
+	patient_identifier.identifier patient_identifier, seqnum as seqnum_value from obs
 join encounter on encounter.encounter_id = obs.encounter_id
+join location_attribute isante_location_attribute on isante_location_attribute.location_id = encounter.location_id and isante_location_attribute.attribute_type_id = ?
+join location_attribute dbsite_location_attribute on dbsite_location_attribute.location_id = encounter.location_id and dbsite_location_attribute.attribute_type_id = 7
+join patient_identifier on patient_identifier.patient_id = obs.person_id and patient_identifier.identifier_type = ?
+join etl_encounter_seqnum on etl_encounter_seqnum.encounter_id = encounter.encounter_id
 join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
-where obs.concept_id = ?
-  and obs.value_coded = ?
-  and obs.voided = false
-  and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171','17536ba6-dd7c-4f58-8014-08c7cb798ac7', 'd95b3540-a39f-4d1e-a301-8ee0e03d5eab')
+where obs.concept_id = 309
+  and encounter_type.uuid = 'a4cab59f-f0ce-46c3-bd76-416db36ec719'
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
    or encounter.date_voided >= ?
    or encounter.date_created >= ?
    or encounter.date_changed >= ?
-   or encounter.date_voided >= ?
-   or obs.date_voided >= ?
-   or obs.date_created >= ?)
+   or encounter.date_voided >= ?)
 </sql>
     <outer_join>N</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
       <field>
-        <name>isante_plus_question</name>
-        <type>Integer</type>
+        <name>isante_location_location_attribute_id</name>
+        <type>Number</type>
       </field>
       <field>
-        <name>isante_plus_answer</name>
-        <type>Integer</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
+        <name>isante_id_identifier_type_id</name>
+        <type>Number</type>
       </field>
       <field>
         <name>last_execution</name>
@@ -1059,14 +1220,14 @@ where obs.concept_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>723</xloc>
-      <yloc>68</yloc>
+      <xloc>713</xloc>
+      <yloc>178</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Database join Non-Coded</name>
-    <type>DBJoin</type>
+    <name>Decompose Encounter Datetime</name>
+    <type>Calculator</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1075,64 +1236,52 @@ where obs.concept_id = ?
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>0</rowlimit>
-    <sql>select obs.person_id, obs.obs_datetime, obs.encounter_id, encounter.location_id, encounter.encounter_datetime, obs.date_created, obs.voided,
-obs.date_voided, obs.void_reason, obs.comments, obs.value_text, obs.value_numeric, obs.value_datetime  from obs
-join encounter on encounter.encounter_id = obs.encounter_id
-join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
-where obs.concept_id = ?
-  and obs.voided = false
-  and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171','17536ba6-dd7c-4f58-8014-08c7cb798ac7', 'd95b3540-a39f-4d1e-a301-8ee0e03d5eab')
-  and (encounter.date_created >= ?
-   or encounter.date_changed >= ?
-   or encounter.date_voided >= ?
-   or encounter.date_created >= ?
-   or encounter.date_changed >= ?
-   or encounter.date_voided >= ?
-   or obs.date_voided >= ?
-   or obs.date_created >= ?)
-</sql>
-    <outer_join>N</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>isante_plus_question</name>
-        <type>Integer</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-    </parameter>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>visit_day</field_name>
+      <calc_type>DAY_OF_MONTH</calc_type>
+      <field_a>encounter_datetime</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <calculation>
+      <field_name>visit_month</field_name>
+      <calc_type>MONTH_OF_DATE</calc_type>
+      <field_a>encounter_datetime</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <calculation>
+      <field_name>visit_year</field_name>
+      <calc_type>YEAR_OF_DATE</calc_type>
+      <field_a>encounter_datetime</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -1142,8 +1291,8 @@ where obs.concept_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>723</xloc>
-      <yloc>196</yloc>
+      <xloc>985</xloc>
+      <yloc>178</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1176,223 +1325,8 @@ order by date desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>515</xloc>
-      <yloc>100</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Person Id</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select substring(?, length(?) + 1) parsed_person_id</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>patient_identifier</name>
-        <type>Number</type>
-      </field>
-      <field>
-        <name>isante_location_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1331</xloc>
-      <yloc>244</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Person Identifier</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select patient_identifier.identifier patient_identifier from patient_identifier
-where patient_identifier.identifier_type = ?
-  and patient_identifier.voided = false
-  and patient_identifier.patient_id = ?
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>isante_id_identifier_type_id</name>
-        <type>Number</type>
-      </field>
-      <field>
-        <name>person_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1187</xloc>
-      <yloc>100</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch iSante Location</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select location_attribute.value_reference isante_location_id from location_attribute 
-where location_attribute.attribute_type_id = ?
-  and location_attribute.location_id = ?
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>isante_location_location_attribute_id</name>
-        <type>Number</type>
-      </field>
-      <field>
-        <name>location_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1331</xloc>
-      <yloc>100</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter rows</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Database join Coded</send_true_to>
-    <send_false_to>Database join Non-Coded</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>isante_answer</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>String</type>
-          <text>N</text>
-          <length>-1</length>
-          <precision>-1</precision>
-          <isnull>N</isnull>
-          <mask/>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>611</xloc>
-      <yloc>148</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter rows Use date</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Set field value date</send_true_to>
-    <send_false_to>Fetch Person Identifier</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>use_date</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>String</type>
-          <text>N</text>
-          <length>-1</length>
-          <precision>-1</precision>
-          <isnull>N</isnull>
-          <mask/>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1011</xloc>
-      <yloc>196</yloc>
+      <xloc>537</xloc>
+      <yloc>178</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1428,8 +1362,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>307</xloc>
-      <yloc>100</yloc>
+      <xloc>313</xloc>
+      <yloc>178</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1460,8 +1394,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>51</xloc>
-      <yloc>212</yloc>
+      <xloc>105</xloc>
+      <yloc>258</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1492,14 +1426,14 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>99</xloc>
-      <yloc>292</yloc>
+      <xloc>105</xloc>
+      <yloc>322</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Remove new line from Address</name>
-    <type>StringOperations</type>
+    <name>Map Answers</name>
+    <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1508,19 +1442,17 @@ where location_attribute.attribute_type_id = ?
       <method>none</method>
       <schema_name/>
     </partitioning>
+    <field_to_use>result_text</field_to_use>
+    <target_field>result_text_mapped</target_field>
+    <non_match_default/>
     <fields>
       <field>
-        <in_stream_name>value_text</in_stream_name>
-        <out_stream_name>value_text_sanitazed</out_stream_name>
-        <trim_type>none</trim_type>
-        <lower_upper>none</lower_upper>
-        <padding_type>none</padding_type>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>no</init_cap>
-        <mask_xml>none</mask_xml>
-        <digits>none</digits>
-        <remove_special_characters>crlf</remove_special_characters>
+        <source_value>1115</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>1116</source_value>
+        <target_value>2</target_value>
       </field>
     </fields>
     <attributes/>
@@ -1532,8 +1464,71 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1075</xloc>
-      <yloc>404</yloc>
+      <xloc>1177</xloc>
+      <yloc>178</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Replace in string</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>visit_day</in_stream_name>
+        <out_stream_name>visit_day_dd</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>visit_month</in_stream_name>
+        <out_stream_name>visit_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>visit_year</in_stream_name>
+        <out_stream_name>visit_year_yy</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\d\d(\d\d)</replace_string>
+        <replace_by_string>$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1401</xloc>
+      <yloc>178</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1592,7 +1587,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>person_id_c</name>
+        <name>patientID</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1616,79 +1611,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>concept_id_c</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>isante_question</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>encounter_id_c</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>encounter_id</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>obs_datetime_c</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>obs_datetime</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>location_id_c</name>
+        <name>siteCode</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1712,7 +1635,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>value_datetime_c</name>
+        <name>visitDateDd</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1724,7 +1647,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>value_datetime</name>
+        <name>visit_day_dd</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1736,7 +1659,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>value_coded_c</name>
+        <name>visitDateMm</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1748,7 +1671,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>value_numeric</name>
+        <name>visit_month_mm</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1760,7 +1683,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>value_text_c</name>
+        <name>visitDateYy</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1772,7 +1695,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>value_text_sanitazed</name>
+        <name>visit_year_yy</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1784,7 +1707,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>comments_c</name>
+        <name>labID</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1796,7 +1719,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>comments</name>
+        <name>test_id_isante</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1808,7 +1731,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>creator_c</name>
+        <name>result</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1820,7 +1743,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>default_one</name>
+        <name>result_text_mapped</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1832,7 +1755,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>date_created_c</name>
+        <name>result3</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1844,7 +1767,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>date_created</name>
+        <name>result_3</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1856,7 +1779,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>voided_c</name>
+        <name>units</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1868,7 +1791,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>voided</name>
+        <name>default_na</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1880,7 +1803,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>date_voided_c</name>
+        <name>resultDateDd</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1892,7 +1815,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>date_voided</name>
+        <name>default_na</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1904,7 +1827,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>void_reason_c</name>
+        <name>resultDateMm</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1916,7 +1839,751 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>void_reason</name>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>resultDateYy</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>seqNum</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>seqnum_value</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ordered</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_zero</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>resultAbnormal</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>resultRemarks</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>remarks</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>dbSite</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>dbSiteValue</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>result2</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>result4</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>accessionNumber</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>sendingSiteName</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>sendingSiteID</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>labGroup</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>sectionOrder</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>panelName</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>panelOrder</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>testNameFr</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>testNameEn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>testOrder</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>sampleType</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>sample_type</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>loincCode</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>externalResultType</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>minValue</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>maxValue</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>validRangeMin</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>validRangeMax</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>referenceRange</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>resultTimestamp</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>resultStatus</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_zero</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>supersededDate</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>labMessageStorage_id</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>labMessageStorage_seq</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>default_na</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1937,464 +2604,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>787</xloc>
-      <yloc>404</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <select_unspecified>N</select_unspecified>
-      <meta>
-        <name>value_numeric</name>
-        <rename>value_numeric</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>0</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>883</xloc>
-      <yloc>68</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 2</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <select_unspecified>N</select_unspecified>
-      <meta>
-        <name>value_numeric</name>
-        <rename>value_numeric</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>0</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>883</xloc>
-      <yloc>196</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values format</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <select_unspecified>N</select_unspecified>
-      <meta>
-        <name>voided</name>
-        <rename>voided</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>obs_datetime</name>
-        <rename>obs_datetime</rename>
-        <type>Date</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>yyyy-MM-dd HH:mm:ss</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>date_voided</name>
-        <rename>date_voided</rename>
-        <type>Date</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>yyyy-MM-dd HH:mm:ss</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>date_created</name>
-        <rename>date_created</rename>
-        <type>Date</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>yyyy-MM-dd HH:mm:ss</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>value_datetime</name>
-        <rename>value_datetime</rename>
-        <type>Date</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>yyyy-MM-dd HH:mm:ss</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1331</xloc>
-      <yloc>404</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Set field value date</name>
-    <type>SetValueField</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>value_datetime</name>
-        <replaceby>obs_datetime</replaceby>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1043</xloc>
-      <yloc>132</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Set field value numeric</name>
-    <type>SetValueField</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>value_numeric</name>
-        <replaceby>isante_answer</replaceby>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1027</xloc>
-      <yloc>68</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>concepts</name>
-    <type>DataGrid</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>concept_name</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>isante_plus_question</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>isante_plus_answer</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>isante_question</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>isante_answer</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>use_date</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <data>
-      <line>
-        <item>A-</item>
-        <item>300</item>
-        <item>690</item>
-        <item>7861</item>
-        <item>1</item>
-        <item/>
-      </line>
-      <line>
-        <item>A+</item>
-        <item>300</item>
-        <item>692</item>
-        <item>7861</item>
-        <item>2</item>
-        <item/>
-      </line>
-      <line>
-        <item>B-</item>
-        <item>300</item>
-        <item>694</item>
-        <item>7861</item>
-        <item>4</item>
-        <item/>
-      </line>
-      <line>
-        <item>B+</item>
-        <item>300</item>
-        <item>696</item>
-        <item>7861</item>
-        <item>8</item>
-        <item/>
-      </line>
-      <line>
-        <item>O+</item>
-        <item>300</item>
-        <item>699</item>
-        <item>7861</item>
-        <item>16</item>
-        <item/>
-      </line>
-      <line>
-        <item>0-</item>
-        <item>300</item>
-        <item>701</item>
-        <item>7861</item>
-        <item>32</item>
-        <item/>
-      </line>
-      <line>
-        <item>AB+</item>
-        <item>300</item>
-        <item>1230</item>
-        <item>7861</item>
-        <item>64</item>
-        <item/>
-      </line>
-      <line>
-        <item>AB-</item>
-        <item>300</item>
-        <item>1231</item>
-        <item>7861</item>
-        <item>128</item>
-        <item/>
-      </line>
-      <line>
-        <item>Inconnu </item>
-        <item>300</item>
-        <item>1107</item>
-        <item>7861</item>
-        <item>256</item>
-        <item/>
-      </line>
-      <line>
-        <item> Antécédents familiaux (status): Aucune</item>
-        <item>163607</item>
-        <item>163729</item>
-        <item>71096</item>
-        <item>1</item>
-        <item/>
-      </line>
-      <line>
-        <item> Antécédents familiaux (status): Inconnu</item>
-        <item>163607</item>
-        <item>163728</item>
-        <item>71096</item>
-        <item>2</item>
-        <item/>
-      </line>
-      <line>
-        <item/>
-        <item/>
-        <item/>
-        <item/>
-        <item/>
-        <item/>
-      </line>
-    </data>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>51</xloc>
-      <yloc>132</yloc>
+      <xloc>937</xloc>
+      <yloc>370</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
