@@ -1536,7 +1536,7 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1152</xloc>
+      <xloc>1056</xloc>
       <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1941,7 +1941,7 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
+      <xloc>768</xloc>
       <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2828,14 +2828,6 @@ where location_attribute.attribute_type_id = ?
         <item/>
       </line>
       <line>
-        <item>TB CD4</item>
-        <item>5497</item>
-        <item/>
-        <item>71208</item>
-        <item/>
-        <item/>
-      </line>
-      <line>
         <item>TB CD4: Date</item>
         <item>5497</item>
         <item/>
@@ -2953,22 +2945,6 @@ where location_attribute.attribute_type_id = ?
         <item/>
         <item>70432</item>
         <item/>
-        <item/>
-      </line>
-      <line>
-        <item> Antécédents familiaux (status): Aucune</item>
-        <item>163607</item>
-        <item>163729</item>
-        <item>71096</item>
-        <item>1</item>
-        <item/>
-      </line>
-      <line>
-        <item> Antécédents familiaux (status): Inconnu</item>
-        <item>163607</item>
-        <item>163728</item>
-        <item>71096</item>
-        <item>2</item>
         <item/>
       </line>
       <line>
@@ -3273,22 +3249,6 @@ where location_attribute.attribute_type_id = ?
         <item>1067</item>
         <item>70757</item>
         <item>1</item>
-        <item/>
-      </line>
-      <line>
-        <item>CD4 cellules</item>
-        <item>159375</item>
-        <item/>
-        <item>71208</item>
-        <item/>
-        <item/>
-      </line>
-      <line>
-        <item>CD4 date</item>
-        <item>159376</item>
-        <item/>
-        <item>71226</item>
-        <item/>
         <item/>
       </line>
       <line>
@@ -4659,6 +4619,46 @@ where location_attribute.attribute_type_id = ?
         <item/>
         <item>Y</item>
       </line>
+      <line>
+        <item>Primaire</item>
+        <item>1712</item>
+        <item>1713</item>
+        <item>71241</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Secondaire</item>
+        <item>1712</item>
+        <item>1714</item>
+        <item>71242</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Universitaire</item>
+        <item>1712</item>
+        <item>159785</item>
+        <item>71243</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Alphabétisée</item>
+        <item>159400</item>
+        <item>1065</item>
+        <item>71244</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Non Alphabétisée</item>
+        <item>163607</item>
+        <item>163729</item>
+        <item>71245</item>
+        <item>1</item>
+        <item/>
+      </line>
     </data>
     <attributes/>
     <cluster_schema/>
@@ -4670,7 +4670,7 @@ where location_attribute.attribute_type_id = ?
     </remotesteps>
     <GUI>
       <xloc>32</xloc>
-      <yloc>96</yloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
