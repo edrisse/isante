@@ -521,11 +521,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch ARV Ever</from>
-      <to>Fetch Previously Received ARV</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Previously Received ARV</from>
       <to>Fetch Knows Medication Taken</to>
       <enabled>Y</enabled>
@@ -588,6 +583,16 @@
     <hop>
       <from>Replace in string</from>
       <to>Save on CSV</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch ARV Ever</from>
+      <to>Map ARV Ever </to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map ARV Ever </from>
+      <to>Fetch Previously Received ARV</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -917,7 +922,7 @@ where obs.concept_id = 160533
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1008</xloc>
+      <xloc>896</xloc>
       <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3105,7 +3110,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>arv_ever</name>
+        <name>arvEver_mapped </name>
         <type>None</type>
         <format />
         <currency />
@@ -3392,6 +3397,44 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>416</xloc>
       <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map ARV Ever </name>
+    <type>ValueMapper</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <field_to_use>arvEver</field_to_use>
+    <target_field>arvEver_mapped </target_field>
+    <non_match_default />
+    <fields>
+      <field>
+        <source_value>1</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>0</source_value>
+        <target_value>1</target_value>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1056</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
