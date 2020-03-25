@@ -985,8 +985,8 @@ join obs on encounter.encounter_id = obs.encounter_id
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
-      <yloc>16</yloc>
+      <xloc>912</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1340,8 +1340,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>599</xloc>
-      <yloc>109</yloc>
+      <xloc>592</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1586,7 +1586,7 @@ where location_attribute.attribute_type_id = ?
         <item>text</item>
       </line>
       <line>
-        <item> 5392c31c-0432-4210-99e1-7698d4470eec</item>
+        <item>5392c31c-0432-4210-99e1-7698d4470eec</item>
         <item />
         <item>37</item>
         <item />
@@ -1697,20 +1697,6 @@ where location_attribute.attribute_type_id = ?
         <item>2</item>
         <item />
       </line>
-      <line>
-        <item />
-        <item />
-        <item />
-        <item />
-        <item />
-      </line>
-      <line>
-        <item />
-        <item />
-        <item />
-        <item />
-        <item />
-      </line>
     </data>
     <attributes />
     <cluster_schema />
@@ -1784,8 +1770,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>935</xloc>
-      <yloc>429</yloc>
+      <xloc>928</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

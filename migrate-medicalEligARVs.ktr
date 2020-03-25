@@ -2,21 +2,21 @@
 <transformation>
   <info>
     <name>migrate-medicalEligARVs</name>
-    <description/>
-    <extended_description/>
-    <trans_version/>
+    <description />
+    <extended_description />
+    <trans_version />
     <trans_type>Normal</trans_type>
     <directory>/</directory>
     <parameters>
     </parameters>
     <log>
       <trans-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <size_limit_lines/>
-        <interval/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <size_limit_lines />
+        <interval />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -41,37 +41,37 @@
           <id>LINES_READ</id>
           <enabled>Y</enabled>
           <name>LINES_READ</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_WRITTEN</id>
           <enabled>Y</enabled>
           <name>LINES_WRITTEN</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_UPDATED</id>
           <enabled>Y</enabled>
           <name>LINES_UPDATED</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_INPUT</id>
           <enabled>Y</enabled>
           <name>LINES_INPUT</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_OUTPUT</id>
           <enabled>Y</enabled>
           <name>LINES_OUTPUT</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_REJECTED</id>
           <enabled>Y</enabled>
           <name>LINES_REJECTED</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>ERRORS</id>
@@ -125,11 +125,11 @@
         </field>
       </trans-log-table>
       <perf-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <interval/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <interval />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -207,10 +207,10 @@
         </field>
       </perf-log-table>
       <channel-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -273,10 +273,10 @@
         </field>
       </channel-log-table>
       <step-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -349,10 +349,10 @@
         </field>
       </step-log-table>
       <metrics-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -401,9 +401,9 @@
       </metrics-log-table>
     </log>
     <maxdate>
-      <connection/>
-      <table/>
-      <field/>
+      <connection />
+      <table />
+      <field />
       <offset>0.0</offset>
       <maxdiff>0.0</maxdiff>
     </maxdate>
@@ -414,7 +414,7 @@
     <feedback_shown>Y</feedback_shown>
     <feedback_size>50000</feedback_size>
     <using_thread_priorities>Y</using_thread_priorities>
-    <shared_objects_file/>
+    <shared_objects_file />
     <capture_step_performance>N</capture_step_performance>
     <step_performance_capturing_delay>1000</step_performance_capturing_delay>
     <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
@@ -444,9 +444,9 @@
     <port>${ISANTE-PLUS-DB-PORT}</port>
     <username>${ISANTE-PLUS-DB-USER}</username>
     <password>${ISANTE-PLUS-DB-PASSWORD}</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
     <attributes>
       <attribute>
         <code>EXTRA_OPTION_MYSQL.zeroDateTimeBehavior</code>
@@ -704,62 +704,62 @@
   <step>
     <name>Decompose Encounter Date de l'expostion </name>
     <type>Calculator</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <failIfNoFile>Y</failIfNoFile>
     <calculation>
       <field_name>exp_from_dt</field_name>
       <calc_type>DAY_OF_MONTH</calc_type>
       <field_a>exp_from</field_a>
-      <field_b/>
-      <field_c/>
+      <field_b />
+      <field_c />
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask/>
-      <decimal_symbol/>
-      <grouping_symbol/>
-      <currency_symbol/>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
     </calculation>
     <calculation>
       <field_name>exp_from_mm</field_name>
       <calc_type>MONTH_OF_DATE</calc_type>
       <field_a>exp_from</field_a>
-      <field_b/>
-      <field_c/>
+      <field_b />
+      <field_c />
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask/>
-      <decimal_symbol/>
-      <grouping_symbol/>
-      <currency_symbol/>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
     </calculation>
     <calculation>
       <field_name>exp_from_yy</field_name>
       <calc_type>YEAR_OF_DATE</calc_type>
       <field_a>exp_from</field_a>
-      <field_b/>
-      <field_c/>
+      <field_b />
+      <field_c />
       <value_type>None</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask/>
-      <decimal_symbol/>
-      <grouping_symbol/>
-      <currency_symbol/>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
     </calculation>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -775,62 +775,62 @@
   <step>
     <name>Decompose Encounter Datetime</name>
     <type>Calculator</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <failIfNoFile>Y</failIfNoFile>
     <calculation>
       <field_name>visit_day</field_name>
       <calc_type>DAY_OF_MONTH</calc_type>
       <field_a>encounter_datetime</field_a>
-      <field_b/>
-      <field_c/>
+      <field_b />
+      <field_c />
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask/>
-      <decimal_symbol/>
-      <grouping_symbol/>
-      <currency_symbol/>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
     </calculation>
     <calculation>
       <field_name>visit_month</field_name>
       <calc_type>MONTH_OF_DATE</calc_type>
       <field_a>encounter_datetime</field_a>
-      <field_b/>
-      <field_c/>
+      <field_b />
+      <field_c />
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask/>
-      <decimal_symbol/>
-      <grouping_symbol/>
-      <currency_symbol/>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
     </calculation>
     <calculation>
       <field_name>visit_year</field_name>
       <calc_type>YEAR_OF_DATE</calc_type>
       <field_a>encounter_datetime</field_a>
-      <field_b/>
-      <field_c/>
+      <field_b />
+      <field_c />
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
-      <conversion_mask/>
-      <decimal_symbol/>
-      <grouping_symbol/>
-      <currency_symbol/>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
     </calculation>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -846,13 +846,13 @@
   <step>
     <name>Fetch  	Enfant avec âge > 5 ans</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -879,8 +879,8 @@ where obs.concept_id = 162225
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -896,13 +896,13 @@ where obs.concept_id = 162225
   <step>
     <name>Fetch  	OMS Stade III</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -929,8 +929,8 @@ where obs.concept_id = 162225
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -946,13 +946,13 @@ where obs.concept_id = 162225
   <step>
     <name>Fetch  	OMS Stade IV</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -979,8 +979,8 @@ where obs.concept_id = 162225
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -996,13 +996,13 @@ where obs.concept_id = 162225
   <step>
     <name>Fetch  	Pourcentage de cd4</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1029,8 +1029,8 @@ where obs.concept_id = 162225
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1046,13 +1046,13 @@ where obs.concept_id = 162225
   <step>
     <name>Fetch  ARV trithérapie antérieure</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1079,8 +1079,8 @@ where obs.concept_id = 162225
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1096,13 +1096,13 @@ where obs.concept_id = 162225
   <step>
     <name>Fetch  Date de l'expostion</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1128,8 +1128,8 @@ where obs.concept_id = 162601
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1145,13 +1145,13 @@ where obs.concept_id = 162601
   <step>
     <name>Fetch  Prophylaxie post-exposition (PEP)</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1178,8 +1178,8 @@ where obs.concept_id = 162225
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1195,13 +1195,13 @@ where obs.concept_id = 162225
   <step>
     <name>Fetch  Éligibilité médicale établie</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1228,8 +1228,8 @@ where obs.concept_id = 162225
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1245,13 +1245,13 @@ where obs.concept_id = 162225
   <step>
     <name>Fetch CD4 inférieur au seuil (500)</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1278,8 +1278,8 @@ where obs.concept_id = 162225
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1295,13 +1295,13 @@ where obs.concept_id = 162225
   <step>
     <name>Fetch Coinfection HBV/HIV </name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1328,8 +1328,8 @@ where obs.concept_id = 162225
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1345,13 +1345,13 @@ where obs.concept_id = 162225
   <step>
     <name>Fetch Coinfection TB/HIV</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1378,8 +1378,8 @@ where obs.concept_id = 162225
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1395,13 +1395,13 @@ where obs.concept_id = 162225
   <step>
     <name>Fetch Couple sérodiscordant </name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1428,8 +1428,8 @@ where obs.concept_id = 162225
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1445,13 +1445,13 @@ where obs.concept_id = 162225
   <step>
     <name>Fetch Encounters</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
@@ -1493,8 +1493,8 @@ where encounter_type.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7', '204ad066-
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1510,13 +1510,13 @@ where encounter_type.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7', '204ad066-
   <step>
     <name>Fetch Femme allaitante</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1543,8 +1543,8 @@ where obs.concept_id = 162225
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1560,13 +1560,13 @@ where obs.concept_id = 162225
   <step>
     <name>Fetch Femme enceinte (Grossesse)</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1593,8 +1593,8 @@ where obs.concept_id = 162225
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1610,13 +1610,13 @@ where obs.concept_id = 162225
   <step>
     <name>Fetch Last ETL Excution Date</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1627,8 +1627,8 @@ order by date desc</sql>
     <replace_vars>N</replace_vars>
     <parameter>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1644,13 +1644,13 @@ order by date desc</sql>
   <step>
     <name>Fetch Néphropathie à VIH</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1677,8 +1677,8 @@ where obs.concept_id = 162225
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1694,13 +1694,13 @@ where obs.concept_id = 162225
   <step>
     <name>Fetch OMS Stade III+CD4 inférieur au seuil(500)</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1727,8 +1727,8 @@ where obs.concept_id = 162225
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1744,13 +1744,13 @@ where obs.concept_id = 162225
   <step>
     <name>Fetch OMS Stade IV</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1777,8 +1777,8 @@ where obs.concept_id = 162225
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1794,13 +1794,13 @@ where obs.concept_id = 162225
   <step>
     <name>Fetch PTME</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1827,8 +1827,8 @@ where obs.concept_id = 162225
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1844,13 +1844,13 @@ where obs.concept_id = 162225
   <step>
     <name>Fetch Patient avec âge > 50 ans</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1877,8 +1877,8 @@ where obs.concept_id = 162225
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1894,13 +1894,13 @@ where obs.concept_id = 162225
   <step>
     <name>Fetch Person Identifier</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1921,8 +1921,8 @@ where patient_identifier.identifier_type = ?
         <type>Number</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1938,13 +1938,13 @@ where patient_identifier.identifier_type = ?
   <step>
     <name>Fetch Protocole Test et Traitement</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1971,8 +1971,8 @@ where obs.concept_id = 162225
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1988,13 +1988,13 @@ where obs.concept_id = 162225
   <step>
     <name>Fetch Seqnum</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2007,8 +2007,8 @@ where obs.concept_id = 162225
         <type>Number</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -2024,13 +2024,13 @@ where obs.concept_id = 162225
   <step>
     <name>Fetch Stade OMS actuel</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2056,8 +2056,8 @@ where obs.concept_id = 5356
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -2073,13 +2073,13 @@ where obs.concept_id = 5356
   <step>
     <name>Fetch dbSite</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2095,8 +2095,8 @@ where location_attribute.attribute_type_id = 7
         <type>Number</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -2112,13 +2112,13 @@ where location_attribute.attribute_type_id = 7
   <step>
     <name>Fetch iSante Location</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2138,8 +2138,8 @@ where location_attribute.attribute_type_id = ?
         <type>Number</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -2155,13 +2155,13 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Fetch Éligibilité médicale aux ARV</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -2187,8 +2187,8 @@ where obs.concept_id = 162703
         <type>Date</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -2204,22 +2204,22 @@ where obs.concept_id = 162703
   <step>
     <name>Filter rows</name>
     <type>FilterRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <send_true_to>Save Records Processed</send_true_to>
-    <send_false_to/>
+    <send_false_to />
     <compare>
       <condition>
         <negated>N</negated>
         <leftvalue>last_row</leftvalue>
         <function>=</function>
-        <rightvalue/>
+        <rightvalue />
         <value>
           <name>constant</name>
           <type>Boolean</type>
@@ -2227,12 +2227,12 @@ where obs.concept_id = 162703
           <length>-1</length>
           <precision>-1</precision>
           <isnull>N</isnull>
-          <mask/>
+          <mask />
         </value>
       </condition>
     </compare>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -2248,17 +2248,17 @@ where obs.concept_id = 162703
   <step>
     <name>Group by</name>
     <type>GroupBy</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <all_rows>Y</all_rows>
     <ignore_aggregate>N</ignore_aggregate>
-    <field_ignore/>
+    <field_ignore />
     <directory>%%java.io.tmpdir%%</directory>
     <prefix>grp</prefix>
     <add_linenr>Y</add_linenr>
@@ -2268,8 +2268,8 @@ where obs.concept_id = 162703
       </group>
     <fields>
       </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -2285,17 +2285,17 @@ where obs.concept_id = 162703
   <step>
     <name>Identify last row in a stream</name>
     <type>DetectLastRow</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <resultfieldname>last_row</resultfieldname>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -2311,22 +2311,22 @@ where obs.concept_id = 162703
   <step>
     <name>Input grid</name>
     <type>DataGrid</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <field>
         <name>table_name</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2334,10 +2334,10 @@ where obs.concept_id = 162703
       <field>
         <name>siteCode</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2345,10 +2345,10 @@ where obs.concept_id = 162703
       <field>
         <name>patientID</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2356,10 +2356,10 @@ where obs.concept_id = 162703
       <field>
         <name>visitDateDd</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2367,10 +2367,10 @@ where obs.concept_id = 162703
       <field>
         <name>visitDateMm</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2378,10 +2378,10 @@ where obs.concept_id = 162703
       <field>
         <name>visitDateYy</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2389,10 +2389,10 @@ where obs.concept_id = 162703
       <field>
         <name>seqNum</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2400,10 +2400,10 @@ where obs.concept_id = 162703
       <field>
         <name>currentHivStage</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2411,10 +2411,10 @@ where obs.concept_id = 162703
       <field>
         <name>CD4</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2422,10 +2422,10 @@ where obs.concept_id = 162703
       <field>
         <name>cellsPmm</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2433,10 +2433,10 @@ where obs.concept_id = 162703
       <field>
         <name>CD4DateMM</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2444,10 +2444,10 @@ where obs.concept_id = 162703
       <field>
         <name>CD4DateYY</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2455,10 +2455,10 @@ where obs.concept_id = 162703
       <field>
         <name>TLC</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2466,10 +2466,10 @@ where obs.concept_id = 162703
       <field>
         <name>TLCDateMM</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2477,10 +2477,10 @@ where obs.concept_id = 162703
       <field>
         <name>TLCDateYY</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2488,10 +2488,10 @@ where obs.concept_id = 162703
       <field>
         <name>ViralLoad</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2499,10 +2499,10 @@ where obs.concept_id = 162703
       <field>
         <name>ViralLoadMM</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2510,10 +2510,10 @@ where obs.concept_id = 162703
       <field>
         <name>ViralLoadYY</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2521,10 +2521,10 @@ where obs.concept_id = 162703
       <field>
         <name>medElig</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2532,10 +2532,10 @@ where obs.concept_id = 162703
       <field>
         <name>cd4LT200</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2543,10 +2543,10 @@ where obs.concept_id = 162703
       <field>
         <name>WHOIII</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2554,10 +2554,10 @@ where obs.concept_id = 162703
       <field>
         <name>PMTCT</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2565,10 +2565,10 @@ where obs.concept_id = 162703
       <field>
         <name>tlcLT1200</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2576,10 +2576,10 @@ where obs.concept_id = 162703
       <field>
         <name>WHOIV</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2587,10 +2587,10 @@ where obs.concept_id = 162703
       <field>
         <name>medEligHAART</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2598,10 +2598,10 @@ where obs.concept_id = 162703
       <field>
         <name>ChildLT5ans</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2609,10 +2609,10 @@ where obs.concept_id = 162703
       <field>
         <name>coinfectionTbHiv</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2620,10 +2620,10 @@ where obs.concept_id = 162703
       <field>
         <name>coinfectionHbvHiv</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2631,10 +2631,10 @@ where obs.concept_id = 162703
       <field>
         <name>coupleSerodiscordant</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2642,10 +2642,10 @@ where obs.concept_id = 162703
       <field>
         <name>pregnantWomen</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2653,10 +2653,10 @@ where obs.concept_id = 162703
       <field>
         <name>breastfeedingWomen</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2664,10 +2664,10 @@ where obs.concept_id = 162703
       <field>
         <name>patientGt50ans</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2675,10 +2675,10 @@ where obs.concept_id = 162703
       <field>
         <name>nephropathieVih</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2686,10 +2686,10 @@ where obs.concept_id = 162703
       <field>
         <name>protocoleTestTraitement</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2697,10 +2697,10 @@ where obs.concept_id = 162703
       <field>
         <name>CD4DateDD</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2708,10 +2708,10 @@ where obs.concept_id = 162703
       <field>
         <name>TLCDateDD</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2719,10 +2719,10 @@ where obs.concept_id = 162703
       <field>
         <name>ViralLoadDD</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2730,10 +2730,10 @@ where obs.concept_id = 162703
       <field>
         <name>commAuthEnroll</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2741,10 +2741,10 @@ where obs.concept_id = 162703
       <field>
         <name>commAuthEnrollDD</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2752,10 +2752,10 @@ where obs.concept_id = 162703
       <field>
         <name>commAuthEnrollMM</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2763,10 +2763,10 @@ where obs.concept_id = 162703
       <field>
         <name>commAuthEnrollYY</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2774,10 +2774,10 @@ where obs.concept_id = 162703
       <field>
         <name>commDelayEnroll</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2785,10 +2785,10 @@ where obs.concept_id = 162703
       <field>
         <name>commDelayEnrollDD</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2796,10 +2796,10 @@ where obs.concept_id = 162703
       <field>
         <name>commDelayEnrollMM</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2807,10 +2807,10 @@ where obs.concept_id = 162703
       <field>
         <name>commDelayEnrollYY</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2818,10 +2818,10 @@ where obs.concept_id = 162703
       <field>
         <name>dbSite</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2829,10 +2829,10 @@ where obs.concept_id = 162703
       <field>
         <name>formerARVtherapy</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2840,10 +2840,10 @@ where obs.concept_id = 162703
       <field>
         <name>PEP</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2851,10 +2851,10 @@ where obs.concept_id = 162703
       <field>
         <name>expFromDt</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2862,10 +2862,10 @@ where obs.concept_id = 162703
       <field>
         <name>expFromMm</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2873,10 +2873,10 @@ where obs.concept_id = 162703
       <field>
         <name>expFromYy</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2884,10 +2884,10 @@ where obs.concept_id = 162703
       <field>
         <name>pedMedEligCd4Cnt</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2895,10 +2895,10 @@ where obs.concept_id = 162703
       <field>
         <name>pedMedEligWho3</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2906,10 +2906,10 @@ where obs.concept_id = 162703
       <field>
         <name>pedMedEligWho4</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2917,10 +2917,10 @@ where obs.concept_id = 162703
       <field>
         <name>pedMedEligTlc</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2928,10 +2928,10 @@ where obs.concept_id = 162703
       <field>
         <name>pedMedEligPmtct</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2939,10 +2939,10 @@ where obs.concept_id = 162703
       <field>
         <name>pedMedEligFormerTherapy</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2950,10 +2950,10 @@ where obs.concept_id = 162703
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2961,10 +2961,10 @@ where obs.concept_id = 162703
       <field>
         <name>default_zero</name>
         <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2972,10 +2972,10 @@ where obs.concept_id = 162703
       <field>
         <name>default_one</name>
         <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -3040,13 +3040,13 @@ where obs.concept_id = 162703
         <item>pedMedEligTlc</item>
         <item>pedMedEligPmtct</item>
         <item>pedMedEligFormerTherapy</item>
-        <item/>
+        <item />
         <item>0</item>
         <item>1</item>
       </line>
     </data>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -3062,28 +3062,28 @@ where obs.concept_id = 162703
   <step>
     <name>Join rows (cartesian product)</name>
     <type>JoinRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <directory>%%java.io.tmpdir%%</directory>
     <prefix>out</prefix>
     <cache_size>500</cache_size>
-    <main/>
+    <main />
     <compare>
       <condition>
         <negated>N</negated>
-        <leftvalue/>
+        <leftvalue />
         <function>=</function>
-        <rightvalue/>
+        <rightvalue />
       </condition>
     </compare>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -3099,23 +3099,23 @@ where obs.concept_id = 162703
   <step>
     <name>Load iSante ID Identifier Type</name>
     <type>TableInput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <sql>select patient_identifier_type.patient_identifier_type_id isante_id_identifier_type_id from patient_identifier_type where uuid = '0e0c7cc2-3491-4675-b705-746e372ff346'</sql>
     <limit>0</limit>
-    <lookup/>
+    <lookup />
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -3131,23 +3131,23 @@ where obs.concept_id = 162703
   <step>
     <name>Load iSanteLocation Location Attribute</name>
     <type>TableInput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <sql>select location_attribute_type_id isante_location_location_attribute_id from location_attribute_type where name = 'iSanteSiteCode'</sql>
     <limit>1</limit>
-    <lookup/>
+    <lookup />
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -3163,13 +3163,13 @@ where obs.concept_id = 162703
   <step>
     <name>Replace in string</name>
     <type>ReplaceString</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <field>
@@ -3179,7 +3179,7 @@ where obs.concept_id = 162703
         <replace_string>\d\d(\d\d)</replace_string>
         <replace_by_string>$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
+        <replace_field_by_string />
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -3191,7 +3191,7 @@ where obs.concept_id = 162703
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
+        <replace_field_by_string />
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -3203,7 +3203,7 @@ where obs.concept_id = 162703
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
+        <replace_field_by_string />
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -3215,7 +3215,7 @@ where obs.concept_id = 162703
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
+        <replace_field_by_string />
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -3227,14 +3227,14 @@ where obs.concept_id = 162703
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
+        <replace_field_by_string />
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
       </field>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -3250,16 +3250,16 @@ where obs.concept_id = 162703
   <step>
     <name>Save Records Processed</name>
     <type>TableOutput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
-    <schema/>
+    <schema />
     <table>etl_records_processed</table>
     <commit>1000</commit>
     <truncate>N</truncate>
@@ -3267,14 +3267,14 @@ where obs.concept_id = 162703
     <use_batch>Y</use_batch>
     <specify_fields>Y</specify_fields>
     <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
+    <partitioning_field />
     <partitioning_daily>N</partitioning_daily>
     <partitioning_monthly>Y</partitioning_monthly>
     <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
+    <tablename_field />
     <tablename_in_table>Y</tablename_in_table>
     <return_keys>N</return_keys>
-    <return_field/>
+    <return_field />
     <fields>
       <field>
         <column_name>table_name</column_name>
@@ -3285,8 +3285,8 @@ where obs.concept_id = 162703
         <stream_name>record_number</stream_name>
       </field>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -3302,13 +3302,13 @@ where obs.concept_id = 162703
   <step>
     <name>Save on CSV</name>
     <type>TextFileOutput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <separator>,</separator>
     <enclosure>"</enclosure>
@@ -3319,9 +3319,9 @@ where obs.concept_id = 162703
     <format>DOS</format>
     <compression>None</compression>
     <encoding>UTF-8</encoding>
-    <endedLine/>
+    <endedLine />
     <fileNameInField>N</fileNameInField>
-    <fileNameField/>
+    <fileNameField />
     <create_parent_folder>Y</create_parent_folder>
     <file>
       <name>${user.home}/isante/data</name>
@@ -3334,21 +3334,21 @@ where obs.concept_id = 162703
       <add_date>N</add_date>
       <add_time>N</add_time>
       <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
+      <date_time_format />
       <add_to_result_filenames>Y</add_to_result_filenames>
       <pad>N</pad>
       <fast_dump>N</fast_dump>
-      <splitevery/>
+      <splitevery />
     </file>
     <fields>
       <field>
         <name>table_name</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3356,11 +3356,11 @@ where obs.concept_id = 162703
       <field>
         <name>patientID</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3368,11 +3368,11 @@ where obs.concept_id = 162703
       <field>
         <name>patient_identifier</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3380,11 +3380,11 @@ where obs.concept_id = 162703
       <field>
         <name>siteCode</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3392,11 +3392,11 @@ where obs.concept_id = 162703
       <field>
         <name>isante_location_id</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3404,11 +3404,11 @@ where obs.concept_id = 162703
       <field>
         <name>visitDateDd</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3416,11 +3416,11 @@ where obs.concept_id = 162703
       <field>
         <name>visit_day_dd</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3428,11 +3428,11 @@ where obs.concept_id = 162703
       <field>
         <name>visitDateMm</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3440,11 +3440,11 @@ where obs.concept_id = 162703
       <field>
         <name>visit_month_mm</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3452,11 +3452,11 @@ where obs.concept_id = 162703
       <field>
         <name>visitDateYy</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3464,11 +3464,11 @@ where obs.concept_id = 162703
       <field>
         <name>visit_year_yy</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3476,11 +3476,11 @@ where obs.concept_id = 162703
       <field>
         <name>seqNum</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3488,11 +3488,11 @@ where obs.concept_id = 162703
       <field>
         <name>seqnum_value</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3500,11 +3500,11 @@ where obs.concept_id = 162703
       <field>
         <name>dbSite</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3512,11 +3512,11 @@ where obs.concept_id = 162703
       <field>
         <name>dbSiteValue</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3524,11 +3524,11 @@ where obs.concept_id = 162703
       <field>
         <name>currentHivStage</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3536,11 +3536,11 @@ where obs.concept_id = 162703
       <field>
         <name>current_hiv_stage_mapped</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3548,11 +3548,11 @@ where obs.concept_id = 162703
       <field>
         <name>CD4</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3560,11 +3560,11 @@ where obs.concept_id = 162703
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3572,11 +3572,11 @@ where obs.concept_id = 162703
       <field>
         <name>cellsPmm</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3584,11 +3584,11 @@ where obs.concept_id = 162703
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3596,11 +3596,11 @@ where obs.concept_id = 162703
       <field>
         <name>CD4DateMM</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3608,11 +3608,11 @@ where obs.concept_id = 162703
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3620,11 +3620,11 @@ where obs.concept_id = 162703
       <field>
         <name>ChildLT5ans</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3632,11 +3632,11 @@ where obs.concept_id = 162703
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3644,11 +3644,11 @@ where obs.concept_id = 162703
       <field>
         <name>TLC</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3656,11 +3656,11 @@ where obs.concept_id = 162703
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3668,11 +3668,11 @@ where obs.concept_id = 162703
       <field>
         <name>TLCDateMM</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3680,11 +3680,11 @@ where obs.concept_id = 162703
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3692,11 +3692,11 @@ where obs.concept_id = 162703
       <field>
         <name>TLCDateYY</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3704,11 +3704,11 @@ where obs.concept_id = 162703
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3716,11 +3716,11 @@ where obs.concept_id = 162703
       <field>
         <name>ViralLoad</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3728,11 +3728,11 @@ where obs.concept_id = 162703
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3740,11 +3740,11 @@ where obs.concept_id = 162703
       <field>
         <name>ViralLoadMM</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3752,11 +3752,11 @@ where obs.concept_id = 162703
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3764,11 +3764,11 @@ where obs.concept_id = 162703
       <field>
         <name>TLCDateYY</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3776,11 +3776,11 @@ where obs.concept_id = 162703
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3788,11 +3788,11 @@ where obs.concept_id = 162703
       <field>
         <name>medElig</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3800,11 +3800,11 @@ where obs.concept_id = 162703
       <field>
         <name>med_elig_mapped</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3812,11 +3812,11 @@ where obs.concept_id = 162703
       <field>
         <name>cd4LT200</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3824,11 +3824,11 @@ where obs.concept_id = 162703
       <field>
         <name>cd4_LT_200</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3836,11 +3836,11 @@ where obs.concept_id = 162703
       <field>
         <name>WHOIII</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3848,11 +3848,11 @@ where obs.concept_id = 162703
       <field>
         <name>WHO_III</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3860,11 +3860,11 @@ where obs.concept_id = 162703
       <field>
         <name>PMTCT</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3872,11 +3872,11 @@ where obs.concept_id = 162703
       <field>
         <name>PMTCT_answer</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3884,11 +3884,11 @@ where obs.concept_id = 162703
       <field>
         <name>tlcLT1200</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3896,11 +3896,11 @@ where obs.concept_id = 162703
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3908,11 +3908,11 @@ where obs.concept_id = 162703
       <field>
         <name>WHOIV</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3920,11 +3920,11 @@ where obs.concept_id = 162703
       <field>
         <name>WHO_IV</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3932,11 +3932,11 @@ where obs.concept_id = 162703
       <field>
         <name>medEligHAART</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3944,11 +3944,11 @@ where obs.concept_id = 162703
       <field>
         <name>med_elig_HAART</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3956,11 +3956,11 @@ where obs.concept_id = 162703
       <field>
         <name>ChildLT5ans</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3968,11 +3968,11 @@ where obs.concept_id = 162703
       <field>
         <name>child_LT_5_ans</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3980,11 +3980,11 @@ where obs.concept_id = 162703
       <field>
         <name>coinfectionTbHiv</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3992,11 +3992,11 @@ where obs.concept_id = 162703
       <field>
         <name>coinfection_tb_hiv</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4004,11 +4004,11 @@ where obs.concept_id = 162703
       <field>
         <name>coinfectionHbvHiv</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4016,11 +4016,11 @@ where obs.concept_id = 162703
       <field>
         <name>coinfection_hbv_hiv</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4028,11 +4028,11 @@ where obs.concept_id = 162703
       <field>
         <name>coupleSerodiscordant</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4040,11 +4040,11 @@ where obs.concept_id = 162703
       <field>
         <name>couple_serodiscordant</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4052,11 +4052,11 @@ where obs.concept_id = 162703
       <field>
         <name>pregnantWomen</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4064,11 +4064,11 @@ where obs.concept_id = 162703
       <field>
         <name>pregnant_women</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4076,11 +4076,11 @@ where obs.concept_id = 162703
       <field>
         <name>breastfeedingWomen</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4088,11 +4088,11 @@ where obs.concept_id = 162703
       <field>
         <name>breastfeeding_women</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4100,11 +4100,11 @@ where obs.concept_id = 162703
       <field>
         <name>patientGt50ans</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4112,11 +4112,11 @@ where obs.concept_id = 162703
       <field>
         <name>patient_gt_50_ans</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4124,11 +4124,11 @@ where obs.concept_id = 162703
       <field>
         <name>nephropathieVih</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4136,11 +4136,11 @@ where obs.concept_id = 162703
       <field>
         <name>nephropathie_vih</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4148,11 +4148,11 @@ where obs.concept_id = 162703
       <field>
         <name>protocoleTestTraitement</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4160,11 +4160,11 @@ where obs.concept_id = 162703
       <field>
         <name>protocole_test_traitement</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4172,11 +4172,11 @@ where obs.concept_id = 162703
       <field>
         <name>CD4DateDD</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4184,11 +4184,11 @@ where obs.concept_id = 162703
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4196,11 +4196,11 @@ where obs.concept_id = 162703
       <field>
         <name>TLCDateDD</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4208,11 +4208,11 @@ where obs.concept_id = 162703
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4220,11 +4220,11 @@ where obs.concept_id = 162703
       <field>
         <name>ViralLoadDD</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4232,11 +4232,11 @@ where obs.concept_id = 162703
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4244,11 +4244,11 @@ where obs.concept_id = 162703
       <field>
         <name>commAuthEnroll</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4256,11 +4256,11 @@ where obs.concept_id = 162703
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4268,11 +4268,11 @@ where obs.concept_id = 162703
       <field>
         <name>commDelayEnrollDD</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4280,11 +4280,11 @@ where obs.concept_id = 162703
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4292,11 +4292,11 @@ where obs.concept_id = 162703
       <field>
         <name>commAuthEnrollMM</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4304,11 +4304,11 @@ where obs.concept_id = 162703
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4316,11 +4316,11 @@ where obs.concept_id = 162703
       <field>
         <name>commDelayEnrollYY</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4328,11 +4328,11 @@ where obs.concept_id = 162703
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4340,11 +4340,11 @@ where obs.concept_id = 162703
       <field>
         <name>formerARVtherapy</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4352,11 +4352,11 @@ where obs.concept_id = 162703
       <field>
         <name>former_ARV_therapy</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4364,23 +4364,23 @@ where obs.concept_id = 162703
       <field>
         <name>PEP</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>default_na</name>
+        <name>pep_answer</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4388,11 +4388,11 @@ where obs.concept_id = 162703
       <field>
         <name>expFromDt</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4400,11 +4400,11 @@ where obs.concept_id = 162703
       <field>
         <name>exp_from_dt_dd</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4412,11 +4412,11 @@ where obs.concept_id = 162703
       <field>
         <name>expFromMm</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4424,11 +4424,11 @@ where obs.concept_id = 162703
       <field>
         <name>exp_from_mm_mm</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4436,11 +4436,11 @@ where obs.concept_id = 162703
       <field>
         <name>expFromYy</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4448,11 +4448,11 @@ where obs.concept_id = 162703
       <field>
         <name>exp_from_yy</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4460,11 +4460,11 @@ where obs.concept_id = 162703
       <field>
         <name>pedMedEligCd4Cnt</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4472,11 +4472,11 @@ where obs.concept_id = 162703
       <field>
         <name>ped_med_elig_Cd4_cnt</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4484,11 +4484,11 @@ where obs.concept_id = 162703
       <field>
         <name>pedMedEligWho3</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4496,11 +4496,11 @@ where obs.concept_id = 162703
       <field>
         <name>ped_med_elig_who_3</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4508,11 +4508,11 @@ where obs.concept_id = 162703
       <field>
         <name>pedMedEligWho4</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4520,11 +4520,11 @@ where obs.concept_id = 162703
       <field>
         <name>ped_med_elig_who_4</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4532,11 +4532,11 @@ where obs.concept_id = 162703
       <field>
         <name>pedMedEligTlc</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4544,11 +4544,11 @@ where obs.concept_id = 162703
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4556,11 +4556,11 @@ where obs.concept_id = 162703
       <field>
         <name>pedMedEligPmtct</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4568,11 +4568,11 @@ where obs.concept_id = 162703
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4580,11 +4580,11 @@ where obs.concept_id = 162703
       <field>
         <name>pedMedEligFormerTherapy</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -4592,18 +4592,18 @@ where obs.concept_id = 162703
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -4611,7 +4611,7 @@ where obs.concept_id = 162703
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
+      <xloc>80</xloc>
       <yloc>848</yloc>
       <draw>Y</draw>
     </GUI>
@@ -4619,17 +4619,17 @@ where obs.concept_id = 162703
   <step>
     <name>Value mapper Stade OMS actuel</name>
     <type>ValueMapper</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <field_to_use>current_hiv_stage</field_to_use>
     <target_field>current_hiv_stage_mapped</target_field>
-    <non_match_default/>
+    <non_match_default />
     <fields>
       <field>
         <source_value>1204</source_value>
@@ -4648,8 +4648,8 @@ where obs.concept_id = 162703
         <target_value>8</target_value>
       </field>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -4665,17 +4665,17 @@ where obs.concept_id = 162703
   <step>
     <name>Value mapper Éligibilité médicale aux ARV</name>
     <type>ValueMapper</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <field_to_use>med_elig</field_to_use>
     <target_field>med_elig_mapped</target_field>
-    <non_match_default/>
+    <non_match_default />
     <fields>
       <field>
         <source_value>1065</source_value>
@@ -4690,8 +4690,8 @@ where obs.concept_id = 162703
         <target_value>8</target_value>
       </field>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -4709,5 +4709,5 @@ where obs.concept_id = 162703
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
-  <attributes/>
+  <attributes />
 </transformation>
