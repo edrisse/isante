@@ -601,11 +601,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Allergy Reaction Rash</from>
-      <to>Fetch Allergy Reaction SJ</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Allergy Reaction SJ</from>
       <to>Fetch Allergy Reaction Rush F</to>
       <enabled>Y</enabled>
@@ -633,6 +628,26 @@
     <hop>
       <from>Decompose astop date</from>
       <to>Fetch Allergies</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Allergy Reaction Pap</from>
+      <to>Fetch Allergy Reaction SJ</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch ABC Reaction</from>
+      <to>Fetch Allergy Reaction Pap</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Erup F</from>
+      <to>Fetch ABC Reaction</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Allergy Reaction Rash</from>
+      <to>Fetch Erup F</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -850,6 +865,46 @@
     </GUI>
   </step>
   <step>
+    <name>Fetch ABC Reaction</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select 1 abc_value from obs o
+where o.concept_id = 160646
+and o.value_coded = 137781
+and o.obs_group_id = ?
+and o.voided = false</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>obs_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>736</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Fetch Allergies</name>
     <type>DBJoin</type>
     <description/>
@@ -1004,8 +1059,8 @@ and o.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
-      <yloc>208</yloc>
+      <xloc>288</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1051,6 +1106,46 @@ and o.voided = false
     </GUI>
   </step>
   <step>
+    <name>Fetch Allergy Reaction Pap</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select 1 pap_value from obs o
+where o.concept_id = 160646
+and o.value_coded = 130908
+and o.obs_group_id = ?
+and o.voided = false</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>obs_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>656</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Fetch Allergy Reaction Rash</name>
     <type>DBJoin</type>
     <description/>
@@ -1085,8 +1180,8 @@ and o.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>928</xloc>
-      <yloc>224</yloc>
+      <xloc>944</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1126,8 +1221,8 @@ and o.voided = false
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
-      <yloc>208</yloc>
+      <xloc>416</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1166,8 +1261,8 @@ and o.voided = false</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>800</xloc>
-      <yloc>208</yloc>
+      <xloc>560</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1286,6 +1381,46 @@ where obs.concept_id = ?
     <GUI>
       <xloc>768</xloc>
       <yloc>16</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Erup F</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select 1 erupf_value from obs o
+where o.concept_id = 160646
+and o.value_coded = 156083
+and o.obs_group_id = ?
+and o.voided = false</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>obs_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>832</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2607,7 +2742,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>rushf_value</name>
+        <name>erupf_value</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2631,7 +2766,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>default_na</name>
+        <name>abc_value</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2655,7 +2790,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>default_na</name>
+        <name>pap_value</name>
         <type>String</type>
         <format/>
         <currency/>

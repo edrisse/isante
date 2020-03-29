@@ -761,12 +761,7 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch ART Treatment Status Comments</from>
-      <to>Fetch Tb Treatment Comments</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Tb Treatment Comments</from>
+      <from>Fetch condition Comments</from>
       <to>Fetch Accessment and Plan comment</to>
       <enabled>Y</enabled>
     </hop>
@@ -1498,6 +1493,16 @@
     <hop>
       <from>Map Rapports sexuels sans preservatif</from>
       <to>Fetch Head circ</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch drug Treatment Status Comments </from>
+      <to>Fetch condition Comments</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch ART Treatment Status Comments</from>
+      <to>Fetch drug Treatment Status Comments </to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -4698,8 +4703,8 @@ where obs.concept_id = 160117
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_text art_treatment_status_comment, obs.value_text drug_comment from obs
-where obs.concept_id = 163322
+    <sql>select obs.value_text art_treatment_status_comment  from obs
+where obs.concept_id = 163323
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
@@ -4720,7 +4725,7 @@ where obs.concept_id = 163322
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1136</xloc>
+      <xloc>1040</xloc>
       <yloc>1136</yloc>
       <draw>Y</draw>
     </GUI>
@@ -5343,7 +5348,7 @@ where obs.concept_id = 374
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select obs.value_datetime care_initiated_dt from obs
-where obs.concept_id = 509165665
+where obs.concept_id = 509165648
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
@@ -5364,8 +5369,8 @@ where obs.concept_id = 509165665
       </output>
     </remotesteps>
     <GUI>
-      <xloc>48</xloc>
-      <yloc>2464</yloc>
+      <xloc>96</xloc>
+      <yloc>2432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -8998,46 +9003,6 @@ where obs.concept_id = 5310
     </GUI>
   </step>
   <step>
-    <name>Fetch Tb Treatment Comments</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_text tb_treatment_status_comment from obs
-where obs.concept_id = 163323
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1392</xloc>
-      <yloc>1136</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Fetch Temp</name>
     <type>DBJoin</type>
     <description/>
@@ -9809,6 +9774,46 @@ where obs.concept_id = 160644
     </GUI>
   </step>
   <step>
+    <name>Fetch condition Comments</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_text tb_treatment_status_comment from obs
+where obs.concept_id = 161011
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>1136</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Fetch dbSite</name>
     <type>DBJoin</type>
     <description/>
@@ -9844,6 +9849,46 @@ where location_attribute.attribute_type_id = 7
     <GUI>
       <xloc>320</xloc>
       <yloc>2080</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch drug Treatment Status Comments </name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_text drug_comment  from obs
+where obs.concept_id = 163322
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1216</xloc>
+      <yloc>1120</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -14131,7 +14176,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>art_treatment_status_comment_sanitized</name>
+        <name>tb_treatment_status_comment_sanitized</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -16075,7 +16120,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>amedotherText</name>
+        <name>amedotherText_sanitized</name>
         <type>None</type>
         <format/>
         <currency/>
@@ -17101,7 +17146,7 @@ where obs.concept_id = 5092
       </output>
     </remotesteps>
     <GUI>
-      <xloc>304</xloc>
+      <xloc>288</xloc>
       <yloc>2864</yloc>
       <draw>Y</draw>
     </GUI>
