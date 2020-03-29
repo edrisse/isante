@@ -1466,11 +1466,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Map Curr Hiv Status</from>
-      <to>Replace in string</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Transfer in from another HF Text</from>
       <to>Fetch Transfer in from another HF</to>
       <enabled>Y</enabled>
@@ -1503,6 +1498,16 @@
     <hop>
       <from>Map Rapports sexuels sans preservatif</from>
       <to>Fetch Head circ</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map Curr Hiv Status</from>
+      <to>Fetch Saturation en oxygène</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Saturation en oxygène</from>
+      <to>Replace in string</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -5054,7 +5059,7 @@ where obs.concept_id = 5310
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select 1 as cd4_never_done from obs
-where obs.concept_id = 1941
+where (obs.concept_id = 1941 or obs.concept_id = 163544)
   and obs.value_coded in (1066, 1067)
   and obs.encounter_id = ?
   and obs.voided = false
@@ -7274,7 +7279,7 @@ join concept c on o.concept_id = c.concept_id where c.uuid = '30735143-5968-4bee
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select obs.value_coded ped_repro_health_menses from obs
-where obs.concept_id = 160109
+where (obs.concept_id = 160109 or obs.concept_id = 160600)
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
@@ -9540,7 +9545,7 @@ where obs.concept_id = 163787
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select 1 as vl_never_done_desc_code from obs
-where obs.concept_id = 163310
+where (obs.concept_id = 163310 or obs.concept_id = 163546)
 and obs.value_coded in (1118, 1067)
   and obs.encounter_id = ?
   and obs.voided = false
@@ -9581,7 +9586,7 @@ and obs.value_coded in (1118, 1067)
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select obs.value_numeric viral_load_at_first_analysis from obs
-where obs.concept_id = 163280
+where (obs.concept_id = 163280 or obs.concept_id = 163545)	
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
@@ -16969,6 +16974,30 @@ where location_attribute.attribute_type_id = ?
         <length>-1</length>
         <precision>-1</precision>
       </field>
+      <field>
+        <name>pedVitCurOxySat_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ped_vit_cur_oxy_sat</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -17034,6 +17063,46 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>896</xloc>
       <yloc>2944</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Saturation en oxygène</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_numeric ped_vit_cur_oxy_sat from obs
+where obs.concept_id = 5092
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>2864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
