@@ -601,11 +601,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Community Based Program</from>
-      <to>Fetch Transfer in from another HF</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
       <from>Fetch Transfer in from another HF</from>
       <to>Fetch Lowest CD4 Count</to>
       <enabled>Y</enabled>
@@ -634,11 +629,6 @@
       <from>Decompose VL Date</from>
       <to>Fetch Last CD4 count</to>
       <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Family Planing Other Text</from>
-      <to>Fetch Tubal Ligation</to>
-      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Fetch DPMA</from>
@@ -5824,7 +5814,7 @@ where obs.concept_id = 163309
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select obs.value_coded family_planning from obs
-where obs.concept_id = 374
+where obs.concept_id = 374 and obs.value_coded in (965,160652)
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
@@ -8998,46 +8988,6 @@ where obs.concept_id = 5310
     </GUI>
   </step>
   <step>
-    <name>Fetch condition Comments</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_text tb_treatment_status_comment from obs
-where obs.concept_id = 161011
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1392</xloc>
-      <yloc>1136</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Fetch Temp</name>
     <type>DBJoin</type>
     <description />
@@ -9781,7 +9731,7 @@ where obs.concept_id = 5916
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_text as amedotherText from obs
+    <sql>select obs.value_text as amedotherText2 from obs
 where obs.concept_id = 160644
   and obs.encounter_id = ?
   and obs.voided = false
@@ -9805,6 +9755,46 @@ where obs.concept_id = 160644
     <GUI>
       <xloc>1552</xloc>
       <yloc>368</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch condition Comments</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_text tb_treatment_status_comment from obs
+where obs.concept_id = 161011
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>1136</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -9844,6 +9834,46 @@ where location_attribute.attribute_type_id = 7
     <GUI>
       <xloc>320</xloc>
       <yloc>2080</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch drug Treatment Status Comments </name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_text drug_comment  from obs
+where obs.concept_id = 163322
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1216</xloc>
+      <yloc>1120</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -12452,6 +12482,42 @@ where location_attribute.attribute_type_id = ?
       <field>
         <in_stream_name>repeat_test_year</in_stream_name>
         <out_stream_name>repeat_test_year_yy</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\d\d(\d\d)</replace_string>
+        <replace_by_string>$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>care_initiated_day</in_stream_name>
+        <out_stream_name>care_initiated_day_dd</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>care_initiated_month</in_stream_name>
+        <out_stream_name>care_initiated_month_mm</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\b([0-9])\b</replace_string>
+        <replace_by_string>0$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>care_initiated_year</in_stream_name>
+        <out_stream_name>care_initiated_year_yy</out_stream_name>
         <use_regex>yes</use_regex>
         <replace_string>\d\d(\d\d)</replace_string>
         <replace_by_string>$1</replace_by_string>
@@ -15547,7 +15613,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>care_initiated_day</name>
+        <name>care_initiated_day_dd</name>
         <type>None</type>
         <format />
         <currency />
@@ -15571,7 +15637,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>care_initiated_month</name>
+        <name>care_initiated_month_mm</name>
         <type>None</type>
         <format />
         <currency />
@@ -15595,7 +15661,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>care_initiated_year</name>
+        <name>care_initiated_year_yy</name>
         <type>None</type>
         <format />
         <currency />
@@ -17015,7 +17081,7 @@ where location_attribute.attribute_type_id = ?
         <remove_special_characters>crlf</remove_special_characters>
       </field>
       <field>
-        <in_stream_name>amedotherText</in_stream_name>
+        <in_stream_name>amedotherText2</in_stream_name>
         <out_stream_name>amedotherText_sanitized</out_stream_name>
         <trim_type>none</trim_type>
         <lower_upper>none</lower_upper>
@@ -17039,46 +17105,6 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>896</xloc>
       <yloc>2944</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch drug Treatment Status Comments </name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_text drug_comment  from obs
-where obs.concept_id = 163322
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1216</xloc>
-      <yloc>1120</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
