@@ -2294,6 +2294,182 @@ where location_attribute.attribute_type_id = ?
         <item>1</item>
         <item>d2947119-fa79-4903-842d-4b38b9d2856f</item>
       </line>
+      <line>
+        <item>Mois 0: Date</item>
+        <item>159964</item>
+        <item/>
+        <item>71158</item>
+        <item/>
+        <item>c2c7db51-d427-4c21-9655-ae9ee604c81c</item>
+      </line>
+      <line>
+        <item>Mois 0: Bacilloscopie: Pos</item>
+        <item>307</item>
+        <item>703</item>
+        <item>71159</item>
+        <item>1</item>
+        <item>c2c7db51-d427-4c21-9655-ae9ee604c81c</item>
+      </line>
+      <line>
+        <item>Mois 0: Bacilloscopie: Neg</item>
+        <item>307</item>
+        <item>664</item>
+        <item>71159</item>
+        <item>2</item>
+        <item>c2c7db51-d427-4c21-9655-ae9ee604c81c</item>
+      </line>
+      <line>
+        <item>Mois 0: Poids</item>
+        <item>5089</item>
+        <item/>
+        <item>71160</item>
+        <item/>
+        <item>c2c7db51-d427-4c21-9655-ae9ee604c81c</item>
+      </line>
+      <line>
+        <item>Mois 2: Date</item>
+        <item>159964</item>
+        <item/>
+        <item>71161</item>
+        <item/>
+        <item>be7a27bb-2dcd-4bff-b696-ccdbbd2d3192</item>
+      </line>
+      <line>
+        <item>Mois 2: Bacilloscopie: Pos</item>
+        <item>307</item>
+        <item>703</item>
+        <item>71162</item>
+        <item>1</item>
+        <item>be7a27bb-2dcd-4bff-b696-ccdbbd2d3192</item>
+      </line>
+      <line>
+        <item>Mois 2: Bacilloscopie: Neg</item>
+        <item>307</item>
+        <item>664</item>
+        <item>71162</item>
+        <item>2</item>
+        <item>be7a27bb-2dcd-4bff-b696-ccdbbd2d3192</item>
+      </line>
+      <line>
+        <item>Mois 2: Poids</item>
+        <item>5089</item>
+        <item/>
+        <item>71163</item>
+        <item/>
+        <item>be7a27bb-2dcd-4bff-b696-ccdbbd2d3192</item>
+      </line>
+      <line>
+        <item>Mois 3: Date</item>
+        <item>159964</item>
+        <item/>
+        <item>71164</item>
+        <item/>
+        <item>fdd9d953-004a-4e9a-ab93-9afaa0e090fa</item>
+      </line>
+      <line>
+        <item>Mois 3: Bacilloscopie: Pos</item>
+        <item>307</item>
+        <item>703</item>
+        <item>71165</item>
+        <item>1</item>
+        <item>fdd9d953-004a-4e9a-ab93-9afaa0e090fa</item>
+      </line>
+      <line>
+        <item>Mois 3: Bacilloscopie: Neg</item>
+        <item>307</item>
+        <item>664</item>
+        <item>71165</item>
+        <item>2</item>
+        <item>fdd9d953-004a-4e9a-ab93-9afaa0e090fa</item>
+      </line>
+      <line>
+        <item>Mois 3: Poids</item>
+        <item>5089</item>
+        <item/>
+        <item>71166</item>
+        <item/>
+        <item>fdd9d953-004a-4e9a-ab93-9afaa0e090fa</item>
+      </line>
+      <line>
+        <item>Mois 5: Date</item>
+        <item>159964</item>
+        <item/>
+        <item>71167</item>
+        <item/>
+        <item>224546bb-03da-4793-9ef6-3d42adc5b353</item>
+      </line>
+      <line>
+        <item>Mois 5: Bacilloscopie: Pos</item>
+        <item>307</item>
+        <item>703</item>
+        <item>71168</item>
+        <item>1</item>
+        <item>224546bb-03da-4793-9ef6-3d42adc5b353</item>
+      </line>
+      <line>
+        <item>Mois 5: Bacilloscopie: Neg</item>
+        <item>307</item>
+        <item>664</item>
+        <item>71168</item>
+        <item>2</item>
+        <item>224546bb-03da-4793-9ef6-3d42adc5b353</item>
+      </line>
+      <line>
+        <item>Mois 5: Poids</item>
+        <item>5089</item>
+        <item/>
+        <item>71169</item>
+        <item/>
+        <item>224546bb-03da-4793-9ef6-3d42adc5b353</item>
+      </line>
+      <line>
+        <item>Mois Fin de rx: Date</item>
+        <item>159964</item>
+        <item/>
+        <item>71170</item>
+        <item/>
+        <item>7ae17faf-5935-46f2-a1fb-88e51b65480e</item>
+      </line>
+      <line>
+        <item>Mois Fin de rx: Bacilloscopie: Pos</item>
+        <item>307</item>
+        <item>703</item>
+        <item>71171</item>
+        <item>1</item>
+        <item>7ae17faf-5935-46f2-a1fb-88e51b65480e</item>
+      </line>
+      <line>
+        <item>Mois Fin de rx: Bacilloscopie: Neg</item>
+        <item>307</item>
+        <item>664</item>
+        <item>71171</item>
+        <item>2</item>
+        <item>7ae17faf-5935-46f2-a1fb-88e51b65480e</item>
+      </line>
+      <line>
+        <item>Mois Fin de rx: Poids</item>
+        <item>5089</item>
+        <item/>
+        <item>71172</item>
+        <item/>
+        <item>7ae17faf-5935-46f2-a1fb-88e51b65480e</item>
+      </line>
+      <line>
+        <item/>
+        <item/>
+        <item/>
+        <item/>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item/>
+        <item/>
+        <item/>
+        <item/>
+        <item/>
+        <item/>
+      </line>
     </data>
     <attributes/>
     <cluster_schema/>
