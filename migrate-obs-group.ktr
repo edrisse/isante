@@ -1878,6 +1878,54 @@ where location_attribute.attribute_type_id = ?
         <length>-1</length>
         <precision>-1</precision>
       </field>
+      <field>
+        <name>value_boolean_c</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>isante_answer</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>value_datetime_c</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>value_datetime</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -2181,6 +2229,70 @@ where location_attribute.attribute_type_id = ?
         <item>7273</item>
         <item/>
         <item>9da0ca77-d4fa-4689-8f14-e358f4d60f6a</item>
+      </line>
+      <line>
+        <item>Hépatite B: Reçu, Date Inconnu</item>
+        <item>163100</item>
+        <item>1065</item>
+        <item>71077</item>
+        <item>1</item>
+        <item>120157b7-a596-4623-8f7d-960fd686fb67</item>
+      </line>
+      <line>
+        <item>Hépatite B: Jamais Reçu</item>
+        <item>163100</item>
+        <item>1066</item>
+        <item>71078</item>
+        <item>1</item>
+        <item>120157b7-a596-4623-8f7d-960fd686fb67</item>
+      </line>
+      <line>
+        <item>Tétanos Texoïde: Reçu, Date Inconnu</item>
+        <item>163100</item>
+        <item>1065</item>
+        <item>71082</item>
+        <item>1</item>
+        <item>f9e79221-424c-44e9-a23d-3b507d326c32</item>
+      </line>
+      <line>
+        <item>Tétanos Texoïde: Jamais Reçu</item>
+        <item>163100</item>
+        <item>1066</item>
+        <item>71083</item>
+        <item>1</item>
+        <item>f9e79221-424c-44e9-a23d-3b507d326c32</item>
+      </line>
+      <line>
+        <item>Pneumocoque: Reçu, Date Inconnu</item>
+        <item>163100</item>
+        <item>1065</item>
+        <item>71632</item>
+        <item>1</item>
+        <item>1441AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+      </line>
+      <line>
+        <item>Pneumocoque: Jamais Reçu</item>
+        <item>163100</item>
+        <item>1066</item>
+        <item>71633</item>
+        <item>1</item>
+        <item>1441AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+      </line>
+      <line>
+        <item>Autre: Reçu, Date Inconnu</item>
+        <item>163100</item>
+        <item>1065</item>
+        <item>71092</item>
+        <item>1</item>
+        <item>d2947119-fa79-4903-842d-4b38b9d2856f</item>
+      </line>
+      <line>
+        <item>Autre: Jamais Reçu</item>
+        <item>163100</item>
+        <item>1066</item>
+        <item>71093</item>
+        <item>1</item>
+        <item>d2947119-fa79-4903-842d-4b38b9d2856f</item>
       </line>
     </data>
     <attributes/>

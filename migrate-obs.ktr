@@ -4957,6 +4957,13 @@ where location_attribute.attribute_type_id = ?
         <item>7870</item>
         <item>N</item>
       </line>
+      <line>
+        <item>Méthode utilisée :</item>
+        <item>163589</item>
+        <item/>
+        <item>70486</item>
+        <item>Y</item>
+      </line>
     </data>
     <attributes/>
     <cluster_schema/>
