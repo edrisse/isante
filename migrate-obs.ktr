@@ -496,11 +496,6 @@
   </connection>
   <order>
     <hop>
-      <from>Fetch Last ETL Excution Date</from>
-      <to>Database join Coded</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Columns</from>
       <to>Join rows (cartesian product)</to>
       <enabled>Y</enabled>
@@ -538,11 +533,6 @@
     <hop>
       <from>Set field value numeric</from>
       <to>Fetch Person Identifier</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Database join Coded</from>
-      <to>Select values</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -593,6 +583,31 @@
     <hop>
       <from>Fetch Person Id</from>
       <to>Select values format</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Last ETL Excution Date</from>
+      <to>Filter rows 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows 3</from>
+      <to>Database join Coded</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows 3</from>
+      <to>Database join Non-coded</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Database join Non-coded</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Database join Coded</from>
+      <to>Select values</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1058,8 +1073,8 @@ where obs.concept_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
-      <yloc>160</yloc>
+      <xloc>992</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1132,7 +1147,7 @@ order by date desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1216</xloc>
+      <xloc>1648</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1176,7 +1191,7 @@ where patient_identifier.identifier_type = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1360</xloc>
+      <xloc>1792</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1219,7 +1234,7 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1360</xloc>
+      <xloc>1792</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1263,7 +1278,7 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1040</xloc>
+      <xloc>1472</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1928,7 +1943,7 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
+      <xloc>1392</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1973,7 +1988,7 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
+      <xloc>1328</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2069,7 +2084,7 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1088</xloc>
+      <xloc>1520</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2100,7 +2115,7 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1184</xloc>
+      <xloc>1616</xloc>
       <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2131,7 +2146,7 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1184</xloc>
+      <xloc>1616</xloc>
       <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3880,8 +3895,8 @@ where location_attribute.attribute_type_id = ?
       </line>
       <line>
         <item>Cancer , précisez OBGYN</item>
-        <item>1628</item>
-        <item>151286</item>
+        <item>160592</item>
+        <item>151521</item>
         <item>70806</item>
         <item>Y</item>
       </line>
@@ -4334,7 +4349,7 @@ where location_attribute.attribute_type_id = ?
         <item>N</item>
       </line>
       <line>
-        <item/>
+        <item>YYY</item>
         <item>984</item>
         <item>5622</item>
         <item>70414</item>
@@ -4472,13 +4487,6 @@ where location_attribute.attribute_type_id = ?
         <item>5622</item>
         <item>7044</item>
         <item>Y</item>
-      </line>
-      <line>
-        <item>DDR</item>
-        <item>1427</item>
-        <item/>
-        <item>70465</item>
-        <item>N</item>
       </line>
       <line>
         <item>Labor Weight </item>
@@ -4698,13 +4706,6 @@ where location_attribute.attribute_type_id = ?
         <item>N</item>
       </line>
       <line>
-        <item>CD4 cellules</item>
-        <item>159375</item>
-        <item/>
-        <item>71208</item>
-        <item>N</item>
-      </line>
-      <line>
         <item>CD4 date</item>
         <item>159376</item>
         <item/>
@@ -4712,18 +4713,249 @@ where location_attribute.attribute_type_id = ?
         <item>N</item>
       </line>
       <line>
-        <item>TB CD4</item>
-        <item>5497</item>
+        <item>ANTECEDENTS HEREDO-COLLATERAUX: Autres</item>
+        <item>162148</item>
         <item/>
-        <item>71208</item>
+        <item>70041</item>
         <item>N</item>
       </line>
       <line>
+        <item>Accident cérébro-vasculaire</item>
+        <item>1628</item>
+        <item>152512</item>
+        <item>70001</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Allergies </item>
+        <item>1628</item>
+        <item>110247</item>
+        <item>70002</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Allergies, précisez</item>
+        <item>1628</item>
+        <item>110247</item>
+        <item>71002</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Asthme</item>
+        <item>1628</item>
+        <item>139212</item>
+        <item>70005</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Cancer</item>
+        <item>1628</item>
+        <item>151286</item>
+        <item>70006</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Cancer, précisez</item>
+        <item>1628</item>
+        <item>151286</item>
+        <item>71003</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>IST</item>
+        <item>1628</item>
+        <item>156660</item>
+        <item>70012</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>IST, précisez</item>
+        <item>1628</item>
+        <item>156660</item>
+        <item>71016</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Cardiopathie</item>
+        <item>1628</item>
+        <item>122432</item>
+        <item>70007</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Chirurgie</item>
+        <item>1628</item>
+        <item>163521</item>
+        <item>70719</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Chirurgie, précisez</item>
+        <item>1628</item>
+        <item>163521</item>
+        <item>70737</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Epilepsie</item>
+        <item>1628</item>
+        <item>1625</item>
+        <item>70009</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Hémoglobinopathie</item>
+        <item>1628</item>
+        <item>163583</item>
+        <item>70452</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Hémoglobinopathie, précisez</item>
+        <item>1628</item>
+        <item>163583</item>
+        <item>70739</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>HTA</item>
+        <item>1628</item>
+        <item>156639</item>
+        <item>70011</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Hyperchoestérolémie</item>
+        <item>1628</item>
+        <item>156633</item>
+        <item>71438</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Alcool</item>
+        <item>1628</item>
+        <item>159449</item>
+        <item>70015</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Drogue</item>
+        <item>1628</item>
+        <item>162556</item>
+        <item>71010</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Drogue, précisez</item>
+        <item>1628</item>
+        <item>162556</item>
+        <item>71011</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Tabac</item>
+        <item>1628</item>
+        <item>163731</item>
+        <item>70016</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Diabète</item>
+        <item>1628</item>
+        <item>156630</item>
+        <item>70008</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Malnutrition</item>
+        <item>1628</item>
+        <item>163584</item>
+        <item>70270</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Perte de poids</item>
+        <item>1628</item>
+        <item>163585</item>
+        <item>70270</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Troubles psychiatriques</item>
+        <item>1628</item>
+        <item>151282</item>
+        <item>71008</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Troubles psychiatriques, précisez</item>
+        <item>1628</item>
+        <item>151282</item>
+        <item>71009</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Tuberculose</item>
+        <item>1628</item>
+        <item>151632</item>
+        <item>70014</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>MDR TB</item>
+        <item>1628</item>
+        <item>163586</item>
+        <item>71229</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Autres, précisez</item>
+        <item>1628</item>
+        <item>160221</item>
+        <item>71014</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Statut VIH: Date</item>
+        <item>160554</item>
         <item/>
+        <item>71206</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>ARV: Si oui, médicaments</item>
+        <item>163322</item>
         <item/>
+        <item>71210</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>ARV: Date de début</item>
+        <item>159599</item>
         <item/>
+        <item>71211</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>DDR</item>
+        <item>1427</item>
         <item/>
+        <item>70465</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>DPA</item>
+        <item>5596</item>
         <item/>
+        <item>70466</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>AV</item>
+        <item>1825</item>
+        <item/>
+        <item>7870</item>
+        <item>N</item>
       </line>
     </data>
     <attributes/>
@@ -4736,6 +4968,133 @@ where location_attribute.attribute_type_id = ?
     </remotesteps>
     <GUI>
       <xloc>32</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Database join Non-coded</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>0</rowlimit>
+    <sql>select obs.person_id, obs.obs_datetime, obs.encounter_id, encounter.location_id, encounter.encounter_datetime, obs.date_created, obs.voided,
+obs.date_voided, obs.void_reason, obs.comments, obs.value_text, obs.value_numeric  from obs
+join encounter on encounter.encounter_id = obs.encounter_id
+join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
+where obs.concept_id = ?
+  and encounter.voided = false
+  and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171', 'd95b3540-a39f-4d1e-a301-8ee0e03d5eab')
+  and (encounter.date_created >= ?
+   or encounter.date_changed >= ?
+   or encounter.date_voided >= ?
+   or encounter.date_created >= ?
+   or encounter.date_changed >= ?
+   or encounter.date_voided >= ?
+   or obs.date_voided >= ?
+   or obs.date_created >= ?)
+</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>isante_plus_question</name>
+        <type>Integer</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>992</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter rows 3</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Database join Coded</send_true_to>
+    <send_false_to>Database join Non-coded</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>isante_plus_answer</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>N</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask/>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>800</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
