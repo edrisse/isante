@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>migrate-encounter</name>
+    <name>migrate-other-prescriptions</name>
     <description />
     <extended_description />
     <trans_version />
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -427,9 +428,9 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2019/04/30 13:42:13.263</created_date>
+    <created_date>2019/04/22 14:46:30.188</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/04/30 13:42:13.263</modified_date>
+    <modified_date>2019/04/22 14:46:30.188</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -497,22 +498,62 @@
   <order>
     <hop>
       <from>Fetch Last ETL Excution Date</from>
-      <to>Fetch Encounters</to>
+      <to>Fetch Prescription Encounters</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Encounter Type Mapping Adult</from>
-      <to>Decompose Next Visit Date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Encounters</from>
+      <from>Fetch Person Identifier</from>
       <to>Decompose Encounter Datetime</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter rows</from>
-      <to>Save Records Processed</to>
+      <from>Fetch Prescription Encounters</from>
+      <to>Fetch iSante Location</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch iSante Location</from>
+      <to>Fetch Person Identifier</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Decompose Encounter Datetime</from>
+      <to>Fetch Drug prescribed</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Dispensation Date</from>
+      <to>Decompose Dispensation Date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Decompose Dispensation Date</from>
+      <to>Fetch Dosage Function Weight</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Dosage Function Weight</from>
+      <to>Fetch Indication for Medication Code</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Indication for Medication Code</from>
+      <to>Map Indication Medication</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch dbSite</from>
+      <to>Fetch Seqnum</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Seqnum</from>
+      <to>Replace in string</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Save on CSV</from>
+      <to>Group by</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -526,8 +567,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Save on CSV</from>
-      <to>Group by</to>
+      <from>Filter rows</from>
+      <to>Save Records Processed</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -536,12 +577,7 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Input grid</from>
-      <to>Join rows (cartesian product)</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Load iSante ID Identifier Type</from>
+      <from>Column Names</from>
       <to>Join rows (cartesian product)</to>
       <enabled>Y</enabled>
     </hop>
@@ -551,91 +587,548 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Pediatric</from>
-      <to>Is Pediatric?</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Is Pediatric?</from>
-      <to>Encounter Type Mapping Pediatric</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Is Pediatric?</from>
-      <to>Encounter Type Mapping Adult</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Next Visit Date</from>
-      <to>Fetch Pediatric</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Encounter Type Mapping Pediatric</from>
-      <to>Decompose Next Visit Date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Decompose Encounter Datetime</from>
-      <to>Fetch Next Visit Date</to>
+      <from>Load iSante ID Identifier Type</from>
+      <to>Join rows (cartesian product)</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Replace in string</from>
+      <to>Days and Months w/ 2 digits</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Drug received</from>
+      <to>Fetch Dosage dispensed</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Alternative Dosage dispensed</from>
+      <to>Fetch Duration dispensed</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Duration dispensed</from>
+      <to>Fetch Pills Dispensed Quantity</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map Indication Medication</from>
+      <to>Fetch dbSite</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Days and Months w/ 2 digits</from>
       <to>Save on CSV</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Decompose Next Visit Date</from>
-      <to>Map Form Version</to>
+      <from>Fetch Dosage dispensed</from>
+      <to>Fetch Alternative Dosage dispensed</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Map Form Version</from>
-      <to>Fetch Form author</to>
+      <from>Fetch Pills Dispensed Quantity</from>
+      <to>Fetch Dispensation Date</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Form author</from>
-      <to>Fetch Form status</to>
+      <from>Fetch Duration prescribed</from>
+      <to>Fetch Drug dispensed</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Map Form Status</from>
-      <to>Is Complete</to>
+      <from>Fetch Drug dispensed</from>
+      <to>Fetch Drug received</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Form status</from>
-      <to>Fetch Form Needs Review</to>
+      <from>Fetch Alternative Dosage prescribed old concept</from>
+      <to>Fetch Duration prescribed</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Form Needs Review</from>
-      <to>Map Form Status</to>
+      <from>Fetch other Drug name</from>
+      <to>Fetch Dosage prescribed</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Is Complete</from>
-      <to>Incomplete Needs Review</to>
+      <from>Fetch Dosage prescribed</from>
+      <to>Fetch Alternative Dosage prescribed old concept</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Is Complete</from>
-      <to>Complete No Review</to>
+      <from>Map RxSlot</from>
+      <to>Fetch other Drug name</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Incomplete Needs Review</from>
-      <to>Replace in string</to>
+      <from>Fetch RxSlot</from>
+      <to>Map RxSlot</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Complete No Review</from>
-      <to>Replace in string</to>
+      <from>Fetch Drug prescribed</from>
+      <to>Fetch RxSlot</to>
       <enabled>Y</enabled>
     </hop>
   </order>
+  <step>
+    <name>Column Names</name>
+    <type>DataGrid</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>table_name</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>siteCode_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>patientID_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>visitDateDd_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>visitDateMm_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>visitDateYy_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>dbSite_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>seqNum_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>drugID_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>stdDosage_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>altDosageSpecify_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>numDaysDesc_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>dispensed_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>dispAltDosageSpecify_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>dispAltNumDaysSpecify_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>dispDateDd_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>dispDateMm_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>dispDateYy_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>pedDosageDesc_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>dispAltNumPills_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>numDays_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>pedPresentationDesc_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>rxSlot_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <data>
+      <line>
+        <item>otherPrescriptions</item>
+        <item>siteCode</item>
+        <item>patientID</item>
+        <item>visitDateDd</item>
+        <item>visitDateMm</item>
+        <item>visitDateYy</item>
+        <item>dbSite</item>
+        <item>seqNum</item>
+        <item>drug</item>
+        <item>stdDosage</item>
+        <item>altDosageSpecify</item>
+        <item>numDaysDesc</item>
+        <item>dispensed</item>
+        <item>dispAltDosageSpecify</item>
+        <item>dispAltNumDaysSpecify</item>
+        <item>dispDateDd</item>
+        <item>dispDateMm</item>
+        <item>dispDateYy</item>
+        <item>pedDosageDesc</item>
+        <item>dispAltNumPills</item>
+        <item>numDays</item>
+        <item>pedPresentationDesc</item>
+        <item>rxSlot</item>
+      </line>
+    </data>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>112</xloc>
+      <yloc>0</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Days and Months w/ 2 digits</name>
+    <type>StringOperations</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>visit_day</in_stream_name>
+        <out_stream_name>visit_day_dd</out_stream_name>
+        <trim_type>none</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>left</padding_type>
+        <pad_char>0</pad_char>
+        <pad_len>2</pad_len>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>visit_month</in_stream_name>
+        <out_stream_name>visit_month_mm</out_stream_name>
+        <trim_type>none</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>left</padding_type>
+        <pad_char>0</pad_char>
+        <pad_len>2</pad_len>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>dispensation_day</in_stream_name>
+        <out_stream_name>dispensation_day_dd</out_stream_name>
+        <trim_type>none</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>left</padding_type>
+        <pad_char>0</pad_char>
+        <pad_len>2</pad_len>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>dispensation_month</in_stream_name>
+        <out_stream_name>dispensation_month_mm</out_stream_name>
+        <trim_type>none</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>left</padding_type>
+        <pad_char>0</pad_char>
+        <pad_len>2</pad_len>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>576</xloc>
+      <yloc>688</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Decompose Dispensation Date</name>
+    <type>Calculator</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>dispensation_day</field_name>
+      <calc_type>DAY_OF_MONTH</calc_type>
+      <field_a>dispensation_date</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>dispensation_month</field_name>
+      <calc_type>MONTH_OF_DATE</calc_type>
+      <field_a>dispensation_date</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>dispensation_year</field_name>
+      <calc_type>YEAR_OF_DATE</calc_type>
+      <field_a>dispensation_date</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1024</xloc>
+      <yloc>560</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step>
     <name>Decompose Encounter Datetime</name>
     <type>Calculator</type>
@@ -702,383 +1195,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1008</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Decompose Next Visit Date</name>
-    <type>Calculator</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <failIfNoFile>Y</failIfNoFile>
-    <calculation>
-      <field_name>next_visit_day</field_name>
-      <calc_type>DAY_OF_MONTH</calc_type>
-      <field_a>next_visit_date</field_a>
-      <field_b />
-      <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <calculation>
-      <field_name>next_visit_month</field_name>
-      <calc_type>MONTH_OF_DATE</calc_type>
-      <field_a>next_visit_date</field_a>
-      <field_b />
-      <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <calculation>
-      <field_name>next_visit_year</field_name>
-      <calc_type>YEAR_OF_DATE</calc_type>
-      <field_a>next_visit_date</field_a>
-      <field_b />
-      <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1104</xloc>
-      <yloc>400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Encounter Type Mapping Adult</name>
-    <type>ValueMapper</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <field_to_use>encounter_type_uuid</field_to_use>
-    <target_field>mapped_encounter_type</target_field>
-    <non_match_default>0</non_match_default>
-    <fields>
-      <field>
-        <source_value>f037e97b-471e-4898-a07c-b8e169e0ddc4</source_value>
-        <target_value>6</target_value>
-      </field>
-      <field>
-        <source_value>c45d7299-ad08-4cb5-8e5d-e0ce40532939</source_value>
-        <target_value>14</target_value>
-      </field>
-      <field>
-        <source_value>9d0113c6-f23a-4461-8428-7e9a7344f2ba</source_value>
-        <target_value>12</target_value>
-      </field>
-      <field>
-        <source_value>873f968a-73a8-4f9c-ac78-9f4778b751b6</source_value>
-        <target_value>10</target_value>
-      </field>
-      <field>
-        <source_value>a4cab59f-f0ce-46c3-bd76-416db36ec719</source_value>
-        <target_value>32</target_value>
-      </field>
-      <field>
-        <source_value>49592bec-dd22-4b6c-a97f-4dd2af6f2171</source_value>
-        <target_value>25</target_value>
-      </field>
-      <field>
-        <source_value>10d73929-54b6-4d18-a647-8b7316bc1ae3</source_value>
-        <target_value>5</target_value>
-      </field>
-      <field>
-        <source_value>a9392241-109f-4d67-885b-57cc4b8c638f</source_value>
-        <target_value>18</target_value>
-      </field>
-      <field>
-        <source_value>17536ba6-dd7c-4f58-8014-08c7cb798ac7</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>5c312603-25c1-4dbe-be18-1a167eb85f97</source_value>
-        <target_value>24</target_value>
-      </field>
-      <field>
-        <source_value>349ae0b4-65c1-4122-aa06-480f186c8350</source_value>
-        <target_value>16</target_value>
-      </field>
-      <field>
-        <source_value>fdb5b14f-555f-4282-b4c1-9286addf0aae</source_value>
-        <target_value>31</target_value>
-      </field>
-      <field>
-        <source_value>a5600919-4dde-4eb8-a45b-05c204af8284</source_value>
-        <target_value>28</target_value>
-      </field>
-      <field>
-        <source_value>709610ff-5e39-4a47-9c27-a60e740b0944</source_value>
-        <target_value>29</target_value>
-      </field>
-      <field>
-        <source_value>12f4d7c3-e047-4455-a607-47a40fe32460</source_value>
-        <target_value>27</target_value>
-      </field>
-      <field>
-        <source_value>204ad066-c5c2-4229-9a62-644bc5617ca2</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>33491314-c352-42d0-bd5d-a9d0bffc9bf1</source_value>
-        <target_value>17</target_value>
-      </field>
-      <field>
-        <source_value>d95b3540-a39f-4d1e-a301-8ee0e03d5eab</source_value>
-        <target_value>7</target_value>
-      </field>
-      <field>
-        <source_value>1dd1e63a-1543-4885-b807-e49c6d18cffd</source_value>
-        <target_value>7</target_value>
-      </field>
-      <field>
-        <source_value>d95b3540-a39f-4d1e-a301-8ee0e03d5eab</source_value>
-        <target_value>26</target_value>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
       <xloc>1232</xloc>
-      <yloc>352</yloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Encounter Type Mapping Pediatric</name>
-    <type>ValueMapper</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <field_to_use>encounter_type_uuid</field_to_use>
-    <target_field>mapped_encounter_type</target_field>
-    <non_match_default>0</non_match_default>
-    <fields>
-      <field>
-        <source_value>f037e97b-471e-4898-a07c-b8e169e0ddc4</source_value>
-        <target_value>19</target_value>
-      </field>
-      <field>
-        <source_value>c45d7299-ad08-4cb5-8e5d-e0ce40532939</source_value>
-        <target_value>14</target_value>
-      </field>
-      <field>
-        <source_value>9d0113c6-f23a-4461-8428-7e9a7344f2ba</source_value>
-        <target_value>12</target_value>
-      </field>
-      <field>
-        <source_value>873f968a-73a8-4f9c-ac78-9f4778b751b6</source_value>
-        <target_value>15</target_value>
-      </field>
-      <field>
-        <source_value>a4cab59f-f0ce-46c3-bd76-416db36ec719</source_value>
-        <target_value>32</target_value>
-      </field>
-      <field>
-        <source_value>49592bec-dd22-4b6c-a97f-4dd2af6f2171</source_value>
-        <target_value>25</target_value>
-      </field>
-      <field>
-        <source_value>10d73929-54b6-4d18-a647-8b7316bc1ae3</source_value>
-        <target_value>5</target_value>
-      </field>
-      <field>
-        <source_value>a9392241-109f-4d67-885b-57cc4b8c638f</source_value>
-        <target_value>18</target_value>
-      </field>
-      <field>
-        <source_value>17536ba6-dd7c-4f58-8014-08c7cb798ac7</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>5c312603-25c1-4dbe-be18-1a167eb85f97</source_value>
-        <target_value>24</target_value>
-      </field>
-      <field>
-        <source_value>349ae0b4-65c1-4122-aa06-480f186c8350</source_value>
-        <target_value>16</target_value>
-      </field>
-      <field>
-        <source_value>fdb5b14f-555f-4282-b4c1-9286addf0aae</source_value>
-        <target_value>31</target_value>
-      </field>
-      <field>
-        <source_value>a5600919-4dde-4eb8-a45b-05c204af8284</source_value>
-        <target_value>28</target_value>
-      </field>
-      <field>
-        <source_value>709610ff-5e39-4a47-9c27-a60e740b0944</source_value>
-        <target_value>29</target_value>
-      </field>
-      <field>
-        <source_value>12f4d7c3-e047-4455-a607-47a40fe32460</source_value>
-        <target_value>27</target_value>
-      </field>
-      <field>
-        <source_value>204ad066-c5c2-4229-9a62-644bc5617ca2</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>33491314-c352-42d0-bd5d-a9d0bffc9bf1</source_value>
-        <target_value>17</target_value>
-      </field>
-      <field>
-        <source_value>d95b3540-a39f-4d1e-a301-8ee0e03d5eab</source_value>
-        <target_value>7</target_value>
-      </field>
-      <field>
-        <source_value>1dd1e63a-1543-4885-b807-e49c6d18cffd</source_value>
-        <target_value>7</target_value>
-      </field>
-      <field>
-        <source_value>d95b3540-a39f-4d1e-a301-8ee0e03d5eab</source_value>
-        <target_value>26</target_value>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1232</xloc>
-      <yloc>464</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Encounters</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>0</rowlimit>
-    <sql>select en.visit_id, en.date_created, en.encounter_type, en.encounter_id, en.encounter_datetime, en.patient_id person_id, 
-	isante_location_attribute.value_reference isante_location_id, dbsite_location_attribute.value_reference dbSiteValue, 
-	patient_identifier.identifier patient_identifier, seqnum as seqnum_value, encounter_type.uuid encounter_type_uuid, person.birthdate, ifnull(en.date_changed, '\0') last_modified from encounter en
-join encounter_type on encounter_type.encounter_type_id = en.encounter_type
-left join location_attribute isante_location_attribute on isante_location_attribute.location_id = en.location_id and isante_location_attribute.attribute_type_id = ?
-left join location_attribute dbsite_location_attribute on dbsite_location_attribute.location_id = en.location_id and dbsite_location_attribute.attribute_type_id = 7
-join patient_identifier on patient_identifier.patient_id = en.patient_id and patient_identifier.identifier_type = ?
-join etl_encounter_seqnum on etl_encounter_seqnum.encounter_id = en.encounter_id
-join person on person.person_id = en.patient_id
-  where (en.date_created >= ?
-   or en.date_changed >= ?
-   or en.date_voided >= ?
-   or en.date_created >= ?
-   or en.date_changed >= ?
-   or en.date_voided >= ?)
-</sql>
-    <outer_join>N</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>isante_location_location_attribute_id</name>
-        <type>Number</type>
-      </field>
-      <field>
-        <name>isante_id_identifier_type_id</name>
-        <type>Number</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>832</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Form author</name>
+    <name>Fetch Alternative Dosage dispensed</name>
     <type>DBJoin</type>
     <description />
     <distribute>Y</distribute>
@@ -1090,11 +1213,332 @@ join person on person.person_id = en.patient_id
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_text form_author from obs
-where obs.concept_id = 1473
+    <sql>select obs.value_text alternative_dosage_dispensed from obs
+where obs.concept_id = (select concept.concept_id from concept where concept.uuid =  "1444AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+  and obs.obs_group_id = ?
   and obs.voided = false
-  and obs.encounter_id = ?</sql>
+  and obs.encounter_id = ?
+</sql>
     <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>drug_group_id_dispensed</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>816</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Alternative Dosage prescribed old concept</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_text alternative_dosage_prescribed from obs
+where obs.concept_id = (select concept.concept_id from concept where concept.uuid = "1444AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+  and obs.obs_group_id = ?
+  and obs.voided = false
+  and obs.encounter_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>drug_group_id_prescribed</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>496</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Dispensation Date</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.obs_datetime dispensation_date from obs
+where obs.concept_id = 1276
+  and obs.obs_group_id = ?
+  and obs.voided = false
+  and obs.encounter_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>drug_group_id_dispensed</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1344</xloc>
+      <yloc>560</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Dosage Function Weight</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_text dosage_function_weight from obs
+where obs.concept_id = 1444
+  and obs.obs_group_id = ?
+  and obs.voided = false
+  and obs.encounter_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>drug_group_id_dispensed</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>736</xloc>
+      <yloc>560</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Dosage dispensed</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select 1 standard_dosage_dispensed from obs
+where obs.concept_id = 1444
+  and obs.obs_group_id = ?
+  and obs.voided = false
+  and obs.encounter_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>drug_group_id_dispensed</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>480</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Dosage prescribed</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select 1 standard_dosage_prescribed from obs
+where obs.concept_id = 1444
+  and obs.obs_group_id = ?
+  and obs.voided = false
+  and obs.encounter_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>drug_group_id_prescribed</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>608</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Drug dispensed</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs1.obs_group_id drug_group_id_dispensed from obs obs1
+join obs obs2 on obs1.obs_group_id = obs2.obs_id
+and obs2.concept_id = 163711
+where obs1.concept_id = 1282
+  and obs1.voided = false
+  and obs1.encounter_id = ?
+  and obs1.value_coded = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>drug_code_prescribed</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Drug prescribed</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>0</rowlimit>
+    <sql>select obs1.value_coded drug_code_prescribed, obs1.obs_group_id drug_group_id_prescribed from obs obs1
+join obs obs2 on obs1.obs_group_id = obs2.obs_id
+and obs2.concept_id = 1442
+where obs1.concept_id = 1282
+and obs2.obs_group_id is not null
+  and obs1.voided = false
+  and obs1.encounter_id = ?
+</sql>
+    <outer_join>N</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
       <field>
@@ -1111,8 +1555,188 @@ where obs.concept_id = 1473
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
-      <yloc>400</yloc>
+      <xloc>1248</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Drug received</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select 1 drug_received from obs
+where obs.concept_id = 1276
+  and obs.obs_group_id = ?
+  and obs.voided = false
+  and obs.encounter_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>drug_group_id_dispensed</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>256</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Duration dispensed</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select format(obs.value_numeric, 0) duration_dispensed from obs
+where obs.concept_id = 159368
+  and obs.obs_group_id = ?
+  and obs.voided = false
+  and obs.encounter_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>drug_group_id_dispensed</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1104</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Duration prescribed</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select format(obs.value_numeric, 0) duration_prescribed from obs
+where obs.concept_id = 159368
+  and obs.obs_group_id = ?
+  and obs.voided = false
+  and obs.encounter_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>drug_group_id_prescribed</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>336</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Indication for Medication Code</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded indication_medication_code from obs
+where obs.concept_id = 160742
+  and obs.obs_group_id = ?
+  and obs.voided = false
+  and obs.encounter_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>drug_group_id_prescribed</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>416</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1145,13 +1769,13 @@ order by date desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
-      <yloc>272</yloc>
+      <xloc>464</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Fetch Next Visit Date</name>
+    <name>Fetch Person Identifier</name>
     <type>DBJoin</type>
     <description />
     <distribute>Y</distribute>
@@ -1163,10 +1787,161 @@ order by date desc</sql>
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_datetime next_visit_date from obs
-where obs.concept_id in (5096, 162549)
+    <sql>select patient_identifier.identifier patient_identifier from patient_identifier
+where patient_identifier.identifier_type = ?
+  and patient_identifier.voided = false
+  and patient_identifier.patient_id = ?
+</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>isante_id_identifier_type_id</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>person_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1024</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Pills Dispensed Quantity</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select format(obs.value_numeric, 0) pills_dispensed_quantity from obs
+where obs.concept_id = 1443
+  and obs.obs_group_id = ?
   and obs.voided = false
-  and obs.encounter_id = ?</sql>
+  and obs.encounter_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>drug_group_id_dispensed</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1344</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Prescription Encounters</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>0</rowlimit>
+    <sql>select encounter.encounter_id, encounter.encounter_datetime, encounter.patient_id person_id, encounter.location_id isante_plus_location_id from encounter
+join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
+where encounter_type.uuid in ('10d73929-54b6-4d18-a647-8b7316bc1ae3', 'a9392241-109f-4d67-885b-57cc4b8c638f')
+  and (encounter.date_created >= ?
+   or encounter.date_changed >= ?
+   or encounter.date_voided >= ?
+   or encounter.date_created >= ?
+   or encounter.date_changed &gt;= ?
+   or encounter.date_voided >= ?)
+</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>688</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Seqnum</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select seqnum as seqnum_value from etl_encounter_seqnum where etl_encounter_seqnum.encounter_id = ?</sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
@@ -1184,13 +1959,13 @@ where obs.concept_id in (5096, 162549)
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1184</xloc>
-      <yloc>272</yloc>
+      <xloc>240</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Fetch Pediatric</name>
+    <name>Fetch dbSite</name>
     <type>DBJoin</type>
     <description />
     <distribute>Y</distribute>
@@ -1202,17 +1977,16 @@ where obs.concept_id in (5096, 162549)
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select date_add(?, interval 14 year) > ? as pediatric</sql>
+    <sql>select location_attribute.value_reference dbSiteValue from location_attribute 
+where location_attribute.attribute_type_id = 7
+  and location_attribute.location_id = ?
+</sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
       <field>
-        <name>birthdate</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>encounter_datetime</name>
-        <type>Date</type>
+        <name>isante_plus_location_id</name>
+        <type>Number</type>
       </field>
     </parameter>
     <attributes />
@@ -1224,8 +1998,88 @@ where obs.concept_id in (5096, 162549)
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1376</xloc>
-      <yloc>272</yloc>
+      <xloc>96</xloc>
+      <yloc>688</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch iSante Location</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select location_attribute.value_reference isante_location_id from location_attribute 
+where location_attribute.attribute_type_id = ?
+  and location_attribute.location_id = ?
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>isante_location_location_attribute_id</name>
+        <type>Number</type>
+      </field>
+      <field>
+        <name>isante_plus_location_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>864</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch other Drug name</name>
+    <type>DBJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>0</rowlimit>
+    <sql>select name other_drug_text from concept_name where concept_id = ? and locale = 'fr' order by concept_name_type asc limit 1 ;
+</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>drug_code_prescribed</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1268,8 +2122,8 @@ where obs.concept_id in (5096, 162549)
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
-      <yloc>560</yloc>
+      <xloc>1200</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1305,8 +2159,8 @@ where obs.concept_id in (5096, 162549)
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
-      <yloc>560</yloc>
+      <xloc>880</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1331,479 +2185,8 @@ where obs.concept_id in (5096, 162549)
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
-      <yloc>560</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Input grid</name>
-    <type>DataGrid</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>table_name</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>siteCode</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>patientID</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>visitDateDd</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>visitDateMm</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>visitDateYy</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>lastModified</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>encounterType</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>seqNum</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>encStatus</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>encComments</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>dbSite</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>visitPointer</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>formAuthor</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>formVersion</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>formAuthor2</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>labOrDrugForm</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>creator</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>createDate</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>lastModifier</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>badVisitDate</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>nxtVisitDd</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>nxtVisitMm</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>nxtVisitYy</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>isRegistry</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>visitDate</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>default_zero</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>default_na</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>default_one</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>2k</name>
-        <type>Integer</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>lastModified</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>default_three</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>encounter_id_cn</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <data>
-      <line>
-        <item>encounter</item>
-        <item>siteCode</item>
-        <item>patientID</item>
-        <item>visitDateDd</item>
-        <item>visitDateMm</item>
-        <item>visitDateYy</item>
-        <item>lastModified</item>
-        <item>encounterType</item>
-        <item>seqNum</item>
-        <item>encStatus</item>
-        <item>encComments</item>
-        <item>dbSite</item>
-        <item>visitPointer</item>
-        <item>formAuthor</item>
-        <item>formVersion</item>
-        <item>formAuthor2</item>
-        <item>labOrDrugForm</item>
-        <item>creator</item>
-        <item>createDate</item>
-        <item>lastModifier</item>
-        <item>badVisitDate</item>
-        <item>nxtVisitDd</item>
-        <item>nxtVisitMm</item>
-        <item>nxtVisitYy</item>
-        <item>isRegistry</item>
-        <item>visitDate</item>
-        <item>0</item>
-        <item>\0</item>
-        <item>1</item>
-        <item>2000</item>
-        <item>lastModified</item>
-        <item>3</item>
-        <item>encounter_id</item>
-      </line>
-    </data>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>96</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Is Pediatric?</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to>Encounter Type Mapping Pediatric</send_true_to>
-    <send_false_to>Encounter Type Mapping Adult</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>pediatric</leftvalue>
-        <function>=</function>
-        <rightvalue />
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>1</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
-      </condition>
-    </compare>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1376</xloc>
-      <yloc>400</yloc>
+      <xloc>1024</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1839,8 +2222,8 @@ where obs.concept_id in (5096, 162549)
       </output>
     </remotesteps>
     <GUI>
-      <xloc>416</xloc>
-      <yloc>272</yloc>
+      <xloc>256</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1871,8 +2254,8 @@ where obs.concept_id in (5096, 162549)
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
-      <yloc>208</yloc>
+      <xloc>112</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1903,13 +2286,13 @@ where obs.concept_id in (5096, 162549)
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
-      <yloc>272</yloc>
+      <xloc>112</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Map Form Version</name>
+    <name>Map Indication Medication</name>
     <type>ValueMapper</type>
     <description />
     <distribute>Y</distribute>
@@ -1919,49 +2302,17 @@ where obs.concept_id in (5096, 162549)
       <method>none</method>
       <schema_name />
     </partitioning>
-    <field_to_use>mapped_encounter_type</field_to_use>
-    <target_field>form_version</target_field>
-    <non_match_default>0</non_match_default>
+    <field_to_use>indication_medication_code</field_to_use>
+    <target_field>indication_medication_mapped</target_field>
+    <non_match_default />
     <fields>
       <field>
-        <source_value>1</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>2</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>5</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>6</source_value>
-        <target_value>3</target_value>
-      </field>
-      <field>
-        <source_value>10</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>12</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>19</source_value>
-        <target_value>3</target_value>
-      </field>
-      <field>
-        <source_value>24</source_value>
+        <source_value>138405</source_value>
         <target_value>2</target_value>
       </field>
       <field>
-        <source_value>25</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>26</source_value>
-        <target_value>3</target_value>
+        <source_value>163768</source_value>
+        <target_value>1</target_value>
       </field>
     </fields>
     <attributes />
@@ -1973,8 +2324,8 @@ where obs.concept_id in (5096, 162549)
       </output>
     </remotesteps>
     <GUI>
-      <xloc>928</xloc>
-      <yloc>400</yloc>
+      <xloc>96</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2003,59 +2354,11 @@ where obs.concept_id in (5096, 162549)
         <is_unicode>no</is_unicode>
       </field>
       <field>
-        <in_stream_name>next_visit_year</in_stream_name>
-        <out_stream_name>next_visit_year_yy</out_stream_name>
+        <in_stream_name>dispensation_year</in_stream_name>
+        <out_stream_name>dispensation_year_yy</out_stream_name>
         <use_regex>yes</use_regex>
         <replace_string>\d\d(\d\d)</replace_string>
         <replace_by_string>$1</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>visit_day</in_stream_name>
-        <out_stream_name>visit_day_dd</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>\b([0-9])\b</replace_string>
-        <replace_by_string>0$1</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>visit_month</in_stream_name>
-        <out_stream_name>visit_month_mm</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>\b([0-9])\b</replace_string>
-        <replace_by_string>0$1</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>next_visit_day</in_stream_name>
-        <out_stream_name>next_visit_day_dd</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>\b([0-9])\b</replace_string>
-        <replace_by_string>0$1</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>next_visit_month</in_stream_name>
-        <out_stream_name>next_visit_month_mm</out_stream_name>
-        <use_regex>yes</use_regex>
-        <replace_string>\b([0-9])\b</replace_string>
-        <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
         <replace_field_by_string />
         <whole_word>no</whole_word>
@@ -2072,8 +2375,8 @@ where obs.concept_id in (5096, 162549)
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>400</yloc>
+      <xloc>384</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2124,8 +2427,8 @@ where obs.concept_id in (5096, 162549)
       </output>
     </remotesteps>
     <GUI>
-      <xloc>432</xloc>
-      <yloc>560</yloc>
+      <xloc>1344</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2184,31 +2487,7 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>patientID</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>patient_identifier</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>siteCode</name>
+        <name>siteCode_cn</name>
         <type>String</type>
         <format />
         <currency />
@@ -2232,7 +2511,31 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>visitDateDd</name>
+        <name>patientID_cn</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>patient_identifier</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>visitDateDd_cn</name>
         <type>String</type>
         <format />
         <currency />
@@ -2256,7 +2559,7 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>visitDateMm</name>
+        <name>visitDateMm_cn</name>
         <type>String</type>
         <format />
         <currency />
@@ -2280,7 +2583,7 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>visitDateYy</name>
+        <name>visitDateYy_cn</name>
         <type>String</type>
         <format />
         <currency />
@@ -2304,79 +2607,7 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>seqNum</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>seqnum_value</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>encStatus</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>form_status_mapped_final</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>encComments</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>default_na</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>dbSite</name>
+        <name>dbSite_cn</name>
         <type>String</type>
         <format />
         <currency />
@@ -2400,7 +2631,7 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>visitPointer</name>
+        <name>seqNum_cn</name>
         <type>String</type>
         <format />
         <currency />
@@ -2412,7 +2643,7 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>default_na</name>
+        <name>seqnum_value</name>
         <type>String</type>
         <format />
         <currency />
@@ -2424,7 +2655,7 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>formAuthor</name>
+        <name>drugID_cn</name>
         <type>String</type>
         <format />
         <currency />
@@ -2436,7 +2667,19 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>form_author</name>
+        <name>other_drug_text</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>0</nullif>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>stdDosage_cn</name>
         <type>String</type>
         <format />
         <currency />
@@ -2448,7 +2691,19 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>formVersion</name>
+        <name>standard_dosage_prescribed</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>0</nullif>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>altDosageSpecify_cn</name>
         <type>String</type>
         <format />
         <currency />
@@ -2460,7 +2715,7 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>form_version</name>
+        <name>alternative_dosage_prescribed</name>
         <type>String</type>
         <format />
         <currency />
@@ -2472,7 +2727,7 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>formAuthor2</name>
+        <name>numDaysDesc_cn</name>
         <type>String</type>
         <format />
         <currency />
@@ -2484,7 +2739,7 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>default_na</name>
+        <name>duration_prescribed</name>
         <type>String</type>
         <format />
         <currency />
@@ -2496,7 +2751,7 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>labOrDrugForm</name>
+        <name>dispensed_cn</name>
         <type>String</type>
         <format />
         <currency />
@@ -2508,7 +2763,19 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>default_na</name>
+        <name>drug_received</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>0</nullif>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>dispAltDosageSpecify_cn</name>
         <type>String</type>
         <format />
         <currency />
@@ -2520,7 +2787,7 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>creator</name>
+        <name>alternative_dosage_dispensed</name>
         <type>String</type>
         <format />
         <currency />
@@ -2532,7 +2799,7 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>default_na</name>
+        <name>dispDateDd_cn</name>
         <type>String</type>
         <format />
         <currency />
@@ -2544,7 +2811,19 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>createDate</name>
+        <name>dispensation_day_dd</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>0</nullif>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>dispDateMm_cn</name>
         <type>String</type>
         <format />
         <currency />
@@ -2556,7 +2835,19 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>date_created</name>
+        <name>dispensation_month_mm</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>0</nullif>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>dispDateYy_cn</name>
         <type>String</type>
         <format />
         <currency />
@@ -2568,7 +2859,19 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>lastModifier</name>
+        <name>dispensation_year_yy</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>0</nullif>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pedDosageDesc_cn</name>
         <type>String</type>
         <format />
         <currency />
@@ -2580,7 +2883,19 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>default_na</name>
+        <name>dosage_function_weight</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>0</nullif>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>dispAltNumPills_cn</name>
         <type>String</type>
         <format />
         <currency />
@@ -2592,7 +2907,7 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>badVisitDate</name>
+        <name>pills_dispensed_quantity</name>
         <type>String</type>
         <format />
         <currency />
@@ -2604,7 +2919,7 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>default_zero</name>
+        <name>dispAltNumDaysSpecify_cn</name>
         <type>String</type>
         <format />
         <currency />
@@ -2616,7 +2931,19 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>nxtVisitDd</name>
+        <name>duration_dispensed</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>0</nullif>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pedDosageDesc_cn</name>
         <type>String</type>
         <format />
         <currency />
@@ -2628,7 +2955,7 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>next_visit_day_dd</name>
+        <name>alternative_dosage_prescribed</name>
         <type>String</type>
         <format />
         <currency />
@@ -2640,7 +2967,7 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>nxtVisitMm</name>
+        <name>rxSlot_cn</name>
         <type>String</type>
         <format />
         <currency />
@@ -2652,151 +2979,7 @@ where obs.concept_id in (5096, 162549)
         <precision>-1</precision>
       </field>
       <field>
-        <name>next_visit_month_mm</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>nxtVisitYy</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>next_visit_year_yy</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>isRegistry</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>default_na</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>visitDate</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>encounter_datetime</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>encounterType</name>
-        <type>None</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>mapped_encounter_type</name>
-        <type>None</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>lastModified</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>last_modified</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>encounter_id_cn</name>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <nullif />
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>encounter_id</name>
+        <name>rxslot_mapped</name>
         <type>String</type>
         <format />
         <currency />
@@ -2817,13 +3000,13 @@ where obs.concept_id in (5096, 162549)
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
-      <yloc>400</yloc>
+      <xloc>736</xloc>
+      <yloc>688</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Fetch Form status</name>
+    <name>Fetch RxSlot</name>
     <type>DBJoin</type>
     <description />
     <distribute>Y</distribute>
@@ -2834,14 +3017,19 @@ where obs.concept_id in (5096, 162549)
       <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded form_status from obs
-where obs.concept_id = 163340
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
+    <rowlimit>0</rowlimit>
+    <sql>select obsg.concept_id rxslot from obs obsg join obs p on obsg.obs_id = p.obs_group_id where p.obs_id = ?
+and p.voided = false
+and p.encounter_id = ?
+
+</sql>
+    <outer_join>N</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>drug_group_id_prescribed</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>encounter_id</name>
         <type>Number</type>
@@ -2856,53 +3044,13 @@ where obs.concept_id = 163340
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>400</yloc>
+      <xloc>1056</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Fetch Form Needs Review</name>
-    <type>DBJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select 1 needs_review from obs
-where obs.concept_id = 163341
-and obs.value_coded = 1065
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>592</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map Form Status</name>
+    <name>Map RxSlot</name>
     <type>ValueMapper</type>
     <description />
     <distribute>Y</distribute>
@@ -2912,16 +3060,24 @@ and obs.value_coded = 1065
       <method>none</method>
       <schema_name />
     </partitioning>
-    <field_to_use>form_status</field_to_use>
-    <target_field>form_status_mapped</target_field>
-    <non_match_default>0</non_match_default>
+    <field_to_use>rxslot</field_to_use>
+    <target_field>rxslot_mapped</target_field>
+    <non_match_default />
     <fields>
       <field>
-        <source_value>1267</source_value>
-        <target_value>0</target_value>
+        <source_value>509165875</source_value>
+        <target_value>1</target_value>
       </field>
       <field>
-        <source_value>163339</source_value>
+        <source_value>509165877</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>509165878</source_value>
+        <target_value>3</target_value>
+      </field>
+      <field>
+        <source_value>509165876</source_value>
         <target_value>4</target_value>
       </field>
     </fields>
@@ -2934,124 +3090,8 @@ and obs.value_coded = 1065
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Is Complete</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to>Incomplete Needs Review</send_true_to>
-    <send_false_to>Complete No Review</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>form_status_mapped</leftvalue>
-        <function>=</function>
-        <rightvalue />
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>4</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
-      </condition>
-    </compare>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>448</xloc>
-      <yloc>400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Incomplete Needs Review</name>
-    <type>ValueMapper</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <field_to_use>needs_review</field_to_use>
-    <target_field>form_status_mapped_final</target_field>
-    <non_match_default>0</non_match_default>
-    <fields>
-      <field>
-        <source_value>0</source_value>
-        <target_value>4</target_value>
-      </field>
-      <field>
-        <source_value>1</source_value>
-        <target_value>6</target_value>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>336</xloc>
-      <yloc>336</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Complete No Review</name>
-    <type>ValueMapper</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <field_to_use>form_status_mapped</field_to_use>
-    <target_field>form_status_mapped_final</target_field>
-    <non_match_default>0</non_match_default>
-    <fields>
-      <field>
-        <source_value>0</source_value>
-        <target_value>0</target_value>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>336</xloc>
-      <yloc>448</yloc>
+      <xloc>912</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

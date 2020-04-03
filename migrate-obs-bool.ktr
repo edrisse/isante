@@ -946,7 +946,7 @@ join encounter_type on encounter_type.encounter_type_id = encounter.encounter_ty
 where obs.concept_id = ?
   and obs.value_coded = ?
   and encounter.voided = false
-  and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171')
+  and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460','10d73929-54b6-4d18-a647-8b7316bc1ae3', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171')
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
    or encounter.date_voided >= ?
@@ -1463,7 +1463,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>isante_plus_answer</name>
+        <name>isante_answer</name>
         <type>String</type>
         <format />
         <currency />
@@ -1839,6 +1839,14 @@ where location_attribute.attribute_type_id = ?
         <item>1651</item>
         <item>151185</item>
         <item>70073</item>
+        <item>1</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>disp communitaire</item>
+        <item>1755</item>
+        <item>1065</item>
+        <item>71642</item>
         <item>1</item>
         <item>N</item>
       </line>

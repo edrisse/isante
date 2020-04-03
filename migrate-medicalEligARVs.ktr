@@ -749,7 +749,7 @@
       <field_a>exp_from</field_a>
       <field_b />
       <field_c />
-      <value_type>None</value_type>
+      <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
@@ -767,7 +767,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>32</xloc>
+      <xloc>16</xloc>
       <yloc>544</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1106,7 +1106,7 @@ where obs.concept_id = 162225
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.obs_datetime exp_from from obs
+    <sql>select obs.value_datetime exp_from from obs
 where obs.concept_id = 162601
   and obs.voided = false
   and obs.encounter_id = ?
@@ -3173,6 +3173,18 @@ where obs.concept_id = 162703
     </partitioning>
     <fields>
       <field>
+        <in_stream_name>exp_from_yy</in_stream_name>
+        <out_stream_name>exp_from_year_yy</out_stream_name>
+        <use_regex>yes</use_regex>
+        <replace_string>\d\d(\d\d)</replace_string>
+        <replace_by_string>$1</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string />
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
         <in_stream_name>visit_year</in_stream_name>
         <out_stream_name>visit_year_yy</out_stream_name>
         <use_regex>yes</use_regex>
@@ -4446,7 +4458,7 @@ where obs.concept_id = 162703
         <precision>-1</precision>
       </field>
       <field>
-        <name>exp_from_yy</name>
+        <name>exp_from_year_yy</name>
         <type>String</type>
         <format />
         <currency />

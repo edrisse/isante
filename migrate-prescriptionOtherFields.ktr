@@ -966,7 +966,7 @@
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select obs.value_text art_remarks from obs
-where obs.concept_id = 163322
+where obs.concept_id = 161011
   and obs.voided = false
   and obs.encounter_id = ?
 </sql>

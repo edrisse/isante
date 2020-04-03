@@ -1799,7 +1799,7 @@ where location_attribute.attribute_type_id = ?
     </fields>
     <data>
       <line>
-        <item>Blood group</item>
+        <item>visit type</item>
         <item>164181</item>
         <item>71443</item>
       </line>
