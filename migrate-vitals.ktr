@@ -741,11 +741,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Map Eye Findings</from>
-      <to>Fetch ART Treatment Status</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch ART Treatment Status</from>
       <to>Fetch ART Treatment Status Comments</to>
       <enabled>Y</enabled>
@@ -1156,16 +1151,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Prenatal</from>
-      <to>Map Prenatal</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Map Prenatal</from>
-      <to>Fetch No diagnosis</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch No diagnosis</from>
       <to>Fetch Ped Med Allergies</to>
       <enabled>Y</enabled>
@@ -1501,7 +1486,37 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Map Eye Findings</from>
+      <to>Fetch Other Findings </to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Other Findings </from>
+      <to>Map Other Findings </to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map Other Findings </from>
+      <to>Fetch ART Treatment Status</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Prenatal</from>
+      <to>Fetch No diagnosis</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Fetch Saturation en oxygène</from>
+      <to>Fetch Pap test result</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Pap test result</from>
+      <to>Map Pap test result</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map Pap test result</from>
       <to>Replace in string</to>
       <enabled>Y</enabled>
     </hop>
@@ -3608,6 +3623,17 @@
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
+      <field>
+        <name>papTestResult_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
     </fields>
     <data>
       <line>
@@ -3801,6 +3827,7 @@
         <item>seqNum</item>
         <item>1</item>
         <item>famPlanOther</item>
+        <item>papTestResult</item>
       </line>
     </data>
     <attributes/>
@@ -4400,7 +4427,7 @@
     <calculation>
       <field_name>pregnant_lmp_month</field_name>
       <calc_type>MONTH_OF_DATE</calc_type>
-      <field_a>repeat_test_dt</field_a>
+      <field_a>pregnant_lmp_dt</field_a>
       <field_b/>
       <field_c/>
       <value_type>String</value_type>
@@ -4415,7 +4442,7 @@
     <calculation>
       <field_name>pregnant_lmp_year</field_name>
       <calc_type>YEAR_OF_DATE</calc_type>
-      <field_a>repeat_test_dt</field_a>
+      <field_a>pregnant_lmp_dt</field_a>
       <field_b/>
       <field_c/>
       <value_type>String</value_type>
@@ -5760,7 +5787,7 @@ where obs.concept_id = 163309
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
+      <xloc>368</xloc>
       <yloc>1136</yloc>
       <draw>Y</draw>
     </GUI>
@@ -7825,6 +7852,46 @@ where obs.concept_id = 163719
     </GUI>
   </step>
   <step>
+    <name>Fetch Other Findings </name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded other_findings_code from obs
+where obs.concept_id = 509165860
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>592</xloc>
+      <yloc>1120</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Fetch Other Vacination text</name>
     <type>DBJoin</type>
     <description/>
@@ -8448,7 +8515,7 @@ where obs.concept_id = 5624
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select obs.value_coded pregnant_fw from obs
-where obs.concept_id = 5272
+where (obs.concept_id = 5272 or obs.concept_id = 1434)
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
@@ -8487,7 +8554,7 @@ where obs.concept_id = 5272
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded pregnant_prenatal from obs
+    <sql>select 1 pregnant_prenatal from obs
 where obs.concept_id = 1622
   and obs.encounter_id = ?
   and obs.voided = false
@@ -8752,6 +8819,46 @@ where obs.concept_id = 5092
     <GUI>
       <xloc>80</xloc>
       <yloc>1888</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Saturation en oxygène</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_numeric ped_vit_cur_oxy_sat from obs
+where obs.concept_id = 5092
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>2864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10516,7 +10623,7 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>656</xloc>
+      <xloc>464</xloc>
       <yloc>1136</yloc>
       <draw>Y</draw>
     </GUI>
@@ -11392,6 +11499,48 @@ where location_attribute.attribute_type_id = ?
     </GUI>
   </step>
   <step>
+    <name>Map Other Findings </name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>other_findings_code</field_to_use>
+    <target_field>other_findings_mapped</target_field>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>1115</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>1116</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>1118</source_value>
+        <target_value>4</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>736</xloc>
+      <yloc>1120</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Map Papanicolau Smear</name>
     <type>ValueMapper</type>
     <description/>
@@ -11540,42 +11689,12 @@ where location_attribute.attribute_type_id = ?
         <source_value>1067</source_value>
         <target_value>4</target_value>
       </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>32</xloc>
-      <yloc>2304</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Map Prenatal</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>pregnant_prenatal</field_to_use>
-    <target_field>pregnant_prenatal_mapped</target_field>
-    <non_match_default/>
-    <fields>
       <field>
-        <source_value>1065</source_value>
+        <source_value>1</source_value>
         <target_value>1</target_value>
       </field>
       <field>
-        <source_value>1066</source_value>
+        <source_value>2</source_value>
         <target_value>2</target_value>
       </field>
     </fields>
@@ -11588,7 +11707,7 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>880</xloc>
+      <xloc>32</xloc>
       <yloc>2304</yloc>
       <draw>Y</draw>
     </GUI>
@@ -12503,7 +12622,7 @@ where location_attribute.attribute_type_id = ?
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
+        <replace_field_by_string/>
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -12515,7 +12634,7 @@ where location_attribute.attribute_type_id = ?
         <replace_string>\b([0-9])\b</replace_string>
         <replace_by_string>0$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
+        <replace_field_by_string/>
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -12527,7 +12646,7 @@ where location_attribute.attribute_type_id = ?
         <replace_string>\d\d(\d\d)</replace_string>
         <replace_by_string>$1</replace_by_string>
         <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
+        <replace_field_by_string/>
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
@@ -14298,7 +14417,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>pregnant_prenatal_mapped</name>
+        <name>pregnant_prenatal</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -16098,7 +16217,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>empty_value</name>
+        <name>other_findings_mapped</name>
         <type>None</type>
         <format/>
         <currency/>
@@ -17069,6 +17188,30 @@ where location_attribute.attribute_type_id = ?
         <length>-1</length>
         <precision>-1</precision>
       </field>
+      <field>
+        <name>papTestResult_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>pap_test_result_mapped</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -17138,7 +17281,7 @@ where location_attribute.attribute_type_id = ?
     </GUI>
   </step>
   <step>
-    <name>Fetch Saturation en oxygène</name>
+    <name>Fetch Pap test result</name>
     <type>DBJoin</type>
     <description/>
     <distribute>Y</distribute>
@@ -17150,8 +17293,8 @@ where location_attribute.attribute_type_id = ?
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_numeric ped_vit_cur_oxy_sat from obs
-where obs.concept_id = 5092
+    <sql>select obs.value_coded pap_test_result from obs
+where obs.concept_id = 885
   and obs.encounter_id = ?
   and obs.voided = false
 </sql>
@@ -17172,8 +17315,46 @@ where obs.concept_id = 5092
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
+      <xloc>80</xloc>
       <yloc>2864</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Pap test result</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>pap_test_result</field_to_use>
+    <target_field>pap_test_result_mapped</target_field>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>1115</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>1116</source_value>
+        <target_value>2</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>2944</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

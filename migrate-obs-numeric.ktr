@@ -2293,7 +2293,7 @@ where location_attribute.attribute_type_id = ?
     <data>
       <line>
         <item>autre: normal</item>
-        <item>509165860</item>
+        <item>509165840</item>
         <item>1115</item>
         <item>70229</item>
         <item>1</item>
@@ -2301,7 +2301,7 @@ where location_attribute.attribute_type_id = ?
       </line>
       <line>
         <item>autre: anormal</item>
-        <item>509165860</item>
+        <item>509165840</item>
         <item>1116</item>
         <item>70229</item>
         <item>2</item>
@@ -2309,7 +2309,7 @@ where location_attribute.attribute_type_id = ?
       </line>
       <line>
         <item>autre: pas conduit</item>
-        <item>509165860</item>
+        <item>509165840</item>
         <item>1118</item>
         <item>70229</item>
         <item>3</item>

@@ -1511,7 +1511,7 @@
     <sql>select encounter.patient_id person_id, encounter.encounter_datetime, encounter.location_id isante_plus_location_id, encounter.encounter_id from encounter
 join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
 where encounter.voided = false
-  and encounter_type.uuid = "349ae0b4-65c1-4122-aa06-480f186c8350"
+  and encounter_type.uuid in ('349ae0b4-65c1-4122-aa06-480f186c8350', '33491314-c352-42d0-bd5d-a9d0bffc9bf1')
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
    or encounter.date_voided >= ?
@@ -2181,6 +2181,46 @@ where obs.concept_id = 159595
     <GUI>
       <xloc>1328</xloc>
       <yloc>992</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fetch Ped mother history arv proph during labor, specify</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select concept_name.name ped_mother_hist_hiv_reg from obs join concept_name on obs.value_coded = concept_name.concept_id
+and concept_name.locale = 'fr'
+where obs.concept_id = 163786
+  and obs.encounter_id = ?
+  and obs.voided = false</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1056</xloc>
+      <yloc>1584</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -7504,46 +7544,6 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>1296</xloc>
       <yloc>1776</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Fetch Ped mother history arv proph during labor, specify</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select concept_name.name ped_mother_hist_hiv_reg from obs join concept_name on obs.value_coded = concept_name.concept_id
-and concept_name.locale = 'fr'
-where obs.concept_id = 163786
-  and obs.encounter_id = ?
-  and obs.voided = false</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1056</xloc>
-      <yloc>1584</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
