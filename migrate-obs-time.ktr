@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>migrate-obs-av</name>
+    <name>migrate-obs-time</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -427,10 +427,10 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2020/04/02 12:37:42.578</created_date>
+    <created_date>2020/04/06 10:10:33.998</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2020/04/02 12:37:42.578</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2020/04/06 10:10:33.998</modified_date>
+    <key_for_session_key/>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -497,11 +497,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Last ETL Excution Date</from>
-      <to>Database join Coded</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Person Id</from>
       <to>Select values format</to>
       <enabled>Y</enabled>
@@ -537,13 +532,28 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Database join Coded</from>
+      <from>concepts</from>
+      <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Database join Non-coded</from>
+      <to>Decompose Field Datetime</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Decompose Field Datetime</from>
+      <to>Concat fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Concat fields</from>
       <to>Fetch Person Identifier</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>concepts</from>
-      <to>Join rows (cartesian product)</to>
+      <from>Fetch Last ETL Excution Date</from>
+      <to>Database join Non-coded</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -921,13 +931,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>67</xloc>
-      <yloc>51</yloc>
+      <xloc>40</xloc>
+      <yloc>40</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Database join Coded</name>
+    <name>Database join Non-coded</name>
     <type>DBJoin</type>
     <description/>
     <distribute>Y</distribute>
@@ -939,37 +949,21 @@
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
-    <sql>select obs.person_id, obs.obs_datetime, obs.encounter_id, encounter.location_id, encounter.encounter_datetime, obs.date_created, obs.voided,
-obs.date_voided, obs.void_reason, obs.value_numeric from obs
-join encounter on encounter.encounter_id = obs.encounter_id
+    <sql>select encounter.patient_id person_id, encounter.encounter_datetime field_datetime, encounter.encounter_id, encounter.location_id, encounter.encounter_datetime, encounter.date_created, encounter.voided,
+encounter.date_voided, encounter.void_reason  from encounter
 join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
-where obs.concept_id = ?
-  and encounter.voided = false
-  and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171', 'd95b3540-a39f-4d1e-a301-8ee0e03d5eab')
+where encounter.voided = false
+  and encounter_type.uuid = 'd95b3540-a39f-4d1e-a301-8ee0e03d5eab'
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
    or encounter.date_voided >= ?
    or encounter.date_created >= ?
    or encounter.date_changed >= ?
-   or encounter.date_voided >= ?
-   or obs.date_voided >= ?
-   or obs.date_created >= ?)
+   or encounter.date_voided >= ?)
 </sql>
     <outer_join>N</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
-      <field>
-        <name>isante_plus_question</name>
-        <type>Number</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
       <field>
         <name>last_execution</name>
         <type>Date</type>
@@ -1004,7 +998,7 @@ where obs.concept_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>848</xloc>
+      <xloc>928</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1038,8 +1032,8 @@ order by date desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
-      <yloc>176</yloc>
+      <xloc>568</xloc>
+      <yloc>168</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1078,7 +1072,7 @@ order by date desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1120</xloc>
+      <xloc>1584</xloc>
       <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1122,8 +1116,8 @@ where patient_identifier.identifier_type = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1395</xloc>
-      <yloc>179</yloc>
+      <xloc>1800</xloc>
+      <yloc>168</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1165,8 +1159,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1395</xloc>
-      <yloc>371</yloc>
+      <xloc>1800</xloc>
+      <yloc>360</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1202,8 +1196,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>371</xloc>
-      <yloc>179</yloc>
+      <xloc>344</xloc>
+      <yloc>168</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1234,8 +1228,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
-      <yloc>192</yloc>
+      <xloc>40</xloc>
+      <yloc>264</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1266,8 +1260,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>83</xloc>
-      <yloc>355</yloc>
+      <xloc>56</xloc>
+      <yloc>344</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1410,7 +1404,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>obs_datetime</name>
+        <name>field_datetime</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1458,7 +1452,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>value_numeric</name>
+        <name>field_datetime_concated</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1623,7 +1617,7 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>544</xloc>
+      <xloc>976</xloc>
       <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1648,23 +1642,6 @@ where location_attribute.attribute_type_id = ?
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>obs_datetime</name>
-        <rename>obs_datetime</rename>
-        <type>Date</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>yyyy-MM-dd HH:mm:ss</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
         <date_format_locale/>
         <date_format_timezone/>
@@ -1719,7 +1696,7 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>832</xloc>
+      <xloc>1344</xloc>
       <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1783,52 +1760,10 @@ where location_attribute.attribute_type_id = ?
     </fields>
     <data>
       <line>
-        <item>DÉBUT DU TRAVAIL: Hauteur Utérine</item>
-        <item>1439</item>
+        <item>Heure d’admission</item>
         <item/>
-        <item>7804</item>
-      </line>
-      <line>
-        <item>AV</item>
-        <item>1825</item>
         <item/>
-        <item>7870</item>
-      </line>
-      <line>
-        <item>DÉBUT DU TRAVAIL: Perte sanguine estimée à</item>
-        <item>161928</item>
-        <item/>
-        <item>70518</item>
-      </line>
-      <line>
-        <item>SIGNES VITAUX A L’ADMISSSION: TA</item>
-        <item>5085</item>
-        <item/>
-        <item>7840</item>
-      </line>
-      <line>
-        <item>SIGNES VITAUX A L’ADMISSSION: TA</item>
-        <item>5086</item>
-        <item/>
-        <item>7797</item>
-      </line>
-      <line>
-        <item>SIGNES VITAUX A L’ADMISSSION: Pouls</item>
-        <item>5087</item>
-        <item/>
-        <item>7838</item>
-      </line>
-      <line>
-        <item>SIGNES VITAUX A L’ADMISSSION: FR</item>
-        <item>5242</item>
-        <item/>
-        <item>7839</item>
-      </line>
-      <line>
-        <item>SIGNES VITAUX A L’ADMISSSION: Temp</item>
-        <item>5088</item>
-        <item/>
-        <item>7836</item>
+        <item>70516</item>
       </line>
     </data>
     <attributes/>
@@ -1840,8 +1775,150 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>73</xloc>
-      <yloc>515</yloc>
+      <xloc>40</xloc>
+      <yloc>168</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Decompose Field Datetime</name>
+    <type>Calculator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>field_hour</field_name>
+      <calc_type>HOUR_OF_DAY</calc_type>
+      <field_a>field_datetime</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <calculation>
+      <field_name>field_minute</field_name>
+      <calc_type>MINUTE_OF_HOUR</calc_type>
+      <field_a>field_datetime</field_a>
+      <field_b/>
+      <field_c/>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask/>
+      <decimal_symbol/>
+      <grouping_symbol/>
+      <currency_symbol/>
+    </calculation>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1264</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Concat fields</name>
+    <type>ConcatFields</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <separator>:</separator>
+    <enclosure>"</enclosure>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>N</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding/>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name>file</name>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>txt</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>field_hour</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>field_minute</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <ConcatFields>
+      <targetFieldName>field_datetime_concated</targetFieldName>
+      <targetFieldLength>0</targetFieldLength>
+      <removeSelectedFields>N</removeSelectedFields>
+    </ConcatFields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1488</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

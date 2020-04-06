@@ -4616,13 +4616,6 @@ where location_attribute.attribute_type_id = ?
         <item>Y</item>
       </line>
       <line>
-        <item>Labor Weight </item>
-        <item>5089</item>
-        <item/>
-        <item>7842</item>
-        <item>N</item>
-      </line>
-      <line>
         <item>Lieu - Hôpital - précisez</item>
         <item>159758</item>
         <item>1589</item>
@@ -5089,6 +5082,55 @@ where location_attribute.attribute_type_id = ?
         <item>163589</item>
         <item/>
         <item>70486</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>DÉBUT DU TRAVAIL: Date et Heure</item>
+        <item>163444</item>
+        <item/>
+        <item>7802</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>DÉBUT DU TRAVAIL: Age gestationnel</item>
+        <item>1409</item>
+        <item/>
+        <item>7803</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>DÉBUT DU TRAVAIL: Présentation, precisez</item>
+        <item>160090</item>
+        <item/>
+        <item>70532</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>DÉBUT DU TRAVAIL: Date et Heure</item>
+        <item>160710</item>
+        <item/>
+        <item>7809</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Vaginal bleeding other</item>
+        <item>147232</item>
+        <item>5622</item>
+        <item>70535</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>ACCOUCHEMENT: Date et Heure</item>
+        <item>5599</item>
+        <item/>
+        <item>7819</item>
+        <item>N</item>
+      </line>
+      <line>
+        <item>Cardiomyopathie,  Autre</item>
+        <item>1887</item>
+        <item>5622</item>
+        <item>71298</item>
         <item>Y</item>
       </line>
     </data>

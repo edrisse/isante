@@ -1416,7 +1416,7 @@ and (obs.date_created >= ?
 on obs1.obs_group_id = obs2.obs_id
 join encounter on encounter.encounter_id = obs1.encounter_id
 and encounter.encounter_id = ?
-and (obs2.concept_id = 161879 or obs2.concept_id = 159935)
+and obs2.concept_id = 159935
 where obs1.value_coded = 142412
 and (obs1.date_created >= ?
    or obs1.date_voided >= ?)</sql>
@@ -1565,7 +1565,7 @@ and (obs.date_created >= ?
 on obs1.obs_group_id = obs2.obs_id
 join encounter on encounter.encounter_id = obs1.encounter_id
 and encounter.encounter_id = ?
-and (obs2.concept_id = 161879 or obs2.concept_id = 159935)
+and obs2.concept_id = 159935
 where obs1.value_coded = 151
 and (obs1.date_created >= ?
    or obs1.date_voided >= ?)</sql>
@@ -1932,7 +1932,7 @@ and (obs.date_created >= ?
 on obs1.obs_group_id = obs2.obs_id
 join encounter on encounter.encounter_id = obs1.encounter_id
 and encounter.encounter_id = ?
-and (obs2.concept_id = 161879 or obs2.concept_id = 159935)
+and obs2.concept_id = 159935
 where obs1.value_coded = 512
 and (obs1.date_created >= ?
    or obs1.date_voided >= ?)</sql>
@@ -2031,7 +2031,7 @@ and (obs.date_created >= ?
 on obs1.obs_group_id = obs2.obs_id
 join encounter on encounter.encounter_id = obs1.encounter_id
 and encounter.encounter_id = ?
-and (obs2.concept_id = 161879 or obs2.concept_id = 159935)
+and obs2.concept_id = 159935
 where obs1.value_coded = 5226
 and (obs1.date_created >= ?
    or obs1.date_voided >= ?)</sql>
@@ -2314,7 +2314,7 @@ and (obs.date_created >= ?
 on obs1.obs_group_id = obs2.obs_id
 join encounter on encounter.encounter_id = obs1.encounter_id
 and encounter.encounter_id = ?
-and (obs2.concept_id = 161879 or obs2.concept_id = 159935)
+and obs2.concept_id = 159935
 where obs1.value_coded = 139084
 and (obs1.date_created >= ?
    or obs1.date_voided >= ?)</sql>
@@ -2563,7 +2563,7 @@ and (obs.date_created >= ?
 on obs1.obs_group_id = obs2.obs_id
 join encounter on encounter.encounter_id = obs1.encounter_id
 and encounter.encounter_id = ?
-and (obs2.concept_id = 161879 or obs2.concept_id = 159935)
+and obs2.concept_id = 159935
 where obs1.value_coded = 133473
 and (obs1.date_created >= ?
    or obs1.date_voided >= ?)</sql>
@@ -2662,7 +2662,7 @@ and (obs.date_created >= ?
 on obs1.obs_group_id = obs2.obs_id
 join encounter on encounter.encounter_id = obs1.encounter_id
 and encounter.encounter_id = ?
-and (obs2.concept_id = 161879 or obs2.concept_id = 159935)
+and obs2.concept_id = 159935
 where obs1.value_coded = 6004
 and (obs1.date_created >= ?
    or obs1.date_voided >= ?)</sql>

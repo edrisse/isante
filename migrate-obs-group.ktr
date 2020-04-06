@@ -537,11 +537,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Replace in string</from>
-      <to>Save on CSV</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Select values format</from>
       <to>Replace in string</to>
       <enabled>Y</enabled>
@@ -569,6 +564,26 @@
     <hop>
       <from>Database join Non coded</from>
       <to>Fetch Person Identifier</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string</from>
+      <to>Filter rows 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows 2</from>
+      <to>Set field value date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set field value date</from>
+      <to>Save on CSV</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows 2</from>
+      <to>Save on CSV</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -979,7 +994,7 @@
     <sql>select obs.obs_id obs_group_id from obs
 join encounter on encounter.encounter_id = obs.encounter_id
 join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
-and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171')
+and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171', 'd95b3540-a39f-4d1e-a301-8ee0e03d5eab')
 where obs.concept_id = (select concept.concept_id from concept where concept.uuid = ?)
   and encounter.voided = false
   and (encounter.date_created >= ?
@@ -1747,7 +1762,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>value_text</name>
+        <name>value_numeric</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1926,6 +1941,30 @@ where location_attribute.attribute_type_id = ?
         <length>-1</length>
         <precision>-1</precision>
       </field>
+      <field>
+        <name>value_numeric_c</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>isante_answer</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1936,7 +1975,7 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>976</xloc>
+      <xloc>624</xloc>
       <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2132,6 +2171,17 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
+      <field>
+        <name>use_comments</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
     </fields>
     <data>
       <line>
@@ -2141,6 +2191,7 @@ where location_attribute.attribute_type_id = ?
         <item>70416</item>
         <item/>
         <item>2917c4a3-71bc-4c2d-92fc-9911b55d02f3</item>
+        <item/>
       </line>
       <line>
         <item>Prescribed medicines 2</item>
@@ -2149,6 +2200,7 @@ where location_attribute.attribute_type_id = ?
         <item>70417</item>
         <item/>
         <item>f9c09540-f8c0-4884-96dd-a81b4b2a6e84</item>
+        <item/>
       </line>
       <line>
         <item>Prescribed medicines 3</item>
@@ -2157,6 +2209,7 @@ where location_attribute.attribute_type_id = ?
         <item>70418</item>
         <item/>
         <item>9da0ca77-d4fa-4689-8f14-e358f4d60f6a</item>
+        <item/>
       </line>
       <line>
         <item>Prescribed medicines 4</item>
@@ -2165,6 +2218,7 @@ where location_attribute.attribute_type_id = ?
         <item>70419</item>
         <item/>
         <item>df21482f-5823-4383-8008-a45d9557567a</item>
+        <item/>
       </line>
       <line>
         <item>Prescribed medicines 5</item>
@@ -2173,6 +2227,7 @@ where location_attribute.attribute_type_id = ?
         <item>70420</item>
         <item/>
         <item>0c94f335-bd60-4ef4-864b-bab27c874841</item>
+        <item/>
       </line>
       <line>
         <item>ATCD Indication1</item>
@@ -2181,6 +2236,7 @@ where location_attribute.attribute_type_id = ?
         <item>70481</item>
         <item/>
         <item>8d4e82af-b278-4cc7-ad4a-f74865f63239</item>
+        <item/>
       </line>
       <line>
         <item>ATCD date 1</item>
@@ -2189,6 +2245,7 @@ where location_attribute.attribute_type_id = ?
         <item>70482</item>
         <item/>
         <item>8d4e82af-b278-4cc7-ad4a-f74865f63239</item>
+        <item/>
       </line>
       <line>
         <item>ATCD Indication1</item>
@@ -2197,6 +2254,7 @@ where location_attribute.attribute_type_id = ?
         <item>70483</item>
         <item/>
         <item>3904edb1-e1ba-46de-a2fd-da11076f29b5</item>
+        <item/>
       </line>
       <line>
         <item>ATCD date 1</item>
@@ -2205,6 +2263,7 @@ where location_attribute.attribute_type_id = ?
         <item>70484</item>
         <item/>
         <item>3904edb1-e1ba-46de-a2fd-da11076f29b5</item>
+        <item/>
       </line>
       <line>
         <item>Dépistage CA du Col: Date</item>
@@ -2213,6 +2272,7 @@ where location_attribute.attribute_type_id = ?
         <item>70075</item>
         <item/>
         <item>f0748bfb-1465-4d6c-89f1-c631f46c1510</item>
+        <item/>
       </line>
       <line>
         <item>Dépistage CA de la Prostate (Homme > 40ans): Date</item>
@@ -2221,6 +2281,7 @@ where location_attribute.attribute_type_id = ?
         <item>70076</item>
         <item/>
         <item>f0748bfb-1465-4d6c-89f1-c631f46c1510</item>
+        <item/>
       </line>
       <line>
         <item>Autres, preciser (autres medicaments)</item>
@@ -2229,6 +2290,7 @@ where location_attribute.attribute_type_id = ?
         <item>7273</item>
         <item/>
         <item>9da0ca77-d4fa-4689-8f14-e358f4d60f6a</item>
+        <item/>
       </line>
       <line>
         <item>Hépatite B: Reçu, Date Inconnu</item>
@@ -2237,6 +2299,7 @@ where location_attribute.attribute_type_id = ?
         <item>71077</item>
         <item>1</item>
         <item>120157b7-a596-4623-8f7d-960fd686fb67</item>
+        <item/>
       </line>
       <line>
         <item>Hépatite B: Jamais Reçu</item>
@@ -2245,6 +2308,7 @@ where location_attribute.attribute_type_id = ?
         <item>71078</item>
         <item>1</item>
         <item>120157b7-a596-4623-8f7d-960fd686fb67</item>
+        <item/>
       </line>
       <line>
         <item>Tétanos Texoïde: Reçu, Date Inconnu</item>
@@ -2253,6 +2317,7 @@ where location_attribute.attribute_type_id = ?
         <item>71082</item>
         <item>1</item>
         <item>f9e79221-424c-44e9-a23d-3b507d326c32</item>
+        <item/>
       </line>
       <line>
         <item>Tétanos Texoïde: Jamais Reçu</item>
@@ -2261,6 +2326,7 @@ where location_attribute.attribute_type_id = ?
         <item>71083</item>
         <item>1</item>
         <item>f9e79221-424c-44e9-a23d-3b507d326c32</item>
+        <item/>
       </line>
       <line>
         <item>Pneumocoque: Reçu, Date Inconnu</item>
@@ -2269,6 +2335,7 @@ where location_attribute.attribute_type_id = ?
         <item>71632</item>
         <item>1</item>
         <item>1441AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item/>
       </line>
       <line>
         <item>Pneumocoque: Jamais Reçu</item>
@@ -2277,6 +2344,7 @@ where location_attribute.attribute_type_id = ?
         <item>71633</item>
         <item>1</item>
         <item>1441AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
+        <item/>
       </line>
       <line>
         <item>Autre: Reçu, Date Inconnu</item>
@@ -2285,6 +2353,7 @@ where location_attribute.attribute_type_id = ?
         <item>71092</item>
         <item>1</item>
         <item>d2947119-fa79-4903-842d-4b38b9d2856f</item>
+        <item/>
       </line>
       <line>
         <item>Autre: Jamais Reçu</item>
@@ -2293,6 +2362,7 @@ where location_attribute.attribute_type_id = ?
         <item>71093</item>
         <item>1</item>
         <item>d2947119-fa79-4903-842d-4b38b9d2856f</item>
+        <item/>
       </line>
       <line>
         <item>Mois 0: Date</item>
@@ -2301,6 +2371,7 @@ where location_attribute.attribute_type_id = ?
         <item>71158</item>
         <item/>
         <item>c2c7db51-d427-4c21-9655-ae9ee604c81c</item>
+        <item/>
       </line>
       <line>
         <item>Mois 0: Bacilloscopie: Pos</item>
@@ -2309,6 +2380,7 @@ where location_attribute.attribute_type_id = ?
         <item>71159</item>
         <item>1</item>
         <item>c2c7db51-d427-4c21-9655-ae9ee604c81c</item>
+        <item/>
       </line>
       <line>
         <item>Mois 0: Bacilloscopie: Neg</item>
@@ -2317,6 +2389,7 @@ where location_attribute.attribute_type_id = ?
         <item>71159</item>
         <item>2</item>
         <item>c2c7db51-d427-4c21-9655-ae9ee604c81c</item>
+        <item/>
       </line>
       <line>
         <item>Mois 0: Poids</item>
@@ -2325,6 +2398,7 @@ where location_attribute.attribute_type_id = ?
         <item>71160</item>
         <item/>
         <item>c2c7db51-d427-4c21-9655-ae9ee604c81c</item>
+        <item/>
       </line>
       <line>
         <item>Mois 2: Date</item>
@@ -2333,6 +2407,7 @@ where location_attribute.attribute_type_id = ?
         <item>71161</item>
         <item/>
         <item>be7a27bb-2dcd-4bff-b696-ccdbbd2d3192</item>
+        <item/>
       </line>
       <line>
         <item>Mois 2: Bacilloscopie: Pos</item>
@@ -2341,6 +2416,7 @@ where location_attribute.attribute_type_id = ?
         <item>71162</item>
         <item>1</item>
         <item>be7a27bb-2dcd-4bff-b696-ccdbbd2d3192</item>
+        <item/>
       </line>
       <line>
         <item>Mois 2: Bacilloscopie: Neg</item>
@@ -2349,6 +2425,7 @@ where location_attribute.attribute_type_id = ?
         <item>71162</item>
         <item>2</item>
         <item>be7a27bb-2dcd-4bff-b696-ccdbbd2d3192</item>
+        <item/>
       </line>
       <line>
         <item>Mois 2: Poids</item>
@@ -2357,6 +2434,7 @@ where location_attribute.attribute_type_id = ?
         <item>71163</item>
         <item/>
         <item>be7a27bb-2dcd-4bff-b696-ccdbbd2d3192</item>
+        <item/>
       </line>
       <line>
         <item>Mois 3: Date</item>
@@ -2365,6 +2443,7 @@ where location_attribute.attribute_type_id = ?
         <item>71164</item>
         <item/>
         <item>fdd9d953-004a-4e9a-ab93-9afaa0e090fa</item>
+        <item/>
       </line>
       <line>
         <item>Mois 3: Bacilloscopie: Pos</item>
@@ -2373,6 +2452,7 @@ where location_attribute.attribute_type_id = ?
         <item>71165</item>
         <item>1</item>
         <item>fdd9d953-004a-4e9a-ab93-9afaa0e090fa</item>
+        <item/>
       </line>
       <line>
         <item>Mois 3: Bacilloscopie: Neg</item>
@@ -2381,6 +2461,7 @@ where location_attribute.attribute_type_id = ?
         <item>71165</item>
         <item>2</item>
         <item>fdd9d953-004a-4e9a-ab93-9afaa0e090fa</item>
+        <item/>
       </line>
       <line>
         <item>Mois 3: Poids</item>
@@ -2389,6 +2470,7 @@ where location_attribute.attribute_type_id = ?
         <item>71166</item>
         <item/>
         <item>fdd9d953-004a-4e9a-ab93-9afaa0e090fa</item>
+        <item/>
       </line>
       <line>
         <item>Mois 5: Date</item>
@@ -2397,6 +2479,7 @@ where location_attribute.attribute_type_id = ?
         <item>71167</item>
         <item/>
         <item>224546bb-03da-4793-9ef6-3d42adc5b353</item>
+        <item/>
       </line>
       <line>
         <item>Mois 5: Bacilloscopie: Pos</item>
@@ -2405,6 +2488,7 @@ where location_attribute.attribute_type_id = ?
         <item>71168</item>
         <item>1</item>
         <item>224546bb-03da-4793-9ef6-3d42adc5b353</item>
+        <item/>
       </line>
       <line>
         <item>Mois 5: Bacilloscopie: Neg</item>
@@ -2413,6 +2497,7 @@ where location_attribute.attribute_type_id = ?
         <item>71168</item>
         <item>2</item>
         <item>224546bb-03da-4793-9ef6-3d42adc5b353</item>
+        <item/>
       </line>
       <line>
         <item>Mois 5: Poids</item>
@@ -2421,6 +2506,7 @@ where location_attribute.attribute_type_id = ?
         <item>71169</item>
         <item/>
         <item>224546bb-03da-4793-9ef6-3d42adc5b353</item>
+        <item/>
       </line>
       <line>
         <item>Mois Fin de rx: Date</item>
@@ -2429,6 +2515,7 @@ where location_attribute.attribute_type_id = ?
         <item>71170</item>
         <item/>
         <item>7ae17faf-5935-46f2-a1fb-88e51b65480e</item>
+        <item/>
       </line>
       <line>
         <item>Mois Fin de rx: Bacilloscopie: Pos</item>
@@ -2437,6 +2524,7 @@ where location_attribute.attribute_type_id = ?
         <item>71171</item>
         <item>1</item>
         <item>7ae17faf-5935-46f2-a1fb-88e51b65480e</item>
+        <item/>
       </line>
       <line>
         <item>Mois Fin de rx: Bacilloscopie: Neg</item>
@@ -2445,6 +2533,7 @@ where location_attribute.attribute_type_id = ?
         <item>71171</item>
         <item>2</item>
         <item>7ae17faf-5935-46f2-a1fb-88e51b65480e</item>
+        <item/>
       </line>
       <line>
         <item>Mois Fin de rx: Poids</item>
@@ -2453,21 +2542,1266 @@ where location_attribute.attribute_type_id = ?
         <item>71172</item>
         <item/>
         <item>7ae17faf-5935-46f2-a1fb-88e51b65480e</item>
-      </line>
-      <line>
-        <item/>
-        <item/>
-        <item/>
-        <item/>
-        <item/>
         <item/>
       </line>
       <line>
+        <item>1er: Naissance Vivante</item>
+        <item>159917</item>
+        <item>151849</item>
+        <item>70500</item>
+        <item>1</item>
+        <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
         <item/>
+      </line>
+      <line>
+        <item>1er: Macérée</item>
+        <item>159917</item>
+        <item>135436</item>
+        <item>70500</item>
+        <item>2</item>
+        <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
         <item/>
+      </line>
+      <line>
+        <item>1er: Non Macérée</item>
+        <item>159917</item>
+        <item>159916</item>
+        <item>70500</item>
+        <item>4</item>
+        <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
         <item/>
+      </line>
+      <line>
+        <item>1er: Date et Heure</item>
+        <item>5599</item>
         <item/>
+        <item>71284</item>
         <item/>
+        <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
+        <item/>
+      </line>
+      <line>
+        <item>1er: Mort Néonatale</item>
+        <item>159917</item>
+        <item>154223</item>
+        <item>70500</item>
+        <item>8</item>
+        <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
+        <item/>
+      </line>
+      <line>
+        <item>1er: APGAR : 1mn</item>
+        <item>159603</item>
+        <item/>
+        <item>71046</item>
+        <item/>
+        <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
+        <item/>
+      </line>
+      <line>
+        <item>1er: APGAR : 5mn</item>
+        <item>159604</item>
+        <item/>
+        <item>71047</item>
+        <item/>
+        <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
+        <item/>
+      </line>
+      <line>
+        <item>1er: Poids du (ou des) Nnés</item>
+        <item>5916</item>
+        <item/>
+        <item>70508</item>
+        <item/>
+        <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
+        <item/>
+      </line>
+      <line>
+        <item>1er: Sexe: Masc</item>
+        <item>1587</item>
+        <item>1534</item>
+        <item>70504</item>
+        <item>1</item>
+        <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
+        <item/>
+      </line>
+      <line>
+        <item>1er: Sexe: Fem</item>
+        <item>1587</item>
+        <item>1535</item>
+        <item>70504</item>
+        <item>2</item>
+        <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
+        <item/>
+      </line>
+      <line>
+        <item>1er: Malformation congénitale visible: Oui</item>
+        <item>143849</item>
+        <item>1065</item>
+        <item>71317</item>
+        <item>1</item>
+        <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
+        <item/>
+      </line>
+      <line>
+        <item>1er: Malformation congénitale visible: Non</item>
+        <item>143849</item>
+        <item>1066</item>
+        <item>71317</item>
+        <item>2</item>
+        <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
+        <item/>
+      </line>
+      <line>
+        <item>1er: Allaitement maternel 1ere heure: Oui</item>
+        <item>163459</item>
+        <item>1065</item>
+        <item>71318</item>
+        <item>1</item>
+        <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
+        <item/>
+      </line>
+      <line>
+        <item>1er: Allaitement maternel 1ere heure: Non</item>
+        <item>163459</item>
+        <item>1066</item>
+        <item>71318</item>
+        <item>2</item>
+        <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
+        <item/>
+      </line>
+      <line>
+        <item>2eme: Naissance Vivante</item>
+        <item>159917</item>
+        <item>151849</item>
+        <item>70501</item>
+        <item>1</item>
+        <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
+        <item/>
+      </line>
+      <line>
+        <item>2eme: Macérée</item>
+        <item>159917</item>
+        <item>135436</item>
+        <item>70501</item>
+        <item>2</item>
+        <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
+        <item/>
+      </line>
+      <line>
+        <item>2eme: Non Macérée</item>
+        <item>159917</item>
+        <item>159916</item>
+        <item>70501</item>
+        <item>4</item>
+        <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
+        <item/>
+      </line>
+      <line>
+        <item>2eme: Date et Heure</item>
+        <item>5599</item>
+        <item/>
+        <item>71284</item>
+        <item/>
+        <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
+        <item/>
+      </line>
+      <line>
+        <item>2eme: Mort Néonatale</item>
+        <item>159917</item>
+        <item>154223</item>
+        <item>70501</item>
+        <item>8</item>
+        <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
+        <item/>
+      </line>
+      <line>
+        <item>2eme: APGAR : 1mn</item>
+        <item>159603</item>
+        <item/>
+        <item>71048</item>
+        <item/>
+        <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
+        <item/>
+      </line>
+      <line>
+        <item>2eme: APGAR : 5mn</item>
+        <item>159604</item>
+        <item/>
+        <item>71049</item>
+        <item/>
+        <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
+        <item/>
+      </line>
+      <line>
+        <item>2eme: Poids du (ou des) Nnés</item>
+        <item>5916</item>
+        <item/>
+        <item>70509</item>
+        <item/>
+        <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
+        <item/>
+      </line>
+      <line>
+        <item>2eme: Sexe: Masc</item>
+        <item>1587</item>
+        <item>1534</item>
+        <item>70505</item>
+        <item>1</item>
+        <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
+        <item/>
+      </line>
+      <line>
+        <item>2eme: Sexe: Fem</item>
+        <item>1587</item>
+        <item>1535</item>
+        <item>70505</item>
+        <item>2</item>
+        <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
+        <item/>
+      </line>
+      <line>
+        <item>2eme: Malformation congénitale visible: Oui</item>
+        <item>143849</item>
+        <item>1065</item>
+        <item>71320</item>
+        <item>1</item>
+        <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
+        <item/>
+      </line>
+      <line>
+        <item>2eme: Malformation congénitale visible: Non</item>
+        <item>143849</item>
+        <item>1066</item>
+        <item>71320</item>
+        <item>2</item>
+        <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
+        <item/>
+      </line>
+      <line>
+        <item>2eme: Allaitement maternel 1ere heure: Oui</item>
+        <item>163459</item>
+        <item>1065</item>
+        <item>71321</item>
+        <item>1</item>
+        <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
+        <item/>
+      </line>
+      <line>
+        <item>2eme: Allaitement maternel 1ere heure: Non</item>
+        <item>163459</item>
+        <item>1066</item>
+        <item>71321</item>
+        <item>2</item>
+        <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
+        <item/>
+      </line>
+      <line>
+        <item>3eme: Naissance Vivante</item>
+        <item>159917</item>
+        <item>151849</item>
+        <item>70502</item>
+        <item>1</item>
+        <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
+        <item/>
+      </line>
+      <line>
+        <item>3eme: Macérée</item>
+        <item>159917</item>
+        <item>135436</item>
+        <item>70502</item>
+        <item>2</item>
+        <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
+        <item/>
+      </line>
+      <line>
+        <item>3eme: Non Macérée</item>
+        <item>159917</item>
+        <item>159916</item>
+        <item>70502</item>
+        <item>4</item>
+        <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
+        <item/>
+      </line>
+      <line>
+        <item>3eme: Date et Heure</item>
+        <item>5599</item>
+        <item/>
+        <item>71286</item>
+        <item/>
+        <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
+        <item/>
+      </line>
+      <line>
+        <item>3eme: Mort Néonatale</item>
+        <item>159917</item>
+        <item>154223</item>
+        <item>70502</item>
+        <item>8</item>
+        <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
+        <item/>
+      </line>
+      <line>
+        <item>3eme: APGAR : 1mn</item>
+        <item>159603</item>
+        <item/>
+        <item>71050</item>
+        <item/>
+        <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
+        <item/>
+      </line>
+      <line>
+        <item>3eme: APGAR : 5mn</item>
+        <item>159604</item>
+        <item/>
+        <item>71051</item>
+        <item/>
+        <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
+        <item/>
+      </line>
+      <line>
+        <item>3eme: Poids du (ou des) Nnés</item>
+        <item>5916</item>
+        <item/>
+        <item>70510</item>
+        <item/>
+        <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
+        <item/>
+      </line>
+      <line>
+        <item>3eme: Sexe: Masc</item>
+        <item>1587</item>
+        <item>1534</item>
+        <item>70506</item>
+        <item>1</item>
+        <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
+        <item/>
+      </line>
+      <line>
+        <item>3eme: Sexe: Fem</item>
+        <item>1587</item>
+        <item>1535</item>
+        <item>70506</item>
+        <item>2</item>
+        <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
+        <item/>
+      </line>
+      <line>
+        <item>3eme: Malformation congénitale visible: Oui</item>
+        <item>143849</item>
+        <item>1065</item>
+        <item>71323</item>
+        <item>1</item>
+        <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
+        <item/>
+      </line>
+      <line>
+        <item>3eme: Malformation congénitale visible: Non</item>
+        <item>143849</item>
+        <item>1066</item>
+        <item>71323</item>
+        <item>2</item>
+        <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
+        <item/>
+      </line>
+      <line>
+        <item>3eme: Allaitement maternel 1ere heure: Oui</item>
+        <item>163459</item>
+        <item>1065</item>
+        <item>71324</item>
+        <item>1</item>
+        <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
+        <item/>
+      </line>
+      <line>
+        <item>3eme: Allaitement maternel 1ere heure: Non</item>
+        <item>163459</item>
+        <item>1066</item>
+        <item>71324</item>
+        <item>2</item>
+        <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
+        <item/>
+      </line>
+      <line>
+        <item>4eme: Naissance Vivante</item>
+        <item>159917</item>
+        <item>151849</item>
+        <item>70503</item>
+        <item>1</item>
+        <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
+        <item/>
+      </line>
+      <line>
+        <item>4eme: Macérée</item>
+        <item>159917</item>
+        <item>135436</item>
+        <item>70503</item>
+        <item>2</item>
+        <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
+        <item/>
+      </line>
+      <line>
+        <item>4eme: Non Macérée</item>
+        <item>159917</item>
+        <item>159916</item>
+        <item>70503</item>
+        <item>4</item>
+        <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
+        <item/>
+      </line>
+      <line>
+        <item>4eme: Date et Heure</item>
+        <item>5599</item>
+        <item/>
+        <item>71287</item>
+        <item/>
+        <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
+        <item/>
+      </line>
+      <line>
+        <item>4eme: Mort Néonatale</item>
+        <item>159917</item>
+        <item>154223</item>
+        <item>70503</item>
+        <item>8</item>
+        <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
+        <item/>
+      </line>
+      <line>
+        <item>4eme: APGAR : 1mn</item>
+        <item>159603</item>
+        <item/>
+        <item>71052</item>
+        <item/>
+        <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
+        <item/>
+      </line>
+      <line>
+        <item>4eme: APGAR : 5mn</item>
+        <item>159604</item>
+        <item/>
+        <item>71053</item>
+        <item/>
+        <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
+        <item/>
+      </line>
+      <line>
+        <item>4eme: Poids du (ou des) Nnés</item>
+        <item>5916</item>
+        <item/>
+        <item>70511</item>
+        <item/>
+        <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
+        <item/>
+      </line>
+      <line>
+        <item>4eme: Sexe: Masc</item>
+        <item>1587</item>
+        <item>1534</item>
+        <item>70507</item>
+        <item>1</item>
+        <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
+        <item/>
+      </line>
+      <line>
+        <item>4eme: Sexe: Fem</item>
+        <item>1587</item>
+        <item>1535</item>
+        <item>70507</item>
+        <item>2</item>
+        <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
+        <item/>
+      </line>
+      <line>
+        <item>4eme: Malformation congénitale visible: Oui</item>
+        <item>143849</item>
+        <item>1065</item>
+        <item>71326</item>
+        <item>1</item>
+        <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
+        <item/>
+      </line>
+      <line>
+        <item>4eme: Malformation congénitale visible: Non</item>
+        <item>143849</item>
+        <item>1066</item>
+        <item>71326</item>
+        <item>2</item>
+        <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
+        <item/>
+      </line>
+      <line>
+        <item>4eme: Allaitement maternel 1ere heure: Oui</item>
+        <item>163459</item>
+        <item>1065</item>
+        <item>71327</item>
+        <item>1</item>
+        <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
+        <item/>
+      </line>
+      <line>
+        <item>4eme: Allaitement maternel 1ere heure: Non</item>
+        <item>163459</item>
+        <item>1066</item>
+        <item>71327</item>
+        <item>2</item>
+        <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
+        <item/>
+      </line>
+      <line>
+        <item>Date et Heure 1</item>
+        <item>162869</item>
+        <item/>
+        <item>70554</item>
+        <item/>
+        <item>3e76627c-22d9-4cd9-8c7f-d029cd25d7c9</item>
+        <item/>
+      </line>
+      <line>
+        <item>TA A 1</item>
+        <item>5085</item>
+        <item/>
+        <item>7848</item>
+        <item/>
+        <item>3e76627c-22d9-4cd9-8c7f-d029cd25d7c9</item>
+        <item/>
+      </line>
+      <line>
+        <item>TA B 1</item>
+        <item>5086</item>
+        <item/>
+        <item>7798</item>
+        <item/>
+        <item>3e76627c-22d9-4cd9-8c7f-d029cd25d7c9</item>
+        <item/>
+      </line>
+      <line>
+        <item>Pouls 1</item>
+        <item>5087</item>
+        <item/>
+        <item>7846</item>
+        <item/>
+        <item>3e76627c-22d9-4cd9-8c7f-d029cd25d7c9</item>
+        <item/>
+      </line>
+      <line>
+        <item>Fr 1</item>
+        <item>5242</item>
+        <item/>
+        <item>7847</item>
+        <item/>
+        <item>3e76627c-22d9-4cd9-8c7f-d029cd25d7c9</item>
+        <item/>
+      </line>
+      <line>
+        <item>Température 1</item>
+        <item>5088</item>
+        <item/>
+        <item>7844</item>
+        <item/>
+        <item>3e76627c-22d9-4cd9-8c7f-d029cd25d7c9</item>
+        <item/>
+      </line>
+      <line>
+        <item>Conscience 1</item>
+        <item>162643</item>
+        <item>160282</item>
+        <item>70548</item>
+        <item/>
+        <item>3e76627c-22d9-4cd9-8c7f-d029cd25d7c9</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Globe Sec. 1</item>
+        <item>1284</item>
+        <item>132846</item>
+        <item>71291</item>
+        <item/>
+        <item>3e76627c-22d9-4cd9-8c7f-d029cd25d7c9</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Date et Heure 2</item>
+        <item>162869</item>
+        <item/>
+        <item>70555</item>
+        <item/>
+        <item>bd768366-2a46-4578-96fb-f26a838b3b83</item>
+        <item/>
+      </line>
+      <line>
+        <item>TA A 2</item>
+        <item>5085</item>
+        <item/>
+        <item>7856</item>
+        <item/>
+        <item>bd768366-2a46-4578-96fb-f26a838b3b83</item>
+        <item/>
+      </line>
+      <line>
+        <item>TA B 2</item>
+        <item>5086</item>
+        <item/>
+        <item>7799</item>
+        <item/>
+        <item>bd768366-2a46-4578-96fb-f26a838b3b83</item>
+        <item/>
+      </line>
+      <line>
+        <item>Pouls 2</item>
+        <item>5087</item>
+        <item/>
+        <item>7846</item>
+        <item/>
+        <item>bd768366-2a46-4578-96fb-f26a838b3b83</item>
+        <item/>
+      </line>
+      <line>
+        <item>Fr 2</item>
+        <item>5242</item>
+        <item/>
+        <item>7855</item>
+        <item/>
+        <item>bd768366-2a46-4578-96fb-f26a838b3b83</item>
+        <item/>
+      </line>
+      <line>
+        <item>Température 2</item>
+        <item>5088</item>
+        <item/>
+        <item>7852</item>
+        <item/>
+        <item>bd768366-2a46-4578-96fb-f26a838b3b83</item>
+        <item/>
+      </line>
+      <line>
+        <item>Conscience 2</item>
+        <item>162643</item>
+        <item>160282</item>
+        <item>70549</item>
+        <item/>
+        <item>bd768366-2a46-4578-96fb-f26a838b3b83</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Globe Sec. 2</item>
+        <item>1284</item>
+        <item>132846</item>
+        <item>71292</item>
+        <item/>
+        <item>bd768366-2a46-4578-96fb-f26a838b3b83</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Date et Heure 3</item>
+        <item>162869</item>
+        <item/>
+        <item>70556</item>
+        <item/>
+        <item>0658be52-5404-4386-8b7c-d6e68dbee9e8</item>
+        <item/>
+      </line>
+      <line>
+        <item>TA A 3</item>
+        <item>5085</item>
+        <item/>
+        <item>70536</item>
+        <item/>
+        <item>0658be52-5404-4386-8b7c-d6e68dbee9e8</item>
+        <item/>
+      </line>
+      <line>
+        <item>TA B 3</item>
+        <item>5086</item>
+        <item/>
+        <item>70540</item>
+        <item/>
+        <item>0658be52-5404-4386-8b7c-d6e68dbee9e8</item>
+        <item/>
+      </line>
+      <line>
+        <item>Pouls 3</item>
+        <item>5087</item>
+        <item/>
+        <item>70560</item>
+        <item/>
+        <item>0658be52-5404-4386-8b7c-d6e68dbee9e8</item>
+        <item/>
+      </line>
+      <line>
+        <item>Fr 3</item>
+        <item>5242</item>
+        <item/>
+        <item>70564</item>
+        <item/>
+        <item>0658be52-5404-4386-8b7c-d6e68dbee9e8</item>
+        <item/>
+      </line>
+      <line>
+        <item>Température 3</item>
+        <item>5088</item>
+        <item/>
+        <item>70568</item>
+        <item/>
+        <item>0658be52-5404-4386-8b7c-d6e68dbee9e8</item>
+        <item/>
+      </line>
+      <line>
+        <item>Conscience 3</item>
+        <item>162643</item>
+        <item>160282</item>
+        <item>70550</item>
+        <item/>
+        <item>0658be52-5404-4386-8b7c-d6e68dbee9e8</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Globe Sec. 3</item>
+        <item>1284</item>
+        <item>132846</item>
+        <item>71293</item>
+        <item/>
+        <item>0658be52-5404-4386-8b7c-d6e68dbee9e8</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Date et Heure 4</item>
+        <item>162869</item>
+        <item/>
+        <item>70557</item>
+        <item/>
+        <item>dff9501f-4aa2-4613-b4b2-6a219edbf3e3</item>
+        <item/>
+      </line>
+      <line>
+        <item>TA A 4</item>
+        <item>5085</item>
+        <item/>
+        <item>70537</item>
+        <item/>
+        <item>dff9501f-4aa2-4613-b4b2-6a219edbf3e3</item>
+        <item/>
+      </line>
+      <line>
+        <item>TA B 4</item>
+        <item>5086</item>
+        <item/>
+        <item>70541</item>
+        <item/>
+        <item>dff9501f-4aa2-4613-b4b2-6a219edbf3e3</item>
+        <item/>
+      </line>
+      <line>
+        <item>Pouls 4</item>
+        <item>5087</item>
+        <item/>
+        <item>70561</item>
+        <item/>
+        <item>dff9501f-4aa2-4613-b4b2-6a219edbf3e3</item>
+        <item/>
+      </line>
+      <line>
+        <item>Fr 4</item>
+        <item>5242</item>
+        <item/>
+        <item>70565</item>
+        <item/>
+        <item>dff9501f-4aa2-4613-b4b2-6a219edbf3e3</item>
+        <item/>
+      </line>
+      <line>
+        <item>Température 4</item>
+        <item>5088</item>
+        <item/>
+        <item>70569</item>
+        <item/>
+        <item>dff9501f-4aa2-4613-b4b2-6a219edbf3e3</item>
+        <item/>
+      </line>
+      <line>
+        <item>Conscience 4</item>
+        <item>162643</item>
+        <item>160282</item>
+        <item>70551</item>
+        <item/>
+        <item>dff9501f-4aa2-4613-b4b2-6a219edbf3e3</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Globe Sec. 4</item>
+        <item>1284</item>
+        <item>132846</item>
+        <item>71294</item>
+        <item/>
+        <item>dff9501f-4aa2-4613-b4b2-6a219edbf3e3</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Date et Heure 5</item>
+        <item>162869</item>
+        <item/>
+        <item>70558</item>
+        <item/>
+        <item>43d440f5-098a-4c8e-9f77-70bb15b51282</item>
+        <item/>
+      </line>
+      <line>
+        <item>TA A 5</item>
+        <item>5085</item>
+        <item/>
+        <item>70538</item>
+        <item/>
+        <item>43d440f5-098a-4c8e-9f77-70bb15b51282</item>
+        <item/>
+      </line>
+      <line>
+        <item>TA B 5</item>
+        <item>5086</item>
+        <item/>
+        <item>70542</item>
+        <item/>
+        <item>43d440f5-098a-4c8e-9f77-70bb15b51282</item>
+        <item/>
+      </line>
+      <line>
+        <item>Pouls 5</item>
+        <item>5087</item>
+        <item/>
+        <item>70562</item>
+        <item/>
+        <item>43d440f5-098a-4c8e-9f77-70bb15b51282</item>
+        <item/>
+      </line>
+      <line>
+        <item>Fr 5</item>
+        <item>5242</item>
+        <item/>
+        <item>70566</item>
+        <item/>
+        <item>43d440f5-098a-4c8e-9f77-70bb15b51282</item>
+        <item/>
+      </line>
+      <line>
+        <item>Température 5</item>
+        <item>5088</item>
+        <item/>
+        <item>70570</item>
+        <item/>
+        <item>43d440f5-098a-4c8e-9f77-70bb15b51282</item>
+        <item/>
+      </line>
+      <line>
+        <item>Conscience 5</item>
+        <item>162643</item>
+        <item>160282</item>
+        <item>70552</item>
+        <item/>
+        <item>43d440f5-098a-4c8e-9f77-70bb15b51282</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Globe Sec. 5</item>
+        <item>1284</item>
+        <item>132846</item>
+        <item>71295</item>
+        <item/>
+        <item>43d440f5-098a-4c8e-9f77-70bb15b51282</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Date et Heure 6</item>
+        <item>162869</item>
+        <item/>
+        <item>70559</item>
+        <item/>
+        <item>1079b67e-3b53-41aa-a39a-42c1afd7f13f</item>
+        <item/>
+      </line>
+      <line>
+        <item>TA A 6</item>
+        <item>5085</item>
+        <item/>
+        <item>70539</item>
+        <item/>
+        <item>1079b67e-3b53-41aa-a39a-42c1afd7f13f</item>
+        <item/>
+      </line>
+      <line>
+        <item>TA B 6</item>
+        <item>5086</item>
+        <item/>
+        <item>70543</item>
+        <item/>
+        <item>1079b67e-3b53-41aa-a39a-42c1afd7f13f</item>
+        <item/>
+      </line>
+      <line>
+        <item>Pouls 6</item>
+        <item>5087</item>
+        <item/>
+        <item>70563</item>
+        <item/>
+        <item>1079b67e-3b53-41aa-a39a-42c1afd7f13f</item>
+        <item/>
+      </line>
+      <line>
+        <item>Fr 6</item>
+        <item>5242</item>
+        <item/>
+        <item>70567</item>
+        <item/>
+        <item>1079b67e-3b53-41aa-a39a-42c1afd7f13f</item>
+        <item/>
+      </line>
+      <line>
+        <item>Température 6</item>
+        <item>5088</item>
+        <item/>
+        <item>70571</item>
+        <item/>
+        <item>1079b67e-3b53-41aa-a39a-42c1afd7f13f</item>
+        <item/>
+      </line>
+      <line>
+        <item>Conscience 6</item>
+        <item>162643</item>
+        <item>160282</item>
+        <item>70553</item>
+        <item/>
+        <item>1079b67e-3b53-41aa-a39a-42c1afd7f13f</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Globe Sec. 6</item>
+        <item>1284</item>
+        <item>132846</item>
+        <item>71296</item>
+        <item/>
+        <item>1079b67e-3b53-41aa-a39a-42c1afd7f13f</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 1: Référée à la pouponnière </item>
+        <item>161630</item>
+        <item>1623</item>
+        <item>71301</item>
+        <item>1</item>
+        <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 1: Référée en pédiatrie pour</item>
+        <item>161630</item>
+        <item>160537</item>
+        <item>71301</item>
+        <item>2</item>
+        <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 1: Détresse respiratoire</item>
+        <item>1887</item>
+        <item>130497</item>
+        <item>71303</item>
+        <item>1</item>
+        <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 1: Suspicion d’infection materno-foetale</item>
+        <item>1887</item>
+        <item>140343</item>
+        <item>71303</item>
+        <item>2</item>
+        <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 1: Prématurité</item>
+        <item>1887</item>
+        <item>159908</item>
+        <item>71303</item>
+        <item>8</item>
+        <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 1: Autre, précisez</item>
+        <item>1887</item>
+        <item>5622</item>
+        <item>71304</item>
+        <item/>
+        <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 1: Exéaté</item>
+        <item>160433</item>
+        <item>1692</item>
+        <item>71301</item>
+        <item>4</item>
+        <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 1: Décédé</item>
+        <item>160433</item>
+        <item>159</item>
+        <item>71301</item>
+        <item>8</item>
+        <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 1: Autre, précisez</item>
+        <item>160433</item>
+        <item>5622</item>
+        <item>71302</item>
+        <item/>
+        <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 1: Allaitement maternel exclusif</item>
+        <item>1151</item>
+        <item>5526</item>
+        <item>71305</item>
+        <item>1</item>
+        <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 1: Préparation pour nourrissons</item>
+        <item>1151</item>
+        <item>5254</item>
+        <item>71305</item>
+        <item>2</item>
+        <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 1: Alimentation mixte</item>
+        <item>1151</item>
+        <item>6046</item>
+        <item>71305</item>
+        <item>4</item>
+        <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 2: Référée à la pouponnière </item>
+        <item>161630</item>
+        <item>1623</item>
+        <item>71306</item>
+        <item>1</item>
+        <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 2: Référée en pédiatrie pour</item>
+        <item>161630</item>
+        <item>160537</item>
+        <item>71306</item>
+        <item>2</item>
+        <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 2: Détresse respiratoire</item>
+        <item>1887</item>
+        <item>130497</item>
+        <item>71308</item>
+        <item>1</item>
+        <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 2: Suspicion d’infection materno-foetale</item>
+        <item>1887</item>
+        <item>140343</item>
+        <item>71308</item>
+        <item>2</item>
+        <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 2: Prématurité</item>
+        <item>1887</item>
+        <item>159908</item>
+        <item>71308</item>
+        <item>8</item>
+        <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 2: Autre, précisez</item>
+        <item>1887</item>
+        <item>5622</item>
+        <item>71309</item>
+        <item/>
+        <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 2: Exéaté</item>
+        <item>160433</item>
+        <item>1692</item>
+        <item>71306</item>
+        <item>4</item>
+        <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 2: Décédé</item>
+        <item>160433</item>
+        <item>159</item>
+        <item>71306</item>
+        <item>8</item>
+        <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 2: Autre, précisez</item>
+        <item>160433</item>
+        <item>5622</item>
+        <item>71307</item>
+        <item/>
+        <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 2: Allaitement maternel exclusif</item>
+        <item>1151</item>
+        <item>5526</item>
+        <item>71310</item>
+        <item>1</item>
+        <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 2: Préparation pour nourrissons</item>
+        <item>1151</item>
+        <item>5254</item>
+        <item>71310</item>
+        <item>2</item>
+        <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 2: Alimentation mixte</item>
+        <item>1151</item>
+        <item>6046</item>
+        <item>71310</item>
+        <item>4</item>
+        <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 3: Référée à la pouponnière </item>
+        <item>161630</item>
+        <item>1623</item>
+        <item>71311</item>
+        <item>1</item>
+        <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 3: Référée en pédiatrie pour</item>
+        <item>161630</item>
+        <item>160537</item>
+        <item>71311</item>
+        <item>2</item>
+        <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 3: Détresse respiratoire</item>
+        <item>1887</item>
+        <item>130497</item>
+        <item>71313</item>
+        <item>1</item>
+        <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 3: Suspicion d’infection materno-foetale</item>
+        <item>1887</item>
+        <item>140343</item>
+        <item>71313</item>
+        <item>2</item>
+        <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 3: Prématurité</item>
+        <item>1887</item>
+        <item>159908</item>
+        <item>71313</item>
+        <item>8</item>
+        <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 3: Autre, précisez</item>
+        <item>1887</item>
+        <item>5622</item>
+        <item>71314</item>
+        <item/>
+        <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 3: Exéaté</item>
+        <item>160433</item>
+        <item>1692</item>
+        <item>71311</item>
+        <item>4</item>
+        <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 3: Décédé</item>
+        <item>160433</item>
+        <item>159</item>
+        <item>71311</item>
+        <item>8</item>
+        <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 3: Autre, précisez</item>
+        <item>160433</item>
+        <item>5622</item>
+        <item>71312</item>
+        <item/>
+        <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 3: Allaitement maternel exclusif</item>
+        <item>1151</item>
+        <item>5526</item>
+        <item>71315</item>
+        <item>1</item>
+        <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 3: Préparation pour nourrissons</item>
+        <item>1151</item>
+        <item>5254</item>
+        <item>71315</item>
+        <item>2</item>
+        <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
+        <item/>
+      </line>
+      <line>
+        <item>EVOLUTION NOUVEAU NE 3: Alimentation mixte</item>
+        <item>1151</item>
+        <item>6046</item>
+        <item>71315</item>
+        <item>4</item>
+        <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
         <item/>
       </line>
     </data>
@@ -2482,6 +3816,81 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>32</xloc>
       <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter rows 2</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Set field value date</send_true_to>
+    <send_false_to>Save on CSV</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>use_comments</leftvalue>
+        <function>=</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>Y</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask/>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1008</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set field value date</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>value_text</name>
+        <replaceby>comments</replaceby>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>816</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

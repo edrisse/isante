@@ -4460,6 +4460,14 @@ where location_attribute.attribute_type_id = ?
         <item/>
       </line>
       <line>
+        <item>Exéatée </item>
+        <item>160433</item>
+        <item>1692</item>
+        <item>70521</item>
+        <item>4</item>
+        <item/>
+      </line>
+      <line>
         <item>Evolution mother: HTA</item>
         <item>1887</item>
         <item>117399</item>
@@ -4777,6 +4785,54 @@ where location_attribute.attribute_type_id = ?
         <item>117612</item>
         <item>70032</item>
         <item>4</item>
+        <item/>
+      </line>
+      <line>
+        <item>Labor Weight </item>
+        <item>5089</item>
+        <item/>
+        <item>7842</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>Référence: Marote</item>
+        <item>160482</item>
+        <item>1578</item>
+        <item>71277</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Référence: Autre</item>
+        <item>160482</item>
+        <item>5622</item>
+        <item>71277</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>ACCOUCHEMENT: Césarienne: Indication</item>
+        <item>5630</item>
+        <item>1171</item>
+        <item>7820</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Référée en suites de couche</item>
+        <item>161630</item>
+        <item>1623</item>
+        <item>70521</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Référée en pathologie pour</item>
+        <item>161630</item>
+        <item>161625</item>
+        <item>70521</item>
+        <item>2</item>
         <item/>
       </line>
     </data>
