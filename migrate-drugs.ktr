@@ -1510,7 +1510,7 @@ where obs.concept_id = 6098
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select 1 as continuing_use from obs
-where (obs.concept_id = 159367
+where obs.concept_id = 159367
   and obs.value_coded = 1065
   and obs.obs_group_id = ?
   and obs.encounter_id = ?
