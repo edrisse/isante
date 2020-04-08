@@ -537,11 +537,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values format</from>
-      <to>Replace in string</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>concepts</from>
       <to>Join rows (cartesian product)</to>
       <enabled>Y</enabled>
@@ -567,11 +562,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Replace in string</from>
-      <to>Filter rows 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Filter rows 2</from>
       <to>Set field value date</to>
       <enabled>Y</enabled>
@@ -584,6 +574,11 @@
     <hop>
       <from>Filter rows 2</from>
       <to>Save on CSV</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values format</from>
+      <to>Filter rows 2</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1436,6 +1431,50 @@ where location_attribute.attribute_type_id = ?
     </GUI>
   </step>
   <step>
+    <name>Filter rows 2</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Set field value date</send_true_to>
+    <send_false_to>Save on CSV</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>use_comments</leftvalue>
+        <function>=</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>Y</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask/>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1008</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Join rows (cartesian product)</name>
     <type>JoinRows</type>
     <description/>
@@ -1533,45 +1572,6 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>96</xloc>
       <yloc>224</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Replace in string</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>value_datetime</in_stream_name>
-        <out_stream_name>value_datetime_clean</out_stream_name>
-        <use_regex>no</use_regex>
-        <replace_string>0000-00-00 00:00:00</replace_string>
-        <replace_by_string/>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string>empty</replace_field_by_string>
-        <whole_word>yes</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1200</xloc>
-      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2090,6 +2090,37 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>1392</xloc>
       <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set field value date</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>value_text</name>
+        <replaceby>comments</replaceby>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>816</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3816,81 +3847,6 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>32</xloc>
       <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter rows 2</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Set field value date</send_true_to>
-    <send_false_to>Save on CSV</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>use_comments</leftvalue>
-        <function>=</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>String</type>
-          <text>Y</text>
-          <length>-1</length>
-          <precision>-1</precision>
-          <isnull>N</isnull>
-          <mask/>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1008</xloc>
-      <yloc>320</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Set field value date</name>
-    <type>SetValueField</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>value_text</name>
-        <replaceby>comments</replaceby>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>816</xloc>
-      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
