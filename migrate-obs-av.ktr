@@ -1830,6 +1830,24 @@ where location_attribute.attribute_type_id = ?
         <item/>
         <item>7836</item>
       </line>
+      <line>
+        <item>Rythme cardiaque fœtal</item>
+        <item>1440</item>
+        <item/>
+        <item>7806</item>
+      </line>
+      <line>
+        <item>Week of Gestation</item>
+        <item>1438</item>
+        <item/>
+        <item>70750</item>
+      </line>
+      <line>
+        <item>Numération ou taux de CD4</item>
+        <item>5497</item>
+        <item/>
+        <item>70758</item>
+      </line>
     </data>
     <attributes/>
     <cluster_schema/>

@@ -496,23 +496,8 @@
   </connection>
   <order>
     <hop>
-      <from>Fetch Last ETL Excution Date</from>
-      <to>Fetch Encounters</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Encounters</from>
-      <to>Fetch iSante Location</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch iSante Location</from>
-      <to>Fetch Person Identifier</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Person Identifier</from>
-      <to>Decompose Encounter Datetime</to>
+      <from>Decompose Completed Treat Date</from>
+      <to>Fetch TB Evaluation: Présence de cicatrice BCG</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -521,18 +506,23 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch TB Status: No signs or symptoms suggesting TB</from>
-      <to>Fetch TB Statsu: Currently on TB treatment</to>
+      <from>Decompose INH End Date</from>
+      <to>Fetch TB Evaluation: Recent exposure to TB</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch TB Status: Currently on TB treatment: Facility</from>
-      <to>Fetch TB Status: TB treatment completed</to>
+      <from>Decompose INH Start Date</from>
+      <to>TB Evaluation: End INH: Month/Year</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch TB Status: TB treatment completed</from>
-      <to>Fetch  TB Status: TB treatment completed: Facility</to>
+      <from>Decompose Ped Complete TB Treatment Start Date</from>
+      <to>Fetch TB Evaluation: Recent PPD</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Decompose Ped TB Evaluation PDD Recent Date</from>
+      <to>Fetch TB Evolution: INH prophylaxis in progress</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -541,38 +531,28 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch TB Status: TB treatment completed: Date completed</from>
-      <to>Decompose Completed Treat Date</to>
+      <from>Fetch Encounters</from>
+      <to>Fetch iSante Location</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Decompose Completed Treat Date</from>
-      <to>Fetch TB Evaluation: Présence de cicatrice BCG</to>
+      <from>Fetch Last ETL Excution Date</from>
+      <to>Fetch Encounters</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch TB Evaluation: Recent PPD</from>
-      <to>Map TB Evaluation: Recent PPD</to>
+      <from>Fetch Person Identifier</from>
+      <to>Decompose Encounter Datetime</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch TB Evaluation: Présence de cicatrice BCG</from>
-      <to>Fetch TB Evaluation: TB suspected based upon symptoms</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch TB Evaluation: TB suspected based upon symptoms</from>
-      <to>Fetch TB Evaluation: No signs or symptoms indicating TB</to>
+      <from>Fetch Seqnum</from>
+      <to>Replace in string</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Fetch TB Evaluation: No signs or symptoms indicating TB</from>
       <to>Fetch TB Evaluation: Récent PPD négatif</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch TB Evaluation: Récent PPD négatif</from>
-      <to>Fetch TB Evaluation: PPD status unknown</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -586,58 +566,13 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>TB Status: TB Evaluation: Start INH: Month/Year</from>
-      <to>Decompose INH Start Date</to>
+      <from>Fetch TB Evaluation: Présence de cicatrice BCG</from>
+      <to>Fetch TB Evaluation: TB suspected based upon symptoms</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Decompose INH Start Date</from>
-      <to>TB Evaluation: End INH: Month/Year</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>TB Evaluation: End INH: Month/Year</from>
-      <to>Decompose INH End Date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Decompose INH End Date</from>
-      <to>Fetch TB Evaluation: Recent exposure to TB</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch TB Evaluation: Recent exposure to TB</from>
-      <to>Fetch TB Evaluation: TB Treatment: Start date: Month/Year</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch TB Evaluation: TB Treatment: Start date: Month/Year</from>
-      <to>Decompose Ped Complete TB Treatment Start Date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Decompose Ped Complete TB Treatment Start Date</from>
-      <to>Fetch TB Evaluation: Recent PPD</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Map TB Evaluation: Recent PPD</from>
-      <to>Fetch TTB Evaluation: Recent PPD: Date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch TTB Evaluation: Recent PPD: Date</from>
-      <to>Decompose Ped TB Evaluation PDD Recent Date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Decompose Ped TB Evaluation PDD Recent Date</from>
-      <to>Fetch TB Evolution: INH prophylaxis in progress</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch TB Evolution: INH prophylaxis in progress</from>
-      <to>Fetch TB Evaluation: Recent PPD: Result</to>
+      <from>Fetch TB Evaluation: Recent PPD</from>
+      <to>Map TB Evaluation: Recent PPD</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -646,18 +581,73 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Fetch TB Evaluation: Recent exposure to TB</from>
+      <to>Fetch TB Evaluation: TB Treatment: Start date: Month/Year</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch TB Evaluation: Récent PPD négatif</from>
+      <to>Fetch TB Evaluation: PPD status unknown</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch TB Evaluation: TB Treatment: Start date: Month/Year</from>
+      <to>Decompose Ped Complete TB Treatment Start Date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch TB Evaluation: TB suspected based upon symptoms</from>
+      <to>Fetch TB Evaluation: No signs or symptoms indicating TB</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch TB Evolution: INH prophylaxis in progress</from>
+      <to>Fetch TB Evaluation: Recent PPD: Result</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch TB Statsu: Currently on TB treatment</from>
+      <to>Fetch TB Status: TB Case Number</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch TB Status: Currently on TB treatment: Facility</from>
+      <to>Fetch TB Status: TB treatment completed</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch TB Status: No signs or symptoms suggesting TB</from>
+      <to>Fetch TB Statsu: Currently on TB treatment</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch TB Status: TB Case Number</from>
+      <to>Fetch TB Status: Currently on TB treatment: Facility</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch TB Status: TB treatment completed</from>
+      <to>Fetch  TB Status: TB treatment completed: Facility</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch TB Status: TB treatment completed: Date completed</from>
+      <to>Decompose Completed Treat Date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch TTB Evaluation: Recent PPD: Date</from>
+      <to>Decompose Ped TB Evaluation PDD Recent Date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Fetch dbSite</from>
       <to>Fetch Seqnum</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Seqnum</from>
-      <to>Replace in string</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Replace in string</from>
-      <to>Save on CSV</to>
+      <from>Fetch iSante Location</from>
+      <to>Fetch Person Identifier</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -673,11 +663,6 @@
     <hop>
       <from>Identify last row in a stream</from>
       <to>Filter rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Save on CSV</from>
-      <to>Group by</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -701,13 +686,28 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch TB Status: TB Case Number</from>
-      <to>Fetch TB Status: Currently on TB treatment: Facility</to>
+      <from>Map TB Evaluation: Recent PPD</from>
+      <to>Fetch TTB Evaluation: Recent PPD: Date</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch TB Statsu: Currently on TB treatment</from>
-      <to>Fetch TB Status: TB Case Number</to>
+      <from>Replace in string</from>
+      <to>Save on CSV</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Save on CSV</from>
+      <to>Group by</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>TB Evaluation: End INH: Month/Year</from>
+      <to>Decompose INH End Date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>TB Status: TB Evaluation: Start INH: Month/Year</from>
+      <to>Decompose INH Start Date</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -777,8 +777,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>272</yloc>
+      <xloc>676</xloc>
+      <yloc>296</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -848,8 +848,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1088</xloc>
-      <yloc>176</yloc>
+      <xloc>1060</xloc>
+      <yloc>200</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -904,8 +904,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>496</yloc>
+      <xloc>676</xloc>
+      <yloc>520</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -960,8 +960,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
-      <yloc>496</yloc>
+      <xloc>340</xloc>
+      <yloc>520</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1016,8 +1016,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>608</yloc>
+      <xloc>676</xloc>
+      <yloc>632</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1072,8 +1072,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>160</xloc>
-      <yloc>720</yloc>
+      <xloc>132</xloc>
+      <yloc>744</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1111,8 +1111,8 @@ where obs.concept_id = 162724
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
-      <yloc>272</yloc>
+      <xloc>340</xloc>
+      <yloc>296</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1129,7 +1129,7 @@ where obs.concept_id = 162724
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
-    <sql>select encounter.encounter_id, encounter.encounter_datetime, encounter.patient_id person_id, encounter.location_id isante_plus_location_id from encounter
+    <sql>select encounter.encounter_id, encounter.encounter_datetime, encounter.patient_id person_id, encounter.location_id isante_plus_location_id, encounter.date_created from encounter
 join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
 where encounter_type.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7', '204ad066-c5c2-4229-9a62-644bc5617ca2', '33491314-c352-42d0-bd5d-a9d0bffc9bf1', '349ae0b4-65c1-4122-aa06-480f186c8350', '12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284')
   and (encounter.date_created >= ?
@@ -1176,8 +1176,8 @@ where encounter_type.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7', '204ad066-
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>80</yloc>
+      <xloc>676</xloc>
+      <yloc>104</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1210,8 +1210,8 @@ order by date desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>512</xloc>
-      <yloc>80</yloc>
+      <xloc>484</xloc>
+      <yloc>104</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1254,8 +1254,8 @@ where patient_identifier.identifier_type = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1072</xloc>
-      <yloc>80</yloc>
+      <xloc>1044</xloc>
+      <yloc>104</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1290,8 +1290,8 @@ where patient_identifier.identifier_type = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>720</yloc>
+      <xloc>868</xloc>
+      <yloc>744</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1330,8 +1330,8 @@ where obs.concept_id = 1659
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>368</yloc>
+      <xloc>676</xloc>
+      <yloc>392</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1370,8 +1370,8 @@ where obs.concept_id = 163283
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
-      <yloc>368</yloc>
+      <xloc>340</xloc>
+      <yloc>392</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1410,8 +1410,8 @@ where obs.concept_id = 1110
       </output>
     </remotesteps>
     <GUI>
-      <xloc>160</xloc>
-      <yloc>384</yloc>
+      <xloc>132</xloc>
+      <yloc>408</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1450,8 +1450,8 @@ where obs.concept_id = 160265
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>288</yloc>
+      <xloc>868</xloc>
+      <yloc>312</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1489,8 +1489,8 @@ where obs.concept_id = 163951
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>624</yloc>
+      <xloc>500</xloc>
+      <yloc>648</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1528,8 +1528,8 @@ where obs.concept_id = 5475
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>720</yloc>
+      <xloc>500</xloc>
+      <yloc>744</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1568,8 +1568,8 @@ where obs.concept_id = 1659
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>512</yloc>
+      <xloc>868</xloc>
+      <yloc>536</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1608,8 +1608,8 @@ where obs.concept_id = 163283
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>384</yloc>
+      <xloc>500</xloc>
+      <yloc>408</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1647,8 +1647,8 @@ where obs.concept_id = 1113
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>624</yloc>
+      <xloc>868</xloc>
+      <yloc>648</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1687,8 +1687,8 @@ where obs.concept_id = 1659
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>384</yloc>
+      <xloc>868</xloc>
+      <yloc>408</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1727,8 +1727,8 @@ where obs.concept_id = 1110
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
-      <yloc>704</yloc>
+      <xloc>340</xloc>
+      <yloc>728</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1745,7 +1745,7 @@ where obs.concept_id = 1110
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select 1 current_treat from obs
+    <sql>select if(obs.value_coded is not null, "1", "0") current_treat from obs
 where obs.concept_id = 1659
   and obs.value_coded = 1662
   and obs.voided = false
@@ -1767,8 +1767,8 @@ where obs.concept_id = 1659
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>192</yloc>
+      <xloc>500</xloc>
+      <yloc>216</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1786,7 +1786,7 @@ where obs.concept_id = 1659
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select obs.value_text current_treat_fac from obs
-where obs.concept_id = 509165880
+where obs.concept_id = 162724
   and obs.voided = false
   and obs.encounter_id = ?</sql>
     <outer_join>Y</outer_join>
@@ -1806,8 +1806,8 @@ where obs.concept_id = 509165880
       </output>
     </remotesteps>
     <GUI>
-      <xloc>160</xloc>
-      <yloc>192</yloc>
+      <xloc>132</xloc>
+      <yloc>216</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1846,8 +1846,8 @@ where obs.concept_id = 1659
       </output>
     </remotesteps>
     <GUI>
-      <xloc>816</xloc>
-      <yloc>160</yloc>
+      <xloc>788</xloc>
+      <yloc>184</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1864,15 +1864,14 @@ where obs.concept_id = 1659
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.value_text curren_treat_no from obs
-where obs.concept_id = 509165879
-  and obs.voided = false
-  and obs.encounter_id = ?</sql>
+    <sql>select patient_identifier.identifier curren_treat_no, max(patient_identifier.date_created) from patient_identifier
+where patient_identifier.identifier_type = (select pit.patient_identifier_type_id from patient_identifier_type pit where pit.uuid = '4814250c-bbba-4380-a843-206d5307808a')
+  and patient_identifier.patient_id = ?</sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
       <field>
-        <name>encounter_id</name>
+        <name>person_id</name>
         <type>Number</type>
       </field>
     </parameter>
@@ -1885,8 +1884,8 @@ where obs.concept_id = 509165879
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
-      <yloc>176</yloc>
+      <xloc>340</xloc>
+      <yloc>200</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1903,7 +1902,7 @@ where obs.concept_id = 509165879
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select 1 complete_treat from obs
+    <sql>select if(obs.value_coded is not null, "1", "0") complete_treat from obs
 where (obs.concept_id = 1659 or obs.concept_id = 159798)	
   and (obs.value_coded = 1663 or obs.value_coded = 1065)
   and obs.voided = false
@@ -1925,8 +1924,8 @@ where (obs.concept_id = 1659 or obs.concept_id = 159798)
       </output>
     </remotesteps>
     <GUI>
-      <xloc>160</xloc>
-      <yloc>288</yloc>
+      <xloc>132</xloc>
+      <yloc>312</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1964,8 +1963,8 @@ where obs.concept_id = 159431
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>288</yloc>
+      <xloc>500</xloc>
+      <yloc>312</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1982,7 +1981,7 @@ where obs.concept_id = 159431
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
-    <sql>select obs.obs_datetime ped_tb_eval_ppd_recent_date from obs
+    <sql>select obs.value_datetime ped_tb_eval_ppd_recent_date from obs
 where obs.concept_id = 5475
   and obs.voided = false
   and obs.encounter_id = ?</sql>
@@ -2003,8 +2002,8 @@ where obs.concept_id = 5475
       </output>
     </remotesteps>
     <GUI>
-      <xloc>160</xloc>
-      <yloc>624</yloc>
+      <xloc>132</xloc>
+      <yloc>648</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2042,8 +2041,8 @@ where location_attribute.attribute_type_id = 7
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
-      <yloc>720</yloc>
+      <xloc>708</xloc>
+      <yloc>744</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2085,8 +2084,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>80</yloc>
+      <xloc>868</xloc>
+      <yloc>104</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2129,8 +2128,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>992</xloc>
-      <yloc>832</yloc>
+      <xloc>964</xloc>
+      <yloc>856</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2166,8 +2165,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1312</xloc>
-      <yloc>832</yloc>
+      <xloc>1284</xloc>
+      <yloc>856</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2192,8 +2191,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1168</xloc>
-      <yloc>832</yloc>
+      <xloc>1140</xloc>
+      <yloc>856</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2679,8 +2678,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
-      <yloc>16</yloc>
+      <xloc>68</xloc>
+      <yloc>40</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2716,8 +2715,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
-      <yloc>80</yloc>
+      <xloc>260</xloc>
+      <yloc>104</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2748,8 +2747,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
-      <yloc>0</yloc>
+      <xloc>260</xloc>
+      <yloc>24</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2780,8 +2779,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
-      <yloc>96</yloc>
+      <xloc>68</xloc>
+      <yloc>120</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2822,8 +2821,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
-      <yloc>608</yloc>
+      <xloc>340</xloc>
+      <yloc>632</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2993,8 +2992,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1104</xloc>
-      <yloc>720</yloc>
+      <xloc>1076</xloc>
+      <yloc>744</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3045,8 +3044,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>848</xloc>
-      <yloc>832</yloc>
+      <xloc>820</xloc>
+      <yloc>856</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3954,8 +3953,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1312</xloc>
-      <yloc>720</yloc>
+      <xloc>1284</xloc>
+      <yloc>744</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3993,8 +3992,8 @@ where obs.concept_id = 163284
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>512</yloc>
+      <xloc>500</xloc>
+      <yloc>536</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4032,8 +4031,8 @@ where obs.concept_id = 162320
       </output>
     </remotesteps>
     <GUI>
-      <xloc>160</xloc>
-      <yloc>512</yloc>
+      <xloc>132</xloc>
+      <yloc>536</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

@@ -551,23 +551,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values 2</from>
-      <to>Filter rows Use date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Filter rows Use date</from>
       <to>Set field value date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows Use date</from>
-      <to>Fetch Person Identifier</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Set field value date</from>
-      <to>Fetch Person Identifier</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -597,7 +582,22 @@
     </hop>
     <hop>
       <from>Fetch Person Id</from>
+      <to>Filter rows Use date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set field value date</from>
       <to>Select values format</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows Use date</from>
+      <to>Select values format</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 2</from>
+      <to>Fetch Person Identifier</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1368,7 +1368,7 @@ where location_attribute.attribute_type_id = ?
       <schema_name/>
     </partitioning>
     <send_true_to>Set field value date</send_true_to>
-    <send_false_to>Fetch Person Identifier</send_false_to>
+    <send_false_to>Select values format</send_false_to>
     <compare>
       <condition>
         <negated>N</negated>
@@ -1395,8 +1395,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>992</xloc>
-      <yloc>160</yloc>
+      <xloc>1312</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1536,7 +1536,7 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
+      <xloc>624</xloc>
       <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1941,7 +1941,7 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>768</xloc>
+      <xloc>368</xloc>
       <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2031,7 +2031,7 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>864</xloc>
+      <xloc>912</xloc>
       <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2144,7 +2144,7 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1312</xloc>
+      <xloc>896</xloc>
       <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2175,8 +2175,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1024</xloc>
-      <yloc>96</yloc>
+      <xloc>1104</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2292,30 +2292,6 @@ where location_attribute.attribute_type_id = ?
     </fields>
     <data>
       <line>
-        <item>autre: normal</item>
-        <item>509165840</item>
-        <item>1115</item>
-        <item>70229</item>
-        <item>1</item>
-        <item/>
-      </line>
-      <line>
-        <item>autre: anormal</item>
-        <item>509165840</item>
-        <item>1116</item>
-        <item>70229</item>
-        <item>2</item>
-        <item/>
-      </line>
-      <line>
-        <item>autre: pas conduit</item>
-        <item>509165840</item>
-        <item>1118</item>
-        <item>70229</item>
-        <item>3</item>
-        <item/>
-      </line>
-      <line>
         <item>Tête: Normal</item>
         <item>1122</item>
         <item>1115</item>
@@ -2336,6 +2312,126 @@ where location_attribute.attribute_type_id = ?
         <item>1122</item>
         <item>1118</item>
         <item>7086</item>
+        <item>3</item>
+        <item/>
+      </line>
+      <line>
+        <item>Uterus: Normal</item>
+        <item>163742</item>
+        <item>1115</item>
+        <item>7904</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Uterus: Anormal</item>
+        <item>163742</item>
+        <item>1116</item>
+        <item>7904</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Uterus: Non Effectué</item>
+        <item>163742</item>
+        <item>1118</item>
+        <item>7904</item>
+        <item>3</item>
+        <item/>
+      </line>
+      <line>
+        <item>Organes génitaux Externes: Normal</item>
+        <item>163743</item>
+        <item>1115</item>
+        <item>7091</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Organes génitaux Externes: Anormal</item>
+        <item>163743</item>
+        <item>1116</item>
+        <item>7091</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Organes génitaux Externes: Non Effectué</item>
+        <item>163743</item>
+        <item>1118</item>
+        <item>7091</item>
+        <item>3</item>
+        <item/>
+      </line>
+      <line>
+        <item>Vagin: Normal</item>
+        <item>163744</item>
+        <item>1115</item>
+        <item>7092</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Vagin: Anormal</item>
+        <item>163744</item>
+        <item>1116</item>
+        <item>7092</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Vagin: Non Effectué</item>
+        <item>163744</item>
+        <item>1118</item>
+        <item>7092</item>
+        <item>3</item>
+        <item/>
+      </line>
+      <line>
+        <item>Annexes: Normal</item>
+        <item>163745</item>
+        <item>1115</item>
+        <item>7094</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Annexes: Anormal</item>
+        <item>163745</item>
+        <item>1116</item>
+        <item>7094</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Annexes: Non Effectué</item>
+        <item>163745</item>
+        <item>1118</item>
+        <item>7094</item>
+        <item>3</item>
+        <item/>
+      </line>
+      <line>
+        <item>Reflexes Ostéo-Tendineux: Normal</item>
+        <item>160623</item>
+        <item>1115</item>
+        <item>7097</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Reflexes Ostéo-Tendineux: Anormal</item>
+        <item>160623</item>
+        <item>1116</item>
+        <item>7097</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Reflexes Ostéo-Tendineux: Non Effectué</item>
+        <item>160623</item>
+        <item>1118</item>
+        <item>7097</item>
         <item>3</item>
         <item/>
       </line>
@@ -2412,24 +2508,24 @@ where location_attribute.attribute_type_id = ?
         <item/>
       </line>
       <line>
-        <item>Cou: Normal</item>
-        <item>163388</item>
+        <item>Col: Normal</item>
+        <item>160704</item>
         <item>1115</item>
         <item>7093</item>
         <item>1</item>
         <item/>
       </line>
       <line>
-        <item>Cou: Anormal</item>
-        <item>163388</item>
+        <item>Col: Anormal</item>
+        <item>160704</item>
         <item>1116</item>
         <item>7093</item>
         <item>2</item>
         <item/>
       </line>
       <line>
-        <item>Cou: Non Effectué</item>
-        <item>163388</item>
+        <item>Col: Non Effectué</item>
+        <item>160704</item>
         <item>1118</item>
         <item>7093</item>
         <item>3</item>
@@ -2480,6 +2576,30 @@ where location_attribute.attribute_type_id = ?
         <item>1124</item>
         <item>1118</item>
         <item>7088</item>
+        <item>3</item>
+        <item/>
+      </line>
+      <line>
+        <item>Seins: Normal</item>
+        <item>159780</item>
+        <item>1115</item>
+        <item>7089</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Seins: Anormal</item>
+        <item>159780</item>
+        <item>1116</item>
+        <item>7089</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Seins: Non Effectué</item>
+        <item>159780</item>
+        <item>1118</item>
+        <item>7089</item>
         <item>3</item>
         <item/>
       </line>
@@ -3800,7 +3920,7 @@ where location_attribute.attribute_type_id = ?
         <item>159758</item>
         <item>1536</item>
         <item>7955</item>
-        <item>1</item>
+        <item>2</item>
         <item/>
       </line>
       <line>
@@ -3808,7 +3928,7 @@ where location_attribute.attribute_type_id = ?
         <item>159758</item>
         <item>1589</item>
         <item>7955</item>
-        <item>2</item>
+        <item>1</item>
         <item/>
       </line>
       <line>
@@ -4833,6 +4953,342 @@ where location_attribute.attribute_type_id = ?
         <item>161625</item>
         <item>70521</item>
         <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Œdème: Oui</item>
+        <item>460</item>
+        <item>1065</item>
+        <item>70825</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Œdème: Non</item>
+        <item>460</item>
+        <item>1066</item>
+        <item>70825</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Position: D</item>
+        <item>163749</item>
+        <item>5141</item>
+        <item>70826</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Position: G</item>
+        <item>163749</item>
+        <item>5139</item>
+        <item>70826</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Contraction utérine: Oui</item>
+        <item>163750</item>
+        <item>163748</item>
+        <item>70827</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Contraction utérine: Non</item>
+        <item>163750</item>
+        <item>163747</item>
+        <item>70827</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Intervention date</item>
+        <item>160715</item>
+        <item/>
+        <item>160715</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>Return visit date obgyn</item>
+        <item>5096</item>
+        <item/>
+        <item>71067</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>Date Probable d’accouchement</item>
+        <item>5596</item>
+        <item/>
+        <item>71069</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>Gestational age</item>
+        <item>1409</item>
+        <item/>
+        <item>7803</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>Uterine size</item>
+        <item>1439</item>
+        <item/>
+        <item>7804</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>Fetal heart rate</item>
+        <item>1440</item>
+        <item/>
+        <item>7806</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>Rupture of membranes: date</item>
+        <item>160710</item>
+        <item/>
+        <item>7809</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>Estimated blood loss</item>
+        <item>161928</item>
+        <item/>
+        <item>70518</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>Child birth: Date and Time</item>
+        <item>5599</item>
+        <item/>
+        <item>7819</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>Allaitement maternel exclusif: duration in months</item>
+        <item>163548</item>
+        <item/>
+        <item>70659</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>TB Registration date</item>
+        <item>161552</item>
+        <item/>
+        <item>71173</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>TB: Statut VIH date</item>
+        <item>160554</item>
+        <item/>
+        <item>71206</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>Autre établissement / clinique</item>
+        <item>161562</item>
+        <item/>
+        <item>70648</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>TUBERCULOSE: CD4 date</item>
+        <item>5497</item>
+        <item/>
+        <item>71226</item>
+        <item/>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>TUBERCULOSE: Statut VIH: Date</item>
+        <item>160554</item>
+        <item/>
+        <item>71206</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>ARV: Si oui, médicaments</item>
+        <item>163322</item>
+        <item/>
+        <item>71210</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>DDR</item>
+        <item>1427</item>
+        <item/>
+        <item>70465</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>DPA</item>
+        <item>5596</item>
+        <item/>
+        <item>70466</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>AV</item>
+        <item>1825</item>
+        <item/>
+        <item>7870</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>DÉBUT DU TRAVAIL: Date et Heure</item>
+        <item>163444</item>
+        <item/>
+        <item>7802</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>DÉBUT DU TRAVAIL: Age gestationnel</item>
+        <item>1409</item>
+        <item/>
+        <item>7803</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>DÉBUT DU TRAVAIL: Date et Heure</item>
+        <item>160710</item>
+        <item/>
+        <item>7809</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>ACCOUCHEMENT: Date et Heure</item>
+        <item>5599</item>
+        <item/>
+        <item>7819</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>CONDUITE A TENIR: Planification familiale: Date début</item>
+        <item>163757</item>
+        <item/>
+        <item>70584</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>CONDUITE A TENIR: Planification familiale: Date d’arrêt</item>
+        <item>163758</item>
+        <item/>
+        <item>70585</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>CONDUITE A TENIR: Méthode PF administrée: Ligature des trompes</item>
+        <item>374</item>
+        <item>1472</item>
+        <item>7879</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>CONDUITE A TENIR: Méthode PF administrée: Sterilet</item>
+        <item>374</item>
+        <item>5275</item>
+        <item>7877</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>CONDUITE A TENIR: Méthode PF administrée: Pilule: Collier, jour fixe: date</item>
+        <item>374</item>
+        <item>163759</item>
+        <item>71375</item>
+        <item/>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Patiente sous ARV: Oui</item>
+        <item>161557</item>
+        <item>1065</item>
+        <item>71394</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Patiente sous ARV: Non</item>
+        <item>161557</item>
+        <item>1066</item>
+        <item>71394</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Référence partenaire: Positif</item>
+        <item>1436</item>
+        <item>703</item>
+        <item>71395</item>
+        <item>1</item>
+        <item/>
+      </line>
+      <line>
+        <item>Référence partenaire: Négatif</item>
+        <item>1436</item>
+        <item>664</item>
+        <item>71395</item>
+        <item>2</item>
+        <item/>
+      </line>
+      <line>
+        <item>Référence partenaire: Indéterminé</item>
+        <item>1436</item>
+        <item>1067</item>
+        <item>71395</item>
+        <item>3</item>
+        <item/>
+      </line>
+      <line>
+        <item>Motif de dépistage</item>
+        <item>163761</item>
+        <item/>
+        <item>71396</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item>Date de prochaine visite</item>
+        <item>5096</item>
+        <item/>
+        <item>71067</item>
+        <item/>
+        <item/>
+      </line>
+      <line>
+        <item> Date Probable d’accouchement</item>
+        <item>5596</item>
+        <item/>
+        <item>71069</item>
+        <item/>
         <item/>
       </line>
     </data>

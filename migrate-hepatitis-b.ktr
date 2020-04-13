@@ -430,7 +430,7 @@
     <created_date>2020/03/21 11:08:06.428</created_date>
     <modified_user>-</modified_user>
     <modified_date>2020/03/21 11:08:06.428</modified_date>
-    <key_for_session_key/>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -1163,7 +1163,7 @@ join etl_encounter_seqnum on etl_encounter_seqnum.encounter_id = encounter.encou
 join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
 where obs.concept_id = 984
   and obs.value_coded = 782
-  and encounter_type.uuid = '12f4d7c3-e047-4455-a607-47a40fe32460'
+  and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171')
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
    or encounter.date_voided >= ?
