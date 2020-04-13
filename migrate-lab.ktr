@@ -547,11 +547,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Calculator</from>
-      <to>Decompose Encounter Datetime</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Mappings</from>
       <to>Join rows (cartesian product)</to>
       <enabled>Y</enabled>
@@ -574,6 +569,16 @@
     <hop>
       <from>Save on CSV</from>
       <to>Group by</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Calculator</from>
+      <to>Calculator 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Calculator 2</from>
+      <to>Decompose Encounter Datetime</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -613,7 +618,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>992</xloc>
+      <xloc>880</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1329,7 +1334,7 @@ where obs.concept_id = ?
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
-    <sql>select CAST(obs.value_numeric as CHAR(50)) test_result_numeric, obs.value_coded test_result_coded, obs.obs_datetime test_result_date, obs.comments test_comments, concept_name.name test_result_coded_name from obs
+    <sql>select CAST(obs.value_numeric as CHAR(50)) test_result_numeric, obs.value_coded test_result_coded, obs.value_text test_result_text, obs.obs_datetime test_result_date, obs.comments test_comments, concept_name.name test_result_coded_name from obs
 join encounter on encounter.encounter_id = obs.encounter_id
 left join concept_name on concept_name.concept_id = obs.value_coded and concept_name.locale = 'fr'
 where obs.concept_id = ?
@@ -3745,7 +3750,7 @@ order by date desc</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>test_result</name>
+        <name>test_result_final</name>
         <type>String</type>
         <format />
         <currency />
@@ -4608,6 +4613,47 @@ order by date desc</sql>
     <GUI>
       <xloc>864</xloc>
       <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Calculator 2</name>
+    <type>Calculator</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>test_result_final</field_name>
+      <calc_type>NVL</calc_type>
+      <field_a>test_result</field_a>
+      <field_b>test_result_text</field_b>
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1024</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
