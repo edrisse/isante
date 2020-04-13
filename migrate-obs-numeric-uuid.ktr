@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>migrate-obs-av</name>
+    <name>migrate-obs-numeric-uuid</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -427,10 +427,10 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2020/04/02 12:37:42.578</created_date>
+    <created_date>2020/04/09 08:15:41.627</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2020/04/02 12:37:42.578</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2020/04/09 08:15:41.627</modified_date>
+    <key_for_session_key/>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -497,8 +497,18 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Database join Coded</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Database join Non-Coded</from>
+      <to>Select values 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Fetch Last ETL Excution Date</from>
-      <to>Database join Coded</to>
+      <to>Filter rows</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -517,6 +527,26 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Filter rows</from>
+      <to>Database join Coded</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows</from>
+      <to>Database join Non-Coded</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows Use date</from>
+      <to>Fetch Person Identifier</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows Use date</from>
+      <to>Set field value date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Join rows (cartesian product)</from>
       <to>Fetch Last ETL Excution Date</to>
       <enabled>Y</enabled>
@@ -532,12 +562,32 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values format</from>
+      <from>Remove new line from Address</from>
       <to>Save on CSV</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Database join Coded</from>
+      <from>Select values</from>
+      <to>Set field value numeric</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 2</from>
+      <to>Filter rows Use date</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values format</from>
+      <to>Remove new line from Address</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set field value date</from>
+      <to>Fetch Person Identifier</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set field value numeric</from>
       <to>Fetch Person Identifier</to>
       <enabled>Y</enabled>
     </hop>
@@ -921,8 +971,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>67</xloc>
-      <yloc>51</yloc>
+      <xloc>88</xloc>
+      <yloc>69</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -940,12 +990,13 @@
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
     <sql>select obs.person_id, obs.obs_datetime, obs.encounter_id, encounter.location_id, encounter.encounter_datetime, obs.date_created, obs.voided,
-obs.date_voided, obs.void_reason, obs.value_numeric from obs
+obs.date_voided, obs.void_reason, obs.comments, obs.value_text, obs.value_numeric, obs.value_datetime  from obs
 join encounter on encounter.encounter_id = obs.encounter_id
 join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
-where obs.concept_id = ?
-  and encounter.voided = false
-  and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171', 'd95b3540-a39f-4d1e-a301-8ee0e03d5eab')
+where obs.concept_id = (select c.concept_id from concept c where c.uuid = ?)
+  and obs.value_coded = ?
+  and obs.voided = false
+  and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171','17536ba6-dd7c-4f58-8014-08c7cb798ac7', 'd95b3540-a39f-4d1e-a301-8ee0e03d5eab')
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
    or encounter.date_voided >= ?
@@ -960,7 +1011,11 @@ where obs.concept_id = ?
     <parameter>
       <field>
         <name>isante_plus_question</name>
-        <type>Number</type>
+        <type>String</type>
+      </field>
+      <field>
+        <name>isante_plus_answer</name>
+        <type>Integer</type>
       </field>
       <field>
         <name>last_execution</name>
@@ -1004,8 +1059,91 @@ where obs.concept_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>848</xloc>
-      <yloc>176</yloc>
+      <xloc>760</xloc>
+      <yloc>85</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Database join Non-Coded</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>0</rowlimit>
+    <sql>select obs.person_id, obs.obs_datetime, obs.encounter_id, encounter.location_id, encounter.encounter_datetime, obs.date_created, obs.voided,
+obs.date_voided, obs.void_reason, obs.comments, obs.value_text, obs.value_numeric, obs.value_datetime  from obs
+join encounter on encounter.encounter_id = obs.encounter_id
+join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
+where obs.concept_id = (select c.concept_id from concept c where c.uuid = ?)
+  and obs.voided = false
+  and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171','17536ba6-dd7c-4f58-8014-08c7cb798ac7', 'd95b3540-a39f-4d1e-a301-8ee0e03d5eab')
+  and (encounter.date_created >= ?
+   or encounter.date_changed >= ?
+   or encounter.date_voided >= ?
+   or encounter.date_created >= ?
+   or encounter.date_changed >= ?
+   or encounter.date_voided >= ?
+   or obs.date_voided >= ?
+   or obs.date_created >= ?)
+</sql>
+    <outer_join>N</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>isante_plus_question</name>
+        <type>String</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>760</xloc>
+      <yloc>213</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1038,8 +1176,8 @@ order by date desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
-      <yloc>176</yloc>
+      <xloc>552</xloc>
+      <yloc>117</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1078,8 +1216,8 @@ order by date desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1120</xloc>
-      <yloc>368</yloc>
+      <xloc>1368</xloc>
+      <yloc>261</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1122,8 +1260,8 @@ where patient_identifier.identifier_type = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1395</xloc>
-      <yloc>179</yloc>
+      <xloc>1224</xloc>
+      <yloc>117</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1165,8 +1303,96 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1395</xloc>
-      <yloc>371</yloc>
+      <xloc>1368</xloc>
+      <yloc>117</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter rows</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Database join Coded</send_true_to>
+    <send_false_to>Database join Non-Coded</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>isante_answer</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>N</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask/>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>648</xloc>
+      <yloc>165</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter rows Use date</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Set field value date</send_true_to>
+    <send_false_to>Fetch Person Identifier</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>use_date</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>N</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask/>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1048</xloc>
+      <yloc>213</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1202,8 +1428,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>371</xloc>
-      <yloc>179</yloc>
+      <xloc>344</xloc>
+      <yloc>117</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1234,8 +1460,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
-      <yloc>192</yloc>
+      <xloc>88</xloc>
+      <yloc>229</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1266,8 +1492,48 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>83</xloc>
-      <yloc>355</yloc>
+      <xloc>136</xloc>
+      <yloc>309</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove new line from Address</name>
+    <type>StringOperations</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>value_text</in_stream_name>
+        <out_stream_name>value_text_sanitazed</out_stream_name>
+        <trim_type>none</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>crlf</remove_special_characters>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1112</xloc>
+      <yloc>421</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1338,7 +1604,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>parsed_person_id</name>
+        <name>patient_identifier</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1446,7 +1712,31 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>value_text_c</name>
+        <name>value_datetime_c</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>value_datetime</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>value_numeric_c</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1459,6 +1749,54 @@ where location_attribute.attribute_type_id = ?
       </field>
       <field>
         <name>value_numeric</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>value_text_c</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>value_text_sanitazed</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>comments_c</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>comments</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1542,30 +1880,6 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>voided_by_c</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>default_na</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
         <name>date_voided_c</name>
         <type>String</type>
         <format/>
@@ -1623,8 +1937,98 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>544</xloc>
-      <yloc>368</yloc>
+      <xloc>824</xloc>
+      <yloc>421</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>value_numeric</name>
+        <rename>value_numeric</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>0</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>920</xloc>
+      <yloc>85</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 2</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>value_numeric</name>
+        <rename>value_numeric</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>0</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>920</xloc>
+      <yloc>213</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1709,6 +2113,23 @@ where location_attribute.attribute_type_id = ?
         <currency_symbol/>
         <storage_type/>
       </meta>
+      <meta>
+        <name>value_datetime</name>
+        <rename>value_datetime</rename>
+        <type>Date</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd HH:mm:ss</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1719,8 +2140,70 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>832</xloc>
-      <yloc>368</yloc>
+      <xloc>1368</xloc>
+      <yloc>421</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set field value date</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>value_datetime</name>
+        <replaceby>obs_datetime</replaceby>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1080</xloc>
+      <yloc>149</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set field value numeric</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>value_numeric</name>
+        <replaceby>isante_answer</replaceby>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1064</xloc>
+      <yloc>85</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1749,7 +2232,7 @@ where location_attribute.attribute_type_id = ?
       </field>
       <field>
         <name>isante_plus_question</name>
-        <type>Integer</type>
+        <type>String</type>
         <format/>
         <currency/>
         <decimal/>
@@ -1780,73 +2263,53 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
+      <field>
+        <name>isante_answer</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>use_date</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
     </fields>
     <data>
       <line>
-        <item>DÉBUT DU TRAVAIL: Hauteur Utérine</item>
-        <item>1439</item>
+        <item>autre: normal</item>
+        <item>a71f7a86-d8a7-4124-9188-2de74a267c40</item>
+        <item>1115</item>
+        <item>70229</item>
+        <item>1</item>
         <item/>
-        <item>7804</item>
       </line>
       <line>
-        <item>AV</item>
-        <item>1825</item>
+        <item>autre: anormal</item>
+        <item>a71f7a86-d8a7-4124-9188-2de74a267c40</item>
+        <item>1116</item>
+        <item>70229</item>
+        <item>2</item>
         <item/>
-        <item>7870</item>
       </line>
       <line>
-        <item>DÉBUT DU TRAVAIL: Perte sanguine estimée à</item>
-        <item>161928</item>
+        <item>autre: pas conduit</item>
+        <item>a71f7a86-d8a7-4124-9188-2de74a267c40</item>
+        <item>1118</item>
+        <item>70229</item>
+        <item>3</item>
         <item/>
-        <item>70518</item>
-      </line>
-      <line>
-        <item>SIGNES VITAUX A L’ADMISSSION: TA</item>
-        <item>5085</item>
-        <item/>
-        <item>7840</item>
-      </line>
-      <line>
-        <item>SIGNES VITAUX A L’ADMISSSION: TA</item>
-        <item>5086</item>
-        <item/>
-        <item>7797</item>
-      </line>
-      <line>
-        <item>SIGNES VITAUX A L’ADMISSSION: Pouls</item>
-        <item>5087</item>
-        <item/>
-        <item>7838</item>
-      </line>
-      <line>
-        <item>SIGNES VITAUX A L’ADMISSSION: FR</item>
-        <item>5242</item>
-        <item/>
-        <item>7839</item>
-      </line>
-      <line>
-        <item>SIGNES VITAUX A L’ADMISSSION: Temp</item>
-        <item>5088</item>
-        <item/>
-        <item>7836</item>
-      </line>
-      <line>
-        <item>Rythme cardiaque fœtal</item>
-        <item>1440</item>
-        <item/>
-        <item>7806</item>
-      </line>
-      <line>
-        <item>Week of Gestation</item>
-        <item>1438</item>
-        <item/>
-        <item>70750</item>
-      </line>
-      <line>
-        <item>Numération ou taux de CD4</item>
-        <item>5497</item>
-        <item/>
-        <item>70758</item>
       </line>
     </data>
     <attributes/>
@@ -1858,8 +2321,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>73</xloc>
-      <yloc>515</yloc>
+      <xloc>88</xloc>
+      <yloc>133</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

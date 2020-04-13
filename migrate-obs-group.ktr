@@ -567,23 +567,23 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Replace in string</from>
-      <to>Filter rows 2</to>
+      <from>Filter use comments</from>
+      <to>Set field value text</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter rows 2</from>
-      <to>Set field value date</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Set field value date</from>
+      <from>Set field value text</from>
       <to>Save on CSV</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter rows 2</from>
+      <from>Filter use comments</from>
       <to>Save on CSV</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values format</from>
+      <to>Filter use comments</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -1082,7 +1082,7 @@ where obs.concept_id = (select concept.concept_id from concept where concept.uui
       <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
-    <rowlimit>0</rowlimit>
+    <rowlimit>1</rowlimit>
     <sql>select obs.person_id, obs.obs_datetime, obs.encounter_id, encounter.location_id, encounter.encounter_datetime, obs.date_created, obs.voided,
 obs.date_voided, obs.void_reason, obs.comments, obs.value_text, obs.value_numeric, obs.value_datetime  from obs
 join encounter on encounter.encounter_id = obs.encounter_id
@@ -1174,7 +1174,7 @@ where obs.obs_group_id = ?
       <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
-    <rowlimit>0</rowlimit>
+    <rowlimit>1</rowlimit>
     <sql>select obs.person_id, obs.obs_datetime, obs.encounter_id, encounter.location_id, encounter.encounter_datetime, obs.date_created, obs.voided,
 obs.date_voided, obs.void_reason, obs.comments, obs.value_text, obs.value_numeric, obs.value_datetime  from obs
 join encounter on encounter.encounter_id = obs.encounter_id
@@ -1446,37 +1446,28 @@ where location_attribute.attribute_type_id = ?
     </GUI>
   </step>
   <step>
-    <name>Filter rows 2</name>
+    <name>Filter use comments</name>
     <type>FilterRows</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
-    <send_true_to>Set field value date</send_true_to>
+    <send_true_to>Set field value text</send_true_to>
     <send_false_to>Save on CSV</send_false_to>
     <compare>
       <condition>
         <negated>N</negated>
         <leftvalue>use_comments</leftvalue>
-        <function>=</function>
-        <rightvalue />
-        <value>
-          <name>constant</name>
-          <type>String</type>
-          <text>Y</text>
-          <length>-1</length>
-          <precision>-1</precision>
-          <isnull>N</isnull>
-          <mask />
-        </value>
+        <function>IS NOT NULL</function>
+        <rightvalue/>
       </condition>
     </compare>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -1587,45 +1578,6 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>96</xloc>
       <yloc>224</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Replace in string</name>
-    <type>ReplaceString</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>value_datetime</in_stream_name>
-        <out_stream_name>value_datetime_clean</out_stream_name>
-        <use_regex>no</use_regex>
-        <replace_string>0000-00-00 00:00:00</replace_string>
-        <replace_by_string />
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string>empty</replace_field_by_string>
-        <whole_word>yes</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1136</xloc>
-      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2148,15 +2100,15 @@ where location_attribute.attribute_type_id = ?
     </GUI>
   </step>
   <step>
-    <name>Set field value date</name>
+    <name>Set field value text</name>
     <type>SetValueField</type>
-    <description />
+    <description/>
     <distribute>Y</distribute>
-    <custom_distribution />
+    <custom_distribution/>
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name />
+      <schema_name/>
     </partitioning>
     <fields>
       <field>
@@ -2164,8 +2116,8 @@ where location_attribute.attribute_type_id = ?
         <replaceby>comments</replaceby>
       </field>
     </fields>
-    <attributes />
-    <cluster_schema />
+    <attributes/>
+    <cluster_schema/>
     <remotesteps>
       <input>
       </input>
@@ -2276,7 +2228,7 @@ where location_attribute.attribute_type_id = ?
         <item>70416</item>
         <item />
         <item>2917c4a3-71bc-4c2d-92fc-9911b55d02f3</item>
-        <item />
+        <item>Y</item>
       </line>
       <line>
         <item>Prescribed medicines 2</item>
@@ -2285,7 +2237,7 @@ where location_attribute.attribute_type_id = ?
         <item>70417</item>
         <item />
         <item>f9c09540-f8c0-4884-96dd-a81b4b2a6e84</item>
-        <item />
+        <item>Y</item>
       </line>
       <line>
         <item>Prescribed medicines 3</item>
@@ -2294,7 +2246,7 @@ where location_attribute.attribute_type_id = ?
         <item>70418</item>
         <item />
         <item>9da0ca77-d4fa-4689-8f14-e358f4d60f6a</item>
-        <item />
+        <item>Y</item>
       </line>
       <line>
         <item>Prescribed medicines 4</item>
@@ -2303,7 +2255,7 @@ where location_attribute.attribute_type_id = ?
         <item>70419</item>
         <item />
         <item>df21482f-5823-4383-8008-a45d9557567a</item>
-        <item />
+        <item>Y</item>
       </line>
       <line>
         <item>Prescribed medicines 5</item>
@@ -2312,7 +2264,52 @@ where location_attribute.attribute_type_id = ?
         <item>70420</item>
         <item />
         <item>0c94f335-bd60-4ef4-864b-bab27c874841</item>
-        <item />
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Prescribed medicines 1 - obgyn</item>
+        <item>1282</item>
+        <item>5622</item>
+        <item>70416</item>
+        <item/>
+        <item>68c79da3-7261-4e32-9a8b-85288fbef43b</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Prescribed medicines 2 - obgyn</item>
+        <item>1282</item>
+        <item>5622</item>
+        <item>70417</item>
+        <item/>
+        <item>0092abda-de8d-4564-9d16-7bda84b78bc5</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Prescribed medicines 3 - obgyn</item>
+        <item>1282</item>
+        <item>5622</item>
+        <item>70418</item>
+        <item/>
+        <item>d4231f0f-92aa-4f28-9534-0d726d436b98</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Prescribed medicines 4 - obgyn</item>
+        <item>1282</item>
+        <item>5622</item>
+        <item>70419</item>
+        <item/>
+        <item>99f42a2a-cba7-4baf-822f-1be8ece88705</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>Prescribed medicines 5 - obgyn</item>
+        <item>1282</item>
+        <item>5622</item>
+        <item>70420</item>
+        <item/>
+        <item>46cd375f-4324-4fde-b01f-1ec2342f29ca</item>
+        <item>Y</item>
       </line>
       <line>
         <item>ATCD Indication1</item>
@@ -2447,186 +2444,6 @@ where location_attribute.attribute_type_id = ?
         <item>71093</item>
         <item>1</item>
         <item>d2947119-fa79-4903-842d-4b38b9d2856f</item>
-        <item />
-      </line>
-      <line>
-        <item>Mois 0: Date</item>
-        <item>159964</item>
-        <item />
-        <item>71158</item>
-        <item />
-        <item>c2c7db51-d427-4c21-9655-ae9ee604c81c</item>
-        <item />
-      </line>
-      <line>
-        <item>Mois 0: Bacilloscopie: Pos</item>
-        <item>307</item>
-        <item>703</item>
-        <item>71159</item>
-        <item>1</item>
-        <item>c2c7db51-d427-4c21-9655-ae9ee604c81c</item>
-        <item />
-      </line>
-      <line>
-        <item>Mois 0: Bacilloscopie: Neg</item>
-        <item>307</item>
-        <item>664</item>
-        <item>71159</item>
-        <item>2</item>
-        <item>c2c7db51-d427-4c21-9655-ae9ee604c81c</item>
-        <item />
-      </line>
-      <line>
-        <item>Mois 0: Poids</item>
-        <item>5089</item>
-        <item />
-        <item>71160</item>
-        <item />
-        <item>c2c7db51-d427-4c21-9655-ae9ee604c81c</item>
-        <item />
-      </line>
-      <line>
-        <item>Mois 2: Date</item>
-        <item>159964</item>
-        <item />
-        <item>71161</item>
-        <item />
-        <item>be7a27bb-2dcd-4bff-b696-ccdbbd2d3192</item>
-        <item />
-      </line>
-      <line>
-        <item>Mois 2: Bacilloscopie: Pos</item>
-        <item>307</item>
-        <item>703</item>
-        <item>71162</item>
-        <item>1</item>
-        <item>be7a27bb-2dcd-4bff-b696-ccdbbd2d3192</item>
-        <item />
-      </line>
-      <line>
-        <item>Mois 2: Bacilloscopie: Neg</item>
-        <item>307</item>
-        <item>664</item>
-        <item>71162</item>
-        <item>2</item>
-        <item>be7a27bb-2dcd-4bff-b696-ccdbbd2d3192</item>
-        <item />
-      </line>
-      <line>
-        <item>Mois 2: Poids</item>
-        <item>5089</item>
-        <item />
-        <item>71163</item>
-        <item />
-        <item>be7a27bb-2dcd-4bff-b696-ccdbbd2d3192</item>
-        <item />
-      </line>
-      <line>
-        <item>Mois 3: Date</item>
-        <item>159964</item>
-        <item />
-        <item>71164</item>
-        <item />
-        <item>fdd9d953-004a-4e9a-ab93-9afaa0e090fa</item>
-        <item />
-      </line>
-      <line>
-        <item>Mois 3: Bacilloscopie: Pos</item>
-        <item>307</item>
-        <item>703</item>
-        <item>71165</item>
-        <item>1</item>
-        <item>fdd9d953-004a-4e9a-ab93-9afaa0e090fa</item>
-        <item />
-      </line>
-      <line>
-        <item>Mois 3: Bacilloscopie: Neg</item>
-        <item>307</item>
-        <item>664</item>
-        <item>71165</item>
-        <item>2</item>
-        <item>fdd9d953-004a-4e9a-ab93-9afaa0e090fa</item>
-        <item />
-      </line>
-      <line>
-        <item>Mois 3: Poids</item>
-        <item>5089</item>
-        <item />
-        <item>71166</item>
-        <item />
-        <item>fdd9d953-004a-4e9a-ab93-9afaa0e090fa</item>
-        <item />
-      </line>
-      <line>
-        <item>Mois 5: Date</item>
-        <item>159964</item>
-        <item />
-        <item>71167</item>
-        <item />
-        <item>224546bb-03da-4793-9ef6-3d42adc5b353</item>
-        <item />
-      </line>
-      <line>
-        <item>Mois 5: Bacilloscopie: Pos</item>
-        <item>307</item>
-        <item>703</item>
-        <item>71168</item>
-        <item>1</item>
-        <item>224546bb-03da-4793-9ef6-3d42adc5b353</item>
-        <item />
-      </line>
-      <line>
-        <item>Mois 5: Bacilloscopie: Neg</item>
-        <item>307</item>
-        <item>664</item>
-        <item>71168</item>
-        <item>2</item>
-        <item>224546bb-03da-4793-9ef6-3d42adc5b353</item>
-        <item />
-      </line>
-      <line>
-        <item>Mois 5: Poids</item>
-        <item>5089</item>
-        <item />
-        <item>71169</item>
-        <item />
-        <item>224546bb-03da-4793-9ef6-3d42adc5b353</item>
-        <item />
-      </line>
-      <line>
-        <item>Mois Fin de rx: Date</item>
-        <item>159964</item>
-        <item />
-        <item>71170</item>
-        <item />
-        <item>7ae17faf-5935-46f2-a1fb-88e51b65480e</item>
-        <item />
-      </line>
-      <line>
-        <item>Mois Fin de rx: Bacilloscopie: Pos</item>
-        <item>307</item>
-        <item>703</item>
-        <item>71171</item>
-        <item>1</item>
-        <item>7ae17faf-5935-46f2-a1fb-88e51b65480e</item>
-        <item />
-      </line>
-      <line>
-        <item>Mois Fin de rx: Bacilloscopie: Neg</item>
-        <item>307</item>
-        <item>664</item>
-        <item>71171</item>
-        <item>2</item>
-        <item>7ae17faf-5935-46f2-a1fb-88e51b65480e</item>
-        <item />
-      </line>
-      <line>
-        <item>Mois Fin de rx: Poids</item>
-        <item>5089</item>
-        <item />
-        <item>71172</item>
-        <item />
-        <item>7ae17faf-5935-46f2-a1fb-88e51b65480e</item>
         <item />
       </line>
       <line>
@@ -3888,6 +3705,24 @@ where location_attribute.attribute_type_id = ?
         <item>4</item>
         <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
         <item />
+      </line>
+      <line>
+        <item>IMPRESSIONS CLINIQUES/DIAGNOSTIQUES: Autre, précisez 1</item>
+        <item>1284</item>
+        <item/>
+        <item>70870</item>
+        <item/>
+        <item>bdb0c5f8-f122-4911-9295-c667200bb8d4</item>
+        <item>Y</item>
+      </line>
+      <line>
+        <item>IMPRESSIONS CLINIQUES/DIAGNOSTIQUES: Autre, précisez 2</item>
+        <item>1284</item>
+        <item/>
+        <item>70874</item>
+        <item/>
+        <item>619f7b60-5262-4b32-ae55-155276817987</item>
+        <item>Y</item>
       </line>
     </data>
     <attributes />

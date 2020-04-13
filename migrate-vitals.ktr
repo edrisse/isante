@@ -656,12 +656,7 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Skin Findings</from>
-      <to>Map Skin Findings</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Map Skin Findings</from>
+      <from>Map Skin Findings HIV</from>
       <to>Fetch Oral Findings</to>
       <enabled>Y</enabled>
     </hop>
@@ -701,11 +696,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Abnominal Findings</from>
-      <to>Map Abdominal Findings</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Map Cardiac Findings</from>
       <to>Fetch Abnominal Findings</to>
       <enabled>Y</enabled>
@@ -713,11 +703,6 @@
     <hop>
       <from>Fetch Urogeninal Findings</from>
       <to>Map Urogenital Findings</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Map Abdominal Findings</from>
-      <to>Fetch Urogeninal Findings</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -1518,6 +1503,51 @@
     <hop>
       <from>Map Pap test result</from>
       <to>Replace in string</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Abnominal Findings</from>
+      <to>Filter Abdominal findings</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter Abdominal findings</from>
+      <to>Map Abdominal Findings HIV</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter Abdominal findings</from>
+      <to>Map Abdominal Findings Others</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map Abdominal Findings HIV</from>
+      <to>Fetch Urogeninal Findings</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map Abdominal Findings Others</from>
+      <to>Fetch Urogeninal Findings</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Skin Findings</from>
+      <to>Filter Skin findings</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter Skin findings</from>
+      <to>Map Skin Findings HIV</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter Skin findings</from>
+      <to>Map Skin Findings Others</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Map Skin Findings Others</from>
+      <to>Fetch Oral Findings</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -4782,8 +4812,8 @@ where obs.concept_id = 1125
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1216</xloc>
-      <yloc>1040</yloc>
+      <xloc>1808</xloc>
+      <yloc>944</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4822,7 +4852,7 @@ where obs.concept_id = 1391
       </output>
     </remotesteps>
     <GUI>
-      <xloc>432</xloc>
+      <xloc>880</xloc>
       <yloc>848</yloc>
       <draw>Y</draw>
     </GUI>
@@ -6194,7 +6224,7 @@ where obs.concept_id = 1119
       </output>
     </remotesteps>
     <GUI>
-      <xloc>256</xloc>
+      <xloc>672</xloc>
       <yloc>848</yloc>
       <draw>Y</draw>
     </GUI>
@@ -8017,6 +8047,46 @@ where obs.concept_id = 159936
     </GUI>
   </step>
   <step>
+    <name>Fetch Pap test result</name>
+    <type>DBJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Openmrs HTY</connection>
+    <rowlimit>1</rowlimit>
+    <sql>select obs.value_coded pap_test_result from obs
+where obs.concept_id = 885
+  and obs.encounter_id = ?
+  and obs.voided = false
+</sql>
+    <outer_join>Y</outer_join>
+    <replace_vars>N</replace_vars>
+    <parameter>
+      <field>
+        <name>encounter_id</name>
+        <type>Number</type>
+      </field>
+    </parameter>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>2864</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Fetch Papanicolau Smear</name>
     <type>DBJoin</type>
     <description/>
@@ -8933,8 +9003,8 @@ where obs.concept_id = 1120
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
-      <yloc>944</yloc>
+      <xloc>288</xloc>
+      <yloc>848</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -9687,7 +9757,7 @@ where (obs.concept_id = 163280 or obs.concept_id = 163545)
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
-    <sql>select encounter.encounter_id, encounter.encounter_datetime, encounter.patient_id person_id, encounter.location_id isante_plus_location_id from encounter
+    <sql>select encounter.encounter_id, encounter.encounter_datetime, encounter.patient_id person_id, encounter.location_id isante_plus_location_id, encounter_type.uuid enc_type from encounter
 join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
 where encounter_type.uuid in ('17536ba6-dd7c-4f58-8014-08c7cb798ac7', 
 								'204ad066-c5c2-4229-9a62-644bc5617ca2',
@@ -10281,48 +10351,6 @@ where location_attribute.attribute_type_id = ?
     </GUI>
   </step>
   <step>
-    <name>Map Abdominal Findings</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>abnominal_findings_code</field_to_use>
-    <target_field>abnominal_findings_desc</target_field>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>1115</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>1116</source_value>
-        <target_value>2</target_value>
-      </field>
-      <field>
-        <source_value>1118</source_value>
-        <target_value>4</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1024</xloc>
-      <yloc>1040</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Map Artificial Milk</name>
     <type>ValueMapper</type>
     <description/>
@@ -10447,8 +10475,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1392</xloc>
-      <yloc>1040</yloc>
+      <xloc>1584</xloc>
+      <yloc>944</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -10821,7 +10849,7 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
+      <xloc>480</xloc>
       <yloc>848</yloc>
       <draw>Y</draw>
     </GUI>
@@ -11541,6 +11569,44 @@ where location_attribute.attribute_type_id = ?
     </GUI>
   </step>
   <step>
+    <name>Map Pap test result</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>pap_test_result</field_to_use>
+    <target_field>pap_test_result_mapped</target_field>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>1115</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>1116</source_value>
+        <target_value>2</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>80</xloc>
+      <yloc>2944</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Map Papanicolau Smear</name>
     <type>ValueMapper</type>
     <description/>
@@ -11831,7 +11897,7 @@ where location_attribute.attribute_type_id = ?
     </GUI>
   </step>
   <step>
-    <name>Map Skin Findings</name>
+    <name>Map Skin Findings HIV</name>
     <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
@@ -11867,8 +11933,8 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>240</xloc>
-      <yloc>944</yloc>
+      <xloc>192</xloc>
+      <yloc>912</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -17281,8 +17347,8 @@ where location_attribute.attribute_type_id = ?
     </GUI>
   </step>
   <step>
-    <name>Fetch Pap test result</name>
-    <type>DBJoin</type>
+    <name>Filter Abdominal findings</name>
+    <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -17291,21 +17357,78 @@ where location_attribute.attribute_type_id = ?
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded pap_test_result from obs
-where obs.concept_id = 885
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
+    <send_true_to>Map Abdominal Findings Others</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>enc_type</leftvalue>
+            <function>=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>204ad066-c5c2-4229-9a62-644bc5617ca2</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask/>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>enc_type</leftvalue>
+            <function>=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>17536ba6-dd7c-4f58-8014-08c7cb798ac7</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask/>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>enc_type</leftvalue>
+            <function>=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>349ae0b4-65c1-4122-aa06-480f186c8350</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask/>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>enc_type</leftvalue>
+            <function>=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>33491314-c352-42d0-bd5d-a9d0bffc9bf1</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask/>
+            </value>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -17315,13 +17438,13 @@ where obs.concept_id = 885
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
-      <yloc>2864</yloc>
+      <xloc>1808</xloc>
+      <yloc>1040</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Map Pap test result</name>
+    <name>Map Abdominal Findings HIV</name>
     <type>ValueMapper</type>
     <description/>
     <distribute>Y</distribute>
@@ -17331,8 +17454,8 @@ where obs.concept_id = 885
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <field_to_use>pap_test_result</field_to_use>
-    <target_field>pap_test_result_mapped</target_field>
+    <field_to_use>abnominal_findings_code</field_to_use>
+    <target_field>abnominal_findings_desc</target_field>
     <non_match_default/>
     <fields>
       <field>
@@ -17342,6 +17465,10 @@ where obs.concept_id = 885
       <field>
         <source_value>1116</source_value>
         <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>1118</source_value>
+        <target_value>4</target_value>
       </field>
     </fields>
     <attributes/>
@@ -17353,8 +17480,189 @@ where obs.concept_id = 885
       </output>
     </remotesteps>
     <GUI>
+      <xloc>1584</xloc>
+      <yloc>1008</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Abdominal Findings Others</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>abnominal_findings_code</field_to_use>
+    <target_field>abnominal_findings_desc</target_field>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>1115</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>1116</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>1118</source_value>
+        <target_value>3</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1584</xloc>
+      <yloc>1072</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter Skin findings</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Map Skin Findings HIV</send_true_to>
+    <send_false_to>Map Skin Findings Others</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>enc_type</leftvalue>
+            <function>=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>204ad066-c5c2-4229-9a62-644bc5617ca2</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask/>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>enc_type</leftvalue>
+            <function>=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>17536ba6-dd7c-4f58-8014-08c7cb798ac7</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask/>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>enc_type</leftvalue>
+            <function>=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>349ae0b4-65c1-4122-aa06-480f186c8350</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask/>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>OR</operator>
+            <leftvalue>enc_type</leftvalue>
+            <function>=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>33491314-c352-42d0-bd5d-a9d0bffc9bf1</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask/>
+            </value>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
       <xloc>80</xloc>
-      <yloc>2944</yloc>
+      <yloc>848</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Map Skin Findings Others</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>skin_findings_code</field_to_use>
+    <target_field>skin_findings_mapped</target_field>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>1115</source_value>
+        <target_value>1</target_value>
+      </field>
+      <field>
+        <source_value>1116</source_value>
+        <target_value>2</target_value>
+      </field>
+      <field>
+        <source_value>1118</source_value>
+        <target_value>3</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>61</xloc>
+      <yloc>966</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
