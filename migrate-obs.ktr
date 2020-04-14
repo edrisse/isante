@@ -5722,6 +5722,38 @@ where location_attribute.attribute_type_id = ?
         <item>N</item>
         <item/>
       </line>
+      <line>
+        <item>Patient vue pour consultation: Gyn</item>
+        <item>160288</item>
+        <item>160456</item>
+        <item>7860</item>
+        <item>N</item>
+        <item/>
+      </line>
+      <line>
+        <item>Patient v p c: Prenatal</item>
+        <item>160288</item>
+        <item>1622</item>
+        <item>70018</item>
+        <item>N</item>
+        <item/>
+      </line>
+      <line>
+        <item>Patient v p c: postnatal</item>
+        <item>160288</item>
+        <item>1623</item>
+        <item>71240</item>
+        <item>N</item>
+        <item/>
+      </line>
+      <line>
+        <item>Patient v p c: Plannif familia</item>
+        <item>160288</item>
+        <item>5483</item>
+        <item>71368</item>
+        <item>N</item>
+        <item/>
+      </line>
     </data>
     <attributes/>
     <cluster_schema/>

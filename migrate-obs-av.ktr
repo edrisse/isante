@@ -1709,6 +1709,23 @@ where location_attribute.attribute_type_id = ?
         <currency_symbol/>
         <storage_type/>
       </meta>
+      <meta>
+        <name>value_numeric</name>
+        <rename>value_numeric</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
     </fields>
     <attributes/>
     <cluster_schema/>

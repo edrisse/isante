@@ -2375,14 +2375,6 @@ where location_attribute.attribute_type_id = ?
         <item>2</item>
         <item/>
       </line>
-      <line>
-        <item/>
-        <item/>
-        <item/>
-        <item/>
-        <item/>
-        <item/>
-      </line>
     </data>
     <attributes/>
     <cluster_schema/>
