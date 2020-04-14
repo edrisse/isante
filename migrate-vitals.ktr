@@ -1491,21 +1491,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Saturation en oxygène</from>
-      <to>Fetch Pap test result</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Fetch Pap test result</from>
-      <to>Map Pap test result</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Map Pap test result</from>
-      <to>Replace in string</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Map Abdominal Findings HIV</from>
       <to>Fetch Urogeninal Findings</to>
       <enabled>Y</enabled>
@@ -1553,6 +1538,11 @@
     <hop>
       <from>Filter Abnominal Findings</from>
       <to>Map Abdominal Findings Others</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Saturation en oxygène</from>
+      <to>Replace in string</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -3658,17 +3648,6 @@
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
-      <field>
-        <name>papTestResult_cn</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-      </field>
     </fields>
     <data>
       <line>
@@ -3862,7 +3841,6 @@
         <item>seqNum</item>
         <item>1</item>
         <item>famPlanOther</item>
-        <item>papTestResult</item>
       </line>
     </data>
     <attributes/>
@@ -4698,6 +4676,116 @@
     <GUI>
       <xloc>432</xloc>
       <yloc>592</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Encounter Type Mapping</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>enc_type</field_to_use>
+    <target_field>mapped_encounter_type</target_field>
+    <non_match_default>N</non_match_default>
+    <fields>
+      <field>
+        <source_value>f037e97b-471e-4898-a07c-b8e169e0ddc4</source_value>
+        <target_value>N</target_value>
+      </field>
+      <field>
+        <source_value>c45d7299-ad08-4cb5-8e5d-e0ce40532939</source_value>
+        <target_value>N</target_value>
+      </field>
+      <field>
+        <source_value>9d0113c6-f23a-4461-8428-7e9a7344f2ba</source_value>
+        <target_value>N</target_value>
+      </field>
+      <field>
+        <source_value>873f968a-73a8-4f9c-ac78-9f4778b751b6</source_value>
+        <target_value>N</target_value>
+      </field>
+      <field>
+        <source_value>a4cab59f-f0ce-46c3-bd76-416db36ec719</source_value>
+        <target_value>N</target_value>
+      </field>
+      <field>
+        <source_value>49592bec-dd22-4b6c-a97f-4dd2af6f2171</source_value>
+        <target_value>N</target_value>
+      </field>
+      <field>
+        <source_value>10d73929-54b6-4d18-a647-8b7316bc1ae3</source_value>
+        <target_value>N</target_value>
+      </field>
+      <field>
+        <source_value>a9392241-109f-4d67-885b-57cc4b8c638f</source_value>
+        <target_value>N</target_value>
+      </field>
+      <field>
+        <source_value>17536ba6-dd7c-4f58-8014-08c7cb798ac7</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>5c312603-25c1-4dbe-be18-1a167eb85f97</source_value>
+        <target_value>N</target_value>
+      </field>
+      <field>
+        <source_value>349ae0b4-65c1-4122-aa06-480f186c8350</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>fdb5b14f-555f-4282-b4c1-9286addf0aae</source_value>
+        <target_value>N</target_value>
+      </field>
+      <field>
+        <source_value>a5600919-4dde-4eb8-a45b-05c204af8284</source_value>
+        <target_value>N</target_value>
+      </field>
+      <field>
+        <source_value>709610ff-5e39-4a47-9c27-a60e740b0944</source_value>
+        <target_value>N</target_value>
+      </field>
+      <field>
+        <source_value>12f4d7c3-e047-4455-a607-47a40fe32460</source_value>
+        <target_value>N</target_value>
+      </field>
+      <field>
+        <source_value>204ad066-c5c2-4229-9a62-644bc5617ca2</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>33491314-c352-42d0-bd5d-a9d0bffc9bf1</source_value>
+        <target_value>Y</target_value>
+      </field>
+      <field>
+        <source_value>d95b3540-a39f-4d1e-a301-8ee0e03d5eab</source_value>
+        <target_value>N</target_value>
+      </field>
+      <field>
+        <source_value>1dd1e63a-1543-4885-b807-e49c6d18cffd</source_value>
+        <target_value>N</target_value>
+      </field>
+      <field>
+        <source_value>d95b3540-a39f-4d1e-a301-8ee0e03d5eab</source_value>
+        <target_value>N</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>48</xloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -8052,46 +8140,6 @@ where obs.concept_id = 159936
     </GUI>
   </step>
   <step>
-    <name>Fetch Pap test result</name>
-    <type>DBJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Openmrs HTY</connection>
-    <rowlimit>1</rowlimit>
-    <sql>select obs.value_coded pap_test_result from obs
-where obs.concept_id = 885
-  and obs.encounter_id = ?
-  and obs.voided = false
-</sql>
-    <outer_join>Y</outer_join>
-    <replace_vars>N</replace_vars>
-    <parameter>
-      <field>
-        <name>encounter_id</name>
-        <type>Number</type>
-      </field>
-    </parameter>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>80</xloc>
-      <yloc>2864</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Fetch Papanicolau Smear</name>
     <type>DBJoin</type>
     <description/>
@@ -10148,6 +10196,94 @@ where location_attribute.attribute_type_id = ?
     </GUI>
   </step>
   <step>
+    <name>Filter Abnominal Findings</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Map Abdominal Findings HIV</send_true_to>
+    <send_false_to>Map Abdominal Findings Others</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>mapped_encounter_type</leftvalue>
+        <function>=</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>Y</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask/>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1808</xloc>
+      <yloc>1040</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter Skin Findings</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Map Skin Findings HIV</send_true_to>
+    <send_false_to>Map Skin Findings Others</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>mapped_encounter_type</leftvalue>
+        <function>=</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>Y</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask/>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>48</xloc>
+      <yloc>864</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Filter rows</name>
     <type>FilterRows</type>
     <description/>
@@ -11658,44 +11794,6 @@ where location_attribute.attribute_type_id = ?
     </GUI>
   </step>
   <step>
-    <name>Map Pap test result</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>pap_test_result</field_to_use>
-    <target_field>pap_test_result_mapped</target_field>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>1115</source_value>
-        <target_value>1</target_value>
-      </field>
-      <field>
-        <source_value>1116</source_value>
-        <target_value>2</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>80</xloc>
-      <yloc>2944</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Map Papanicolau Smear</name>
     <type>ValueMapper</type>
     <description/>
@@ -11711,11 +11809,11 @@ where location_attribute.attribute_type_id = ?
     <non_match_default/>
     <fields>
       <field>
-        <source_value>1065</source_value>
+        <source_value>1115</source_value>
         <target_value>1</target_value>
       </field>
       <field>
-        <source_value>1066</source_value>
+        <source_value>1116</source_value>
         <target_value>2</target_value>
       </field>
     </fields>
@@ -17385,30 +17483,6 @@ where location_attribute.attribute_type_id = ?
         <length>-1</length>
         <precision>-1</precision>
       </field>
-      <field>
-        <name>papTestResult_cn</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>pap_test_result_mapped</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -17474,204 +17548,6 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>896</xloc>
       <yloc>2944</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Encounter Type Mapping</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>enc_type</field_to_use>
-    <target_field>mapped_encounter_type</target_field>
-    <non_match_default>N</non_match_default>
-    <fields>
-      <field>
-        <source_value>f037e97b-471e-4898-a07c-b8e169e0ddc4</source_value>
-        <target_value>N</target_value>
-      </field>
-      <field>
-        <source_value>c45d7299-ad08-4cb5-8e5d-e0ce40532939</source_value>
-        <target_value>N</target_value>
-      </field>
-      <field>
-        <source_value>9d0113c6-f23a-4461-8428-7e9a7344f2ba</source_value>
-        <target_value>N</target_value>
-      </field>
-      <field>
-        <source_value>873f968a-73a8-4f9c-ac78-9f4778b751b6</source_value>
-        <target_value>N</target_value>
-      </field>
-      <field>
-        <source_value>a4cab59f-f0ce-46c3-bd76-416db36ec719</source_value>
-        <target_value>N</target_value>
-      </field>
-      <field>
-        <source_value>49592bec-dd22-4b6c-a97f-4dd2af6f2171</source_value>
-        <target_value>N</target_value>
-      </field>
-      <field>
-        <source_value>10d73929-54b6-4d18-a647-8b7316bc1ae3</source_value>
-        <target_value>N</target_value>
-      </field>
-      <field>
-        <source_value>a9392241-109f-4d67-885b-57cc4b8c638f</source_value>
-        <target_value>N</target_value>
-      </field>
-      <field>
-        <source_value>17536ba6-dd7c-4f58-8014-08c7cb798ac7</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>5c312603-25c1-4dbe-be18-1a167eb85f97</source_value>
-        <target_value>N</target_value>
-      </field>
-      <field>
-        <source_value>349ae0b4-65c1-4122-aa06-480f186c8350</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>fdb5b14f-555f-4282-b4c1-9286addf0aae</source_value>
-        <target_value>N</target_value>
-      </field>
-      <field>
-        <source_value>a5600919-4dde-4eb8-a45b-05c204af8284</source_value>
-        <target_value>N</target_value>
-      </field>
-      <field>
-        <source_value>709610ff-5e39-4a47-9c27-a60e740b0944</source_value>
-        <target_value>N</target_value>
-      </field>
-      <field>
-        <source_value>12f4d7c3-e047-4455-a607-47a40fe32460</source_value>
-        <target_value>N</target_value>
-      </field>
-      <field>
-        <source_value>204ad066-c5c2-4229-9a62-644bc5617ca2</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>33491314-c352-42d0-bd5d-a9d0bffc9bf1</source_value>
-        <target_value>Y</target_value>
-      </field>
-      <field>
-        <source_value>d95b3540-a39f-4d1e-a301-8ee0e03d5eab</source_value>
-        <target_value>N</target_value>
-      </field>
-      <field>
-        <source_value>1dd1e63a-1543-4885-b807-e49c6d18cffd</source_value>
-        <target_value>N</target_value>
-      </field>
-      <field>
-        <source_value>d95b3540-a39f-4d1e-a301-8ee0e03d5eab</source_value>
-        <target_value>N</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>48</xloc>
-      <yloc>736</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter Skin Findings</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Map Skin Findings HIV</send_true_to>
-    <send_false_to>Map Skin Findings Others</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>mapped_encounter_type</leftvalue>
-        <function>=</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>String</type>
-          <text>Y</text>
-          <length>-1</length>
-          <precision>-1</precision>
-          <isnull>N</isnull>
-          <mask/>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>48</xloc>
-      <yloc>864</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter Abnominal Findings</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Map Abdominal Findings HIV</send_true_to>
-    <send_false_to>Map Abdominal Findings Others</send_false_to>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>mapped_encounter_type</leftvalue>
-        <function>=</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>String</type>
-          <text>Y</text>
-          <length>-1</length>
-          <precision>-1</precision>
-          <isnull>N</isnull>
-          <mask/>
-        </value>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1808</xloc>
-      <yloc>1040</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
