@@ -502,16 +502,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Database join Coded</from>
-      <to>Fetch Person Identifier</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Database join Non coded</from>
-      <to>Fetch Person Identifier</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Fetch Last ETL Excution Date</from>
       <to>Database Join Groups</to>
       <enabled>Y</enabled>
@@ -579,6 +569,31 @@
     <hop>
       <from>concepts</from>
       <to>Join rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Database join Non coded</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>Fetch Person Identifier</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Database join Coded</from>
+      <to>Select values 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 2</from>
+      <to>Set field value numeric</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Set field value numeric</from>
+      <to>Fetch Person Identifier</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1303,7 +1318,7 @@ order by date desc</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1472</xloc>
+      <xloc>1696</xloc>
       <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1347,7 +1362,7 @@ where patient_identifier.identifier_type = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1280</xloc>
+      <xloc>1504</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1390,7 +1405,7 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1472</xloc>
+      <xloc>1696</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1932,30 +1947,6 @@ where location_attribute.attribute_type_id = ?
         <length>-1</length>
         <precision>-1</precision>
       </field>
-      <field>
-        <name>value_numeric_c</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>isante_answer</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1968,6 +1959,96 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>704</xloc>
       <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>value_numeric</name>
+        <rename>value_numeric</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>0</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1328</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 2</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>value_numeric</name>
+        <rename>value_numeric</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>0</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1216</xloc>
+      <yloc>0</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2079,8 +2160,39 @@ where location_attribute.attribute_type_id = ?
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1472</xloc>
+      <xloc>1696</xloc>
       <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Set field value numeric</name>
+    <type>SetValueField</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>value_numeric</name>
+        <replaceby>isante_answer</replaceby>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1408</xloc>
+      <yloc>0</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
