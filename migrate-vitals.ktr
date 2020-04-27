@@ -13308,6 +13308,30 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
+        <name>vitalHeight_cn</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>height</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
         <name>vitalHeightCm_cn</name>
         <type>String</type>
         <format/>
