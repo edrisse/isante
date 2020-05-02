@@ -603,6 +603,11 @@
     </hop>
     <hop>
       <from>Fetch Seqnum</from>
+      <to>Select date format</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select date format</from>
       <to>Replace in string</to>
       <enabled>Y</enabled>
     </hop>
@@ -1229,12 +1234,16 @@ where patient_identifier.identifier_type = ?
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select obs.value_coded ped_lab_result from obs
-where obs.concept_id = 163722
+where obs.concept_id = ?
   and obs.obs_group_id = ?
   and obs.voided = false</sql>
     <outer_join>Y</outer_join>
     <replace_vars>N</replace_vars>
     <parameter>
+      <field>
+        <name>test_result_isante_plus</name>
+        <type>Number</type>
+      </field>
       <field>
         <name>obs_group_id</name>
         <type>Number</type>
@@ -1285,7 +1294,7 @@ where obs.concept_id = 163722
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
+      <xloc>112</xloc>
       <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1853,7 +1862,7 @@ where location_attribute.attribute_type_id = ?
       </line>
       <line>
         <item>UP24 1</item>
-        <item>162087</item>
+        <item>163541</item>
         <item>163342</item>
         <item>4</item>
         <item>245e1289-9ad9-4da7-985a-59035b5a8838</item>
@@ -1861,7 +1870,7 @@ where location_attribute.attribute_type_id = ?
       </line>
       <line>
         <item>UP24 2</item>
-        <item>162087</item>
+        <item>163541</item>
         <item>163342</item>
         <item>4</item>
         <item>8814b88a-aed9-44b4-848c-24283e749a4f</item>
@@ -1869,7 +1878,7 @@ where location_attribute.attribute_type_id = ?
       </line>
       <line>
         <item>UP24 3</item>
-        <item>162087</item>
+        <item>163541</item>
         <item>163342</item>
         <item>4</item>
         <item>fcc58dd7-2232-4627-8c73-af233db677eb</item>
@@ -2406,6 +2415,51 @@ where location_attribute.attribute_type_id = ?
     </remotesteps>
     <GUI>
       <xloc>752</xloc>
+      <yloc>448</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select date format</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>ped_labs_result_age</name>
+        <rename>ped_labs_result_age</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd HH:mm:ss</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>352</xloc>
       <yloc>448</yloc>
       <draw>Y</draw>
     </GUI>

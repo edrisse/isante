@@ -1286,11 +1286,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Fetch Height</from>
-      <to>Fetch Weight</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>String operations</from>
       <to>Save on CSV</to>
       <enabled>Y</enabled>
@@ -1543,6 +1538,16 @@
     <hop>
       <from>Fetch Saturation en oxygène</from>
       <to>Replace in string</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fetch Height</from>
+      <to>Select height format</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select height format</from>
+      <to>Fetch Weight</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -6890,7 +6895,7 @@ where obs.concept_id = 976
       </output>
     </remotesteps>
     <GUI>
-      <xloc>832</xloc>
+      <xloc>736</xloc>
       <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
@@ -6931,8 +6936,8 @@ where obs.concept_id = 162879
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>288</yloc>
+      <xloc>624</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -9908,8 +9913,8 @@ where obs.concept_id = 5089
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
-      <yloc>288</yloc>
+      <xloc>768</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -17572,6 +17577,51 @@ where location_attribute.attribute_type_id = ?
     <GUI>
       <xloc>896</xloc>
       <yloc>2944</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select height format</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>height</name>
+        <rename>height</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd HH:mm:ss</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
