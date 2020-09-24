@@ -960,12 +960,14 @@
 obs.date_voided, obs.void_reason, 1 as value_boolean from obs
 join encounter on encounter.encounter_id = obs.encounter_id
 join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
+join isanteplus_form_history on isanteplus_form_history.encounter_id = obs.encounter_id
 and encounter_type.uuid in ('709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae')
 where obs.concept_id = ?
   and obs.value_coded = ?
   and encounter.voided = false
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
+ or isanteplus_form_history.date_changed >= ?
    or encounter.date_voided >= ?
    or encounter.date_created >= ?
    or encounter.date_changed >= ?
@@ -983,6 +985,10 @@ where obs.concept_id = ?
       <field>
         <name>isanteplus_answer</name>
         <type>Integer</type>
+      </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
       </field>
       <field>
         <name>last_execution</name>

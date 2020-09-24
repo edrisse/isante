@@ -946,6 +946,7 @@
     <rowlimit>0</rowlimit>
     <sql>select encounter.encounter_id, obs.obs_datetime, obs.date_voided, obs.void_reason, obs.date_created, obs.voided, encounter.location_id, obs.person_id, obs.value_coded from obs
 join encounter on encounter.encounter_id = obs.encounter_id
+join isanteplus_form_history on isanteplus_form_history.encounter_id = obs.encounter_id
 join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
 and encounter_type.uuid = 'f037e97b-471e-4898-a07c-b8e169e0ddc4'
 join concept on concept.concept_id = obs.concept_id
@@ -953,9 +954,7 @@ where concept.concept_id = ?
   and encounter.voided = false
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
-   or encounter.date_voided >= ?
-   or encounter.date_created >= ?
-   or encounter.date_changed >= ?
+or isanteplus_form_history.date_changed >= ?
    or encounter.date_voided >= ?
    or obs.date_voided >= ?
    or obs.date_created >= ?)
@@ -966,14 +965,6 @@ where concept.concept_id = ?
       <field>
         <name>isante_plus_question</name>
         <type>String</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
-      </field>
-      <field>
-        <name>last_execution</name>
-        <type>Date</type>
       </field>
       <field>
         <name>last_execution</name>

@@ -3584,7 +3584,7 @@ where location_attribute.attribute_type_id = ?
         <precision>-1</precision>
       </field>
       <field>
-        <name>pedDosageDesc_cn</name>
+        <name>pedPresentationDesc_cn</name>
         <type>String</type>
         <format />
         <currency />

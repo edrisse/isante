@@ -2,21 +2,21 @@
 <transformation>
   <info>
     <name>migrate-obs-group</name>
-    <description/>
-    <extended_description/>
-    <trans_version/>
+    <description />
+    <extended_description />
+    <trans_version />
     <trans_type>Normal</trans_type>
     <directory>/</directory>
     <parameters>
     </parameters>
     <log>
       <trans-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <size_limit_lines/>
-        <interval/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <size_limit_lines />
+        <interval />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -41,37 +41,37 @@
           <id>LINES_READ</id>
           <enabled>Y</enabled>
           <name>LINES_READ</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_WRITTEN</id>
           <enabled>Y</enabled>
           <name>LINES_WRITTEN</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_UPDATED</id>
           <enabled>Y</enabled>
           <name>LINES_UPDATED</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_INPUT</id>
           <enabled>Y</enabled>
           <name>LINES_INPUT</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_OUTPUT</id>
           <enabled>Y</enabled>
           <name>LINES_OUTPUT</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_REJECTED</id>
           <enabled>Y</enabled>
           <name>LINES_REJECTED</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>ERRORS</id>
@@ -125,11 +125,11 @@
         </field>
       </trans-log-table>
       <perf-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <interval/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <interval />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -207,10 +207,10 @@
         </field>
       </perf-log-table>
       <channel-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -273,10 +273,10 @@
         </field>
       </channel-log-table>
       <step-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -349,10 +349,10 @@
         </field>
       </step-log-table>
       <metrics-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -401,9 +401,9 @@
       </metrics-log-table>
     </log>
     <maxdate>
-      <connection/>
-      <table/>
-      <field/>
+      <connection />
+      <table />
+      <field />
       <offset>0.0</offset>
       <maxdiff>0.0</maxdiff>
     </maxdate>
@@ -414,7 +414,7 @@
     <feedback_shown>Y</feedback_shown>
     <feedback_size>50000</feedback_size>
     <using_thread_priorities>Y</using_thread_priorities>
-    <shared_objects_file/>
+    <shared_objects_file />
     <capture_step_performance>N</capture_step_performance>
     <step_performance_capturing_delay>1000</step_performance_capturing_delay>
     <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
@@ -444,9 +444,9 @@
     <port>${ISANTE-PLUS-DB-PORT}</port>
     <username>${ISANTE-PLUS-DB-USER}</username>
     <password>${ISANTE-PLUS-DB-PASSWORD}</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
     <attributes>
       <attribute>
         <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
@@ -590,22 +590,22 @@
   <step>
     <name>Columns</name>
     <type>DataGrid</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <field>
         <name>table_name</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -613,10 +613,10 @@
       <field>
         <name>person_id_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -624,10 +624,10 @@
       <field>
         <name>concept_id_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -635,10 +635,10 @@
       <field>
         <name>encounter_id_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -646,10 +646,10 @@
       <field>
         <name>order_id_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -657,10 +657,10 @@
       <field>
         <name>obs_datetime_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -668,10 +668,10 @@
       <field>
         <name>location_id_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -679,10 +679,10 @@
       <field>
         <name>obs_group_id_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -690,10 +690,10 @@
       <field>
         <name>accession_number_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -701,10 +701,10 @@
       <field>
         <name>value_group_id_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -712,10 +712,10 @@
       <field>
         <name>value_boolean_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -723,10 +723,10 @@
       <field>
         <name>value_coded_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -734,10 +734,10 @@
       <field>
         <name>value_drug_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -745,10 +745,10 @@
       <field>
         <name>value_datetime_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -756,10 +756,10 @@
       <field>
         <name>value_numeric_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -767,10 +767,10 @@
       <field>
         <name>value_modifier_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -778,10 +778,10 @@
       <field>
         <name>value_text_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -789,10 +789,10 @@
       <field>
         <name>date_started_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -800,10 +800,10 @@
       <field>
         <name>date_stopped_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -811,10 +811,10 @@
       <field>
         <name>comments_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -822,10 +822,10 @@
       <field>
         <name>creator_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -833,10 +833,10 @@
       <field>
         <name>date_created_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -844,10 +844,10 @@
       <field>
         <name>voided_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -855,10 +855,10 @@
       <field>
         <name>voided_by_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -866,10 +866,10 @@
       <field>
         <name>date_voided_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -877,10 +877,10 @@
       <field>
         <name>void_reason_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -888,10 +888,10 @@
       <field>
         <name>default_one</name>
         <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -899,10 +899,10 @@
       <field>
         <name>default_na</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -910,10 +910,10 @@
       <field>
         <name>default_zero</name>
         <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -921,10 +921,10 @@
       <field>
         <name>empty</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -959,13 +959,13 @@
         <item>date_voided</item>
         <item>void_reason</item>
         <item>1</item>
-        <item/>
+        <item />
         <item>0</item>
-        <item/>
+        <item />
       </line>
     </data>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -981,24 +981,26 @@
   <step>
     <name>Database Join Groups</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
     <sql>select obs.obs_id obs_group_id from obs
 join encounter on encounter.encounter_id = obs.encounter_id
+join isanteplus_form_history on isanteplus_form_history.encounter_id = obs.encounter_id
 join encounter_type on encounter_type.encounter_type_id = encounter.encounter_type
 and encounter_type.uuid in ('12f4d7c3-e047-4455-a607-47a40fe32460', 'a5600919-4dde-4eb8-a45b-05c204af8284', '709610ff-5e39-4a47-9c27-a60e740b0944', 'fdb5b14f-555f-4282-b4c1-9286addf0aae', '5c312603-25c1-4dbe-be18-1a167eb85f97', '49592bec-dd22-4b6c-a97f-4dd2af6f2171', 'd95b3540-a39f-4d1e-a301-8ee0e03d5eab')
 where obs.concept_id = (select concept.concept_id from concept where concept.uuid = ?)
   and encounter.voided = false
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
+or isanteplus_form_history.date_changed >= ?
    or encounter.date_voided >= ?
    or encounter.date_created >= ?
    or encounter.date_changed >= ?
@@ -1045,9 +1047,13 @@ where obs.concept_id = (select concept.concept_id from concept where concept.uui
         <name>last_execution</name>
         <type>Date</type>
       </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1063,19 +1069,20 @@ where obs.concept_id = (select concept.concept_id from concept where concept.uui
   <step>
     <name>Database join Coded</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select obs.person_id, obs.obs_datetime, obs.encounter_id, encounter.location_id, encounter.encounter_datetime, obs.date_created, obs.voided,
 obs.date_voided, obs.void_reason, obs.comments, obs.value_text, obs.value_numeric, obs.value_datetime  from obs
 join encounter on encounter.encounter_id = obs.encounter_id
+join isanteplus_form_history on isanteplus_form_history.encounter_id = obs.encounter_id
 where obs.obs_group_id = ?
   and obs.concept_id = ?
   and obs.value_coded = ?
@@ -1083,6 +1090,7 @@ where obs.obs_group_id = ?
   and obs.voided = false
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
+ or isanteplus_form_history.date_changed >= ?
    or encounter.date_voided >= ?
    or encounter.date_created >= ?
    or encounter.date_changed >= ?
@@ -1137,9 +1145,13 @@ where obs.obs_group_id = ?
         <name>last_execution</name>
         <type>Date</type>
       </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1155,25 +1167,27 @@ where obs.obs_group_id = ?
   <step>
     <name>Database join Non coded</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
     <sql>select obs.person_id, obs.obs_datetime, obs.encounter_id, encounter.location_id, encounter.encounter_datetime, obs.date_created, obs.voided,
 obs.date_voided, obs.void_reason, obs.comments, obs.value_text, obs.value_numeric, obs.value_datetime  from obs
 join encounter on encounter.encounter_id = obs.encounter_id
+join isanteplus_form_history on isanteplus_form_history.encounter_id = obs.encounter_id
 where obs.obs_group_id = ?
   and obs.concept_id = ?
   and encounter.voided = false
   and obs.voided = false
   and (encounter.date_created >= ?
    or encounter.date_changed >= ?
+or isanteplus_form_history.date_changed >= ?
    or encounter.date_voided >= ?
    or encounter.date_created >= ?
    or encounter.date_changed >= ?
@@ -1224,9 +1238,13 @@ where obs.obs_group_id = ?
         <name>last_execution</name>
         <type>Date</type>
       </field>
+      <field>
+        <name>last_execution</name>
+        <type>Date</type>
+      </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1242,13 +1260,13 @@ where obs.obs_group_id = ?
   <step>
     <name>Fetch Last ETL Excution Date</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
@@ -1259,8 +1277,8 @@ order by date desc</sql>
     <replace_vars>N</replace_vars>
     <parameter>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1276,13 +1294,13 @@ order by date desc</sql>
   <step>
     <name>Fetch Person Id</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1299,8 +1317,8 @@ order by date desc</sql>
         <type>Number</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1316,13 +1334,13 @@ order by date desc</sql>
   <step>
     <name>Fetch Person Identifier</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1343,8 +1361,8 @@ where patient_identifier.identifier_type = ?
         <type>Number</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1360,13 +1378,13 @@ where patient_identifier.identifier_type = ?
   <step>
     <name>Fetch iSante Location</name>
     <type>DBJoin</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>1</rowlimit>
@@ -1386,8 +1404,8 @@ where location_attribute.attribute_type_id = ?
         <type>Number</type>
       </field>
     </parameter>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1403,13 +1421,13 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Filter rows</name>
     <type>FilterRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <send_true_to>Database join Coded</send_true_to>
     <send_false_to>Database join Non coded</send_false_to>
@@ -1418,11 +1436,11 @@ where location_attribute.attribute_type_id = ?
         <negated>N</negated>
         <leftvalue>isante_plus_answer</leftvalue>
         <function>IS NOT NULL</function>
-        <rightvalue/>
+        <rightvalue />
       </condition>
     </compare>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1438,13 +1456,13 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Filter use comments</name>
     <type>FilterRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <send_true_to>Set field value text</send_true_to>
     <send_false_to>Save on CSV</send_false_to>
@@ -1453,11 +1471,11 @@ where location_attribute.attribute_type_id = ?
         <negated>N</negated>
         <leftvalue>use_comments</leftvalue>
         <function>IS NOT NULL</function>
-        <rightvalue/>
+        <rightvalue />
       </condition>
     </compare>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1473,28 +1491,28 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Join rows (cartesian product)</name>
     <type>JoinRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <directory>%%java.io.tmpdir%%</directory>
     <prefix>out</prefix>
     <cache_size>500</cache_size>
-    <main/>
+    <main />
     <compare>
       <condition>
         <negated>N</negated>
-        <leftvalue/>
+        <leftvalue />
         <function>=</function>
-        <rightvalue/>
+        <rightvalue />
       </condition>
     </compare>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1510,23 +1528,23 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Load iSante ID Identifier Type</name>
     <type>TableInput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <sql>select patient_identifier_type.patient_identifier_type_id isante_id_identifier_type_id from patient_identifier_type where uuid = '0e0c7cc2-3491-4675-b705-746e372ff346'</sql>
     <limit>0</limit>
-    <lookup/>
+    <lookup />
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1542,23 +1560,23 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Load iSanteLocation Location Attribute</name>
     <type>TableInput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <connection>Openmrs HTY</connection>
     <sql>select location_attribute_type_id isante_location_location_attribute_id from location_attribute_type where name = 'iSanteSiteCode'</sql>
     <limit>1</limit>
-    <lookup/>
+    <lookup />
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1574,13 +1592,13 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Save on CSV</name>
     <type>TextFileOutput</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <separator>,</separator>
     <enclosure>"</enclosure>
@@ -1591,9 +1609,9 @@ where location_attribute.attribute_type_id = ?
     <format>DOS</format>
     <compression>None</compression>
     <encoding>UTF-8</encoding>
-    <endedLine/>
+    <endedLine />
     <fileNameInField>N</fileNameInField>
-    <fileNameField/>
+    <fileNameField />
     <create_parent_folder>Y</create_parent_folder>
     <file>
       <name>${user.home}/isante/data</name>
@@ -1606,21 +1624,21 @@ where location_attribute.attribute_type_id = ?
       <add_date>N</add_date>
       <add_time>N</add_time>
       <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
+      <date_time_format />
       <add_to_result_filenames>Y</add_to_result_filenames>
       <pad>N</pad>
       <fast_dump>N</fast_dump>
-      <splitevery/>
+      <splitevery />
     </file>
     <fields>
       <field>
         <name>table_name</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1628,11 +1646,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>person_id_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1640,11 +1658,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>parsed_person_id</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1652,11 +1670,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>concept_id_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1664,11 +1682,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>isante_question</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1676,11 +1694,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>encounter_id_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1688,11 +1706,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>encounter_id</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1700,11 +1718,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>obs_datetime_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1712,11 +1730,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>obs_datetime</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1724,11 +1742,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>location_id_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1736,11 +1754,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>isante_location_id</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1748,23 +1766,23 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>value_text_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>value_numeric</name>
+        <name>value_text</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1772,11 +1790,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>creator_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1784,11 +1802,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>default_one</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1796,11 +1814,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>date_created_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1808,11 +1826,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>date_created</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1820,11 +1838,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>voided_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1832,11 +1850,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>voided</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1844,11 +1862,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>date_voided_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1856,11 +1874,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>date_voided</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1868,11 +1886,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>void_reason_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1880,11 +1898,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>void_reason</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1892,11 +1910,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>value_boolean_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1904,11 +1922,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>isante_answer</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1916,11 +1934,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>value_datetime_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1928,11 +1946,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>value_datetime</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1940,11 +1958,11 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>value_numeric_c</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1952,18 +1970,18 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>isante_answer</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
         <trim_type>none</trim_type>
         <length>-1</length>
         <precision>-1</precision>
       </field>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -1979,13 +1997,13 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Select date format</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <select_unspecified>N</select_unspecified>
@@ -1997,18 +2015,18 @@ where location_attribute.attribute_type_id = ?
         <precision>-2</precision>
         <conversion_mask>yyyy-MM-dd HH:mm:ss</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
       </meta>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -2024,13 +2042,13 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Select values format</name>
     <type>SelectValues</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <select_unspecified>N</select_unspecified>
@@ -2040,16 +2058,16 @@ where location_attribute.attribute_type_id = ?
         <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
-        <conversion_mask/>
+        <conversion_mask />
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
       </meta>
       <meta>
         <name>obs_datetime</name>
@@ -2059,14 +2077,14 @@ where location_attribute.attribute_type_id = ?
         <precision>-2</precision>
         <conversion_mask>yyyy-MM-dd HH:mm:ss</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
       </meta>
       <meta>
         <name>date_voided</name>
@@ -2076,14 +2094,14 @@ where location_attribute.attribute_type_id = ?
         <precision>-2</precision>
         <conversion_mask>yyyy-MM-dd HH:mm:ss</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
       </meta>
       <meta>
         <name>date_created</name>
@@ -2093,14 +2111,14 @@ where location_attribute.attribute_type_id = ?
         <precision>-2</precision>
         <conversion_mask>yyyy-MM-dd HH:mm:ss</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
       </meta>
       <meta>
         <name>value_datetime</name>
@@ -2110,14 +2128,14 @@ where location_attribute.attribute_type_id = ?
         <precision>-2</precision>
         <conversion_mask>yyyy-MM-dd HH:mm:ss</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
       </meta>
       <meta>
         <name>value_numeric</name>
@@ -2125,20 +2143,20 @@ where location_attribute.attribute_type_id = ?
         <type>String</type>
         <length>-2</length>
         <precision>-2</precision>
-        <conversion_mask/>
+        <conversion_mask />
         <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
+        <date_format_locale />
+        <date_format_timezone />
         <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
       </meta>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -2154,13 +2172,13 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>Set field value text</name>
     <type>SetValueField</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <field>
@@ -2168,8 +2186,8 @@ where location_attribute.attribute_type_id = ?
         <replaceby>comments</replaceby>
       </field>
     </fields>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -2185,22 +2203,22 @@ where location_attribute.attribute_type_id = ?
   <step>
     <name>concepts</name>
     <type>DataGrid</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <field>
         <name>concept_name</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2208,10 +2226,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>isante_plus_question</name>
         <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2219,10 +2237,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>isante_plus_answer</name>
         <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2230,10 +2248,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>isante_question</name>
         <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2241,10 +2259,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>isante_answer</name>
         <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2252,10 +2270,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>concept_group</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2263,10 +2281,10 @@ where location_attribute.attribute_type_id = ?
       <field>
         <name>use_comments</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -2276,65 +2294,65 @@ where location_attribute.attribute_type_id = ?
       <line>
         <item>ATCD Indication1</item>
         <item>160716</item>
-        <item/>
+        <item />
         <item>70481</item>
-        <item/>
+        <item />
         <item>8d4e82af-b278-4cc7-ad4a-f74865f63239</item>
-        <item/>
+        <item>Y</item>
       </line>
       <line>
         <item>ATCD date 1</item>
         <item>160715</item>
-        <item/>
+        <item />
         <item>70482</item>
-        <item/>
+        <item />
         <item>8d4e82af-b278-4cc7-ad4a-f74865f63239</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>ATCD Indication1</item>
         <item>160716</item>
-        <item/>
+        <item />
         <item>70483</item>
-        <item/>
+        <item />
         <item>3904edb1-e1ba-46de-a2fd-da11076f29b5</item>
-        <item/>
+        <item>Y</item>
       </line>
       <line>
         <item>ATCD date 1</item>
         <item>160715</item>
-        <item/>
+        <item />
         <item>70484</item>
-        <item/>
+        <item />
         <item>3904edb1-e1ba-46de-a2fd-da11076f29b5</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Dépistage CA du Col: Date</item>
         <item>160715</item>
-        <item/>
+        <item />
         <item>70075</item>
-        <item/>
+        <item />
         <item>f0748bfb-1465-4d6c-89f1-c631f46c1510</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Dépistage CA de la Prostate (Homme > 40ans): Date</item>
         <item>160715</item>
-        <item/>
+        <item />
         <item>70076</item>
-        <item/>
+        <item />
         <item>f0748bfb-1465-4d6c-89f1-c631f46c1510</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Autres, preciser (autres medicaments)</item>
         <item>160632</item>
-        <item/>
+        <item />
         <item>7273</item>
-        <item/>
+        <item />
         <item>9da0ca77-d4fa-4689-8f14-e358f4d60f6a</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Hépatite B: Reçu, Date Inconnu</item>
@@ -2343,7 +2361,7 @@ where location_attribute.attribute_type_id = ?
         <item>71077</item>
         <item>1</item>
         <item>120157b7-a596-4623-8f7d-960fd686fb67</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Hépatite B: Jamais Reçu</item>
@@ -2352,7 +2370,7 @@ where location_attribute.attribute_type_id = ?
         <item>71078</item>
         <item>1</item>
         <item>120157b7-a596-4623-8f7d-960fd686fb67</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Tétanos Texoïde: Reçu, Date Inconnu</item>
@@ -2361,7 +2379,7 @@ where location_attribute.attribute_type_id = ?
         <item>71082</item>
         <item>1</item>
         <item>f9e79221-424c-44e9-a23d-3b507d326c32</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Tétanos Texoïde: Jamais Reçu</item>
@@ -2370,7 +2388,7 @@ where location_attribute.attribute_type_id = ?
         <item>71083</item>
         <item>1</item>
         <item>f9e79221-424c-44e9-a23d-3b507d326c32</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Pneumocoque: Reçu, Date Inconnu</item>
@@ -2379,7 +2397,7 @@ where location_attribute.attribute_type_id = ?
         <item>71632</item>
         <item>1</item>
         <item>1441AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Pneumocoque: Jamais Reçu</item>
@@ -2388,7 +2406,7 @@ where location_attribute.attribute_type_id = ?
         <item>71633</item>
         <item>1</item>
         <item>1441AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Autre: Reçu, Date Inconnu</item>
@@ -2397,7 +2415,7 @@ where location_attribute.attribute_type_id = ?
         <item>71092</item>
         <item>1</item>
         <item>d2947119-fa79-4903-842d-4b38b9d2856f</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Autre: Jamais Reçu</item>
@@ -2406,7 +2424,7 @@ where location_attribute.attribute_type_id = ?
         <item>71093</item>
         <item>1</item>
         <item>d2947119-fa79-4903-842d-4b38b9d2856f</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>1er: Naissance Vivante</item>
@@ -2415,7 +2433,7 @@ where location_attribute.attribute_type_id = ?
         <item>70500</item>
         <item>1</item>
         <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>1er: Macérée</item>
@@ -2424,7 +2442,7 @@ where location_attribute.attribute_type_id = ?
         <item>70500</item>
         <item>2</item>
         <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>1er: Non Macérée</item>
@@ -2433,16 +2451,16 @@ where location_attribute.attribute_type_id = ?
         <item>70500</item>
         <item>4</item>
         <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>1er: Date et Heure</item>
         <item>5599</item>
-        <item/>
+        <item />
         <item>71284</item>
-        <item/>
+        <item />
         <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>1er: Mort Néonatale</item>
@@ -2451,34 +2469,34 @@ where location_attribute.attribute_type_id = ?
         <item>70500</item>
         <item>8</item>
         <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>1er: APGAR : 1mn</item>
         <item>159603</item>
-        <item/>
+        <item />
         <item>71046</item>
-        <item/>
+        <item />
         <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>1er: APGAR : 5mn</item>
         <item>159604</item>
-        <item/>
+        <item />
         <item>71047</item>
-        <item/>
+        <item />
         <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>1er: Poids du (ou des) Nnés</item>
         <item>5916</item>
-        <item/>
+        <item />
         <item>70508</item>
-        <item/>
+        <item />
         <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>1er: Sexe: Masc</item>
@@ -2487,7 +2505,7 @@ where location_attribute.attribute_type_id = ?
         <item>70504</item>
         <item>1</item>
         <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>1er: Sexe: Fem</item>
@@ -2496,7 +2514,7 @@ where location_attribute.attribute_type_id = ?
         <item>70504</item>
         <item>2</item>
         <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>1er: Malformation congénitale visible: Oui</item>
@@ -2505,7 +2523,7 @@ where location_attribute.attribute_type_id = ?
         <item>71317</item>
         <item>1</item>
         <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>1er: Malformation congénitale visible: Non</item>
@@ -2514,7 +2532,7 @@ where location_attribute.attribute_type_id = ?
         <item>71317</item>
         <item>2</item>
         <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>1er: Allaitement maternel 1ere heure: Oui</item>
@@ -2523,7 +2541,7 @@ where location_attribute.attribute_type_id = ?
         <item>71318</item>
         <item>1</item>
         <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>1er: Allaitement maternel 1ere heure: Non</item>
@@ -2532,7 +2550,7 @@ where location_attribute.attribute_type_id = ?
         <item>71318</item>
         <item>2</item>
         <item>5a30a073-1102-4450-aa53-56c0ba58d305</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>2eme: Naissance Vivante</item>
@@ -2541,7 +2559,7 @@ where location_attribute.attribute_type_id = ?
         <item>70501</item>
         <item>1</item>
         <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>2eme: Macérée</item>
@@ -2550,7 +2568,7 @@ where location_attribute.attribute_type_id = ?
         <item>70501</item>
         <item>2</item>
         <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>2eme: Non Macérée</item>
@@ -2559,16 +2577,16 @@ where location_attribute.attribute_type_id = ?
         <item>70501</item>
         <item>4</item>
         <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>2eme: Date et Heure</item>
         <item>5599</item>
-        <item/>
+        <item />
         <item>71284</item>
-        <item/>
+        <item />
         <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>2eme: Mort Néonatale</item>
@@ -2577,34 +2595,34 @@ where location_attribute.attribute_type_id = ?
         <item>70501</item>
         <item>8</item>
         <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>2eme: APGAR : 1mn</item>
         <item>159603</item>
-        <item/>
+        <item />
         <item>71048</item>
-        <item/>
+        <item />
         <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>2eme: APGAR : 5mn</item>
         <item>159604</item>
-        <item/>
+        <item />
         <item>71049</item>
-        <item/>
+        <item />
         <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>2eme: Poids du (ou des) Nnés</item>
         <item>5916</item>
-        <item/>
+        <item />
         <item>70509</item>
-        <item/>
+        <item />
         <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>2eme: Sexe: Masc</item>
@@ -2613,7 +2631,7 @@ where location_attribute.attribute_type_id = ?
         <item>70505</item>
         <item>1</item>
         <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>2eme: Sexe: Fem</item>
@@ -2622,7 +2640,7 @@ where location_attribute.attribute_type_id = ?
         <item>70505</item>
         <item>2</item>
         <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>2eme: Malformation congénitale visible: Oui</item>
@@ -2631,7 +2649,7 @@ where location_attribute.attribute_type_id = ?
         <item>71320</item>
         <item>1</item>
         <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>2eme: Malformation congénitale visible: Non</item>
@@ -2640,7 +2658,7 @@ where location_attribute.attribute_type_id = ?
         <item>71320</item>
         <item>2</item>
         <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>2eme: Allaitement maternel 1ere heure: Oui</item>
@@ -2649,7 +2667,7 @@ where location_attribute.attribute_type_id = ?
         <item>71321</item>
         <item>1</item>
         <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>2eme: Allaitement maternel 1ere heure: Non</item>
@@ -2658,7 +2676,7 @@ where location_attribute.attribute_type_id = ?
         <item>71321</item>
         <item>2</item>
         <item>ea404f7d-0434-4894-82dc-a7df5627ea61</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>3eme: Naissance Vivante</item>
@@ -2667,7 +2685,7 @@ where location_attribute.attribute_type_id = ?
         <item>70502</item>
         <item>1</item>
         <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>3eme: Macérée</item>
@@ -2676,7 +2694,7 @@ where location_attribute.attribute_type_id = ?
         <item>70502</item>
         <item>2</item>
         <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>3eme: Non Macérée</item>
@@ -2685,16 +2703,16 @@ where location_attribute.attribute_type_id = ?
         <item>70502</item>
         <item>4</item>
         <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>3eme: Date et Heure</item>
         <item>5599</item>
-        <item/>
+        <item />
         <item>71286</item>
-        <item/>
+        <item />
         <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>3eme: Mort Néonatale</item>
@@ -2703,34 +2721,34 @@ where location_attribute.attribute_type_id = ?
         <item>70502</item>
         <item>8</item>
         <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>3eme: APGAR : 1mn</item>
         <item>159603</item>
-        <item/>
+        <item />
         <item>71050</item>
-        <item/>
+        <item />
         <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>3eme: APGAR : 5mn</item>
         <item>159604</item>
-        <item/>
+        <item />
         <item>71051</item>
-        <item/>
+        <item />
         <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>3eme: Poids du (ou des) Nnés</item>
         <item>5916</item>
-        <item/>
+        <item />
         <item>70510</item>
-        <item/>
+        <item />
         <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>3eme: Sexe: Masc</item>
@@ -2739,7 +2757,7 @@ where location_attribute.attribute_type_id = ?
         <item>70506</item>
         <item>1</item>
         <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>3eme: Sexe: Fem</item>
@@ -2748,7 +2766,7 @@ where location_attribute.attribute_type_id = ?
         <item>70506</item>
         <item>2</item>
         <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>3eme: Malformation congénitale visible: Oui</item>
@@ -2757,7 +2775,7 @@ where location_attribute.attribute_type_id = ?
         <item>71323</item>
         <item>1</item>
         <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>3eme: Malformation congénitale visible: Non</item>
@@ -2766,7 +2784,7 @@ where location_attribute.attribute_type_id = ?
         <item>71323</item>
         <item>2</item>
         <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>3eme: Allaitement maternel 1ere heure: Oui</item>
@@ -2775,7 +2793,7 @@ where location_attribute.attribute_type_id = ?
         <item>71324</item>
         <item>1</item>
         <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>3eme: Allaitement maternel 1ere heure: Non</item>
@@ -2784,7 +2802,7 @@ where location_attribute.attribute_type_id = ?
         <item>71324</item>
         <item>2</item>
         <item>3ec025a5-1d98-4761-9ca5-e56bb41b7547</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>4eme: Naissance Vivante</item>
@@ -2793,7 +2811,7 @@ where location_attribute.attribute_type_id = ?
         <item>70503</item>
         <item>1</item>
         <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>4eme: Macérée</item>
@@ -2802,7 +2820,7 @@ where location_attribute.attribute_type_id = ?
         <item>70503</item>
         <item>2</item>
         <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>4eme: Non Macérée</item>
@@ -2811,16 +2829,16 @@ where location_attribute.attribute_type_id = ?
         <item>70503</item>
         <item>4</item>
         <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>4eme: Date et Heure</item>
         <item>5599</item>
-        <item/>
+        <item />
         <item>71287</item>
-        <item/>
+        <item />
         <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>4eme: Mort Néonatale</item>
@@ -2829,34 +2847,34 @@ where location_attribute.attribute_type_id = ?
         <item>70503</item>
         <item>8</item>
         <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>4eme: APGAR : 1mn</item>
         <item>159603</item>
-        <item/>
+        <item />
         <item>71052</item>
-        <item/>
+        <item />
         <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>4eme: APGAR : 5mn</item>
         <item>159604</item>
-        <item/>
+        <item />
         <item>71053</item>
-        <item/>
+        <item />
         <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>4eme: Poids du (ou des) Nnés</item>
         <item>5916</item>
-        <item/>
+        <item />
         <item>70511</item>
-        <item/>
+        <item />
         <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>4eme: Sexe: Masc</item>
@@ -2865,7 +2883,7 @@ where location_attribute.attribute_type_id = ?
         <item>70507</item>
         <item>1</item>
         <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>4eme: Sexe: Fem</item>
@@ -2874,7 +2892,7 @@ where location_attribute.attribute_type_id = ?
         <item>70507</item>
         <item>2</item>
         <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>4eme: Malformation congénitale visible: Oui</item>
@@ -2883,7 +2901,7 @@ where location_attribute.attribute_type_id = ?
         <item>71326</item>
         <item>1</item>
         <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>4eme: Malformation congénitale visible: Non</item>
@@ -2892,7 +2910,7 @@ where location_attribute.attribute_type_id = ?
         <item>71326</item>
         <item>2</item>
         <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>4eme: Allaitement maternel 1ere heure: Oui</item>
@@ -2901,7 +2919,7 @@ where location_attribute.attribute_type_id = ?
         <item>71327</item>
         <item>1</item>
         <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>4eme: Allaitement maternel 1ere heure: Non</item>
@@ -2910,68 +2928,68 @@ where location_attribute.attribute_type_id = ?
         <item>71327</item>
         <item>2</item>
         <item>955122a5-c40a-4d20-85ef-c87da9c26486</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Date et Heure 1</item>
         <item>162869</item>
-        <item/>
+        <item />
         <item>70554</item>
-        <item/>
+        <item />
         <item>3e76627c-22d9-4cd9-8c7f-d029cd25d7c9</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>TA A 1</item>
         <item>5085</item>
-        <item/>
+        <item />
         <item>7848</item>
-        <item/>
+        <item />
         <item>3e76627c-22d9-4cd9-8c7f-d029cd25d7c9</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>TA B 1</item>
         <item>5086</item>
-        <item/>
+        <item />
         <item>7798</item>
-        <item/>
+        <item />
         <item>3e76627c-22d9-4cd9-8c7f-d029cd25d7c9</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Pouls 1</item>
         <item>5087</item>
-        <item/>
+        <item />
         <item>7846</item>
-        <item/>
+        <item />
         <item>3e76627c-22d9-4cd9-8c7f-d029cd25d7c9</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Fr 1</item>
         <item>5242</item>
-        <item/>
+        <item />
         <item>7847</item>
-        <item/>
+        <item />
         <item>3e76627c-22d9-4cd9-8c7f-d029cd25d7c9</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Température 1</item>
         <item>5088</item>
-        <item/>
+        <item />
         <item>7844</item>
-        <item/>
+        <item />
         <item>3e76627c-22d9-4cd9-8c7f-d029cd25d7c9</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Conscience 1</item>
         <item>162643</item>
         <item>160282</item>
         <item>70548</item>
-        <item/>
+        <item />
         <item>3e76627c-22d9-4cd9-8c7f-d029cd25d7c9</item>
         <item>Y</item>
       </line>
@@ -2980,70 +2998,70 @@ where location_attribute.attribute_type_id = ?
         <item>1284</item>
         <item>132846</item>
         <item>71291</item>
-        <item/>
+        <item />
         <item>3e76627c-22d9-4cd9-8c7f-d029cd25d7c9</item>
         <item>Y</item>
       </line>
       <line>
         <item>Date et Heure 2</item>
         <item>162869</item>
-        <item/>
+        <item />
         <item>70555</item>
-        <item/>
+        <item />
         <item>bd768366-2a46-4578-96fb-f26a838b3b83</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>TA A 2</item>
         <item>5085</item>
-        <item/>
+        <item />
         <item>7856</item>
-        <item/>
+        <item />
         <item>bd768366-2a46-4578-96fb-f26a838b3b83</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>TA B 2</item>
         <item>5086</item>
-        <item/>
+        <item />
         <item>7799</item>
-        <item/>
+        <item />
         <item>bd768366-2a46-4578-96fb-f26a838b3b83</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Pouls 2</item>
         <item>5087</item>
-        <item/>
+        <item />
         <item>7846</item>
-        <item/>
+        <item />
         <item>bd768366-2a46-4578-96fb-f26a838b3b83</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Fr 2</item>
         <item>5242</item>
-        <item/>
+        <item />
         <item>7855</item>
-        <item/>
+        <item />
         <item>bd768366-2a46-4578-96fb-f26a838b3b83</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Température 2</item>
         <item>5088</item>
-        <item/>
+        <item />
         <item>7852</item>
-        <item/>
+        <item />
         <item>bd768366-2a46-4578-96fb-f26a838b3b83</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Conscience 2</item>
         <item>162643</item>
         <item>160282</item>
         <item>70549</item>
-        <item/>
+        <item />
         <item>bd768366-2a46-4578-96fb-f26a838b3b83</item>
         <item>Y</item>
       </line>
@@ -3052,70 +3070,70 @@ where location_attribute.attribute_type_id = ?
         <item>1284</item>
         <item>132846</item>
         <item>71292</item>
-        <item/>
+        <item />
         <item>bd768366-2a46-4578-96fb-f26a838b3b83</item>
         <item>Y</item>
       </line>
       <line>
         <item>Date et Heure 3</item>
         <item>162869</item>
-        <item/>
+        <item />
         <item>70556</item>
-        <item/>
+        <item />
         <item>0658be52-5404-4386-8b7c-d6e68dbee9e8</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>TA A 3</item>
         <item>5085</item>
-        <item/>
+        <item />
         <item>70536</item>
-        <item/>
+        <item />
         <item>0658be52-5404-4386-8b7c-d6e68dbee9e8</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>TA B 3</item>
         <item>5086</item>
-        <item/>
+        <item />
         <item>70540</item>
-        <item/>
+        <item />
         <item>0658be52-5404-4386-8b7c-d6e68dbee9e8</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Pouls 3</item>
         <item>5087</item>
-        <item/>
+        <item />
         <item>70560</item>
-        <item/>
+        <item />
         <item>0658be52-5404-4386-8b7c-d6e68dbee9e8</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Fr 3</item>
         <item>5242</item>
-        <item/>
+        <item />
         <item>70564</item>
-        <item/>
+        <item />
         <item>0658be52-5404-4386-8b7c-d6e68dbee9e8</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Température 3</item>
         <item>5088</item>
-        <item/>
+        <item />
         <item>70568</item>
-        <item/>
+        <item />
         <item>0658be52-5404-4386-8b7c-d6e68dbee9e8</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Conscience 3</item>
         <item>162643</item>
         <item>160282</item>
         <item>70550</item>
-        <item/>
+        <item />
         <item>0658be52-5404-4386-8b7c-d6e68dbee9e8</item>
         <item>Y</item>
       </line>
@@ -3124,70 +3142,70 @@ where location_attribute.attribute_type_id = ?
         <item>1284</item>
         <item>132846</item>
         <item>71293</item>
-        <item/>
+        <item />
         <item>0658be52-5404-4386-8b7c-d6e68dbee9e8</item>
         <item>Y</item>
       </line>
       <line>
         <item>Date et Heure 4</item>
         <item>162869</item>
-        <item/>
+        <item />
         <item>70557</item>
-        <item/>
+        <item />
         <item>dff9501f-4aa2-4613-b4b2-6a219edbf3e3</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>TA A 4</item>
         <item>5085</item>
-        <item/>
+        <item />
         <item>70537</item>
-        <item/>
+        <item />
         <item>dff9501f-4aa2-4613-b4b2-6a219edbf3e3</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>TA B 4</item>
         <item>5086</item>
-        <item/>
+        <item />
         <item>70541</item>
-        <item/>
+        <item />
         <item>dff9501f-4aa2-4613-b4b2-6a219edbf3e3</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Pouls 4</item>
         <item>5087</item>
-        <item/>
+        <item />
         <item>70561</item>
-        <item/>
+        <item />
         <item>dff9501f-4aa2-4613-b4b2-6a219edbf3e3</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Fr 4</item>
         <item>5242</item>
-        <item/>
+        <item />
         <item>70565</item>
-        <item/>
+        <item />
         <item>dff9501f-4aa2-4613-b4b2-6a219edbf3e3</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Température 4</item>
         <item>5088</item>
-        <item/>
+        <item />
         <item>70569</item>
-        <item/>
+        <item />
         <item>dff9501f-4aa2-4613-b4b2-6a219edbf3e3</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Conscience 4</item>
         <item>162643</item>
         <item>160282</item>
         <item>70551</item>
-        <item/>
+        <item />
         <item>dff9501f-4aa2-4613-b4b2-6a219edbf3e3</item>
         <item>Y</item>
       </line>
@@ -3196,70 +3214,70 @@ where location_attribute.attribute_type_id = ?
         <item>1284</item>
         <item>132846</item>
         <item>71294</item>
-        <item/>
+        <item />
         <item>dff9501f-4aa2-4613-b4b2-6a219edbf3e3</item>
         <item>Y</item>
       </line>
       <line>
         <item>Date et Heure 5</item>
         <item>162869</item>
-        <item/>
+        <item />
         <item>70558</item>
-        <item/>
+        <item />
         <item>43d440f5-098a-4c8e-9f77-70bb15b51282</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>TA A 5</item>
         <item>5085</item>
-        <item/>
+        <item />
         <item>70538</item>
-        <item/>
+        <item />
         <item>43d440f5-098a-4c8e-9f77-70bb15b51282</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>TA B 5</item>
         <item>5086</item>
-        <item/>
+        <item />
         <item>70542</item>
-        <item/>
+        <item />
         <item>43d440f5-098a-4c8e-9f77-70bb15b51282</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Pouls 5</item>
         <item>5087</item>
-        <item/>
+        <item />
         <item>70562</item>
-        <item/>
+        <item />
         <item>43d440f5-098a-4c8e-9f77-70bb15b51282</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Fr 5</item>
         <item>5242</item>
-        <item/>
+        <item />
         <item>70566</item>
-        <item/>
+        <item />
         <item>43d440f5-098a-4c8e-9f77-70bb15b51282</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Température 5</item>
         <item>5088</item>
-        <item/>
+        <item />
         <item>70570</item>
-        <item/>
+        <item />
         <item>43d440f5-098a-4c8e-9f77-70bb15b51282</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Conscience 5</item>
         <item>162643</item>
         <item>160282</item>
         <item>70552</item>
-        <item/>
+        <item />
         <item>43d440f5-098a-4c8e-9f77-70bb15b51282</item>
         <item>Y</item>
       </line>
@@ -3268,70 +3286,70 @@ where location_attribute.attribute_type_id = ?
         <item>1284</item>
         <item>132846</item>
         <item>71295</item>
-        <item/>
+        <item />
         <item>43d440f5-098a-4c8e-9f77-70bb15b51282</item>
         <item>Y</item>
       </line>
       <line>
         <item>Date et Heure 6</item>
         <item>162869</item>
-        <item/>
+        <item />
         <item>70559</item>
-        <item/>
+        <item />
         <item>1079b67e-3b53-41aa-a39a-42c1afd7f13f</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>TA A 6</item>
         <item>5085</item>
-        <item/>
+        <item />
         <item>70539</item>
-        <item/>
+        <item />
         <item>1079b67e-3b53-41aa-a39a-42c1afd7f13f</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>TA B 6</item>
         <item>5086</item>
-        <item/>
+        <item />
         <item>70543</item>
-        <item/>
+        <item />
         <item>1079b67e-3b53-41aa-a39a-42c1afd7f13f</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Pouls 6</item>
         <item>5087</item>
-        <item/>
+        <item />
         <item>70563</item>
-        <item/>
+        <item />
         <item>1079b67e-3b53-41aa-a39a-42c1afd7f13f</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Fr 6</item>
         <item>5242</item>
-        <item/>
+        <item />
         <item>70567</item>
-        <item/>
+        <item />
         <item>1079b67e-3b53-41aa-a39a-42c1afd7f13f</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Température 6</item>
         <item>5088</item>
-        <item/>
+        <item />
         <item>70571</item>
-        <item/>
+        <item />
         <item>1079b67e-3b53-41aa-a39a-42c1afd7f13f</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>Conscience 6</item>
         <item>162643</item>
         <item>160282</item>
         <item>70553</item>
-        <item/>
+        <item />
         <item>1079b67e-3b53-41aa-a39a-42c1afd7f13f</item>
         <item>Y</item>
       </line>
@@ -3340,7 +3358,7 @@ where location_attribute.attribute_type_id = ?
         <item>1284</item>
         <item>132846</item>
         <item>71296</item>
-        <item/>
+        <item />
         <item>1079b67e-3b53-41aa-a39a-42c1afd7f13f</item>
         <item>Y</item>
       </line>
@@ -3351,7 +3369,7 @@ where location_attribute.attribute_type_id = ?
         <item>71301</item>
         <item>1</item>
         <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 1: Référée en pédiatrie pour</item>
@@ -3360,7 +3378,7 @@ where location_attribute.attribute_type_id = ?
         <item>71301</item>
         <item>2</item>
         <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 1: Détresse respiratoire</item>
@@ -3369,7 +3387,7 @@ where location_attribute.attribute_type_id = ?
         <item>71303</item>
         <item>1</item>
         <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 1: Suspicion d’infection materno-foetale</item>
@@ -3378,7 +3396,7 @@ where location_attribute.attribute_type_id = ?
         <item>71303</item>
         <item>2</item>
         <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 1: Prématurité</item>
@@ -3387,14 +3405,14 @@ where location_attribute.attribute_type_id = ?
         <item>71303</item>
         <item>8</item>
         <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 1: Autre, précisez</item>
         <item>1887</item>
         <item>5622</item>
         <item>71304</item>
-        <item/>
+        <item />
         <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
         <item>Y</item>
       </line>
@@ -3405,7 +3423,7 @@ where location_attribute.attribute_type_id = ?
         <item>71301</item>
         <item>4</item>
         <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 1: Décédé</item>
@@ -3414,14 +3432,14 @@ where location_attribute.attribute_type_id = ?
         <item>71301</item>
         <item>8</item>
         <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 1: Autre, précisez</item>
         <item>160433</item>
         <item>5622</item>
         <item>71302</item>
-        <item/>
+        <item />
         <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
         <item>Y</item>
       </line>
@@ -3432,7 +3450,7 @@ where location_attribute.attribute_type_id = ?
         <item>71305</item>
         <item>1</item>
         <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 1: Préparation pour nourrissons</item>
@@ -3441,7 +3459,7 @@ where location_attribute.attribute_type_id = ?
         <item>71305</item>
         <item>2</item>
         <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 1: Alimentation mixte</item>
@@ -3450,7 +3468,7 @@ where location_attribute.attribute_type_id = ?
         <item>71305</item>
         <item>4</item>
         <item>2c5abadc-7b74-4d9c-8e6a-2179062ce4f7</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 2: Référée à la pouponnière </item>
@@ -3459,7 +3477,7 @@ where location_attribute.attribute_type_id = ?
         <item>71306</item>
         <item>1</item>
         <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 2: Référée en pédiatrie pour</item>
@@ -3468,7 +3486,7 @@ where location_attribute.attribute_type_id = ?
         <item>71306</item>
         <item>2</item>
         <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 2: Détresse respiratoire</item>
@@ -3477,7 +3495,7 @@ where location_attribute.attribute_type_id = ?
         <item>71308</item>
         <item>1</item>
         <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 2: Suspicion d’infection materno-foetale</item>
@@ -3486,7 +3504,7 @@ where location_attribute.attribute_type_id = ?
         <item>71308</item>
         <item>2</item>
         <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 2: Prématurité</item>
@@ -3495,14 +3513,14 @@ where location_attribute.attribute_type_id = ?
         <item>71308</item>
         <item>8</item>
         <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 2: Autre, précisez</item>
         <item>1887</item>
         <item>5622</item>
         <item>71309</item>
-        <item/>
+        <item />
         <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
         <item>Y</item>
       </line>
@@ -3513,7 +3531,7 @@ where location_attribute.attribute_type_id = ?
         <item>71306</item>
         <item>4</item>
         <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 2: Décédé</item>
@@ -3522,14 +3540,14 @@ where location_attribute.attribute_type_id = ?
         <item>71306</item>
         <item>8</item>
         <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 2: Autre, précisez</item>
         <item>160433</item>
         <item>5622</item>
         <item>71307</item>
-        <item/>
+        <item />
         <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
         <item>Y</item>
       </line>
@@ -3540,7 +3558,7 @@ where location_attribute.attribute_type_id = ?
         <item>71310</item>
         <item>1</item>
         <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 2: Préparation pour nourrissons</item>
@@ -3549,7 +3567,7 @@ where location_attribute.attribute_type_id = ?
         <item>71310</item>
         <item>2</item>
         <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 2: Alimentation mixte</item>
@@ -3558,7 +3576,7 @@ where location_attribute.attribute_type_id = ?
         <item>71310</item>
         <item>4</item>
         <item>5e0fdc34-9207-4adb-9f1e-dab4ac41b31d</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 3: Référée à la pouponnière </item>
@@ -3567,7 +3585,7 @@ where location_attribute.attribute_type_id = ?
         <item>71311</item>
         <item>1</item>
         <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 3: Référée en pédiatrie pour</item>
@@ -3576,7 +3594,7 @@ where location_attribute.attribute_type_id = ?
         <item>71311</item>
         <item>2</item>
         <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 3: Détresse respiratoire</item>
@@ -3585,7 +3603,7 @@ where location_attribute.attribute_type_id = ?
         <item>71313</item>
         <item>1</item>
         <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 3: Suspicion d’infection materno-foetale</item>
@@ -3594,7 +3612,7 @@ where location_attribute.attribute_type_id = ?
         <item>71313</item>
         <item>2</item>
         <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 3: Prématurité</item>
@@ -3603,14 +3621,14 @@ where location_attribute.attribute_type_id = ?
         <item>71313</item>
         <item>8</item>
         <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 3: Autre, précisez</item>
         <item>1887</item>
         <item>5622</item>
         <item>71314</item>
-        <item/>
+        <item />
         <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
         <item>Y</item>
       </line>
@@ -3621,7 +3639,7 @@ where location_attribute.attribute_type_id = ?
         <item>71311</item>
         <item>4</item>
         <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 3: Décédé</item>
@@ -3630,14 +3648,14 @@ where location_attribute.attribute_type_id = ?
         <item>71311</item>
         <item>8</item>
         <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 3: Autre, précisez</item>
         <item>160433</item>
         <item>5622</item>
         <item>71312</item>
-        <item/>
+        <item />
         <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
         <item>Y</item>
       </line>
@@ -3648,7 +3666,7 @@ where location_attribute.attribute_type_id = ?
         <item>71315</item>
         <item>1</item>
         <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 3: Préparation pour nourrissons</item>
@@ -3657,7 +3675,7 @@ where location_attribute.attribute_type_id = ?
         <item>71315</item>
         <item>2</item>
         <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>EVOLUTION NOUVEAU NE 3: Alimentation mixte</item>
@@ -3666,29 +3684,92 @@ where location_attribute.attribute_type_id = ?
         <item>71315</item>
         <item>4</item>
         <item>6e32f438-a515-42d9-a896-ed2974b099fe</item>
-        <item/>
+        <item />
       </line>
       <line>
         <item>IMPRESSIONS CLINIQUES/DIAGNOSTIQUES: Autre, précisez 1</item>
         <item>1284</item>
-        <item/>
+        <item />
         <item>70870</item>
-        <item/>
+        <item />
         <item>bdb0c5f8-f122-4911-9295-c667200bb8d4</item>
         <item>Y</item>
       </line>
       <line>
         <item>IMPRESSIONS CLINIQUES/DIAGNOSTIQUES: Autre, précisez 2</item>
         <item>1284</item>
-        <item/>
+        <item />
         <item>70874</item>
-        <item/>
+        <item />
         <item>619f7b60-5262-4b32-ae55-155276817987</item>
         <item>Y</item>
       </line>
+      <line>
+        <item>Grossesse 1 :  Date de la grossesse précédente </item>
+        <item>16062</item>
+        <item />
+        <item>71353</item>
+        <item />
+        <item>c9b13159-8eac-4a54-9c1c-3507cc6d9f0f</item>
+        <item />
+      </line>
+      <line>
+        <item>Grossesse 1 :   SERVICES SOINS PRÉNATAUX </item>
+        <item>1622</item>
+        <item>1</item>
+        <item>70471</item>
+        <item>1</item>
+        <item>c9b13159-8eac-4a54-9c1c-3507cc6d9f0f</item>
+        <item />
+      </line>
+      <line>
+        <item>Grossesse 1 :   SERVICES SOINS PRÉNATAUX </item>
+        <item>1622</item>
+        <item>2</item>
+        <item>70471</item>
+        <item>2</item>
+        <item>c9b13159-8eac-4a54-9c1c-3507cc6d9f0f</item>
+        <item />
+      </line>
+      <line>
+        <item> Grossesse 1 :  LIEU DE NAISSANCE</item>
+        <item>1572</item>
+        <item>1536</item>
+        <item>70472</item>
+        <item>1</item>
+        <item>c9b13159-8eac-4a54-9c1c-3507cc6d9f0f</item>
+        <item />
+      </line>
+      <line>
+        <item> Grossesse 1 :  LIEU DE NAISSANCE</item>
+        <item>1572</item>
+        <item>1589</item>
+        <item>70472</item>
+        <item>2</item>
+        <item>c9b13159-8eac-4a54-9c1c-3507cc6d9f0f</item>
+        <item />
+      </line>
+      <line>
+        <item> Grossesse 1 :   issue de la grossesse </item>
+        <item>161033</item>
+        <item>151849</item>
+        <item>70473</item>
+        <item>1</item>
+        <item>c9b13159-8eac-4a54-9c1c-3507cc6d9f0f</item>
+        <item />
+      </line>
+      <line>
+        <item> Grossesse 1 :   issue de la grossesse </item>
+        <item>161033</item>
+        <item>125872</item>
+        <item>70473</item>
+        <item>2</item>
+        <item>c9b13159-8eac-4a54-9c1c-3507cc6d9f0f</item>
+        <item />
+      </line>
     </data>
-    <attributes/>
-    <cluster_schema/>
+    <attributes />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -3697,7 +3778,7 @@ where location_attribute.attribute_type_id = ?
     </remotesteps>
     <GUI>
       <xloc>32</xloc>
-      <yloc>80</yloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3706,5 +3787,5 @@ where location_attribute.attribute_type_id = ?
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
-  <attributes/>
+  <attributes />
 </transformation>
