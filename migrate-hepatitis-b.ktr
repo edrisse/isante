@@ -2037,7 +2037,7 @@ order by date desc</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>default_na</name>
+        <name>sample_type</name>
         <type>String</type>
         <format/>
         <currency/>
