@@ -1157,7 +1157,7 @@
     </partitioning>
     <connection>Openmrs HTY</connection>
     <rowlimit>0</rowlimit>
-    <sql>select obs.person_id, encounter.encounter_datetime, encounter.encounter_id, encounter.location_id, obs.value_text result_text, 150 as test_id_isante,
+    <sql>select obs.person_id, encounter.encounter_datetime, encounter.encounter_id, encounter.location_id, obs.value_text result_text, 150 as  test_id_isante,
 	isante_location_attribute.value_reference isante_location_id, dbsite_location_attribute.value_reference dbSiteValue, 
 	patient_identifier.identifier patient_identifier, seqnum as seqnum_value from obs
 join encounter on encounter.encounter_id = obs.encounter_id
@@ -2091,7 +2091,7 @@ order by date desc</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>default_na</name>
+        <name>sample_type</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -2617,7 +2617,7 @@ order by date desc</sql>
     </remotesteps>
     <GUI>
       <xloc>928</xloc>
-      <yloc>304</yloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
